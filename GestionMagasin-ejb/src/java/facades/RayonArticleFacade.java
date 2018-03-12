@@ -28,5 +28,15 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
     public RayonArticleFacade() {
         super(RayonArticle.class);
     }
+
+    // Méthode de modification du prix d'un article
+    // Nécessite de rechercher l'article auparavant et de récupérer le rayon du chef de rayon dans sa session
+    @Override
+    public void modifierPrix(RayonArticle r, float prixRayon) {
+        r.setPrixRayon(prixRayon);
+        em.merge(prixRayon);
+    }
+    
+    
     
 }

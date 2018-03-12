@@ -29,5 +29,7 @@ public interface RayonArticleFacadeLocal {
     List<RayonArticle> findRange(int[] range);
 
     int count();
+
+    void modifierPrix(RayonArticle r, float prixRayon);
     
 }

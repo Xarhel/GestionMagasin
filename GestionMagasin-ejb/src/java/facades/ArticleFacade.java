@@ -28,5 +28,23 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
     public ArticleFacade() {
         super(Article.class);
     }
+
+    //Méthode de création d'un article
+    @Override
+    public void creerArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion, float prixPromotion) {
+        Article a = new Article();
+        a.setReferenceArticle(referenceArticle);
+        a.setLibelle(libelle);
+        a.setCodeBarre(codeBarre);
+        a.setPromotion(false);
+        em.persist(a);
+    }
     
+    //Méthode de modification du prix d'un article
+    @Override
+    public void modifierPrixArticle(Article a, float prixPromotion) {
+        a.setPrixPromotion(prixPromotion);
+        em.merge(a);
+    }
+      
 }
