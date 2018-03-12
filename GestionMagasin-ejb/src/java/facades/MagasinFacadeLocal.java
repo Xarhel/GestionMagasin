@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Autre.Adresse;
 import Entites.Autre.Magasin;
 import java.util.List;
 import javax.ejb.Local;
@@ -15,7 +16,6 @@ import javax.ejb.Local;
  */
 @Local
 public interface MagasinFacadeLocal {
-
     void create(Magasin magasin);
 
     void edit(Magasin magasin);
@@ -29,5 +29,13 @@ public interface MagasinFacadeLocal {
     List<Magasin> findRange(int[] range);
 
     int count();
+
+    void creerMagasin(String nom, Adresse adresse);
+
+    void modifierMagasin(Magasin magasinAModifier, String nom, Adresse adresse);
+
+    Magasin rechercherMagasinParNom(String nom);
+    
+    public Magasin rechercherMagasinParId(int idMagasin);
     
 }

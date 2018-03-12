@@ -29,5 +29,9 @@ public interface AdresseFacadeLocal {
     List<Adresse> findRange(int[] range);
 
     int count();
-    
+
+    Adresse creerAdresse(String libelleAdresse, String rueNom, String rueComplement, int codePostal, String ville);
+
+    void modifierAdresse(Adresse adresseAModifier, String libelleAdresse, String rueNom, String rueComplement, int codePostal, String ville);
+  
 }

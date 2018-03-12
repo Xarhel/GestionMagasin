@@ -28,5 +28,31 @@ public class AdresseFacade extends AbstractFacade<Adresse> implements AdresseFac
     public AdresseFacade() {
         super(Adresse.class);
     }
+    @Override
+    public Adresse creerAdresse(String libelleAdresse, String rueNom, String rueComplement, int codePostal, String ville) {
+        
+        Adresse adresseACreer = new Adresse();
+        
+        adresseACreer.setLibelleAdresse(libelleAdresse);
+        adresseACreer.setRueNom(rueNom);
+        adresseACreer.setRueComplement(rueComplement);
+        adresseACreer.setCodePostal(codePostal);
+        adresseACreer.setVille(ville);
+        
+        em.persist(adresseACreer);
+        return (adresseACreer);
+    }
+
+    @Override
+    public void modifierAdresse(Adresse adresseAModifier, String libelleAdresse, String rueNom, String rueComplement, int codePostal, String ville) {
     
+        adresseAModifier.setLibelleAdresse(libelleAdresse);
+        adresseAModifier.setRueNom(rueNom);
+        adresseAModifier.setRueComplement(rueComplement);
+        adresseAModifier.setCodePostal(codePostal);
+        adresseAModifier.setVille(ville);
+        
+        em.persist(adresseAModifier);
+    }
+        
 }
