@@ -110,6 +110,70 @@ public class Magasin implements Serializable {
         this.nom = nom;
     }
 
+    public List<FournisseurMagasin> getFournisseurMagasins() {
+        return fournisseurMagasins;
+    }
+
+    public void setFournisseurMagasins(List<FournisseurMagasin> fournisseurMagasins) {
+        this.fournisseurMagasins = fournisseurMagasins;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public List<PanierInternet> getPanierInternets() {
+        return panierInternets;
+    }
+
+    public void setPanierInternets(List<PanierInternet> panierInternets) {
+        this.panierInternets = panierInternets;
+    }
+
+    public List<EmployeDeCaisse> getEmployeDeCaisses() {
+        return employeDeCaisses;
+    }
+
+    public void setEmployeDeCaisses(List<EmployeDeCaisse> employeDeCaisses) {
+        this.employeDeCaisses = employeDeCaisses;
+    }
+
+    public GerantMagasin getGerantMagasin() {
+        return gerantMagasin;
+    }
+
+    public void setGerantMagasin(GerantMagasin gerantMagasin) {
+        this.gerantMagasin = gerantMagasin;
+    }
+
+    public List<AgentDeLivraison> getAgentDeLivraisons() {
+        return agentDeLivraisons;
+    }
+
+    public void setAgentDeLivraisons(List<AgentDeLivraison> agentDeLivraisons) {
+        this.agentDeLivraisons = agentDeLivraisons;
+    }
+
+    public List<Employe> getEmployes() {
+        return employes;
+    }
+
+    public void setEmployes(List<Employe> employes) {
+        this.employes = employes;
+    }
+
+    public List<Creneau> getCreneaus() {
+        return creneaus;
+    }
+
+    public void setCreneaus(List<Creneau> creneaus) {
+        this.creneaus = creneaus;
+    }
+
     
     
 

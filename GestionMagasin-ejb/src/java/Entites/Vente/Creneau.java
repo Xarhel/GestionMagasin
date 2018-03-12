@@ -170,5 +170,13 @@ public class Creneau implements Serializable {
         this.leMagasin = leMagasin;
     }
 
+    public List<PanierInternet> getPanierInternets() {
+        return panierInternets;
+    }
+
+    public void setPanierInternets(List<PanierInternet> panierInternets) {
+        this.panierInternets = panierInternets;
+    }
+
     
 }

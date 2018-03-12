@@ -81,4 +81,12 @@ public class Reclamation implements Serializable {
         this.motifReclamationGeneral = motifReclamationGeneral;
     }
 
+    public Livraison getLivraison() {
+        return livraison;
+    }
+
+    public void setLivraison(Livraison livraison) {
+        this.livraison = livraison;
+    }
+
 }

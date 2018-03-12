@@ -200,4 +200,12 @@ public class Livraison implements Serializable {
         this.lAgentDeLivraison = lAgentDeLivraison;
     }
 
+    public List<LivraisonLot> getLivraisonLots() {
+        return livraisonLots;
+    }
+
+    public void setLivraisonLots(List<LivraisonLot> livraisonLots) {
+        this.livraisonLots = livraisonLots;
+    }
+
 }

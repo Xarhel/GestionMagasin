@@ -101,11 +101,21 @@ public class Rayon implements Serializable {
         this.Articles = Articles;
     }
 
-    
-   
-    
+    public List<Employe> getEmployes() {
+        return employes;
+    }
 
-   
-    
-    
+    public void setEmployes(List<Employe> employes) {
+        this.employes = employes;
+    }
+
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+  
+       
 }

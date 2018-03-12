@@ -65,5 +65,21 @@ public class Client extends Employe implements Serializable {
     public String toString() {
         return "Entites.PersonneEtHeritier.Client[ id=" + id + " ]";
     }
+
+    public List<Adresse> getAdresses() {
+        return adresses;
+    }
+
+    public void setAdresses(List<Adresse> adresses) {
+        this.adresses = adresses;
+    }
+
+    public List<PanierInternet> getPanierInternets() {
+        return panierInternets;
+    }
+
+    public void setPanierInternets(List<PanierInternet> panierInternets) {
+        this.panierInternets = panierInternets;
+    }
     
 }

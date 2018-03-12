@@ -85,5 +85,13 @@ public class EmployeDeCaisse extends Employe implements Serializable {
         this.leMagasin = leMagasin;
     }
 
+    public List<PanierCaisse> getPanierCaisses() {
+        return panierCaisses;
+    }
+
+    public void setPanierCaisses(List<PanierCaisse> panierCaisses) {
+        this.panierCaisses = panierCaisses;
+    }
+
     
 }

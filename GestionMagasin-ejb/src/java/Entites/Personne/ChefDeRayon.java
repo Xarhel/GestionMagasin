@@ -65,5 +65,13 @@ public class ChefDeRayon extends Employe implements Serializable {
     public String toString() {
         return "Entites.ChefDeRayon[ id=" + id + " ]";
     }
+
+    public List<BonDeCommande> getBonDeCommandes() {
+        return bonDeCommandes;
+    }
+
+    public void setBonDeCommandes(List<BonDeCommande> bonDeCommandes) {
+        this.bonDeCommandes = bonDeCommandes;
+    }
     
 }

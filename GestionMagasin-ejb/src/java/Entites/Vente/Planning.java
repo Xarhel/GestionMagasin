@@ -126,5 +126,13 @@ public class Planning implements Serializable {
         this.semaine = semaine;
     }
 
+    public List<Creneau> getCreneaus() {
+        return creneaus;
+    }
+
+    public void setCreneaus(List<Creneau> creneaus) {
+        this.creneaus = creneaus;
+    }
+
     
 }

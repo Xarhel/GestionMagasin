@@ -103,4 +103,12 @@ public class StockRetrait implements Serializable {
         this.dateRetrait = dateRetrait;
     }
 
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
 }

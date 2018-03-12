@@ -103,6 +103,14 @@ public class CodeCreneau implements Serializable {
         this.libelleCreneau = libelleCreneau;
     }
 
+    public List<Creneau> getCreneaus() {
+        return creneaus;
+    }
+
+    public void setCreneaus(List<Creneau> creneaus) {
+        this.creneaus = creneaus;
+    }
+
     
     
 }

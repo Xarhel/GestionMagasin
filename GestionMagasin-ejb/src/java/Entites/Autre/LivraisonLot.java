@@ -170,4 +170,12 @@ public class LivraisonLot implements Serializable {
         this.laLivraison = laLivraison;
     }
 
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
 }

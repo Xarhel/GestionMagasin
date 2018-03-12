@@ -85,5 +85,13 @@ public class AgentDeLivraison extends Employe implements Serializable {
         this.leMagasin = leMagasin;
     }
 
+    public List<Livraison> getLivraisons() {
+        return livraisons;
+    }
+
+    public void setLivraisons(List<Livraison> livraisons) {
+        this.livraisons = livraisons;
+    }
+
     
 }

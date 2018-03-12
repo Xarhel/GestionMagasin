@@ -83,6 +83,14 @@ public class PanierCaisse extends Panier implements Serializable {
     public void setlEmployeDeCaisse(EmployeDeCaisse lEmployeDeCaisse) {
         this.lEmployeDeCaisse = lEmployeDeCaisse;
     }
+
+    public List<ArticleVente> getArticleVentes() {
+        return articleVentes;
+    }
+
+    public void setArticleVentes(List<ArticleVente> articleVentes) {
+        this.articleVentes = articleVentes;
+    }
  
     
 }

@@ -86,5 +86,21 @@ public class Fournisseur extends Employe implements Serializable {
         this.raisonSociale = raisonSociale;
     }
 
+    public List<FournisseurMagasin> getFournisseurMagasins() {
+        return fournisseurMagasins;
+    }
+
+    public void setFournisseurMagasins(List<FournisseurMagasin> fournisseurMagasins) {
+        this.fournisseurMagasins = fournisseurMagasins;
+    }
+
+    public List<BonDeCommande> getBonDeCommandes() {
+        return bonDeCommandes;
+    }
+
+    public void setBonDeCommandes(List<BonDeCommande> bonDeCommandes) {
+        this.bonDeCommandes = bonDeCommandes;
+    }
+
     
 }

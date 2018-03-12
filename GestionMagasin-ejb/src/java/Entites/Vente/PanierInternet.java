@@ -151,6 +151,14 @@ public class PanierInternet extends Panier implements Serializable {
         this.leMagasin = leMagasin;
     }
 
+    public List<ArticleVente> getArticleVentes() {
+        return articleVentes;
+    }
+
+    public void setArticleVentes(List<ArticleVente> articleVentes) {
+        this.articleVentes = articleVentes;
+    }
+
     
     
 }

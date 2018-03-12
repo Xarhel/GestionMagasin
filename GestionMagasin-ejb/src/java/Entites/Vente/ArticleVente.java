@@ -126,4 +126,12 @@ public class ArticleVente implements Serializable {
         this.lePanierInternet = lePanierInternet;
     }
 
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
 }

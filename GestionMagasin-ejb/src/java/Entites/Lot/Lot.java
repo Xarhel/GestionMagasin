@@ -113,6 +113,22 @@ public class Lot implements Serializable {
         this.lArticle = lArticle;
     }
 
+    public List<LivraisonLot> getLivraisonLots() {
+        return livraisonLots;
+    }
+
+    public void setLivraisonLots(List<LivraisonLot> livraisonLots) {
+        this.livraisonLots = livraisonLots;
+    }
+
+    public List<CommandeLot> getCommandeLots() {
+        return commandeLots;
+    }
+
+    public void setCommandeLots(List<CommandeLot> commandeLots) {
+        this.commandeLots = commandeLots;
+    }
+
     
    
     
