@@ -3,34 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package facades;
+package Sessions;
 
 import Entites.Enum.MoyenPaiement;
-import Entites.Vente.Panier;
 import java.sql.Date;
-import java.util.List;
 import javax.ejb.Local;
 
 /**
  *
- * @author 3137574
+ * @author 5153218
  */
 @Local
-public interface PanierFacadeLocal {
-
-    void create(Panier panier);
-
-    void edit(Panier panier);
-
-    void remove(Panier panier);
-
-    Panier find(Object id);
-
-    List<Panier> findAll();
-
-    List<Panier> findRange(int[] range);
-
-    int count();
+public interface PanierSessionLocal {
 
     void creerPanier(Date dateJour, MoyenPaiement moyenPaiement, float montantTotal);
     

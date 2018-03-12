@@ -5,7 +5,9 @@
  */
 package facades;
 
+import Entites.Autre.Article;
 import Entites.Personne.Client;
+import java.sql.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +31,7 @@ public interface ClientFacadeLocal {
     List<Client> findRange(int[] range);
 
     int count();
+     void creerClient(String adresseEmail, int idAdresseFacturation, int idAdresseLivraison, Date dateNaissance, int telephone);
+
     
 }

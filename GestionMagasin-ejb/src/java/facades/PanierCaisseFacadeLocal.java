@@ -29,5 +29,7 @@ public interface PanierCaisseFacadeLocal {
     List<PanierCaisse> findRange(int[] range);
 
     int count();
+
+    void creerPanierCaisse();
     
 }

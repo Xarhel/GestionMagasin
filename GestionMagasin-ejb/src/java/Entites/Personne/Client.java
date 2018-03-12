@@ -8,6 +8,7 @@ package Entites.Personne;
 import Entites.Autre.Adresse;
 import Entites.Vente.PanierInternet;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -82,4 +83,64 @@ public class Client extends Employe implements Serializable {
         this.panierInternets = panierInternets;
     }
     
+    private String adresseEmail;
+
+    /**
+     * Get the value of adresseEmail
+     *
+     * @return the value of adresseEmail
+     */
+    public String getAdresseEmail() {
+        return adresseEmail;
+    }
+
+    /**
+     * Set the value of adresseEmail
+     *
+     * @param adresseEmail new value of adresseEmail
+     */
+    public void setAdresseEmail(String adresseEmail) {
+        this.adresseEmail = adresseEmail;
+    }
+
+    private Date dateNaissance;
+
+    /**
+     * Get the value of dateNaissance
+     *
+     * @return the value of dateNaissance
+     */
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    /**
+     * Set the value of dateNaissance
+     *
+     * @param dateNaissance new value of dateNaissance
+     */
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    private String telephone;
+
+    /**
+     * Get the value of telephone
+     *
+     * @return the value of telephone
+     */
+    public String getTelephone() {
+        return telephone;
+    }
+
+    /**
+     * Set the value of telephone
+     *
+     * @param telephone new value of telephone
+     */
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
 }
