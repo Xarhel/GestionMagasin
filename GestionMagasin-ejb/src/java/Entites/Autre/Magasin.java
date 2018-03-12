@@ -29,6 +29,9 @@ import javax.persistence.OneToOne;
 public class Magasin implements Serializable {
 
     @OneToMany(mappedBy = "leMagasin")
+    private List<Rayon> rayons;
+
+    @OneToMany(mappedBy = "leMagasin")
     private List<FournisseurMagasin> fournisseurMagasins;
 
     @OneToOne(mappedBy = "leMagasin")
@@ -51,6 +54,7 @@ public class Magasin implements Serializable {
 
     @OneToMany(mappedBy = "leMagasin")
     private List<Creneau> creneaus;
+    
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -173,6 +177,8 @@ public class Magasin implements Serializable {
     public void setCreneaus(List<Creneau> creneaus) {
         this.creneaus = creneaus;
     }
+
+
 
     
     

@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,14 @@ public interface RayonFacadeLocal {
     List<Rayon> findRange(int[] range);
 
     int count();
+
+    void creerRayon(String rayonNom, Magasin magasin);
+
+
+    void modifierRayon(Rayon rayonAModifier, String rayonNom, Magasin magasin);
+    
+    public Rayon rechercherRayonParId(int idRayon);
+    
+    public Rayon rechercherRayonParNomMagasin(String rayonNom, Magasin magasin);
     
 }

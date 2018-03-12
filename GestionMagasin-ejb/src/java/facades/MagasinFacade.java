@@ -5,10 +5,12 @@
  */
 package facades;
 
+import Entites.Autre.Adresse;
 import Entites.Autre.Magasin;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,52 @@ public class MagasinFacade extends AbstractFacade<Magasin> implements MagasinFac
     public MagasinFacade() {
         super(Magasin.class);
     }
+@Override
+    public void creerMagasin(String nom, Adresse adresseMagasin) {
+        
+        Magasin magasinACreer = new Magasin();
+        
+        magasinACreer.setNom(nom);
+        magasinACreer.setAdresse(adresseMagasin);
+        
+        em.persist(magasinACreer);
+    }
+
+    @Override
+    public void modifierMagasin(Magasin magasinAModifier, String nom, Adresse adresse) {
     
+    magasinAModifier.setNom(nom);
+    magasinAModifier.setAdresse(adresse);
+    
+    em.persist(magasinAModifier);
+    
+    }
+
+    @Override
+    public Magasin rechercherMagasinParNom(String nom) {
+        
+    Magasin result;
+    
+        Query req = getEntityManager().createQuery("SELECT m FROM Magasin AS m WHERE m.nom =: nom");
+        req.setParameter("nom", nom);
+        
+        result = (Magasin) req.getSingleResult();
+        
+        return result;
+        
+    }
+
+    @Override
+    public Magasin rechercherMagasinParId(int idMagasin) {
+        
+    Magasin result;
+    
+        Query req = getEntityManager().createQuery("SELECT m FROM Magasin AS m WHERE m.id =: idMagasin");
+        req.setParameter("idMagasin", idMagasin);
+        
+        result = (Magasin) req.getSingleResult();
+        
+        return result;
+        
+    }
 }
