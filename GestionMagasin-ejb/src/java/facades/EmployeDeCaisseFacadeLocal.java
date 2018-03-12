@@ -5,7 +5,11 @@
  */
 package facades;
 
+import Entites.Autre.Magasin;
+import Entites.Autre.Rayon;
+import Entites.Enum.TypeCompte;
 import Entites.Personne.EmployeDeCaisse;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,4 +34,8 @@ public interface EmployeDeCaisseFacadeLocal {
 
     int count();
     
+    
+    public void creerEmployeDeCaisse(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
+    public void modifierEmployeDeCaisse(EmployeDeCaisse EDC, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
+    public void supprimerEmployeDeCaisse(EmployeDeCaisse EDC);
 }
