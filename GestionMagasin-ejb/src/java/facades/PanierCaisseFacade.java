@@ -28,5 +28,11 @@ public class PanierCaisseFacade extends AbstractFacade<PanierCaisse> implements 
     public PanierCaisseFacade() {
         super(PanierCaisse.class);
     }
+
+    @Override
+    public void creerPanierCaisse() {
+        PanierCaisse pc= new PanierCaisse();
+        em.persist(pc);
+    }
     
 }

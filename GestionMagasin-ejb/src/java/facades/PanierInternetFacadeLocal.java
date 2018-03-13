@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Enum.TypeLivraison;
 import Entites.Vente.PanierInternet;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,7 @@ public interface PanierInternetFacadeLocal {
     List<PanierInternet> findRange(int[] range);
 
     int count();
+
+    void creerPanierInternet(TypeLivraison TypeLivraison);
     
 }

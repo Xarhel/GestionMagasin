@@ -5,7 +5,9 @@
  */
 package facades;
 
+import Entites.Enum.MoyenPaiement;
 import Entites.Vente.Panier;
+import java.sql.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +29,15 @@ public class PanierFacade extends AbstractFacade<Panier> implements PanierFacade
 
     public PanierFacade() {
         super(Panier.class);
+    }
+
+    @Override
+    public void creerPanier(Date dateJour, MoyenPaiement moyenPaiement, float montantTotal) {
+        Panier p= new Panier();
+        p.setDateJour(dateJour);
+        p.setMontantTotal(montantTotal);
+        p.setMontantTotal(montantTotal);
+        em.persist(this);
     }
     
 }

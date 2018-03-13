@@ -5,7 +5,9 @@
  */
 package facades;
 
+import Entites.Autre.Article;
 import Entites.Personne.Client;
+import java.sql.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +30,13 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
     public ClientFacade() {
         super(Client.class);
     }
-    
+    @Override
+    public void creerClient(String adresseEmail, int idAdresseFacturation, int idAdresseLivraison, Date dateNaissance, int telephone) {
+        Client cl= new Client();
+        cl.setAdresseEmail(adresseEmail);
+        cl.setDateNaissance(dateNaissance);
+        cl.setTelephone(adresseEmail);
+        em.persist(cl);
+    }
+
 }

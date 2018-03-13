@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Enum.TypeLivraison;
 import Entites.Vente.PanierInternet;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -27,6 +28,14 @@ public class PanierInternetFacade extends AbstractFacade<PanierInternet> impleme
 
     public PanierInternetFacade() {
         super(PanierInternet.class);
+    }
+
+    @Override
+    public void creerPanierInternet(TypeLivraison TypeLivraison) {
+        PanierInternet pi= new PanierInternet();
+        pi.setTypeLivraison(TypeLivraison);
+        em.persist(pi);
+        
     }
     
 }
