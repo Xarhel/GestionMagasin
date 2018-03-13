@@ -39,5 +39,7 @@ public interface AgentDeLivraisonFacadeLocal {
     public void creerAgentDeLivraison(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
 
     public void supprimerAgentDeLivraison(AgentDeLivraison ADL);
+
+    public AgentDeLivraison rechercherAgentParIdEmploye(int idADL);
     
 }

@@ -78,4 +78,8 @@ public class MagasinFacade extends AbstractFacade<Magasin> implements MagasinFac
         return result;
         
     }
+    public void supprimerMagasin(Magasin mag)
+    {
+        em.remove(mag);
+    }
 }

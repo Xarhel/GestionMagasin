@@ -13,6 +13,7 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -69,5 +70,20 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
          em.remove(ADL);
          
 }
+    public AgentDeLivraison rechercherAgentParIdEmploye(int idADL)
+    {
+        AgentDeLivraison result;
     
-}
+        Query req = getEntityManager().createQuery("SELECT adl FROM AgentDeLivraison AS adl WHERE a.id =: idADL");
+        req.setParameter("idADL", idADL);
+        
+        result = (AgentDeLivraison) req.getSingleResult();
+        
+        return result;
+        
+    }
+    }
+            
+            
+            
+

@@ -37,5 +37,7 @@ public interface MagasinFacadeLocal {
     Magasin rechercherMagasinParNom(String nom);
     
     public Magasin rechercherMagasinParId(int idMagasin);
+
+    public void supprimerMagasin(Magasin mag);
     
 }
