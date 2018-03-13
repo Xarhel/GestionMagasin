@@ -49,7 +49,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         
     Collection<Stock> result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock s inner join s.laLivraisonLot.leLot WHERE ");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock s inner join s.lArticle.lots. WHERE ");
         req.setParameter("libelle", libelle);
         
         result = req.getResultList();
@@ -57,5 +57,13 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         return result;
         
     }
+        public retirerStockPerimeRayon (Collection<Stock> stockPerime){
+            
+        for (int i=0 ; i< stockPerime.size(); i++)
+        {
+            
+            em.remove();
+        }
+        }
     
 }
