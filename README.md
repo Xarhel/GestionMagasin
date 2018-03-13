@@ -16,3 +16,8 @@ Procédure de création d'un repository chaque matin.
 - Finissez l'opération
 
 Votre projet est désormais cloné en local.
+
+
+-------------------
+
+How to use git with netbeans : https://github.com/benrbray/AdamBots-FIRST-2013-Robot-Code/wiki/How-To-Use-Git-&-Integrate-Git-With-NetBeans
