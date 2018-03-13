@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Autre.Article;
 import Entites.Lot.Lot;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,7 @@ public interface LotFacadeLocal {
     List<Lot> findRange(int[] range);
 
     int count();
+
+    void creerLot(Article lArticle, int quantite);
     
 }

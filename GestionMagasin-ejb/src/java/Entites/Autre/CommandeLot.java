@@ -97,7 +97,7 @@ public class CommandeLot implements Serializable {
      *
      * @param prixAchat new value of prixAchat
      */
-    public void setPrixAchat(int prixAchat) {
+    public void setPrixAchat(float prixAchat) {
         this.prixAchat = prixAchat;
     }
 

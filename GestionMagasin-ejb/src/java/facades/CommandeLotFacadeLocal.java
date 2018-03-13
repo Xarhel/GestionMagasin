@@ -5,7 +5,9 @@
  */
 package facades;
 
+import Entites.Autre.BonDeCommande;
 import Entites.Autre.CommandeLot;
+import Entites.Lot.Lot;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +31,7 @@ public interface CommandeLotFacadeLocal {
     List<CommandeLot> findRange(int[] range);
 
     int count();
+
+    void creerCommandeLot(Lot lot, BonDeCommande commande, int quantite, float prixAchat);
     
 }

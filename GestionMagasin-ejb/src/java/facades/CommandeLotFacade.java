@@ -5,7 +5,9 @@
  */
 package facades;
 
+import Entites.Autre.BonDeCommande;
 import Entites.Autre.CommandeLot;
+import Entites.Lot.Lot;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +30,15 @@ public class CommandeLotFacade extends AbstractFacade<CommandeLot> implements Co
     public CommandeLotFacade() {
         super(CommandeLot.class);
     }
+
+    @Override
+    public void creerCommandeLot(Lot lot, BonDeCommande commande, int quantite, float prixAchat) {
+        CommandeLot commandeLot = new CommandeLot();
+        commandeLot.setLeLot(lot);
+        commandeLot.setLeBonDeCommande(commande);
+        commandeLot.setQuantite(quantite);
+        commandeLot.setPrixAchat(prixAchat);
+        em.persist(commandeLot);
+    } 
     
 }

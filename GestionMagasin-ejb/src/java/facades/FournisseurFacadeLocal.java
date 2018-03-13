@@ -29,5 +29,7 @@ public interface FournisseurFacadeLocal {
     List<Fournisseur> findRange(int[] range);
 
     int count();
+
+    void creerFournisseur(String raisonSocial, String login, String password);
     
 }

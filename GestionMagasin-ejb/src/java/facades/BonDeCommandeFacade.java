@@ -40,7 +40,7 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
     @Override
     public void creerBonDeCommande(Date dateCommande) {
         BonDeCommande bd= new BonDeCommande();
-        bd.setDateCommande((java.sql.Date) dateCommande);
+        bd.setDateCommande(dateCommande);
         em.persist(bd);
     }
     
@@ -66,12 +66,9 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
     public Collection <BonDeCommande> rechercherCommandeParArticle( int idArticle) {
         Collection<BonDeCommande> result;
     
-        Query req = getEntityManager().createQuery("SELECT bc FROM BonDeCommande AS bc WHERE bc.commandeLots.leLot.lArticle.id =: idArticle ");
-        
-        req.setParameter("idArticle", idArticle);
-        
-        result = req.getResultList();
-        
+        Query req = getEntityManager().createQuery("SELECT bc FROM BonDeCommande AS bc WHERE bc.commandeLots.leLot.lArticle.id =: idArticle ");      
+        req.setParameter("idArticle", idArticle);      
+        result = req.getResultList();      
         return result;
     }
     
