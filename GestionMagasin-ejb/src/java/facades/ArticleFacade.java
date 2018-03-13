@@ -46,5 +46,5 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
         a.setPrixPromotion(prixPromotion);
         em.merge(a);
     }
-      
+        
 }
