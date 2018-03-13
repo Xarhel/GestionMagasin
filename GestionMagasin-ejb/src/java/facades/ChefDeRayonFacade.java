@@ -34,6 +34,7 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
     }
     
     
+    @Override
     public void creerChefDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
     {
         ChefDeRayon CDR= new ChefDeRayon();
@@ -49,6 +50,7 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
         
     }
     
+    @Override
      public void modifierChefDeRayon(ChefDeRayon CDR, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
     {
         
@@ -64,8 +66,20 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
         
     }
      
+    @Override
      public void supprimerChefDeRayon(ChefDeRayon CDR)
      {
          em.remove(CDR);
 }
+
+    @Override
+    public void affecterChefDeRayon(ChefDeRayon cdr, Magasin magasin, Rayon rayon) {
+        
+        cdr.setLeRayon(rayon);
+        cdr.setLeMagasin(magasin);
+        
+        em.merge(cdr);
+    }
+     
+     
 }

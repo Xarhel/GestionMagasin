@@ -33,7 +33,8 @@ public class GerantMagasinFacade extends AbstractFacade<GerantMagasin> implement
         super(GerantMagasin.class);
     }
     
-    public void creerGerantMagasin(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    @Override
+    public void creerGerantMagasin(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin)
     {
         GerantMagasin GM= new GerantMagasin();
         GM.setNomPersonne(nom);
@@ -43,12 +44,12 @@ public class GerantMagasinFacade extends AbstractFacade<GerantMagasin> implement
         GM.setDateCreationCompte(dateCreationCompte);
         GM.setTypeCompte(typeCompte);
         GM.setLeMagasin(magasin);
-        GM.setLeRayon(rayon);
         em.persist(GM);
         
     }
      
-     public void modifierGerantMagasin(GerantMagasin GM, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    @Override
+     public void modifierGerantMagasin(GerantMagasin GM, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin)
     {
        
         GM.setNomPersonne(nom);
@@ -58,13 +59,23 @@ public class GerantMagasinFacade extends AbstractFacade<GerantMagasin> implement
         GM.setDateCreationCompte(dateCreationCompte);
         GM.setTypeCompte(typeCompte);
         GM.setLeMagasin(magasin);
-        GM.setLeRayon(rayon);
         em.merge(GM);
         
     }
      
+    @Override
      public void supprimerGerantMagasin(GerantMagasin GM)
      {
          em.remove(GM);
 }
+
+    @Override
+    public void affecterGerantMagasin(GerantMagasin gm, Magasin magasin) {
+        
+        gm.setLeMagasin(magasin);
+        
+       em.merge(gm);
+    }
+     
+     
 }

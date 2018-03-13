@@ -51,7 +51,7 @@ public class RayonFacade extends AbstractFacade<Rayon> implements RayonFacadeLoc
     rayonAModifier.setRayonNom(rayonNom);
     rayonAModifier.setLeMagasin(magasin);
     
-    em.persist(rayonAModifier);
+    em.merge(rayonAModifier);
     
     }
     
@@ -84,6 +84,7 @@ public class RayonFacade extends AbstractFacade<Rayon> implements RayonFacadeLoc
         
     }
     
+    @Override
     public Collection<Rayon> rechercherRayonParNomMagasin(Magasin magasin) {
         
     Collection<Rayon> result;

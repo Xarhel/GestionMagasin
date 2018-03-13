@@ -39,5 +39,7 @@ public interface EmployeDeCaisseFacadeLocal {
     public void modifierEmployeDeCaisse(EmployeDeCaisse EDC, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
 
     public void supprimerEmployeDeCaisse(EmployeDeCaisse EDC);
+
+    void affecterEmployeDeCaisse(EmployeDeCaisse edc, Rayon rayon, Magasin magasin);
     
 }

@@ -47,7 +47,7 @@ public class MagasinFacade extends AbstractFacade<Magasin> implements MagasinFac
     magasinAModifier.setNom(nom);
     magasinAModifier.setAdresse(adresse);
     
-    em.persist(magasinAModifier);
+    em.merge(magasinAModifier);
     
     }
 

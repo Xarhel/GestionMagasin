@@ -6,6 +6,7 @@
 package facades;
 
 import Entites.Autre.Article;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -33,5 +34,11 @@ public interface ArticleFacadeLocal {
     void creerArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion, float prixPromotion);
 
     void modifierPrixArticle(Article a, float prixPromotion);
+
+    void annulerPromotion(Article a);
+
+    Article rechercheArticleParReference(int referenceArticle);
+
+    public Collection<Article> rechercherArticleParLibelle(String libelle);
     
 }

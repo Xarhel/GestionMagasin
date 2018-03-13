@@ -33,7 +33,8 @@ public class DirectionFacade extends AbstractFacade<Direction> implements Direct
         super(Direction.class);
     }
     
-        public void creerDirection(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    @Override
+        public void creerDirection(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte)
     {
         Direction D= new Direction();
         D.setNomPersonne(nom);
@@ -42,13 +43,12 @@ public class DirectionFacade extends AbstractFacade<Direction> implements Direct
         D.setPassword(mdp);
         D.setDateCreationCompte(dateCreationCompte);
         D.setTypeCompte(typeCompte);
-        D.setLeMagasin(magasin);
-        D.setLeRayon(rayon);
         em.persist(D);
         
     }
     
-    public void modifierDirection(Direction D, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    @Override
+    public void modifierDirection(Direction D, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte)
     {
         
         D.setNomPersonne(nom);
@@ -57,17 +57,17 @@ public class DirectionFacade extends AbstractFacade<Direction> implements Direct
         D.setPassword(mdp);
         D.setDateCreationCompte(dateCreationCompte);
         D.setTypeCompte(typeCompte);
-        D.setLeMagasin(magasin);
-        D.setLeRayon(rayon);
         em.merge(D);
         
     }
     
+    @Override
     public void supprimerDirection(Direction D)
     {
         
         em.remove(D);
 }
+    
     
     
 }

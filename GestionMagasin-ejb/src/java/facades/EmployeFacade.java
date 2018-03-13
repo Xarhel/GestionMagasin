@@ -9,6 +9,7 @@ import Entites.Personne.Employe;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +29,18 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
     public EmployeFacade() {
         super(Employe.class);
     }
+
+    @Override
+    public Employe chercherEmployeParId(int id) {
+        Employe result;
+    
+        Query req = getEntityManager().createQuery("SELECT e FROM Employe AS e WHERE e.id =: id");
+        req.setParameter("idMagasin", id);
+        
+        result = (Employe) req.getSingleResult();
+        
+        return result;
+    }
+    
     
 }

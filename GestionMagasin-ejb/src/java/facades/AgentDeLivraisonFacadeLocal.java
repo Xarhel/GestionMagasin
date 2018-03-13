@@ -34,10 +34,12 @@ public interface AgentDeLivraisonFacadeLocal {
 
     int count();
 
-    public void modifierAgentDeLivraison(AgentDeLivraison ADL, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
+    public void modifierAgentDeLivraison(AgentDeLivraison ADL, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin);
 
-    public void creerAgentDeLivraison(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
+    public void creerAgentDeLivraison(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin);
 
     public void supprimerAgentDeLivraison(AgentDeLivraison ADL);
+
+    void affecterAgentDeLivraison(AgentDeLivraison adl, Magasin magasin);
     
 }

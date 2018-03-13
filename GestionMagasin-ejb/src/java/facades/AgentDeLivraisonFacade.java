@@ -33,7 +33,8 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
         super(AgentDeLivraison.class);
     }
     
-     public void creerAgentDeLivraison(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    @Override
+     public void creerAgentDeLivraison(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin)
     {
         AgentDeLivraison ADL= new AgentDeLivraison();
         ADL.setNomPersonne(nom);
@@ -43,12 +44,12 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
         ADL.setDateCreationCompte(dateCreationCompte);
         ADL.setTypeCompte(typeCompte);
         ADL.setLeMagasin(magasin);
-        ADL.setLeRayon(rayon);
         em.persist(ADL);
         
     }
      
-     public void modifierAgentDeLivraison(AgentDeLivraison ADL, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    @Override
+     public void modifierAgentDeLivraison(AgentDeLivraison ADL, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin)
      {
          
         ADL.setNomPersonne(nom);
@@ -58,7 +59,6 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
         ADL.setDateCreationCompte(dateCreationCompte);
         ADL.setTypeCompte(typeCompte);
         ADL.setLeMagasin(magasin);
-        ADL.setLeRayon(rayon);
         em.merge(ADL);
          
          
@@ -69,5 +69,13 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
          em.remove(ADL);
          
 }
+
+    @Override
+    public void affecterAgentDeLivraison(AgentDeLivraison adl, Magasin magasin) {
+        adl.setLeMagasin(magasin);
+        em.merge(adl);
+        
+    }
+     
     
 }
