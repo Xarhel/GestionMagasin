@@ -5,7 +5,6 @@
  */
 package Entites.Autre;
 
-import Entites.Personne.ChefDeRayon;
 import Entites.Personne.Employe;
 import java.io.Serializable;
 import java.util.List;
@@ -32,8 +31,8 @@ public class Rayon implements Serializable {
     @OneToOne(mappedBy = "leRayon")
     private Stock stock;
     
-        @ManyToMany(mappedBy = "lesArticles")
-    private List<Article> Articles;
+    @ManyToMany
+    private List<RayonArticle> lesRayonArticles;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -94,13 +93,6 @@ public class Rayon implements Serializable {
         this.rayonNom = rayonNom;
     }
 
-    public List<Article> getArticles() {
-        return Articles;
-    }
-
-    public void setArticles(List<Article> Articles) {
-        this.Articles = Articles;
-    }
 
     public List<Employe> getEmployes() {
         return employes;

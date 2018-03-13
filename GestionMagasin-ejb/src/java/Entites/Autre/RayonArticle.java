@@ -22,11 +22,11 @@ import javax.persistence.ManyToMany;
 @Entity
 public class RayonArticle implements Serializable {
 
-        @ManyToMany(mappedBy = "lesArticles")
-    private List<Article> Articles;
+        @ManyToMany
+    private List<Article> lesArticles;
         
-            @ManyToMany(mappedBy = "lesRayons")
-    private List<Rayon> Rayons;
+        @ManyToMany(mappedBy = "lesRayonArticles")
+    private List<Rayon> lesRayons;
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -109,21 +109,6 @@ public class RayonArticle implements Serializable {
         this.prixRayon = prixRayon;
     }
 
-    public List<Article> getArticles() {
-        return Articles;
-    }
-
-    public void setArticles(List<Article> Articles) {
-        this.Articles = Articles;
-    }
-
-    public List<Rayon> getRayons() {
-        return Rayons;
-    }
-
-    public void setRayons(List<Rayon> Rayons) {
-        this.Rayons = Rayons;
-    }
 
     
     
