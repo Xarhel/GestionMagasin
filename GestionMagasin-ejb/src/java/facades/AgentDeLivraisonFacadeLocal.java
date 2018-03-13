@@ -5,11 +5,7 @@
  */
 package facades;
 
-import Entites.Autre.Magasin;
-import Entites.Autre.Rayon;
-import Entites.Enum.TypeCompte;
 import Entites.Personne.AgentDeLivraison;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -34,7 +30,4 @@ public interface AgentDeLivraisonFacadeLocal {
 
     int count();
     
-    public void creerAgentDeLivraison(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
-    public void modifierAgentDeLivraison(AgentDeLivraison ADL, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
-    public void supprimerAgentDeLivraison(AgentDeLivraison ADL);      
 }

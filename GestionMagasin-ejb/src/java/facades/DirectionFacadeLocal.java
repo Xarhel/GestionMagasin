@@ -5,11 +5,7 @@
  */
 package facades;
 
-import Entites.Autre.Magasin;
-import Entites.Autre.Rayon;
-import Entites.Enum.TypeCompte;
 import Entites.Personne.Direction;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -34,7 +30,4 @@ public interface DirectionFacadeLocal {
 
     int count();
     
-    public void creerDirection(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
-    public void modifierDirection(Direction D, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
-    public void supprimerDirection(Direction D);
 }

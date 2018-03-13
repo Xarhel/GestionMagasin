@@ -19,7 +19,7 @@ import javax.persistence.ManyToOne;
  * @author 5153218
  */
 @Entity
-public abstract class Employe extends Personne implements Serializable {
+public abstract class Employe implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

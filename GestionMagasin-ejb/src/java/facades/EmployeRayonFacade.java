@@ -5,12 +5,7 @@
  */
 package facades;
 
-import Entites.Autre.Magasin;
-import Entites.Autre.Rayon;
-import Entites.Enum.TypeCompte;
-import Entites.Personne.Direction;
 import Entites.Personne.EmployeRayon;
-import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,41 +28,5 @@ public class EmployeRayonFacade extends AbstractFacade<EmployeRayon> implements 
     public EmployeRayonFacade() {
         super(EmployeRayon.class);
     }
-    
-    
-      public void creerEmployeDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
-    {
-        EmployeRayon EDR= new EmployeRayon();
-        EDR.setNomPersonne(nom);
-        EDR.setPrenomPersonne(prenom);
-        EDR.setLogin(login);
-        EDR.setPassword(mdp);
-        EDR.setDateCreationCompte(dateCreationCompte);
-        EDR.setTypeCompte(typeCompte);
-        EDR.setLeMagasin(magasin);
-        EDR.setLeRayon(rayon);
-        em.persist(EDR);
-        
-    }
-      
-        public void modifierEmployeDeRayon(EmployeRayon EDR, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
-    {
-       
-        EDR.setNomPersonne(nom);
-        EDR.setPrenomPersonne(prenom);
-        EDR.setLogin(login);
-        EDR.setPassword(mdp);
-        EDR.setDateCreationCompte(dateCreationCompte);
-        EDR.setTypeCompte(typeCompte);
-        EDR.setLeMagasin(magasin);
-        EDR.setLeRayon(rayon);
-        em.merge(EDR);
-        
-    }
-        
-        public void supprimerEmployeDeRayon(EmployeRayon EDR)
-        {
-            em.remove(EDR);
-        }
     
 }

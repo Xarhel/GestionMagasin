@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -116,6 +117,28 @@ public class Rayon implements Serializable {
     public void setStock(Stock stock) {
         this.stock = stock;
     }
-  
-       
+ 
+    @ManyToOne
+    private Magasin leMagasin;
+
+    /**
+     * Get the value of leMagasin
+     *
+     * @return the value of leMagasin
+     */
+    public Magasin getLeMagasin() {
+        return leMagasin;
+    }
+
+    /**
+     * Set the value of leMagasin
+     *
+     * @param leMagasin new value of leMagasin
+     */
+    public void setLeMagasin(Magasin leMagasin) {
+        this.leMagasin = leMagasin;
+    }
+ 
+
+      
 }

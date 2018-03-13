@@ -5,11 +5,7 @@
  */
 package facades;
 
-import Entites.Autre.Magasin;
-import Entites.Autre.Rayon;
-import Entites.Enum.TypeCompte;
 import Entites.Personne.ChefDeRayon;
-import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,40 +28,5 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
     public ChefDeRayonFacade() {
         super(ChefDeRayon.class);
     }
- 
-     public void creerChefDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
-    {
-        ChefDeRayon CDR= new ChefDeRayon();
-        CDR.setNomPersonne(nom);
-        CDR.setPrenomPersonne(prenom);
-        CDR.setLogin(login);
-        CDR.setPassword(mdp);
-        CDR.setDateCreationCompte(dateCreationCompte);
-        CDR.setTypeCompte(typeCompte);
-        CDR.setLeMagasin(magasin);
-        CDR.setLeRayon(rayon);
-        em.persist(CDR);
-        
-    }
-    
-     public void modifierChefDeRayon(ChefDeRayon CDR, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
-    {
-        
-        CDR.setNomPersonne(nom);
-        CDR.setPrenomPersonne(prenom);
-        CDR.setLogin(login);
-        CDR.setPassword(mdp);
-        CDR.setDateCreationCompte(dateCreationCompte);
-        CDR.setTypeCompte(typeCompte);
-        CDR.setLeMagasin(magasin);
-        CDR.setLeRayon(rayon);
-        em.merge(CDR);
-        
-    }
-     
-     public void supprimerChefDeRayon(ChefDeRayon CDR)
-     {
-         em.remove(CDR);
-     }
     
 }
