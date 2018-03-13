@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,7 @@ public interface StockFacadeLocal {
     List<Stock> findRange(int[] range);
 
     int count();
+
+    public Stock chercherRayonStockParLibelleArticle(String libelle, Rayon rayon);
     
 }

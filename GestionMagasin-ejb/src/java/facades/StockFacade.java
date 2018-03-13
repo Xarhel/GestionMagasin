@@ -8,6 +8,7 @@ package facades;
 import Entites.Autre.Article;
 import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
+import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -31,11 +32,12 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     public StockFacade() {
         super(Stock.class);
     }
+
     @Override
-    public Article chercherRayonStockParLibelleArticle(String libelle, Rayon rayon) {
+    public Stock chercherRayonStockParLibelleArticle(String libelle, Rayon rayon) {
         Stock result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock s join as article WHERE   r.=: libelle AND ra.lesRayons =: rayon");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle join s.leRayon WHERE s.lArticle:= libelle AND s.leRayon := rayon");
         req.setParameter("libelle", libelle);
         req.setParameter("rayon", rayon);
         
@@ -43,4 +45,17 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         
         return result;
     }    
+        public Collection<Stock> rechercherLotRayonPerimeParDate(java.util.Date date) {
+        
+    Collection<Stock> result;
+    
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock s inner join s.laLivraisonLot.leLot WHERE ");
+        req.setParameter("libelle", libelle);
+        
+        result = req.getResultList();
+        
+        return result;
+        
+    }
+    
 }
