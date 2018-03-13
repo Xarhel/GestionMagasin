@@ -5,6 +5,8 @@
  */
 package facades;
 
+import Entites.Autre.Article;
+import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import java.util.List;
 import javax.ejb.Local;
@@ -31,5 +33,8 @@ public interface RayonArticleFacadeLocal {
     int count();
 
     void modifierPrix(RayonArticle r, float prixRayon);
+
+    public Article chercherArticleParLibelle(String libelle, Rayon rayon);
     
+    public Article chercherArticleParId(int idArticle, Rayon rayon);    
 }
