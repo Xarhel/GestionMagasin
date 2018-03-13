@@ -29,4 +29,6 @@ public class StockRetraitFacade extends AbstractFacade<StockRetrait> implements 
         super(StockRetrait.class);
     }
     
+    
+    
 }
