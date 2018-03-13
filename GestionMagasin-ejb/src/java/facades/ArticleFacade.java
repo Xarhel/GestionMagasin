@@ -6,9 +6,13 @@
 package facades;
 
 import Entites.Autre.Article;
+import Entites.Autre.Magasin;
+import Entites.Autre.Rayon;
+import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -44,7 +48,48 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
     @Override
     public void modifierPrixArticle(Article a, float prixPromotion) {
         a.setPrixPromotion(prixPromotion);
+        a.setPromotion(true);
         em.merge(a);
     }
-      
+
+    @Override
+    public void annulerPromotion(Article a) {
+        a.setPromotion(false);
+        em.merge(a);
+    }
+
+    @Override
+    public Article rechercheArticleParReference(int referenceArticle) {
+            Article result;
+    
+        Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.id =: referenceArticle");
+        req.setParameter("referenceArticle", referenceArticle);
+        
+        result = (Article) req.getSingleResult();
+        
+        return result;
+    }
+    
+    /**
+     *
+     * @param libelle
+     * @return
+     */
+    @Override
+    public Collection<Article> rechercherArticleParLibelle(String libelle) {
+        
+    Collection<Article> result;
+    
+        Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.libelle =: libelle");
+        req.setParameter("libelle", libelle);
+        
+        result = req.getResultList();
+        
+        return result;
+        
+    }
+    
+    
+    
+    
 }

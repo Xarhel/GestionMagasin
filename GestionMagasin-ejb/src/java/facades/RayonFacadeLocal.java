@@ -7,6 +7,7 @@ package facades;
 
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -39,5 +40,7 @@ public interface RayonFacadeLocal {
     public Rayon rechercherRayonParId(int idRayon);
     
     public Rayon rechercherRayonParNomMagasin(String rayonNom, Magasin magasin);
+
+    public Collection<Rayon> rechercherRayonParNomMagasin(Magasin magasin);
     
 }
