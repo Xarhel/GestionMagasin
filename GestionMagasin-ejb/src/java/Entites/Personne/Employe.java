@@ -7,7 +7,9 @@ package Entites.Personne;
 
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
+import Entites.Enum.TypeCompte;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -144,5 +146,5 @@ public abstract class Employe extends Personne implements Serializable {
         this.leMagasin = leMagasin;
     }
 
-    
+   
 }

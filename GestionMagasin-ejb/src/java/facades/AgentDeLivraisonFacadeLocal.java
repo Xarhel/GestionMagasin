@@ -42,4 +42,5 @@ public interface AgentDeLivraisonFacadeLocal {
 
     void affecterAgentDeLivraison(AgentDeLivraison adl, Magasin magasin);
     
+    public AgentDeLivraison rechercherAgentParIdEmploye(int idADL);
 }
