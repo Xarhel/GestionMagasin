@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Autre.Article;
 import Entites.Lot.Lot;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -28,5 +29,16 @@ public class LotFacade extends AbstractFacade<Lot> implements LotFacadeLocal {
     public LotFacade() {
         super(Lot.class);
     }
+
+    // Création du lot
+    @Override
+    public void creerLot(Article lArticle, int quantite) {
+        Lot lot = new Lot();
+        lot.setlArticle(lArticle);
+        lot.setQuantite(quantite);
+        em.persist(lot);
+    }
+    
+    
     
 }

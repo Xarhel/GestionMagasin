@@ -28,5 +28,16 @@ public class FournisseurFacade extends AbstractFacade<Fournisseur> implements Fo
     public FournisseurFacade() {
         super(Fournisseur.class);
     }
+
+    @Override
+    public void creerFournisseur(String raisonSocial, String login, String password) {
+        Fournisseur fournisseur = new Fournisseur();
+        fournisseur.setRaisonSociale(raisonSocial);
+        fournisseur.setLogin(login);
+        fournisseur.setPassword(password);
+        em.persist(fournisseur);
+    }
+  
+    
     
 }

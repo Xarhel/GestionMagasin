@@ -33,7 +33,7 @@ public class Lot implements Serializable {
     private List<CommandeLot> commandeLots;
     
     @ManyToOne
-        private Article lArticle;
+    private Article lArticle;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -128,8 +128,5 @@ public class Lot implements Serializable {
     public void setCommandeLots(List<CommandeLot> commandeLots) {
         this.commandeLots = commandeLots;
     }
-
-    
-   
     
 }

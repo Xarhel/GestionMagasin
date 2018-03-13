@@ -29,4 +29,6 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
         super(Livraison.class);
     }
     
+    
+    
 }
