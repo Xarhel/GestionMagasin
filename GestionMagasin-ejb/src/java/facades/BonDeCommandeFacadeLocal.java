@@ -5,7 +5,11 @@
  */
 package facades;
 
+import Entites.Autre.Article;
 import Entites.Autre.BonDeCommande;
+import Entites.Personne.Fournisseur;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +33,12 @@ public interface BonDeCommandeFacadeLocal {
     List<BonDeCommande> findRange(int[] range);
 
     int count();
+
+    void creerBonDeCommande(Date dateCommande);
+
+    public Collection<BonDeCommande> rechercherCommande(Date dateCommande, int idFournisseur, int idArticle);
+    public Collection<BonDeCommande> rechercherCommandeParArticle( int idArticle);
+
+    public Collection <BonDeCommande> getBonDeCommandes();
     
 }

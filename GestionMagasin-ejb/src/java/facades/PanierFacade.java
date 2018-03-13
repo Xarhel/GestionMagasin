@@ -37,7 +37,7 @@ public class PanierFacade extends AbstractFacade<Panier> implements PanierFacade
         p.setDateJour(dateJour);
         p.setMontantTotal(montantTotal);
         p.setMontantTotal(montantTotal);
-        em.persist(this);
+        em.persist(p);
     }
     
 }
