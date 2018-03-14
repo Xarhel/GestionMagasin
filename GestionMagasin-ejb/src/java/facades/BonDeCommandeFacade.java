@@ -7,6 +7,7 @@ package facades;
 
 import Entites.Autre.Article;
 import Entites.Autre.BonDeCommande;
+import Entites.Personne.ChefDeRayon;
 import Entites.Personne.Fournisseur;
 import java.util.Collection;
 import java.util.Date;
@@ -84,8 +85,20 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
             }catch(Exception e){e.getMessage();}
         return liste;
         
+        
+        
     }
     
+    
+    public void creerBonDeCommande(ChefDeRayon cdr, Date dateCreation, Fournisseur fournisseur)
+    {
+        BonDeCommande bdc= new BonDeCommande();
+        bdc.setDateCommande(dateCreation);
+        bdc.getLeChefDeRayon();
+        bdc.setLeFournisseur(fournisseur);
+        em.persist(bdc);
+        
+    }
     
 }
 

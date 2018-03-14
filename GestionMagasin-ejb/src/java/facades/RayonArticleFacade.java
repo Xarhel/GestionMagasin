@@ -40,6 +40,7 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
         em.merge(prixRayon);
     }
 
+
     @Override
     public Article chercherArticleParLibelle(String libelle, Rayon rayon) {
         Article result;

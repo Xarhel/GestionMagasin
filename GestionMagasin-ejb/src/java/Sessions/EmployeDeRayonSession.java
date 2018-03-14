@@ -36,12 +36,14 @@ public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
 
     
 
+    @Override
     public RayonArticle RechercheArticleParLibelle(Rayon r, String libelle)
     {
        RayonArticle resultat= rayonArticleFacade.rechercherRayonArticleParLibelle(r, libelle);
         return resultat;
     }
     
+    @Override
      public RayonArticle RechercheArticleParReference(Rayon r, int reference)
     {
        RayonArticle resultat= rayonArticleFacade.rechercherRayonArticleParReference(r, reference);

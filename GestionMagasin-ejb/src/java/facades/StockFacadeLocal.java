@@ -47,5 +47,11 @@ public interface StockFacadeLocal {
     public Collection<Stock> chercherStockRayon(Rayon rayon);
 
     public Stock chercherLotPourVente(Magasin magasin, int reference);
+
+    public Stock rechercherStock(long idArticle, long idLot, long idRayon);
+
+    public void retirerStockDuRayon(Stock S, int quantite);
+
+    public Collection<Stock> chercherStockMagasin(Magasin magasin);
     
 }

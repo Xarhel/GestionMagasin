@@ -32,6 +32,6 @@ public interface CommandeLotFacadeLocal {
 
     int count();
 
-    void creerCommandeLot(Lot lot, BonDeCommande commande, int quantite, float prixAchat);
+    void creerCommandeLot(Lot lot, BonDeCommande commande, float prixAchat);
     
 }

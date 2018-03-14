@@ -5,7 +5,10 @@
  */
 package facades;
 
+import Entites.Autre.BonDeCommande;
 import Entites.Autre.Livraison;
+import Entites.Personne.AgentDeLivraison;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +32,7 @@ public interface LivraisonFacadeLocal {
     List<Livraison> findRange(int[] range);
 
     int count();
+
+    public void creerLivraison(BonDeCommande bdc, AgentDeLivraison adl, Date dateCreationCommande);
     
 }

@@ -5,7 +5,6 @@
  */
 package facades;
 
-import Entites.Autre.Article;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
@@ -95,6 +94,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         return result;
     }   
     
+    @Override
         public Collection<Stock> chercherStockMagasin(Magasin magasin) {
         Collection<Stock> result;
     
@@ -132,6 +132,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     }     
     
     
+    @Override
     public void retirerStockDuRayon(Stock S, int quantite)
     {
         int quantiteAvant=S.getQuantiteStock();
@@ -144,6 +145,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         
     }
     
+    @Override
     public Stock rechercherStock(long idArticle, long idLot, long idRayon)
     {
         Stock result;

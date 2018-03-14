@@ -5,7 +5,11 @@
  */
 package facades;
 
+import Entites.Autre.BonDeCommande;
 import Entites.Autre.Livraison;
+import Entites.Enum.StatutLivraison;
+import Entites.Personne.AgentDeLivraison;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,6 +33,19 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
         super(Livraison.class);
     }
     
+    
+    @Override
+    public void creerLivraison(BonDeCommande bdc, AgentDeLivraison adl, Date dateCreationCommande)
+    {
+        Livraison l=new Livraison();
+        l.setLeBonDeCommande(bdc);
+        l.setDateCreationLivraison(dateCreationCommande);
+        l.setlAgentDeLivraison(adl);
+        l.setStatutLivraison(StatutLivraison.enCours);
+        em.persist(l);
+        
+        
+    }
     
     
 }

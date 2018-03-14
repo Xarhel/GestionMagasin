@@ -31,6 +31,6 @@ public interface LotFacadeLocal {
 
     int count();
 
-    void creerLot(Article lArticle, int quantite);
+    Lot creerLot(Article lArticle, int quantite);
     
 }

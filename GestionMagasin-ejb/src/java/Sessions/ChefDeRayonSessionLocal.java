@@ -9,6 +9,7 @@ import Entites.Autre.Article;
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.Rayon;
 import Entites.Lot.Lot;
+import java.util.Date;
 import javax.ejb.Local;
 
 /**
@@ -24,8 +25,9 @@ public interface ChefDeRayonSessionLocal {
 
     public void modifierPrixArticle(Rayon r, Article a, float prix);
 
-    public void creerLot(Article lArticle, int quantite);
+    public void creerBonDeCommande(Date dateCommande, int idFournisseur, int idArticle);
 
-    public void creerCommandeLot(Lot lot, BonDeCommande commande, int quantite, float prixAchat);
+   public void creerCommandeLot(BonDeCommande commande, float prixAchat, Article lArticle, int quantite);
+
     
 }
