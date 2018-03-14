@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Personne.EmployeDeCaisse;
 import Entites.Vente.PanierCaisse;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,8 +31,9 @@ public class PanierCaisseFacade extends AbstractFacade<PanierCaisse> implements 
     }
 
     @Override
-    public void creerPanierCaisse() {
+    public void creerPanierCaisse(EmployeDeCaisse edc) {
         PanierCaisse pc= new PanierCaisse();
+        pc.setlEmployeDeCaisse(edc);
         em.persist(pc);
     }
     

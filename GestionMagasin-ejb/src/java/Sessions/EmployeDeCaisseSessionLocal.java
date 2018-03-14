@@ -9,11 +9,9 @@ import javax.ejb.Local;
 
 /**
  *
- * @author 5153218
+ * @author 6137220
  */
 @Local
-public interface PanierCaisseSessionLocal {
-
-    void creerPanierCaisse();
+public interface EmployeDeCaisseSessionLocal {
     
 }

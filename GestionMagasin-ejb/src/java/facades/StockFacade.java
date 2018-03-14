@@ -59,5 +59,6 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         
         return result;
     }
-    
 }
+
+
