@@ -6,6 +6,7 @@
 package facades;
 
 import Entites.Autre.Article;
+import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
 import java.util.Collection;
@@ -34,36 +35,87 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     }
 
     @Override
-    public Stock chercherRayonStockParLibelleArticle(String libelle, Rayon rayon) {
-        Stock result;
+    public Collection<Stock> chercherRayonStockParLibelleArticle(String libelle, Rayon rayon) {
+        Collection<Stock> result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle join s.leRayon WHERE s.lArticle:= libelle AND s.leRayon := rayon");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon WHERE ar.libelle= libelle AND s.leRayon := rayon");
         req.setParameter("libelle", libelle);
         req.setParameter("rayon", rayon);
-        
-        result = (Stock) req.getSingleResult();
-        
-        return result;
-    }    
-        public Collection<Stock> rechercherLotRayonPerimeParDate(java.util.Date date) {
-        
-    Collection<Stock> result;
-    
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock s inner join s.lArticle.lots. WHERE ");
-        req.setParameter("libelle", libelle);
         
         result = req.getResultList();
         
         return result;
+    }    
+    @Override
+       public Collection<Stock> rechercherLotRayonPerimeParDate(java.util.Date date) {
+        
+    Collection<Stock> result;
+    
+       Query req = getEntityManager().createQuery("SELECT s FROM Stock s inner join s.lArticle ar inner join ar.lots l where l.dtype = :Alimentaire");
+       req.setParameter ("Alimentaire", "Alimentaire");
+       result = req.getResultList();   
+       return result;
         
     }
-        public retirerStockPerimeRayon (Collection<Stock> stockPerime){
+    @Override
+        public void retirerStockPerimeRayon (Collection<Stock> stockPerime){
             
-        for (int i=0 ; i< stockPerime.size(); i++)
+        for (Stock s:stockPerime)
         {
             
-            em.remove();
+            stockPerime.remove(s);
         }
+        
+        
         }
+        
+            @Override
+    public Collection<Stock> chercherMagasinStockParLibelleArticle(String libelle, Magasin magasin) {
+        Collection<Stock> result;
+    
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE ar.libelle=: libelle AND  r.leMagasin=: magasin");
+        req.setParameter("libelle", libelle);
+        req.setParameter("magasin", magasin);
+        
+        result = req.getResultList();
+        
+        return result;
+    }  
+    
+                @Override
+    public Collection<Stock> chercherMagasinStockParReferenceArticle(String reference, Magasin magasin) {
+        Collection<Stock> result;
+    
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE ar.referenceArticle=: reference AND  r.leMagasin= magasin");
+        req.setParameter("reference", reference);
+        req.setParameter("magasin", magasin);
+        
+        result = req.getResultList();
+        
+        return result;
+    }   
+    
+        public Collection<Stock> chercherStockMagasin(Magasin magasin) {
+        Collection<Stock> result;
+    
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE r.leMagasin= magasin");
+        req.setParameter("magasin", magasin);
+        
+        result = req.getResultList();
+        
+        return result;
+    }  
+    
+    @Override
+    public Collection<Stock> chercherStockRayon (Rayon rayon) {
+        Collection<Stock> result;
+    
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon WHERE s.leRayon := rayon");
+        req.setParameter("rayon", rayon);
+        
+        result = req.getResultList();
+        
+        return result;
+    }      
     
 }

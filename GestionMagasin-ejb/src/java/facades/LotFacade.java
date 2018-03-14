@@ -28,5 +28,8 @@ public class LotFacade extends AbstractFacade<Lot> implements LotFacadeLocal {
     public LotFacade() {
         super(Lot.class);
     }
-    
+public void creerLot (){
+Lot l=new Lot();
+
+}    
 }
