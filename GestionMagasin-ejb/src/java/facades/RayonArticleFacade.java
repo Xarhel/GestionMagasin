@@ -5,10 +5,13 @@
  */
 package facades;
 
+import Entites.Autre.Article;
+import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -38,5 +41,50 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
     }
     
     
+    public RayonArticle rechercherRayonArticle(Rayon r, Article a)
+    {
+        RayonArticle result;
     
-}
+        Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra WHERE ra.lesRayons =:r AND ra.lesRayons=:a" );
+        req.setParameter("r", r);
+        req.setParameter("a", a);
+        
+        result = (RayonArticle) req.getSingleResult();
+        
+        return result;
+        
+    }
+    
+    public RayonArticle rechercherRayonArticleParLibelle(Rayon r, String libelle)
+    {
+        RayonArticle result;
+    
+        Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra WHERE ra.lesRayons =:r AND ra.lesArticles.libelle=:libelle" );
+        req.setParameter("r", r);
+        req.setParameter("libelle", libelle);
+        
+        result = (RayonArticle) req.getSingleResult();
+        
+        return result;
+        
+    }
+    
+     public RayonArticle rechercherRayonArticleParReference(Rayon r, int reference)
+    {
+        RayonArticle result;
+    
+        Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra WHERE ra.lesRayons =:r AND ra.lesArticles.referenceArticle=:reference" );
+        req.setParameter("r", r);
+        req.setParameter("reference", reference);
+        
+        result = (RayonArticle) req.getSingleResult();
+        
+        return result;
+        
+    }
+        
+    }
+    
+    
+    
+
