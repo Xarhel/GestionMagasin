@@ -34,12 +34,12 @@ public interface EmployeDeCaisseFacadeLocal {
 
     int count();
 
-    public void creerEmployeDeCaisse(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
+    public void creerEmployeDeCaisse(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin);
 
-    public void modifierEmployeDeCaisse(EmployeDeCaisse EDC, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
+    public void modifierEmployeDeCaisse(EmployeDeCaisse EDC, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin);
 
     public void supprimerEmployeDeCaisse(EmployeDeCaisse EDC);
 
-    void affecterEmployeDeCaisse(EmployeDeCaisse edc, Rayon rayon, Magasin magasin);
+    void affecterEmployeDeCaisse(EmployeDeCaisse edc, Magasin magasin);
     
 }

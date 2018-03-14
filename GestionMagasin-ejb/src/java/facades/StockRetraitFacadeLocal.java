@@ -29,5 +29,9 @@ public interface StockRetraitFacadeLocal {
     List<StockRetrait> findRange(int[] range);
 
     int count();
+
+    public void ajouterStockRetrait(StockRetrait sr, int quantite);
+
+    public StockRetrait rechercherStockRetraitParIdStock(long idStock);
     
 }

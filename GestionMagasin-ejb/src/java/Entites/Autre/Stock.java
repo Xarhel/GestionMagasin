@@ -63,14 +63,14 @@ public class Stock implements Serializable {
         return "Entites.Autres.Stock[ id=" + id + " ]";
     }
     
-        private String quantiteStock;
+        private int quantiteStock;
 
     /**
      * Get the value of quantiteStock
      *
      * @return the value of quantiteStock
      */
-    public String getQuantiteStock() {
+    public int getQuantiteStock() {
         return quantiteStock;
     }
 
@@ -79,7 +79,7 @@ public class Stock implements Serializable {
      *
      * @param quantiteStock new value of quantiteStock
      */
-    public void setQuantiteStock(String quantiteStock) {
+    public void setQuantiteStock(int quantiteStock) {
         this.quantiteStock = quantiteStock;
     }
 

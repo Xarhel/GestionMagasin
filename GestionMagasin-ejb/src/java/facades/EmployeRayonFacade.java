@@ -68,4 +68,11 @@ public class EmployeRayonFacade extends AbstractFacade<EmployeRayon> implements 
             em.remove(EDR);
 }
     
+        public void affecterEmployeDeRayon(EmployeRayon er, Magasin magasin,Rayon rayon)
+        {
+        er.setLeMagasin(magasin);
+        er.setLeRayon(rayon);
+        em.merge(er);
+            
+        }
 }

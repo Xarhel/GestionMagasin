@@ -5,10 +5,12 @@
  */
 package facades;
 
+import Entites.Autre.Stock;
 import Entites.Autre.StockRetrait;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -30,5 +32,23 @@ public class StockRetraitFacade extends AbstractFacade<StockRetrait> implements 
     }
     
     
+    
+    public void ajouterStockRetrait(StockRetrait sr,int quantite)
+    {
+        sr.setQuantiteRetrait(quantite+sr.getQuantiteRetrait());
+    }
+    
+    public StockRetrait rechercherStockRetraitParIdStock(long idStock)
+    {
+        StockRetrait result;
+    
+        Query req = getEntityManager().createQuery("SELECT sr FROM StockRetrait AS sr WHERE sr.stock.id=:idStock ");
+        req.setParameter("idStock", idStock);
+        
+        
+        result =(StockRetrait) req.getSingleResult();
+        
+        return result;
+    }
     
 }

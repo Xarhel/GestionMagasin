@@ -34,6 +34,10 @@ import javax.ejb.Stateless;
 @Stateless
 public class Administrateur implements AdministrateurLocal {
 
+   
+
+  
+
     @EJB
     private facades.EmployeFacade employeFacade;
     
@@ -55,6 +59,7 @@ public class Administrateur implements AdministrateurLocal {
     @EJB
     private ChefDeRayonFacadeLocal chefDeRayonFacade;
 
+    
     @EJB
     private facades.MagasinFacadeLocal magasinFacadeLocal;
     
@@ -90,7 +95,7 @@ public class Administrateur implements AdministrateurLocal {
         
      if(typeCompte==TypeCompte.employeDeCaisse)
      {
-       employeDeCaisseFacade.creerEmployeDeCaisse(nom, prenom, login, mdp, dateCreationCompte, typeCompte, Mag, Ray);
+       employeDeCaisseFacade.creerEmployeDeCaisse(nom, prenom, login, mdp, dateCreationCompte, typeCompte, Mag);
      }
      
      if(typeCompte==TypeCompte.employeRayon)

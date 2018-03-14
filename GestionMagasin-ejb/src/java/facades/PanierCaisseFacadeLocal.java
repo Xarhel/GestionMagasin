@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Personne.EmployeDeCaisse;
 import Entites.Vente.PanierCaisse;
 import java.util.List;
 import javax.ejb.Local;
@@ -30,6 +31,6 @@ public interface PanierCaisseFacadeLocal {
 
     int count();
 
-    void creerPanierCaisse();
+    void creerPanierCaisse(EmployeDeCaisse edc);
     
 }

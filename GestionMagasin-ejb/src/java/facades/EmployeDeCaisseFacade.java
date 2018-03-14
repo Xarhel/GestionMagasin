@@ -34,7 +34,7 @@ public class EmployeDeCaisseFacade extends AbstractFacade<EmployeDeCaisse> imple
     }
     
     @Override
-    public void creerEmployeDeCaisse(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    public void creerEmployeDeCaisse(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin)
     {
         EmployeDeCaisse EDC= new EmployeDeCaisse();
         EDC.setNomPersonne(nom);
@@ -44,12 +44,12 @@ public class EmployeDeCaisseFacade extends AbstractFacade<EmployeDeCaisse> imple
         EDC.setDateCreationCompte(dateCreationCompte);
         EDC.setTypeCompte(typeCompte);
         EDC.setLeMagasin(magasin);
-        EDC.setLeRayon(rayon);
+        
         em.persist(EDC);
         
     }
     @Override
-     public void modifierEmployeDeCaisse(EmployeDeCaisse EDC, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+     public void modifierEmployeDeCaisse(EmployeDeCaisse EDC, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin)
     {
       
         EDC.setNomPersonne(nom);
@@ -59,7 +59,7 @@ public class EmployeDeCaisseFacade extends AbstractFacade<EmployeDeCaisse> imple
         EDC.setDateCreationCompte(dateCreationCompte);
         EDC.setTypeCompte(typeCompte);
         EDC.setLeMagasin(magasin);
-        EDC.setLeRayon(rayon);
+       
         em.merge(EDC);
         
     }
@@ -71,9 +71,9 @@ public class EmployeDeCaisseFacade extends AbstractFacade<EmployeDeCaisse> imple
 }
 
     @Override
-    public void affecterEmployeDeCaisse(EmployeDeCaisse edc, Rayon rayon, Magasin magasin) {
+    public void affecterEmployeDeCaisse(EmployeDeCaisse edc, Magasin magasin) {
         
-        edc.setLeRayon(rayon);
+        
         edc.setLeMagasin(magasin);
         
         em.merge(edc);
