@@ -8,7 +8,7 @@
         <jsp:include page="include/header.jsp"/>
         <style>
             .jumbotron{
-                background-image: url("images/magasin.jpg");
+                background-image: url("images/Magasin.jpg");
                 width: 100%;                    
                 color: #fff;
                 background-size:cover;
@@ -21,7 +21,7 @@
             <jsp:include page="include/menu.jsp"/>            
             <!-- Main component for a primary marketing message or call to action -->
             <div class="jumbotron">                
-                <h1 >Bienvenue dans votre bibliotheque</h1>
+                <h1 >Bienvenue dans votre magasin</h1>
             </div>
         </div> <!-- /container -->
     </div>
