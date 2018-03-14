@@ -69,7 +69,8 @@ public class Administrateur extends HttpServlet {
 protected void creerUtilisateur(HttpServletRequest request,
 HttpServletResponse response) throws ServletException, IOException
 {
-    String login = request.getParameter("login");   
+    String login = request.getParameter("login");
+    String password = request.getParameter("password");
 }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
