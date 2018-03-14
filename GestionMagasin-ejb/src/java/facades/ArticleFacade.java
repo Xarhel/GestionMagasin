@@ -44,7 +44,7 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
         em.persist(a);
     }
     
-    //Méthode de modification du prix d'un article
+    //Méthode de modification du prix d'un article (passage en promotion)
     @Override
     public void modifierPrixArticle(Article a, float prixPromotion) {
         a.setPrixPromotion(prixPromotion);

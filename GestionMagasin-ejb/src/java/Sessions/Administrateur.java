@@ -90,7 +90,7 @@ public class Administrateur implements AdministrateurLocal {
         
      if(typeCompte==TypeCompte.employeDeCaisse)
      {
-       employeDeCaisseFacade.creerEmployeDeCaisse(nom, prenom, login, mdp, dateCreationCompte, typeCompte, Mag, Ray);
+       employeDeCaisseFacade.creerEmployeDeCaisse(nom, prenom, login, mdp, dateCreationCompte, typeCompte, Mag);
      }
      
      if(typeCompte==TypeCompte.employeRayon)
