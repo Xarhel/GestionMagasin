@@ -69,7 +69,7 @@
                         <h3 class="form-signin-heading">Connectez-vous</h3>
                         <hr class="colorgraph"><br>
                         <input type="text" name="action" value="connexion" hidden/>
-                        <input type="text" class="form-control" name="nom" placeholder="Entre votre nom" required="" autofocus="" />
+                        <input type="text" class="form-control" name="userName" placeholder="Entre votre Login" required="" autofocus="" />
                         <input type="password" class="form-control" name="mdp" placeholder="Votre mot de passe" required=""/>     		  
 
                         <button class="btn btn-lg btn-primary btn-block"  name="Submit" type="Submit">Connexion</button>  			
