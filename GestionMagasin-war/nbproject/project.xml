@@ -5,7 +5,11 @@
         <data xmlns="http://www.netbeans.org/ns/web-project/3">
             <name>GestionMagasin-war</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>
-            <web-module-libraries/>
+            <web-module-libraries>
+                <library dirs="100">
+                    <file>${reference.GestionMagasin-ejb.dist}</file>
+                </library>
+            </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>
                 <root id="src.Source%20Packages.dir"/>
