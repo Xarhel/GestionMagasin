@@ -39,6 +39,36 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
         r.setPrixRayon(prixRayon);
         em.merge(prixRayon);
     }
+
+    @Override
+    public Article chercherArticleParLibelle(String libelle, Rayon rayon) {
+        Article result;
+    
+        Query req = getEntityManager().createQuery("SELECT a FROM (Article inner join RayonArticle) as article WHERE   =: libelle AND ra.lesRayons =: rayon");
+        req.setParameter("libelle", libelle);
+        req.setParameter("rayon", rayon);
+        
+        result = (Article) req.getSingleResult();
+        
+        return result;
+    }
+    
+        @Override
+    public Article chercherArticleParId(int idArticle, Rayon rayon) {
+        Article result;
+    
+        Query req = getEntityManager().createQuery("SELECT ar FROM Article AS ar inner join ar.lesRayonArticles as ra WHERE ar.id =: idArticle AND ra.lesRayons=: rayon");
+        req.setParameter("idArticle", idArticle);
+        req.setParameter("rayon", rayon);
+        
+        result = (Article) req.getSingleResult();
+        
+        return result;
+    }
+    
+    
+    
+    
     
     
     public RayonArticle rechercherRayonArticle(Rayon r, Article a)

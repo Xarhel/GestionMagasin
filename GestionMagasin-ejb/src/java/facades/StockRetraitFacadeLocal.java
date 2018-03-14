@@ -5,7 +5,10 @@
  */
 package facades;
 
+import Entites.Autre.Stock;
 import Entites.Autre.StockRetrait;
+import java.sql.Date;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,8 +33,6 @@ public interface StockRetraitFacadeLocal {
 
     int count();
 
-    public void ajouterStockRetrait(StockRetrait sr, int quantite);
-
-    public StockRetrait rechercherStockRetraitParIdStock(long idStock);
+    public void retirerLot(Collection<Stock> stockARetirer, int quantiteRetiree, Date dateRetrait);
     
 }

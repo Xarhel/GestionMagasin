@@ -5,7 +5,11 @@
  */
 package facades;
 
+import Entites.Autre.Magasin;
+import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,8 +34,18 @@ public interface StockFacadeLocal {
 
     int count();
 
-    public void retirerStockDuRayon(Stock S, int quantite);
+    public Collection<Stock> chercherRayonStockParLibelleArticle(String libelle, Rayon rayon);
 
-    public Stock rechercherStock(long idArticle, long idLot, long idRayon);
+    public void retirerStockPerimeRayon(Collection<Stock> stockPerime);
+
+    public Collection<Stock> rechercherLotRayonPerimeParDate(Date date);
+
+    public Collection<Stock> chercherMagasinStockParLibelleArticle(String libelle, Magasin magasin);
+
+    public Collection<Stock> chercherMagasinStockParReferenceArticle(String reference, Magasin magasin);
+
+    public Collection<Stock> chercherStockRayon(Rayon rayon);
+
+    public Stock chercherLotPourVente(Magasin magasin, int reference);
     
 }

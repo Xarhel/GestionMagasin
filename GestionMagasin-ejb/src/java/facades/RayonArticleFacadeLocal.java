@@ -40,4 +40,5 @@ public interface RayonArticleFacadeLocal {
 
     public RayonArticle rechercherRayonArticleParReference(Rayon r, int reference);
     
+    public Article chercherArticleParId(int idArticle, Rayon rayon);    
 }

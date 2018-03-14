@@ -22,7 +22,7 @@ import javax.persistence.OneToOne;
 public class Stock implements Serializable {
     
     @OneToOne
-    private Article leStock;
+    private Article lArticle;
 
 
     private static final long serialVersionUID = 1L;
@@ -83,24 +83,20 @@ public class Stock implements Serializable {
         this.quantiteStock = quantiteStock;
     }
 
-    
+    public Article getlArticle() {    
+        return lArticle;
+    }
+
     /**
      * Get the value of leStock
      *
      * @return the value of leStock
      */
-    public Article getLeStock() {
-        return leStock;
+    public void setlArticle(Article lArticle) {
+        this.lArticle = lArticle;
     }
 
-    /**
-     * Set the value of leStock
-     *
-     * @param leStock new value of leStock
-     */
-    public void setLeStock(Article leStock) {
-        this.leStock = leStock;
-    }
+
 
     @OneToOne
         private StockRetrait leStockRetrait;

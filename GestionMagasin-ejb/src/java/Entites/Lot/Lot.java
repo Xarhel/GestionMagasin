@@ -16,6 +16,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -24,6 +26,8 @@ import javax.persistence.OneToMany;
  * @author 5153218
  */
 @Entity
+@Inheritance
+(strategy=InheritanceType.JOINED)
 public class Lot implements Serializable {
 
     @OneToMany(mappedBy = "leLot")

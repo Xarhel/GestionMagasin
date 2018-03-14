@@ -24,8 +24,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class Article implements Serializable {
 
-    @OneToOne(mappedBy = "leStock")
-    private Stock stock;
+    @OneToOne(mappedBy = "lArticle")
+    private Stock leStock;
 
     @OneToMany(mappedBy = "lArticle")
     private List<Lot> lots;
@@ -176,13 +176,23 @@ public class Article implements Serializable {
         this.prixPromotion = prixPromotion;
     }
 
-    public Stock getStock() {
-        return stock;
+    public Stock getLeStock() {
+        return leStock;
     }
 
-    public void setStock(Stock stock) {
-        this.stock = stock;
+    public void setLeStock(Stock leStock) {
+        this.leStock = leStock;
     }
+
+    public List<RayonArticle> getLesRayonArticles() {
+        return lesRayonArticles;
+    }
+
+    public void setLesRayonArticles(List<RayonArticle> lesRayonArticles) {
+        this.lesRayonArticles = lesRayonArticles;
+    }
+
+
 
     public List<Lot> getLots() {
         return lots;
