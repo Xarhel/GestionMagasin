@@ -118,4 +118,17 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         return result;
     }      
     
+        @Override
+    public Stock chercherLotPourVente (Magasin magasin,int reference) {
+        Stock result;
+    
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock as s join s.lArticle ar join s.leRayon r where ar.referenceArticle =: reference AND r.leMagasin = magasin");
+        req.setParameter("magasin", magasin);
+        req.setParameter("reference", reference);
+        
+        result = (Stock) req.getSingleResult();
+        
+        return result;
+    }     
+    
 }

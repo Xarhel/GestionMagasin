@@ -45,5 +45,7 @@ public interface StockFacadeLocal {
     public Collection<Stock> chercherMagasinStockParReferenceArticle(String reference, Magasin magasin);
 
     public Collection<Stock> chercherStockRayon(Rayon rayon);
+
+    public Stock chercherLotPourVente(Magasin magasin, int reference);
     
 }
