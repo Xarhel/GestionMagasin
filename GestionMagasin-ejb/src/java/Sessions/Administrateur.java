@@ -13,6 +13,7 @@ import Entites.Personne.AgentDeLivraison;
 import Entites.Personne.ChefDeRayon;
 import Entites.Personne.Direction;
 import Entites.Personne.Employe;
+import Entites.Personne.Personne;
 import static Entites.Personne.Personne_.typeCompte;
 import facades.AgentDeLivraisonFacadeLocal;
 import facades.ChefDeRayonFacadeLocal;
@@ -20,6 +21,7 @@ import facades.DirectionFacadeLocal;
 import facades.EmployeDeCaisseFacadeLocal;
 import facades.EmployeRayonFacadeLocal;
 import facades.GerantMagasinFacadeLocal;
+import facades.PersonneFacadeLocal;
 import facades.RayonFacadeLocal;
 import java.util.Collection;
 import java.util.Date;
@@ -33,6 +35,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class Administrateur implements AdministrateurLocal {
+
+    @EJB
+    private PersonneFacadeLocal personneFacade;
 
     @EJB
     private facades.EmployeFacade employeFacade;
@@ -63,6 +68,8 @@ public class Administrateur implements AdministrateurLocal {
     
     @EJB
     private AgentDeLivraisonFacadeLocal agentDeLivraisonFacade;
+    
+    
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
@@ -176,4 +183,12 @@ public class Administrateur implements AdministrateurLocal {
         return result;
         
     }
-            }
+
+    //Authentification d'un utilisateur
+    @Override
+    public Personne authentification(String login, String password) {
+        Personne p = personneFacade.authentification(login, password);
+        return p;
+    }    
+    
+}
