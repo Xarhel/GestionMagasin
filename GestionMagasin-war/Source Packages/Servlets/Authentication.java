@@ -51,21 +51,18 @@ public class Authentication extends HttpServlet {
         String jspClient = null;
         String action = request.getParameter("action");
         
-        // If-else inital permettant de diriger les requêtes utilisateurs       
-        // Jsp par défaut lorsque l'utilisateur exécute la solution
+        // If-else inital permettant de diriger les requÃ¨tes utilisateurs       
+        // Jsp par defaut lorsque l'utilisateur exÃ©cute la solution
         if((action==null) || (action.equals("null")))
         {
-            jspClient="/login.jsp";
-            
+            jspClient="/login.jsp";           
         }
                
-        //Méthode de redirection
-        else if(action.equals("authentification")) {
+        else if(action.equals("connexion")) {
             HttpSession session = request.getSession(true);
-            String login = request.getParameter("login");
-            String password = request.getParameter("password");
+            String login = request.getParameter("userName");
+            String password = request.getParameter("mdp");
             Personne p;
-            // Modifier les redirections sur les servlets correspondant à chaque authentification
             if (!(login.trim().isEmpty()))
             {
                 String message;
@@ -76,7 +73,7 @@ public class Authentication extends HttpServlet {
                         message = "Administrateur";
                         session.setAttribute("user", p);
                         request.setAttribute("message", message);
-                        jspClient ="/login.jsp";
+                        jspClient ="/Administrateur";
                     }
                     if (p instanceof ChefDeRayon)
                     {
@@ -89,7 +86,7 @@ public class Authentication extends HttpServlet {
                     if (p instanceof EmployeDeCaisse)
                     {
                         EmployeDeCaisse c = (EmployeDeCaisse) p;
-                        message = "Employé de caisse";
+                        message = "Employï¿½ de caisse";
                         session.setAttribute("user", c);
                         request.setAttribute("message", message);
                         jspClient ="/login.jsp";
@@ -97,7 +94,7 @@ public class Authentication extends HttpServlet {
                     if (p instanceof EmployeRayon)
                     {
                         EmployeRayon r = (EmployeRayon) p;
-                        message = "Employé de rayon";
+                        message = "Employï¿½ de rayon";
                         session.setAttribute("user", r);
                         request.setAttribute("message", message);
                         jspClient ="/login.jsp";
@@ -105,7 +102,7 @@ public class Authentication extends HttpServlet {
                     if (p instanceof GerantMagasin)
                     {
                         GerantMagasin g = (GerantMagasin) p;
-                        message = "Gérant de magasin";
+                        message = "Gï¿½rant de magasin";
                         session.setAttribute("user", g);
                         request.setAttribute("message", message);
                         jspClient ="/login.jsp";

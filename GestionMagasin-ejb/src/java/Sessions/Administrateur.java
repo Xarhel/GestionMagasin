@@ -79,6 +79,7 @@ public class Administrateur implements AdministrateurLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
+    @Override
     public void creerEmploye(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, int idMagasin, int idRayon)
     {
         Magasin Mag= magasinFacadeLocal.rechercherMagasinParId(idMagasin);

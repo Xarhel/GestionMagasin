@@ -47,5 +47,7 @@ public interface AdministrateurLocal {
     public Rayon rechercherRayonParNomEtMagasin(String nomRayon, Magasin Mag);
 
     public Personne authentification(String login, String password);
+
+    public void creerEmploye(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, int idMagasin, int idRayon);
     
 }
