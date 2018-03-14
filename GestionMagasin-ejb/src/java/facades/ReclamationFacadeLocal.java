@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Autre.Livraison;
 import Entites.Autre.Reclamation;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,7 @@ public interface ReclamationFacadeLocal {
     List<Reclamation> findRange(int[] range);
 
     int count();
+
+    public void creerReclamation(Livraison l, String motif);
     
 }

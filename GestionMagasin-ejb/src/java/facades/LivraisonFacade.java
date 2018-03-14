@@ -48,4 +48,15 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
     }
     
     
+    @Override
+    public void recevoirLivraison(Livraison livraison, Date dateReception)
+    {
+        
+        livraison.setDateReceptionLivraison(dateReception);
+        livraison.setStatutLivraison(StatutLivraison.livree);
+        
+        em.merge(livraison);
+    }
+    
+    
 }

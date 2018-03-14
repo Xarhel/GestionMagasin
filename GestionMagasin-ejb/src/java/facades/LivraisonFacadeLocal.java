@@ -34,5 +34,7 @@ public interface LivraisonFacadeLocal {
     int count();
 
     public void creerLivraison(BonDeCommande bdc, AgentDeLivraison adl, Date dateCreationCommande);
+
+    public void recevoirLivraison(Livraison livraison, Date dateReception);
     
 }

@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Autre.Livraison;
 import Entites.Autre.Reclamation;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -29,4 +30,17 @@ public class ReclamationFacade extends AbstractFacade<Reclamation> implements Re
         super(Reclamation.class);
     }
     
+    
+    
+    @Override
+    public void creerReclamation(Livraison l, String motif)
+    {
+       Reclamation r=new Reclamation();
+       r.setLivraison(l);
+       r.setMotifReclamationGeneral(motif);
+       em.persist(r);
+       
+       
+        
+    }
 }
