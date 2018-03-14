@@ -30,4 +30,6 @@ public interface PersonneFacadeLocal {
 
     int count();
     
+    Personne authentification(String login, String password);
+    
 }

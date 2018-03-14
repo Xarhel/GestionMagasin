@@ -9,6 +9,7 @@ import Entites.Personne.Personne;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +28,17 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
 
     public PersonneFacade() {
         super(Personne.class);
+    }
+    
+    //Authentification d'un utilisateur
+    @Override
+    public Personne authentification(String login, String password) {
+        Personne p;
+        Query req = em.createQuery("SELECT p FROM Personne AS P WHERE p.login=:login AND p.password=:password");
+        req.setParameter("login", login);
+        req.setParameter("password", password);
+        p = (Personne) req.getSingleResult();
+        return p;
     }
     
 }

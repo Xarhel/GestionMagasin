@@ -10,6 +10,7 @@ import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.Employe;
+import Entites.Personne.Personne;
 import java.util.Collection;
 import java.util.Date;
 import javax.ejb.Local;
@@ -44,5 +45,7 @@ public interface AdministrateurLocal {
     public Collection<Rayon> rechercherListeRayon(Magasin mag);
 
     public Rayon rechercherRayonParNomEtMagasin(String nomRayon, Magasin Mag);
+
+    public Personne authentification(String login, String password);
     
 }
