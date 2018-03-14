@@ -4,9 +4,17 @@
         <servlet-name>Authentication</servlet-name>
         <servlet-class>Servlets.Authentication</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Administrateur</servlet-name>
+        <servlet-class>Servlets.Administrateur</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Authentication</servlet-name>
         <url-pattern>/Authentication</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Administrateur</servlet-name>
+        <url-pattern>/Administrateur</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
