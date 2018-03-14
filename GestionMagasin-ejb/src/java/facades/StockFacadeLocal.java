@@ -38,7 +38,7 @@ public interface StockFacadeLocal {
 
     public void retirerStockPerimeRayon(Collection<Stock> stockPerime);
 
-    public Collection<Stock> rechercherLotRayonPerimeParDate(Date date);
+    public Collection<Stock> rechercherLotRayonPerimeParDate(java.util.Date date, Rayon rayon);
 
     public Collection<Stock> chercherMagasinStockParLibelleArticle(String libelle, Magasin magasin);
 

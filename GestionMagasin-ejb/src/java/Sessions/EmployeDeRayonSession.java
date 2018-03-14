@@ -13,6 +13,8 @@ import Entites.Lot.Lot;
 import facades.RayonArticleFacadeLocal;
 import facades.StockFacadeLocal;
 import facades.StockRetraitFacadeLocal;
+import java.util.Collection;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -36,12 +38,14 @@ public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
 
     
 
+    @Override
     public RayonArticle RechercheArticleParLibelle(Rayon r, String libelle)
     {
        RayonArticle resultat= rayonArticleFacade.rechercherRayonArticleParLibelle(r, libelle);
         return resultat;
     }
     
+    @Override
      public RayonArticle RechercheArticleParReference(Rayon r, int reference)
     {
        RayonArticle resultat= rayonArticleFacade.rechercherRayonArticleParReference(r, reference);
@@ -49,16 +53,12 @@ public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
     }
     
      
-     public void retirerStock(int quantite, Rayon r, Article a, Lot l)
+    @Override
+     public void retirerStockPerime(Date date, Rayon r)
      {
+         Collection<Stock> s = stockFacade.rechercherLotRayonPerimeParDate(date, r);
+         stockRetraitFacade.retirerStockPerime(s, date);
+         stockFacade.retirerStockPerimeRayon(s);
          
-         
-        Stock s= stockFacade.rechercherStock(a.getId(), l.getId(), r.getId());
-        stockFacade.retirerStockDuRayon(s, quantite);
-        
-        
-        // a terminer, galère
-      
-        
      }
 }

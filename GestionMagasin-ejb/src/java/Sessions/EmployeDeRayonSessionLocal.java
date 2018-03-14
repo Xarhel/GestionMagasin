@@ -7,6 +7,7 @@ package Sessions;
 
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
+import java.util.Date;
 import javax.ejb.Local;
 
 /**
@@ -19,5 +20,7 @@ public interface EmployeDeRayonSessionLocal {
     public RayonArticle RechercheArticleParLibelle(Rayon r, String libelle);
 
     public RayonArticle RechercheArticleParReference(Rayon r, int reference);
+
+    public void retirerStockPerime(Date date, Rayon r);
     
 }

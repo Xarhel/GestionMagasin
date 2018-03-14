@@ -40,37 +40,13 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
         em.merge(prixRayon);
     }
 
+
+    
+    
+    
+    
+    
     @Override
-    public Article chercherArticleParLibelle(String libelle, Rayon rayon) {
-        Article result;
-    
-        Query req = getEntityManager().createQuery("SELECT a FROM (Article inner join RayonArticle) as article WHERE   =: libelle AND ra.lesRayons =: rayon");
-        req.setParameter("libelle", libelle);
-        req.setParameter("rayon", rayon);
-        
-        result = (Article) req.getSingleResult();
-        
-        return result;
-    }
-    
-        @Override
-    public Article chercherArticleParId(int idArticle, Rayon rayon) {
-        Article result;
-    
-        Query req = getEntityManager().createQuery("SELECT ar FROM Article AS ar inner join ar.lesRayonArticles as ra WHERE ar.id =: idArticle AND ra.lesRayons=: rayon");
-        req.setParameter("idArticle", idArticle);
-        req.setParameter("rayon", rayon);
-        
-        result = (Article) req.getSingleResult();
-        
-        return result;
-    }
-    
-    
-    
-    
-    
-    
     public RayonArticle rechercherRayonArticle(Rayon r, Article a)
     {
         RayonArticle result;
@@ -85,11 +61,12 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
         
     }
     
+    @Override
     public RayonArticle rechercherRayonArticleParLibelle(Rayon r, String libelle)
     {
         RayonArticle result;
     
-        Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra WHERE ra.lesRayons =:r AND ra.lesArticles.libelle=:libelle" );
+        Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra inner join ra.lesArticles ar WHERE ra.lesRayons =:r AND ar.libelle=:libelle" );
         req.setParameter("r", r);
         req.setParameter("libelle", libelle);
         
@@ -99,11 +76,12 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
         
     }
     
+    @Override
      public RayonArticle rechercherRayonArticleParReference(Rayon r, int reference)
     {
         RayonArticle result;
     
-        Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra WHERE ra.lesRayons =:r AND ra.lesArticles.referenceArticle=:reference" );
+        Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra inner join ra.lesArticles ar  WHERE ra.lesRayons =:r AND ar.referenceArticle=:reference" );
         req.setParameter("r", r);
         req.setParameter("reference", reference);
         
