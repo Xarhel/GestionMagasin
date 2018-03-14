@@ -5,15 +5,17 @@
 --%>
 <%@page import="Entites.Autre.Adresse"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Collection"%>
 <!DOCTYPE html>
 <html>
     <head>        
         <title>Créer un magasin</title>
         <jsp:include page="include/header.jsp"/>
-        
-    </head>
-    <body>
-        <div class="container">
+        <jsp:useBean id="Adresse" scope="request" type="Entites.Autre.Adresse"></jsp:useBean>
+
+        </head>
+        <body>
+            <div class="container">
             <jsp:include page="include/menu.jsp"/>
             <!-- BODY START -->
             <div>
@@ -27,9 +29,18 @@
                         </div>                        
                     </div>
                     <div class="form-group row">
-                        <jsp:useBean id="Adresse" scope="request" type="Entites.Autre.Adresse"></jsp:useBean>
-                        </div>                        
-                
+                        <% Collection<Adresse> _adresse = adresse;
+          for (adresse a : _adresse) {%>
+                        <tr>
+                            <td><%=a.getId()%></td>
+                            <td><%=a.getlibelleAdresse()%></td>
+                            <td><%=a.getrueNom()%></td>
+                            <td><%=a.getrueComplement()%></td>
+                            <td><%=a.getcodePostal()%></td>
+                            <td><%=a.getville()%></td>
+                        </tr><%}%>
+                    </div>                        
+
                     <button type="submit" class="btn btn-success">Enregistre</button>                    
                 </form> 
             </div>
