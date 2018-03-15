@@ -6,6 +6,7 @@
 package facades;
 
 import Entites.Personne.Employe;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -31,5 +32,7 @@ public interface EmployeFacadeLocal {
     int count();
 
     Employe chercherEmployeParId(int id);
+
+    Collection<Employe> afficherTousEmployes();
     
 }

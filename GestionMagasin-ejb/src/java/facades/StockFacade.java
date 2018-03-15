@@ -5,7 +5,6 @@
  */
 package facades;
 
-import Entites.Autre.Article;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
@@ -47,12 +46,13 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         return result;
     }    
     @Override
-       public Collection<Stock> rechercherLotRayonPerimeParDate(java.util.Date date) {
+       public Collection<Stock> rechercherLotRayonPerimeParDate(java.util.Date date, Rayon rayon) {
         
     Collection<Stock> result;
     
-       Query req = getEntityManager().createQuery("SELECT s FROM Stock s inner join s.lArticle ar inner join ar.lots l where l.dtype = :Alimentaire");
+       Query req = getEntityManager().createQuery("SELECT s FROM Stock s inner join s.lArticle ar inner join ar.lots l where l.dtype = :Alimentaire and s.leRayon");
        req.setParameter ("Alimentaire", "Alimentaire");
+       req.setParameter ("rayon", rayon);
        result = req.getResultList();   
        return result;
         
@@ -95,6 +95,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         return result;
     }   
     
+    @Override
         public Collection<Stock> chercherStockMagasin(Magasin magasin) {
         Collection<Stock> result;
     
@@ -132,6 +133,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     }     
     
     
+    @Override
     public void retirerStockDuRayon(Stock S, int quantite)
     {
         int quantiteAvant=S.getQuantiteStock();
@@ -144,6 +146,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         
     }
     
+    @Override
     public Stock rechercherStock(long idArticle, long idLot, long idRayon)
     {
         Stock result;

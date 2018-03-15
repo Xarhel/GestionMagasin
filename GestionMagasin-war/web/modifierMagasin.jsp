@@ -25,7 +25,12 @@
                 <form method="POST" action="Menu">
                     <input hidden type="text" name="action" value="modifierMagasin"/>
                     <input hidden type="text" name="id" value="<%=_magasin.getId()%>"/>
-                    
+                    <div class="form-group row">
+                        <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
+                        <div class="col-md-4">
+                            <input class="form-control" type="text" name="nom" value="<%=_magasin.getAdresse()%>" required/>
+                        </div>                        
+                    </div>
                     <div class="form-group row">
                         <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
                         <div class="col-md-4">
