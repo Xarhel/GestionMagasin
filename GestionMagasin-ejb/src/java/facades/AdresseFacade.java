@@ -40,7 +40,7 @@ public class AdresseFacade extends AbstractFacade<Adresse> implements AdresseFac
         adresseACreer.setVille(ville);
         
         em.persist(adresseACreer);
-        return (adresseACreer);
+        return adresseACreer;
     }
 
     @Override

@@ -36,11 +36,12 @@ public class LivraisonLotFacade extends AbstractFacade<LivraisonLot> implements 
     
     
     
+    @Override
     public void creerLivraisonLots(Collection <CommandeLot> listeCommandeLot, Livraison livraison)
     {
         
         
-        // Non terminé, A voir comment on s'organise (Max)
+         // Non terminé, A voir comment on s'organise (Max)
         Iterator it=listeCommandeLot.iterator();
         
         livraison.getId();
@@ -49,8 +50,17 @@ public class LivraisonLotFacade extends AbstractFacade<LivraisonLot> implements 
         {
             CommandeLot lotActuel=(CommandeLot)it.next();
             Lot lotAAssocier= lotActuel.getLeLot();
+            int quantiteExpedie=lotActuel.getQuantite();
             
+            LivraisonLot livraisonlots=new LivraisonLot();
             
+            livraisonlots.setLaLivraison(livraison);
+            livraisonlots.setLeLot(lotAAssocier);
+            livraisonlots.setQuantiteAcceptee(quantiteExpedie);
+            livraisonlots.setQuantiteExpediee(quantiteExpedie);
+            livraisonlots.setQuantiteLivree(quantiteExpedie);
+            
+            em.persist(livraisonlots);
             
             
             

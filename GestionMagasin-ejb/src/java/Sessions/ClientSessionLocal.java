@@ -5,7 +5,10 @@
  */
 package Sessions;
 
+import Entites.Autre.Article;
+import Entites.Personne.Client;
 import java.sql.Date;
+import java.util.Collection;
 import javax.ejb.Local;
 
 /**
@@ -15,6 +18,16 @@ import javax.ejb.Local;
 @Local
 public interface ClientSessionLocal {
 
-    void creerClient(String adresseEmail, int idAdresseFacturation, int idAdresseLivraison, Date dateNaissance, int telephone);
+    
+
+  
+
+    public void creerClient(String nom, String prenom, String login, String password, String adresseEmail, java.util.Date dateNaissance, String telephone);
+
+    public void creerAdresse(Client client, String libelleAdresse, String rueNom, String rueComplement, int codePostal, String ville);
+
+    public Collection<Article> rechercherArticleParLibelle(String libelle);
+
+    public Article rechercherArticleParReference(int reference);
     
 }
