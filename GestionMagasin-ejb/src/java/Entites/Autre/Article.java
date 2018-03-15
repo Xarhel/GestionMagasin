@@ -30,7 +30,7 @@ public class Article implements Serializable {
     @OneToMany(mappedBy = "lArticle")
     private List<Lot> lots;
     
-    @ManyToMany(mappedBy = "lesArticles")
+    @OneToMany(mappedBy = "lesArticles")
     private List<RayonArticle> lesRayonArticles;
 
     private static final long serialVersionUID = 1L;
@@ -191,6 +191,8 @@ public class Article implements Serializable {
     public void setLesRayonArticles(List<RayonArticle> lesRayonArticles) {
         this.lesRayonArticles = lesRayonArticles;
     }
+
+
 
 
 

@@ -8,9 +8,11 @@ package facades;
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.CommandeLot;
 import Entites.Lot.Lot;
+import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -40,5 +42,17 @@ public class CommandeLotFacade extends AbstractFacade<CommandeLot> implements Co
         commandeLot.setPrixAchat(prixAchat);
         em.persist(commandeLot);
     } 
+    
+    @Override
+    public Collection<CommandeLot> chercherCommandeLots (BonDeCommande bdc){
+    Collection<CommandeLot> result;
+    
+    Query req = getEntityManager().createQuery("SELECT cl FROM CommandeLot AS cl inner join cl.leBonDeCommande WHERE cl.leBonDeCommande=:bdc" );
+        req.setParameter("bdc", bdc);
+    result = req.getResultList();
+    
+    return result;
+    
+    }
     
 }
