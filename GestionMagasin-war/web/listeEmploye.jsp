@@ -14,6 +14,7 @@
         <jsp:include page="include/header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="employe" scope="request" class="java.util.Collection"></jsp:useBean>
+       
         </head>
         <body>
             <div class="container">

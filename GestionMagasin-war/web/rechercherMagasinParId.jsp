@@ -26,7 +26,7 @@
                 </thead>
                 <tbody>
                 <% Collection<Magasin> _magasin = magasin;
-          for (Magasin m : _magasin) {%>
+                     for (Magasin m : _magasin) {%>
                 <tr>
                     <td><%=m.getId()%></td>
                     <td><%=m.getNom()%></td>

@@ -60,6 +60,26 @@
                             <input class="form-control" type="text" name="typeCompte" value="<%=_employe.getTypeCompte()%>"required/>
                         </div>                        
                     </div>
+                        <div class="form-group row">
+                            <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
+                            <select name="nom" class="col-md-3 form-control" required>
+                                <option></option>
+                            <% Collection<Magasin> _magasins = magasins;
+                            for (magasin m : _magasins) {%>
+                            <option value="<%=m.getId()%>"><%=m.getNom()%></option>
+                            <%}%>
+                        </select>  
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2">Nom du rayon<span class="requis">*</span></label>
+                        <select name="nom" class="col-md-3 form-control" required>
+                                <option></option>
+                            <% Collection<Rayon> _rayons = rayon;
+                            for (magasin m : _rayons) {%>
+                            <option value="<%=m.getId()%>"><%=m.getRayonNom()%></option>
+                            <%}%>
+                        </select>  
+                    </div>
                                          
                     <button type="submit" class="col-md-3 btn btn-lg btn-success">Modifier</button>                    
                 </form>

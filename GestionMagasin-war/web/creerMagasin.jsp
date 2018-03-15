@@ -5,15 +5,17 @@
 --%>
 <%@page import="Entites.Autre.Adresse"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Collection"%>
 <!DOCTYPE html>
 <html>
     <head>        
         <title>Créer un magasin</title>
         <jsp:include page="include/header.jsp"/>
-        
-    </head>
-    <body>
-        <div class="container">
+        <jsp:useBean id="Adresse" scope="request" type="Entites.Autre.Adresse"></jsp:useBean>
+
+        </head>
+        <body>
+            <div class="container">
             <jsp:include page="include/menu.jsp"/>
             <!-- BODY START -->
             <div>
@@ -27,9 +29,50 @@
                         </div>                        
                     </div>
                     <div class="form-group row">
-                        <jsp:useBean id="Adresse" scope="request" type="Entites.Autre.Adresse"></jsp:useBean>
-                        </div>                        
-                
+                        <label class="col-md-2">Libelle adresse<span class="requis">*</span></label>
+                        <select name="adresse" class="col-md-3 form-control" required>
+                            <option></option>
+                        <% Collection<Adresse> _adresses = adresses;
+                            for (adresse a : _adresses) {%>
+                            <option value="<%=a.getId()%>"><%=a.getlibelleAdresse()%></option>
+                            <%}%>
+                        </select>
+                        <label class="col-md-2">Nom du rue<span class="requis">*</span></label>
+                        <select name="adresse" class="col-md-3 form-control" required>
+                            <option></option>
+                        <% Collection<Adresse> _adresses = adresses;
+                            for (adresse a : _adresses) {%>
+                            <option value="<%=a.getId()%>"><%=a.getrueNom()%></option>
+                            <%}%>
+                        </select>
+
+                        <label class="col-md-2">Complement du rue<span class="requis">*</span></label>
+                        <select name="adresse" class="col-md-3 form-control" required>
+                            <option></option>
+                        <% Collection<Adresse> _adresses = adresses;
+                            for (adresse a : _adresses) {%>
+                            <option value="<%=a.getId()%>"><%=a.getrueComplement()%></option>
+                            <%}%>
+                        </select>
+                        <label class="col-md-2">Code postal<span class="requis">*</span></label>
+                        <select name="adresse" class="col-md-3 form-control" required>
+                            <option></option>
+                        <% Collection<Adresse> _adresses = adresses;
+                            for (adresse a : _adresses) {%>
+                            <option value="<%=a.getId()%>"><%=a.getcodePostal()%></option>>
+                            <%}%>
+                        </select>    
+                        <label class="col-md-2">Ville<span class="requis">*</span></label>
+                        <select name="adresse" class="col-md-3 form-control" required>
+                            <option></option>
+                        <% Collection<Adresse> _adresses = adresses;
+                            for (adresse a : _adresses) {%>
+                            <option value="<%=a.getId()%>"><%=a.getville()%></option>
+                            <%}%>
+                        </select>     
+                    </div>      
+                                           
+
                     <button type="submit" class="btn btn-success">Enregistre</button>                    
                 </form> 
             </div>
