@@ -47,12 +47,13 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         return result;
     }    
     @Override
-       public Collection<Stock> rechercherLotRayonPerimeParDate(java.util.Date date) {
+       public Collection<Stock> rechercherLotRayonPerimeParDate(java.util.Date date, Rayon rayon) {
         
     Collection<Stock> result;
     
-       Query req = getEntityManager().createQuery("SELECT s FROM Stock s inner join s.lArticle ar inner join ar.lots l where l.dtype = :Alimentaire");
+       Query req = getEntityManager().createQuery("SELECT s FROM Stock s inner join s.lArticle ar inner join ar.lots l where l.dtype = :Alimentaire and s.leRayon");
        req.setParameter ("Alimentaire", "Alimentaire");
+       req.setParameter ("rayon", rayon);
        result = req.getResultList();   
        return result;
         

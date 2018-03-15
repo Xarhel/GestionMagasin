@@ -8,6 +8,7 @@ package facades;
 import Entites.Autre.Stock;
 import Entites.Autre.StockRetrait;
 import java.util.Collection;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,12 +34,13 @@ public class StockRetraitFacade extends AbstractFacade<StockRetrait> implements 
     }
 
     @Override
-    public void retirerLot(Collection<Stock> stockARetirer, int quantiteRetiree, java.sql.Date dateRetrait) {
+    public void retirerStockPerime(Collection<Stock> stockARetirer, Date dateRetrait) {
         
         for (Stock s: stockARetirer) {
         StockRetrait sr = new StockRetrait();
         sr.setStock(s);
-        sr.setDateRetrait(dateRetrait);
+        sr.setDateRetrait((java.sql.Date) dateRetrait);
+        int quantiteRetiree = s.getQuantiteStock();
         sr.setQuantiteRetrait(quantiteRetiree);
         em.persist(sr);
         }
