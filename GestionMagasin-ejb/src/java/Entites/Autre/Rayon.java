@@ -31,7 +31,7 @@ public class Rayon implements Serializable {
     @OneToOne(mappedBy = "leRayon")
     private Stock stock;
     
-    @ManyToMany
+    @OneToMany (mappedBy = "lesRayons")
     private List<RayonArticle> lesRayonArticles;
 
     private static final long serialVersionUID = 1L;
@@ -130,6 +130,16 @@ public class Rayon implements Serializable {
     public void setLeMagasin(Magasin leMagasin) {
         this.leMagasin = leMagasin;
     }
+
+    public List<RayonArticle> getLesRayonArticles() {
+        return lesRayonArticles;
+    }
+
+    public void setLesRayonArticles(List<RayonArticle> lesRayonArticles) {
+        this.lesRayonArticles = lesRayonArticles;
+    }
+
+
  
 
       

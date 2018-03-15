@@ -13,7 +13,6 @@ import Entites.Lot.Lot;
 import facades.ArticleFacadeLocal;
 import facades.BonDeCommandeFacadeLocal;
 import facades.CommandeLotFacadeLocal;
-import facades.FournisseurFacade;
 import facades.FournisseurFacadeLocal;
 import facades.LotFacadeLocal;
 import facades.RayonArticleFacadeLocal;
@@ -58,7 +57,7 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
    }
    
     @Override
-   public void ajouterArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion, float prixPromotion)
+   public void ajouterArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion)
            
    {
       Article testExistant= articleFacade.rechercheArticleParReference(referenceArticle);
@@ -68,7 +67,7 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
       }
       else
       {
-          articleFacade.creerArticle(referenceArticle, libelle, codeBarre, promotion, prixPromotion);
+          articleFacade.creerArticle(referenceArticle, libelle, codeBarre, promotion);
       }
    }
    
