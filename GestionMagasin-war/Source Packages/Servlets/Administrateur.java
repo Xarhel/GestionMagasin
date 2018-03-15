@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Administrateur extends HttpServlet {
 
     @EJB
-    private AdministrateurLocal administrateur;  
+    private AdministrateurLocal administrateur;   
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -83,12 +83,18 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("afficherTousMagasins"))
         {
             afficherTousMagasins(request, response);
-            jspClient="/creerMagasin.jsp";
+            jspClient="/modifierMagasin.jsp";
         }
         
         else if(action.equals("creerMagasin"))
         {
             creerMagasin(request, response);
+            jspClient="/menuAdministrateur.jsp";
+        }
+        
+        else if(action.equals("modifierMagasin"))
+        {
+            modifierMagasin(request, response);
             jspClient="/menuAdministrateur.jsp";
         }
         
@@ -264,7 +270,21 @@ public class Administrateur extends HttpServlet {
         int codePostalAdresse = Integer.parseInt(codePostal);
         message = "Votre magasin a bien été créé";
         Adresse adresse = administrateur.creerAdresse(libelle, rueNom, rueComplement, codePostalAdresse, ville);
-        administrateur.creerMagasin(nom, adresse);
+        administrateur.creerMagasin(nom, adresse);        
+    }
+    
+    protected void modifierMagasin(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        String nom = request.getParameter("nom");
+        String message;
+        
+        int idMagasin = Integer.parseInt(id);
+        Magasin magasin = administrateur.rechercherMagasinParId(idMagasin);
+        administrateur.modifierMagasin(magasin, nom);
+        message = "Votre magasin " + magasin.getNom() + " a bien été modifié.";
+        request.setAttribute("message", message);
         
     }
     
