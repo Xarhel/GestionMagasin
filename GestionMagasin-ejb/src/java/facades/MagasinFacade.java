@@ -7,6 +7,7 @@ package facades;
 
 import Entites.Autre.Adresse;
 import Entites.Autre.Magasin;
+import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -42,11 +43,9 @@ public class MagasinFacade extends AbstractFacade<Magasin> implements MagasinFac
     }
 
     @Override
-    public void modifierMagasin(Magasin magasinAModifier, String nom, Adresse adresse) {
+    public void modifierMagasin(Magasin magasinAModifier, String nom) {
     
-    magasinAModifier.setNom(nom);
-    magasinAModifier.setAdresse(adresse);
-    
+    magasinAModifier.setNom(nom);   
     em.merge(magasinAModifier);
     
     }
@@ -82,4 +81,13 @@ public class MagasinFacade extends AbstractFacade<Magasin> implements MagasinFac
     {
         em.remove(mag);
     }
+    
+    public Collection<Magasin> afficherTousMagasins()
+    {
+        Collection<Magasin> magasin;
+        Query req = em.createQuery("SELECT m FROM Magasin AS m");
+        magasin = req.getResultList();
+        return magasin;
+    }
+    
 }

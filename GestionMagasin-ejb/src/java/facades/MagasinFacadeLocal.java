@@ -7,6 +7,7 @@ package facades;
 
 import Entites.Autre.Adresse;
 import Entites.Autre.Magasin;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -32,12 +33,14 @@ public interface MagasinFacadeLocal {
 
     void creerMagasin(String nom, Adresse adresse);
 
-    void modifierMagasin(Magasin magasinAModifier, String nom, Adresse adresse);
+    void modifierMagasin(Magasin magasinAModifier, String nom);
 
     Magasin rechercherMagasinParNom(String nom);
     
     public Magasin rechercherMagasinParId(int idMagasin);
 
     public void supprimerMagasin(Magasin mag);
+    
+    Collection<Magasin> afficherTousMagasins();
     
 }

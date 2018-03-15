@@ -35,12 +35,12 @@ public interface RayonFacadeLocal {
     void creerRayon(String rayonNom, Magasin magasin);
 
 
-    void modifierRayon(Rayon rayonAModifier, String rayonNom, Magasin magasin);
+    void modifierRayon(Rayon rayonAModifier, String rayonNom);
     
     public Rayon rechercherRayonParId(int idRayon);
     
     public Rayon rechercherRayonParNomMagasin(String rayonNom, Magasin magasin);
 
-    public Collection<Rayon> rechercherRayonParNomMagasin(Magasin magasin);
+    public Collection<Rayon> rechercherRayonParMagasin(Magasin magasin);
     
 }

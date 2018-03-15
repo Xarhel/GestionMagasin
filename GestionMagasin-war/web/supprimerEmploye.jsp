@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>        
-        <title>Modifier un emloyée</title>
+        <title>Supprimer un employé</title>
         <jsp:include page="include/header.jsp"/>
         <jsp:useBean id="employe" scope="request" type="Entites.Personne.Employe"></jsp:useBean>
         </head>
@@ -21,7 +21,7 @@
                 <h1>Modifier un employée</h1>    
                 <% Employe _employe = employe;%>                
                 <form method="POST" action="Menu">
-                    <input hidden type="text" name="action" value="modifierEmploye"/>
+                    <input hidden type="text" name="action" value="supprimerEmploye"/>
                     <input hidden type="text" name="id" value="<%=_employe.getId()%>"/>
                     <div class="form-group row">
                         <label class="col-md-2">Nom<span class="requis">*</span></label>

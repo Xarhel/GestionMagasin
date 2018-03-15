@@ -49,14 +49,13 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
     
     
     
-     public void modifierEmploye(Employe E, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+     public void modifierEmploye(Employe E, String nom, String prenom, String login, String mdp, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
      {
          
         E.setNomPersonne(nom);
         E.setPrenomPersonne(prenom);
         E.setLogin(login);
         E.setPassword(mdp);
-        E.setDateCreationCompte(dateCreationCompte);
         E.setTypeCompte(typeCompte);
         E.setLeMagasin(magasin);
         E.setLeRayon(rayon);
@@ -77,6 +76,6 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
         Query req = em.createQuery("SELECT e FROM Employe AS e");
         e = req.getResultList();
         return e;
-    }      
+    }
      
 }

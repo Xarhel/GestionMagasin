@@ -40,7 +40,8 @@ public class Administrateur implements AdministrateurLocal {
     private PersonneFacadeLocal personneFacade;
 
    
-
+    @EJB
+    private facades.AdresseFacade adresseFacade;
   
 
     @EJB
@@ -123,9 +124,9 @@ public class Administrateur implements AdministrateurLocal {
      
     }
     
-    public void modifierEmploye(Employe employe, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    public void modifierEmploye(Employe employe, String nom, String prenom, String login, String mdp, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
     {
-     employeFacade.modifierEmploye(employe, nom, prenom, login, mdp, dateCreationCompte, typeCompte, magasin, rayon);
+     employeFacade.modifierEmploye(employe, nom, prenom, login, mdp, typeCompte, magasin, rayon);
     }
     
     public void supprimerEmploye(Employe employe)
@@ -138,9 +139,9 @@ public class Administrateur implements AdministrateurLocal {
         magasinFacadeLocal.creerMagasin(nom, adresseMag);
     }
     
-    public void modifierMagasin( Magasin mag, String nom, Adresse adresseMag)
+    public void modifierMagasin( Magasin mag, String nom)
     {
-        magasinFacadeLocal.modifierMagasin(mag, nom, adresseMag);
+        magasinFacadeLocal.modifierMagasin(mag, nom);
     }
     
     public void supprimerMagasin(Magasin mag)
@@ -165,9 +166,9 @@ public class Administrateur implements AdministrateurLocal {
         rayonFacadeLocal.creerRayon(nom, mag);
     }
     
-    public void modifierRayon(Rayon r, String nom, Magasin mag)
+    public void modifierRayon(Rayon r, String nom)
     {
-        rayonFacadeLocal.modifierRayon(r, nom, mag);
+        rayonFacadeLocal.modifierRayon(r, nom);
     }
     
     public Rayon rechercherRayonParId(int idRayon)
@@ -179,7 +180,7 @@ public class Administrateur implements AdministrateurLocal {
     
     public Collection<Rayon> rechercherListeRayon(Magasin mag)
     {
-        Collection<Rayon> result = rayonFacadeLocal.rechercherRayonParNomMagasin(mag);
+        Collection<Rayon> result = rayonFacadeLocal.rechercherRayonParMagasin(mag);
         return result;
     }
     
@@ -196,5 +197,29 @@ public class Administrateur implements AdministrateurLocal {
         Personne p = personneFacade.authentification(login, password);
         return p;
     }    
+
+    @Override
+    public Collection<Employe> afficherTousEmployes() {
+        Collection<Employe> e = employeFacade.afficherTousEmployes();
+        return e;
+    }
+
+    @Override
+    public Employe rechercherEmployeParId(int id) {
+        Employe e = employeFacade.chercherEmployeParId(id);
+        return e;
+    }
+
+    @Override
+    public Collection<Magasin> afficherTousMagasins() {
+        Collection<Magasin> magasin = magasinFacadeLocal.afficherTousMagasins();
+        return magasin;
+    }
+
+    @Override
+    public Adresse creerAdresse(String libelle, String rue, String complement, int codePostal, String ville) {
+        Adresse adresse = adresseFacade.creerAdresse(libelle, rue, complement, codePostal, ville);
+        return adresse;
+    }     
     
 }
