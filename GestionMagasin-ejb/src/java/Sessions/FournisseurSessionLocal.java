@@ -5,16 +5,16 @@
  */
 package Sessions;
 
-import Entites.Enum.TypeLivraison;
+import java.util.Date;
 import javax.ejb.Local;
 
 /**
  *
- * @author 5153218
+ * @author 6137220
  */
 @Local
-public interface PanierInternetLocal {
+public interface FournisseurSessionLocal {
 
-    void creerPanierInternet(TypeLivraison TypeLivraison);
+    public void creerLivraison(int idAgentDeLivraison, int idBonDeCommande, Date dateDebutLivraison);
     
 }

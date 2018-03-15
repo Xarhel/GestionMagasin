@@ -35,6 +35,6 @@ public interface CommandeLotFacadeLocal {
 
     void creerCommandeLot(Lot lot, BonDeCommande commande, float prixAchat);
 
-    public Collection<CommandeLot> chercherCommandeLots(BonDeCommande bdc);
+    public Collection<CommandeLot> rechercherCommandeLotParIdBonDeCommande(BonDeCommande bonDeCommande);
     
 }

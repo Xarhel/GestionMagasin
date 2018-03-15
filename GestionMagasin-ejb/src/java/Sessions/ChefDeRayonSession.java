@@ -10,8 +10,11 @@ import Entites.Autre.BonDeCommande;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import Entites.Lot.Lot;
+import Entites.Personne.ChefDeRayon;
+import Entites.Personne.Fournisseur;
 import facades.ArticleFacadeLocal;
 import facades.BonDeCommandeFacadeLocal;
+import facades.ChefDeRayonFacadeLocal;
 import facades.CommandeLotFacadeLocal;
 import facades.FournisseurFacadeLocal;
 import facades.LotFacadeLocal;
@@ -26,6 +29,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
+
+    @EJB
+    private ChefDeRayonFacadeLocal chefDeRayonFacade;
 
     @EJB
     private BonDeCommandeFacadeLocal bonDeCommandeFacade;
@@ -71,14 +77,22 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
       }
    }
    
-   
+   // Faire un 
    
     @Override
    public void modifierPrixArticle(Rayon r, Article a, float prix)
    {
-      RayonArticle ra= rayonArticleFacade.rechercherRayonArticle(r, a);
+       if(a.isPromotion()==true)
+       {
+           System.out.println("Erreur, article en promotion");
+       }
+       else
+       {
+           RayonArticle ra= rayonArticleFacade.rechercherRayonArticle(r, a);
       
       rayonArticleFacade.modifierPrix(ra, prix);
+       }
+      
        
        
    }
@@ -97,8 +111,10 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
    }
    
     @Override
-    public void creerBonDeCommande(Date dateCommande, int idFournisseur, int idArticle) {
-        bonDeCommandeFacade.creerBonDeCommande(dateCommande);
+    public void creerBonDeCommande(Date dateCommande, int idFournisseur, int idChefDeRayon) {
+       Fournisseur fournisseur= fournisseurFacade.rechercherFournisseurParId(idChefDeRayon);
+       ChefDeRayon cdr= chefDeRayonFacade.rechercherChefDeRayonParId(idChefDeRayon);
+       bonDeCommandeFacade.creerBonDeCommande(cdr, dateCommande, fournisseur);
         
         
     }

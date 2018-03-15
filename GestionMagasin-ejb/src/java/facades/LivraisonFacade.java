@@ -13,6 +13,7 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -58,5 +59,18 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
         em.merge(livraison);
     }
     
+    
+    @Override
+    public Livraison rechercherLivraisonParId(int idLivraison)
+    {
+        Livraison result;
+    
+        Query req = getEntityManager().createQuery("SELECT liv FROM Livraison AS liv WHERE liv.id=:idLivraison");
+        req.setParameter("idLivraison", idLivraison);
+        
+        result = (Livraison) req.getSingleResult();
+        
+        return result;
+    }
     
 }
