@@ -32,11 +32,11 @@ public class CommandeLotFacade extends AbstractFacade<CommandeLot> implements Co
     }
 
     @Override
-    public void creerCommandeLot(Lot lot, BonDeCommande commande, int quantite, float prixAchat) {
+    public void creerCommandeLot(Lot lot, BonDeCommande commande, float prixAchat) {
         CommandeLot commandeLot = new CommandeLot();
         commandeLot.setLeLot(lot);
         commandeLot.setLeBonDeCommande(commande);
-        commandeLot.setQuantite(quantite);
+       
         commandeLot.setPrixAchat(prixAchat);
         em.persist(commandeLot);
     } 

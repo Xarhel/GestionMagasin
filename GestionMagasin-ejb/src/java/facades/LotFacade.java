@@ -32,11 +32,12 @@ public class LotFacade extends AbstractFacade<Lot> implements LotFacadeLocal {
 
     // Création du lot
     @Override
-    public void creerLot(Article lArticle, int quantite) {
+    public Lot creerLot(Article lArticle, int quantite) {
         Lot lot = new Lot();
         lot.setlArticle(lArticle);
         lot.setQuantite(quantite);
         em.persist(lot);
+        return lot;
     }
     
     

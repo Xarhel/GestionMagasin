@@ -9,6 +9,7 @@ import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.Employe;
+import java.util.Collection;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -69,4 +70,13 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
          em.remove(E);
     
 }
+
+    @Override
+    public Collection<Employe> afficherTousEmployes() {
+        Collection e;
+        Query req = em.createQuery("SELECT e FROM Employe AS e");
+        e = req.getResultList();
+        return e;
+    }      
+     
 }

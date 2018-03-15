@@ -51,11 +51,13 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
+    @Override
    public void ajouterFournisseur(String raisonSocial, String login, String password)
    {
        fournisseurFacade.creerFournisseur(raisonSocial, login, password);
    }
    
+    @Override
    public void ajouterArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion, float prixPromotion)
            
    {
@@ -72,6 +74,7 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
    
    
    
+    @Override
    public void modifierPrixArticle(Rayon r, Article a, float prix)
    {
       RayonArticle ra= rayonArticleFacade.rechercherRayonArticle(r, a);
@@ -81,21 +84,24 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
        
    }
    
-   public void creerLot(Article lArticle, int quantite)
+   
+    @Override
+   public void creerCommandeLot(BonDeCommande commande, float prixAchat, Article lArticle, int quantite)
    {
        
        
-       lotFacade.creerLot(lArticle, quantite);
+       Lot lot= lotFacade.creerLot(lArticle, quantite);
+       commandeLotFacade.creerCommandeLot(lot, commande, prixAchat);
+       
+       
        
    }
    
-   public void creerCommandeLot(Lot lot, BonDeCommande commande, int quantite, float prixAchat)
-   {
-       commandeLotFacade.creerCommandeLot(lot, commande, quantite, prixAchat);
-   }
-   
+    @Override
     public void creerBonDeCommande(Date dateCommande, int idFournisseur, int idArticle) {
         bonDeCommandeFacade.creerBonDeCommande(dateCommande);
+        
+        
     }
            
            

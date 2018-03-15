@@ -11,4 +11,6 @@ package Entites.Enum;
  */
 public enum StatutLivraison {
     
+    enCours,livree,enLitige
+    
 }
