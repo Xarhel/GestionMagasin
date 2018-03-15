@@ -24,7 +24,7 @@ public interface AdministrateurLocal {
 
     public void supprimerEmploye(Employe employe);
 
-    public void modifierEmploye(Employe employe, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
+    public void modifierEmploye(Employe employe, String nom, String prenom, String login, String mdp, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
 
     public void creerMagasin(String nom, Adresse adresseMag);
 
@@ -48,6 +48,14 @@ public interface AdministrateurLocal {
 
     public Personne authentification(String login, String password);
 
-    public void creerEmploye(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, int idMagasin, int idRayon);
+    public void creerEmploye(String nom, String prenom, String login, String mdp,Date dateCreationCompte, TypeCompte typeCompte, int idMagasin, int idRayon);
+
+    Collection<Employe> afficherTousEmployes();
+
+    Employe rechercherEmployeParId(int id);
+
+    Collection<Magasin> afficherTousMagasins();
+
+    Adresse creerAdresse(String libelle, String rue, String complement, int codePostal, String ville);
     
 }

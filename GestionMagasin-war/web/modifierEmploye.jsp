@@ -48,12 +48,6 @@
                             <input class="form-control" type="text" name="mdp_1"/>
                         </div>                        
                     </div>
-                   
-                    <div class="form-group row">
-                        <label class="col-md-2">Date de création du compte<span class="requis">*</span></label>
-                        <div class="col-md-4">
-                            <input class="form-control" type="date" name="dateCreationCompte" value="<%=_employe.getDateCreationCompte()%>" readonly/>
-                    </div>
                     <div class="form-group row">
                         <label class="col-md-2">Type de Compte<span class="requis">*</span></label>
                         <div class="col-md-4">

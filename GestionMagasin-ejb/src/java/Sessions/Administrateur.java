@@ -40,7 +40,8 @@ public class Administrateur implements AdministrateurLocal {
     private PersonneFacadeLocal personneFacade;
 
    
-
+    @EJB
+    private facades.AdresseFacade adresseFacade;
   
 
     @EJB
@@ -123,9 +124,9 @@ public class Administrateur implements AdministrateurLocal {
      
     }
     
-    public void modifierEmploye(Employe employe, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    public void modifierEmploye(Employe employe, String nom, String prenom, String login, String mdp, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
     {
-     employeFacade.modifierEmploye(employe, nom, prenom, login, mdp, dateCreationCompte, typeCompte, magasin, rayon);
+     employeFacade.modifierEmploye(employe, nom, prenom, login, mdp, typeCompte, magasin, rayon);
     }
     
     public void supprimerEmploye(Employe employe)
@@ -196,5 +197,31 @@ public class Administrateur implements AdministrateurLocal {
         Personne p = personneFacade.authentification(login, password);
         return p;
     }    
+
+    @Override
+    public Collection<Employe> afficherTousEmployes() {
+        Collection<Employe> e = employeFacade.afficherTousEmployes();
+        return e;
+    }
+
+    @Override
+    public Employe rechercherEmployeParId(int id) {
+        Employe e = employeFacade.chercherEmployeParId(id);
+        return e;
+    }
+
+    @Override
+    public Collection<Magasin> afficherTousMagasins() {
+        Collection<Magasin> magasin = magasinFacadeLocal.afficherTousMagasins();
+        return magasin;
+    }
+
+    @Override
+    public Adresse creerAdresse(String libelle, String rue, String complement, int codePostal, String ville) {
+        Adresse adresse = adresseFacade.creerAdresse(libelle, rue, complement, codePostal, ville);
+        return adresse;
+    }
+       
+    
     
 }
