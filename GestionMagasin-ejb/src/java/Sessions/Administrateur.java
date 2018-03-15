@@ -139,9 +139,9 @@ public class Administrateur implements AdministrateurLocal {
         magasinFacadeLocal.creerMagasin(nom, adresseMag);
     }
     
-    public void modifierMagasin( Magasin mag, String nom, Adresse adresseMag)
+    public void modifierMagasin( Magasin mag, String nom)
     {
-        magasinFacadeLocal.modifierMagasin(mag, nom, adresseMag);
+        magasinFacadeLocal.modifierMagasin(mag, nom);
     }
     
     public void supprimerMagasin(Magasin mag)
@@ -166,9 +166,9 @@ public class Administrateur implements AdministrateurLocal {
         rayonFacadeLocal.creerRayon(nom, mag);
     }
     
-    public void modifierRayon(Rayon r, String nom, Magasin mag)
+    public void modifierRayon(Rayon r, String nom)
     {
-        rayonFacadeLocal.modifierRayon(r, nom, mag);
+        rayonFacadeLocal.modifierRayon(r, nom);
     }
     
     public Rayon rechercherRayonParId(int idRayon)
@@ -180,7 +180,7 @@ public class Administrateur implements AdministrateurLocal {
     
     public Collection<Rayon> rechercherListeRayon(Magasin mag)
     {
-        Collection<Rayon> result = rayonFacadeLocal.rechercherRayonParNomMagasin(mag);
+        Collection<Rayon> result = rayonFacadeLocal.rechercherRayonParMagasin(mag);
         return result;
     }
     
@@ -220,8 +220,6 @@ public class Administrateur implements AdministrateurLocal {
     public Adresse creerAdresse(String libelle, String rue, String complement, int codePostal, String ville) {
         Adresse adresse = adresseFacade.creerAdresse(libelle, rue, complement, codePostal, ville);
         return adresse;
-    }
-       
-    
+    }     
     
 }

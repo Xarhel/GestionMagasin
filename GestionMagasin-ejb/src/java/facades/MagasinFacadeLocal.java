@@ -33,7 +33,7 @@ public interface MagasinFacadeLocal {
 
     void creerMagasin(String nom, Adresse adresse);
 
-    void modifierMagasin(Magasin magasinAModifier, String nom, Adresse adresse);
+    void modifierMagasin(Magasin magasinAModifier, String nom);
 
     Magasin rechercherMagasinParNom(String nom);
     

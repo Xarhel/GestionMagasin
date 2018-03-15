@@ -43,11 +43,9 @@ public class MagasinFacade extends AbstractFacade<Magasin> implements MagasinFac
     }
 
     @Override
-    public void modifierMagasin(Magasin magasinAModifier, String nom, Adresse adresse) {
+    public void modifierMagasin(Magasin magasinAModifier, String nom) {
     
-    magasinAModifier.setNom(nom);
-    magasinAModifier.setAdresse(adresse);
-    
+    magasinAModifier.setNom(nom);   
     em.merge(magasinAModifier);
     
     }

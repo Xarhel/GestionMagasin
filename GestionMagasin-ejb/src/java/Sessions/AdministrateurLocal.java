@@ -28,7 +28,7 @@ public interface AdministrateurLocal {
 
     public void creerMagasin(String nom, Adresse adresseMag);
 
-    public void modifierMagasin(Magasin mag, String nom, Adresse adresseMag);
+    public void modifierMagasin(Magasin mag, String nom);
 
     public void supprimerMagasin(Magasin mag);
 
@@ -38,7 +38,7 @@ public interface AdministrateurLocal {
 
     public void creerRayon(String nom, Magasin mag);
 
-    public void modifierRayon(Rayon r, String nom, Magasin mag);
+    public void modifierRayon(Rayon r, String nom);
 
     public Rayon rechercherRayonParId(int idRayon);
 
