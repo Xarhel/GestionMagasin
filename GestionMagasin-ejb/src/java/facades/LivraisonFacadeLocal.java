@@ -36,5 +36,7 @@ public interface LivraisonFacadeLocal {
     public void creerLivraison(BonDeCommande bdc, AgentDeLivraison adl, Date dateCreationCommande);
 
     public void recevoirLivraison(Livraison livraison, Date dateReception);
+
+    public Livraison rechercherLivraisonParId(int idLivraison);
     
 }

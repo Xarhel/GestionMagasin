@@ -74,7 +74,7 @@ public class RayonFacade extends AbstractFacade<Rayon> implements RayonFacadeLoc
         
     Rayon result;
     
-        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.rayonNom =: rayonNom AND r.leMagasin =: magasin");
+        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.rayonNom =:rayonNom AND r.leMagasin =:magasin");
         req.setParameter("rayonNom", rayonNom);
         req.setParameter("magasin", magasin);
         
@@ -89,7 +89,7 @@ public class RayonFacade extends AbstractFacade<Rayon> implements RayonFacadeLoc
         
     Collection<Rayon> result;
     
-        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.leMagasin =: magasin");
+        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.leMagasin =:magasin");
         req.setParameter("magasin", magasin);
         
         result = req.getResultList();

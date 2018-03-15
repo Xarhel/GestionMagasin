@@ -5,7 +5,12 @@
  */
 package facades;
 
+import Entites.Autre.CommandeLot;
+import Entites.Autre.Livraison;
 import Entites.Autre.LivraisonLot;
+import Entites.Lot.Lot;
+import java.util.Collection;
+import java.util.Iterator;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,4 +34,31 @@ public class LivraisonLotFacade extends AbstractFacade<LivraisonLot> implements 
         super(LivraisonLot.class);
     }
     
+    
+    
+    public void creerLivraisonLots(Collection <CommandeLot> listeCommandeLot, Livraison livraison)
+    {
+        
+        
+        // Non terminé, A voir comment on s'organise (Max)
+        Iterator it=listeCommandeLot.iterator();
+        
+        livraison.getId();
+        
+        while(it.hasNext())
+        {
+            CommandeLot lotActuel=(CommandeLot)it.next();
+            Lot lotAAssocier= lotActuel.getLeLot();
+            
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+    }
 }

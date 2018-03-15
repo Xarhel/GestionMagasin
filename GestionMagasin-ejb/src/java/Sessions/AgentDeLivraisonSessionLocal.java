@@ -5,17 +5,16 @@
  */
 package Sessions;
 
-import Entites.Enum.MoyenPaiement;
-import java.sql.Date;
+import java.util.Date;
 import javax.ejb.Local;
 
 /**
  *
- * @author 5153218
+ * @author 6137220
  */
 @Local
-public interface PanierSessionLocal {
+public interface AgentDeLivraisonSessionLocal {
 
-    void creerPanier(Date dateJour, MoyenPaiement moyenPaiement, float montantTotal);
+    public void enregistrerLivraison(Date dateReception, int idLivraison);
     
 }
