@@ -98,6 +98,55 @@ public class Administrateur extends HttpServlet {
             jspClient="/menuAdministrateur.jsp";
         }
         
+        else if(action.equals("rechercherMagasinParId"))
+        {
+            rechercherMagasinParId(request, response);
+            jspClient="/rechercherMagasinParId.jsp";
+        }
+        
+        else if(action.equals("rechercherMagasinParNom"))
+        {
+            rechercherMagasinParNom(request, response);
+            jspClient="/rechercherMagasinParNom.jsp";
+        }
+        
+        else if(action.equals("selectionnerMagasin"))
+        {
+            selectionnerMagasin(request, response);
+            // Nom à changer
+            jspClient="/listeMagasin.jsp";
+        }
+        
+        else if(action.equals("selectionnerEmploye"))
+        {
+            selectionnerEmploye(request, response);
+            jspClient="/listeEmploye.jsp";
+        }
+        
+        else if(action.equals("creerRayon"))
+        {
+            creerRayon(request, response);
+            jspClient="/menuAdministrateur";
+        }
+        
+        else if(action.equals("versCreerRayon"))
+        {
+            afficherTousMagasins(request, response);
+            jspClient="/creerRayon.jsp";
+        }
+        
+        else if(action.equals("modifierRayon"))
+        {
+            modifierRayon(request, response);
+            jspClient="/menuAdministrateur.jsp";
+        }
+        
+        else if(action.equals("versModifierRayon"))
+        {
+            afficherTousMagasins(request, response);
+            jspClient="/listeRayons.jsp";
+        }
+        
       
         RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
@@ -199,9 +248,7 @@ public class Administrateur extends HttpServlet {
         String message = "Voici la liste de tous les employés recensés";
         request.setAttribute("employe", e);
         request.setAttribute("message", message);        
-    }
- 
-    
+    }   
  
         /* Requête à modifier
     
@@ -287,5 +334,91 @@ public class Administrateur extends HttpServlet {
         request.setAttribute("message", message);
         
     }
+     
+    protected void rechercherMagasinParId(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");      
+        int idMagasin = Integer.parseInt(id);
+        Magasin magasin = administrateur.rechercherMagasinParId(idMagasin);
+        String message = "Voici le résultat de votre recherche";
+        request.setAttribute("message", message);
+    }
+     
+    protected void rechercherMagasinParNom(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String nom = request.getParameter("nom");
+        Magasin magasin = administrateur.rechercherMagasinParNom(nom);
+        String message = "Voici le résultat de votre rechercher";
+        request.setAttribute("message", message);
+    }
     
+    protected void selectionnerMagasin(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+            
+    {
+        String id = request.getParameter("id");
+        int idMagasin = Integer.parseInt(id);
+        Magasin magasin = administrateur.rechercherMagasinParId(idMagasin);
+        request.setAttribute("magasin", magasin);
+    }
+    
+    protected void selectionnerEmploye(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        int idEmploye = Integer.parseInt(id);
+        Employe employe = administrateur.rechercherEmployeParId(idEmploye);
+        request.setAttribute("employe", employe);
+    }
+    
+    protected void creerRayon(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        // Il est nécessaire de faire appel à la méthode afficherTousMagasins pour récupérer la liste des magasins avant d'aller sur la page de création
+        String nom = request.getParameter("nom");
+        String id = request.getParameter("magasin");
+        String message;
+        
+        int idMagasin = Integer.parseInt(id);
+        Magasin magasin = administrateur.rechercherMagasinParId(idMagasin);
+        administrateur.creerRayon(nom, magasin);
+        message = "Le rayon " + nom + " a bien été créé";
+        request.setAttribute("message", message);
+        
+    }
+    
+    // Sous-entend que l'utilisateur arrive sur une liste de magasins et sélectionne le magasin pour lequel il souhaite afficher les rayons
+    protected void afficherTousRayons(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String magasin = request.getParameter("magasin");
+        String message;
+        
+        int idMagasin = Integer.parseInt("magasin");
+        Magasin magasinRecherche = administrateur.rechercherMagasinParId(idMagasin);
+        Collection<Rayon> rayon = administrateur.rechercherListeRayon(magasinRecherche);
+        message = "Voici les rayons pour le magasin " + magasinRecherche.getNom();
+        request.setAttribute("rayon", rayon);
+        request.setAttribute("magasin", magasinRecherche);
+        request.setAttribute("message", message);
+    }
+    
+    protected void modifierRayon(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String idRayon = request.getParameter("rayon");
+        String nom = request.getParameter("nom");
+        String message;
+        
+        int RayonId = Integer.parseInt("rayon");
+        
+        Rayon rayon = administrateur.rechercherRayonParId(RayonId);
+        
+        administrateur.modifierRayon(rayon, nom);
+        message = "Le rayon " + rayon.getRayonNom() + " a bien été modifié";
+        request.setAttribute("message", message);        
+    }
+   
 }
