@@ -19,13 +19,13 @@
         <div class="container">
             <jsp:include page="include/menu.jsp"/>
             <!-- BODY START -->
-            <h1>Modifier un employée</h1>    
+            <h1>Modifier un </h1>    
                 <% Magasin _magasin = magasin;%>                
                 <form method="POST" action="Menu">
                     <input hidden type="text" name="action" value="modifierMagasin"/>
                     <input hidden type="text" name="id" value="<%=_magasin.getId()%>"/>
                     <div class="form-group row">
-                        <label class="col-md-2">Nom du MAgasin<span class="requis">*</span></label>
+                        <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
                         <div class="col-md-4">
                             <input class="form-control" type="text" name="nom" value="<%=_magasin.getAdresse()%>" required/>
                         </div>                        
@@ -33,7 +33,7 @@
                     <div class="form-group row">
                         <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
                         <div class="col-md-4">
-                            <input class="form-control" type="text" name="nom" required/>
+                            <input class="form-control" type="text" name="nom" value ="<%_magasin.getNom%>"required/>
                         </div>                        
                     </div>
                     <div class="form-group row">
