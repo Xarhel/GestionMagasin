@@ -241,7 +241,5 @@ public class Administrateur implements AdministrateurLocal {
         Personne personne = personneFacade.rechercherPersonneParId(idPersonne);
         return personne;
     }
-    
-    
-   
+  
 }
