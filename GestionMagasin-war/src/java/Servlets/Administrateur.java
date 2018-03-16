@@ -147,6 +147,12 @@ public class Administrateur extends HttpServlet {
             jspClient="/listeRayons.jsp";
         }
         
+        else if(action.equals("versModifierMagasin"))
+        {
+            versModifierMagasin(request, response);
+            jspClient="/modifierMagasin.jsp";
+        }
+        
       
         RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
@@ -421,4 +427,13 @@ public class Administrateur extends HttpServlet {
         request.setAttribute("message", message);        
     }
    
+    protected void versModifierMagasin(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        int idMagasin = Integer.parseInt(id);
+        Magasin m = administrateur.rechercherMagasinParId(idMagasin);
+        request.setAttribute("magasin", m);
+    }
+    
 }
