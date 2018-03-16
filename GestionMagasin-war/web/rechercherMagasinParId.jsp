@@ -10,14 +10,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Rechercher magasin par id magasin</title>
+        <title>Rechercher magasin</title>
         <jsp:include page="include/header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="magasin" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
-            <input type="text" placeholder="Rechercher par identifiant du magasin..">
-            <table class="table">
+            <div class="container">
+            <jsp:include page="include/menu.jsp"/>
+            <!-- BODY START -->
+            <form method="POST" action="...">
+                <div class="recherche">
+                    <div class="col-md-4">
+            <input type="text" name="keyword" placeholder="Recherche un rayon.."value="Recherche"/>
+                    <button class="btn btn-success">ok</button>
+                    </div>
+                </div>
+            <h2>Liste des magasins</h2>
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Identifiant</th>
@@ -32,5 +42,8 @@
                     <td><%=m.getNom()%></td>
                 </tr><%}%>
             </tbody>
+            </table>
+            </form>
+            </div>>
     </body>
 </html>

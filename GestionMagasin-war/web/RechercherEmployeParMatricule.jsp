@@ -1,19 +1,19 @@
 <%-- 
-    Document   : chercherRayonParId
-    Created on : 14 mars 2018, 16:41:33
-    Author     : 5153218
+    Document   : RechercherEmploye
+    Created on : 15 mars 2018, 16:03:46
+    Author     : jules
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.Collection"%>
-<%@page import="Entites.Autre.Rayon"%>
+<%@page import="Entites.Personne"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Chercher rayon</title>
+        <title>Rechercher employé</title>
         <jsp:include page="include/header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
-        <jsp:useBean id="rayon" scope="request" class="java.util.Collection"></jsp:useBean>
+        <jsp:useBean id="employe" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
             <div class="container">
@@ -22,28 +22,30 @@
             <form method="POST" action="...">
                 <div class="recherche">
                     <div class="col-md-4">
-            <input type="text" name="keyword" placeholder="Recherche un rayon.."value="Recherche"/>
+            <input type="text" name="keyword" placeholder="Rechercher un employé.."value="Recherche"/>
                     <button class="btn btn-success">ok</button>
                     </div>
                 </div>
-            <h2>Liste des rayons</h2>
+            <h2>Liste des employées</h2>
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Identifiant</th>
                         <th>Nom</th>
+                        <th>Prénom</th>
                     </tr>
                 </thead>
                 <tbody>
-                <% Collection<Rayon> _rayon = rayon;
-          for (Rayon r : _rayon) {%>
+                <% Collection<Employe> _employe = employe;
+                    for (Employe e : _employe) {%>
                 <tr>
-                    <td><%=r.getId()%></td>
-                    <td><%=r.getNom()%></td>
+                    <td><%=e.getNom()%></td>
+                    <td><%=e.getPrenom()%></td>
                 </tr><%}%>
             </tbody>
             </table>
             </form>
             </div>
+            
     </body>
 </html>
+

@@ -5,6 +5,7 @@
 --%>
 <%@page import="Entites.Autre.Magasin"%>
 <%@page import="Entites.Autre.Rayon"%>
+<%@page import="Entites.Personne.Employe"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@
                 <!-- BODY START -->
                 <div>
                     <h1>Créer employe</h1>
-                    <form method="POST" action="Menu">
+                    <form method="POST" action="....">
                         <input hidden type="text" name="action" value="creerEmploye"/>
                         <div class="form-group row">
                             <label class="col-md-2">Nom<span class="requis">*</span></label>
@@ -62,8 +63,8 @@
                             <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
                             <select name="nom" class="col-md-3 form-control" required>
                                 <option></option>
-                            <% Collection<Magasin> _magasins = magasins;
-                            for (magasin m : _magasins) {%>
+                            <% Collection<Magasin> _magasin = magasin;
+                            for (magasin m : _magasin) {%>
                             <option value="<%=m.getId()%>"><%=m.getNom()%></option>
                             <%}%>
                         </select>  
@@ -72,8 +73,8 @@
                         <label class="col-md-2">Nom du rayon<span class="requis">*</span></label>
                         <select name="nom" class="col-md-3 form-control" required>
                                 <option></option>
-                            <% Collection<Rayon> _rayons = rayon;
-                            for (magasin m : _rayons) {%>
+                            <% Collection<Rayon> _rayon = rayon;
+                            for (Rayon r : _rayon) {%>
                             <option value="<%=m.getId()%>"><%=m.getRayonNom()%></option>
                             <%}%>
                         </select>  

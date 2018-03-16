@@ -21,6 +21,7 @@
             <!-- BODY START -->
             <div>
                 <h1>Liste des magasin</h1>
+                <form method="POST" action=".....">
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
@@ -35,7 +36,7 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <% Collection<Magasin> _magasins = magasin;
+                        <% Collection<Magasin> _magasin = magasin;
                             for (Magasin m : _magasin) {%>
                         <tr><td><%=m.getNom()%></td>
                             <td><a href="Menu?action=pageModifieMagasin&id=<%=m.getId()%>" class="btn btn-info btn-md">
@@ -46,6 +47,7 @@
                         </tr><%}%>
                     </tbody>
                 </table>
+                </form>
             </div>
             <!-- BODY END-->
         </div>

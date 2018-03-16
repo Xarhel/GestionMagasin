@@ -42,8 +42,8 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <% Collection<Employe> _employes = employe;
-                            for (Employe e : _employes) {%>
+                        <% Collection<Employe> _employe = employe;
+                            for (Employe e : _employe) {%>
                         <tr><td><%=e.getNomPersonne()%></td>
                             <td><%=e.getPrenomPersonne()%></td>
                             <td><%=e.getDateCreationCompte()%></td>

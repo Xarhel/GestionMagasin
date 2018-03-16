@@ -21,6 +21,7 @@
             <!-- BODY START -->
             <div>
                 <h1>Liste des rayons</h1>
+                <form method="POST" action="....">
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
@@ -35,8 +36,8 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <% Collection<Rayon> _rayons = rayon;
-                            for (Rayon r : _rayons) {%>
+                        <% Collection<Rayon> _rayon = rayon;
+                            for (Rayon r : _rayon) {%>
                         <tr><td><%=e.getRayonNom()%></td>
                             <td><a href="Menu?action=pageModifierRayon&id=<%=r.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Modifier un rayon"></span>Modifier
@@ -45,6 +46,7 @@
                         </tr><%}%>
                     </tbody>
                 </table>
+                </form>
             </div>
             <!-- BODY END-->
         </div>
