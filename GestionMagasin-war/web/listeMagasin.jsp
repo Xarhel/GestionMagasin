@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>        
-        <title>Liste des magasin</title>
+        <title>Liste des magasins</title>
         <jsp:include page="include/header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="magasin" scope="request" class="java.util.Collection"></jsp:useBean>
