@@ -13,6 +13,7 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -81,5 +82,20 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
         em.merge(cdr);
     }
      
+    
+    @Override
+    public ChefDeRayon rechercherChefDeRayonParId(int id)
+    {
+    ChefDeRayon result;
+    
+        Query req = getEntityManager().createQuery("SELECT cdr FROM ChefDeRayon AS cdr WHERE cdr=:id");
+        req.setParameter("id", id);
+        
+        result = (ChefDeRayon) req.getSingleResult();
+        
+        return result;
+        
+        
+    }
      
 }

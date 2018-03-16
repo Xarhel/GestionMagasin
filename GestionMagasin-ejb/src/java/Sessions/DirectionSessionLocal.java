@@ -5,16 +5,17 @@
  */
 package Sessions;
 
-import Entites.Enum.TypeLivraison;
 import javax.ejb.Local;
 
 /**
  *
- * @author 5153218
+ * @author houss
  */
 @Local
-public interface PanierInternetLocal {
+public interface DirectionSessionLocal {
 
-    void creerPanierInternet(TypeLivraison TypeLivraison);
+    public void demarrerUnePrommotion(int reference, float prixPromotion);
+
+    public void cloturerPromotion(int reference);
     
 }

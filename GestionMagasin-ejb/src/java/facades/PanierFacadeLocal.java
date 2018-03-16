@@ -32,6 +32,6 @@ public interface PanierFacadeLocal {
 
     int count();
 
-    void creerPanier(Date dateJour, MoyenPaiement moyenPaiement, float montantTotal);
+  
     
 }

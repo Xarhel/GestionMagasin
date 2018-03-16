@@ -5,7 +5,11 @@
  */
 package facades;
 
+import Entites.Autre.CommandeLot;
+import Entites.Autre.Livraison;
 import Entites.Autre.LivraisonLot;
+import Entites.Lot.Lot;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +33,9 @@ public interface LivraisonLotFacadeLocal {
     List<LivraisonLot> findRange(int[] range);
 
     int count();
+
+//    public void creerLivraisonLots(Collection<CommandeLot> listeCommandeLot, Livraison livraison);
+
+    public LivraisonLot creerLivraisonLot(Lot lot, Livraison livraison, int quantiteExpediee, int quantiteAcceptee, int quantiteLivree);
     
 }

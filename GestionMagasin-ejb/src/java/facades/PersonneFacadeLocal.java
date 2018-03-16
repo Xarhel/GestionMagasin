@@ -31,5 +31,9 @@ public interface PersonneFacadeLocal {
     int count();
     
     Personne authentification(String login, String password);
+
+    void supprimerPersonne(Personne personne);
+
+    Personne rechercherPersonneParId(int id);
     
 }

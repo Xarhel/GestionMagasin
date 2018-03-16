@@ -5,7 +5,10 @@
  */
 package facades;
 
+import Entites.Autre.Magasin;
+import Entites.Enum.MoyenPaiement;
 import Entites.Enum.TypeLivraison;
+import Entites.Personne.Client;
 import Entites.Vente.PanierInternet;
 import java.util.List;
 import javax.ejb.Local;
@@ -31,6 +34,7 @@ public interface PanierInternetFacadeLocal {
 
     int count();
 
-    void creerPanierInternet(TypeLivraison TypeLivraison);
+   
+    public PanierInternet creerPanier(MoyenPaiement moyenPaiement, Client c, Magasin mag,TypeLivraison typeLivraison);
     
 }

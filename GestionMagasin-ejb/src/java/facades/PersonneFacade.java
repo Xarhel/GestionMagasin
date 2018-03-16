@@ -40,5 +40,21 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
         p = (Personne) req.getSingleResult();
         return p;
     }
+
+    @Override
+    public void supprimerPersonne(Personne personne) {
+        em.remove(personne);
+    }   
+
+    @Override
+    public Personne rechercherPersonneParId(int id) {
+        Personne personne;
+        Query req = em.createQuery("SELECT p FROM Personne AS p WHERE p.id=:id");
+        req.setParameter("id", id);
+        personne = (Personne) req.getSingleResult();
+        return personne;
+    }
+    
+    
     
 }

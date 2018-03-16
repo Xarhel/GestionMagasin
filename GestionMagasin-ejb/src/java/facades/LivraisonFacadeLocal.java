@@ -7,7 +7,9 @@ package facades;
 
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.Livraison;
+import Entites.Autre.Magasin;
 import Entites.Personne.AgentDeLivraison;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
@@ -36,5 +38,9 @@ public interface LivraisonFacadeLocal {
     public void creerLivraison(BonDeCommande bdc, AgentDeLivraison adl, Date dateCreationCommande);
 
     public void recevoirLivraison(Livraison livraison, Date dateReception);
+
+    public Livraison rechercherLivraisonParId(int idLivraison);
+
+    public Collection<Livraison> afficherLivraisonsEnCours(Magasin magasin);
     
 }

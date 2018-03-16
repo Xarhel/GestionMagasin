@@ -45,11 +45,10 @@ public class RayonFacade extends AbstractFacade<Rayon> implements RayonFacadeLoc
     }
 
     @Override
-    public void modifierRayon(Rayon rayonAModifier, String rayonNom, Magasin magasin) {
+    public void modifierRayon(Rayon rayonAModifier, String rayonNom) {
         
   
     rayonAModifier.setRayonNom(rayonNom);
-    rayonAModifier.setLeMagasin(magasin);
     
     em.merge(rayonAModifier);
     
@@ -74,7 +73,7 @@ public class RayonFacade extends AbstractFacade<Rayon> implements RayonFacadeLoc
         
     Rayon result;
     
-        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.rayonNom =: rayonNom AND r.leMagasin =: magasin");
+        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.rayonNom =:rayonNom AND r.leMagasin =:magasin");
         req.setParameter("rayonNom", rayonNom);
         req.setParameter("magasin", magasin);
         
@@ -85,11 +84,11 @@ public class RayonFacade extends AbstractFacade<Rayon> implements RayonFacadeLoc
     }
     
     @Override
-    public Collection<Rayon> rechercherRayonParNomMagasin(Magasin magasin) {
+    public Collection<Rayon> rechercherRayonParMagasin(Magasin magasin) {
         
     Collection<Rayon> result;
     
-        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.leMagasin =: magasin");
+        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.leMagasin =:magasin");
         req.setParameter("magasin", magasin);
         
         result = req.getResultList();

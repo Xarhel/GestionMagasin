@@ -8,6 +8,7 @@ package facades;
 import Entites.Autre.Article;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
+import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -41,6 +42,28 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
     }
 
 
+    @Override
+    public void commencerPromotion(Collection<RayonArticle> cra, float prixPromotion) {
+    for (RayonArticle ra: cra)
+    {
+    ra.setPrixVente(prixPromotion);
+    
+    em.merge(ra);}
+    }
+    
+    @Override
+    public void cloturerPromotion(Collection<RayonArticle> cra){
+    
+    for (RayonArticle ra: cra){
+        
+        float prix = ra.getPrixRayon();
+    
+        ra.setPrixVente(prix);
+        
+        em.merge(ra);
+    }
+        }
+    
     
     
     
@@ -90,6 +113,28 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
         return result;
         
     }
+     public Collection<RayonArticle> chercherRayonArticlesParReference (int ref){
+     
+         Collection<RayonArticle> result;
+         Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra inner join ra.lesArticles ar  WHERE ar.referenceArticle=:ref" );
+        req.setParameter("ref", ref);
+               
+        result = req.getResultList();
+        
+        return result;
+     
+     }
+     
+     public void ajouterArticleARayon (Rayon r, Article a, float prixRayon) {
+     
+     RayonArticle ra = new RayonArticle();
+     ra.setPrixRayon(prixRayon);
+     ra.setLesArticles(a);
+     ra.setLesRayons(r);
+     em.persist(ra);}
+     
+    
+     
         
     }
     

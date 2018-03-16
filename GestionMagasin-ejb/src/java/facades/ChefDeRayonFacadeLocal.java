@@ -41,5 +41,6 @@ public interface ChefDeRayonFacadeLocal {
     public void supprimerChefDeRayon(ChefDeRayon CDR);
 
     void affecterChefDeRayon(ChefDeRayon cdr, Magasin magasin, Rayon rayon);
+    public ChefDeRayon rechercherChefDeRayonParId(int id);
     
 }

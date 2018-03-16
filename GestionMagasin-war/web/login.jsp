@@ -65,7 +65,7 @@
             <!-- BODY START -->            
             <div class = "container">
                 <div class="wrapper">
-                    <form action="Authentification" method="post" name="Login_Form" class="form-signin">                               
+                    <form action="Authentication" method="post" name="Login_Form" class="form-signin">                               
                         <h3 class="form-signin-heading">Connectez-vous</h3>
                         <hr class="colorgraph"><br>
                         <input type="text" name="action" value="connexion" hidden/>

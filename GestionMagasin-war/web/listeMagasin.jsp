@@ -39,7 +39,7 @@
                         <% Collection<Magasin> _magasin = magasin;
                             for (Magasin m : _magasin) {%>
                         <tr><td><%=m.getNom()%></td>
-                            <td><a href="Menu?action=pageModifieMagasin&id=<%=m.getId()%>" class="btn btn-info btn-md">
+                            <td><a href="Administrateur?action=versModifierMagasin&id=<%=m.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Modifier un magasin"></span>Modifier
                                 </a>
 

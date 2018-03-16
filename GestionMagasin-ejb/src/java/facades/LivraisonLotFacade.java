@@ -5,7 +5,13 @@
  */
 package facades;
 
+import Entites.Autre.CommandeLot;
+import Entites.Autre.Livraison;
 import Entites.Autre.LivraisonLot;
+import Entites.Autre.LivraisonLot_;
+import Entites.Lot.Lot;
+import java.util.Collection;
+import java.util.Iterator;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,4 +35,57 @@ public class LivraisonLotFacade extends AbstractFacade<LivraisonLot> implements 
         super(LivraisonLot.class);
     }
     
-}
+    
+   /* 
+    @Override
+    public void creerLivraisonLots(Collection <CommandeLot> listeCommandeLot, Livraison livraison)
+    {
+        
+        
+         // Non terminé, A voir comment on s'organise (Max)
+        Iterator it=listeCommandeLot.iterator();
+        
+        livraison.getId();
+        
+        while(it.hasNext())
+        {
+            CommandeLot lotActuel=(CommandeLot)it.next();
+            Lot lotAAssocier= lotActuel.getLeLot();
+            int quantiteExpedie=lotActuel.getQuantite();
+            
+            LivraisonLot livraisonlots=new LivraisonLot();
+            
+            livraisonlots.setLaLivraison(livraison);
+            livraisonlots.setLeLot(lotAAssocier);
+            livraisonlots.setQuantiteAcceptee(quantiteExpedie);
+            livraisonlots.setQuantiteExpediee(quantiteExpedie);
+            livraisonlots.setQuantiteLivree(quantiteExpedie);
+            
+            em.persist(livraisonlots);
+            
+            
+        } }
+*/            
+        
+        
+    @Override
+        public LivraisonLot creerLivraisonLot(Lot lot, Livraison livraison, int quantiteExpediee, int quantiteAcceptee, int quantiteLivree)
+        {
+            LivraisonLot livraisonLot= new LivraisonLot();
+            
+            livraisonLot.setLaLivraison(livraison);
+            livraisonLot.setQuantiteAcceptee(quantiteAcceptee);
+            livraisonLot.setLeLot(lot);
+            livraisonLot.setQuantiteExpediee(quantiteExpediee);
+            livraisonLot.setQuantiteLivree(quantiteLivree);
+            
+            
+            em.persist(livraisonLot);
+            return livraisonLot;
+            
+            
+        }
+        
+        
+    }
+

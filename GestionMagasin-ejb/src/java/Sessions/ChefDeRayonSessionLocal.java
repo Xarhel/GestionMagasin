@@ -21,7 +21,7 @@ public interface ChefDeRayonSessionLocal {
 
     public void ajouterFournisseur(String raisonSocial, String login, String password);
 
-    public void ajouterArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion, float prixPromotion);
+    public void ajouterArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion);
 
     public void modifierPrixArticle(Rayon r, Article a, float prix);
 

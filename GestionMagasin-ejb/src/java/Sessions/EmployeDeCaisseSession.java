@@ -16,4 +16,7 @@ public class EmployeDeCaisseSession implements EmployeDeCaisseSessionLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+    
+    
+    
 }

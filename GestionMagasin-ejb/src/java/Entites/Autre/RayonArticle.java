@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -22,11 +24,11 @@ import javax.persistence.ManyToMany;
 @Entity
 public class RayonArticle implements Serializable {
 
-        @ManyToMany
-    private List<Article> lesArticles;
+        @ManyToOne
+    private Article lesArticles;
         
-        @ManyToMany(mappedBy = "lesRayonArticles")
-    private List<Rayon> lesRayons;
+        @ManyToOne
+    private Rayon lesRayons;
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -107,6 +109,22 @@ public class RayonArticle implements Serializable {
      */
     public void setPrixRayon(float prixRayon) {
         this.prixRayon = prixRayon;
+    }
+
+    public Article getLesArticles() {
+        return lesArticles;
+    }
+
+    public void setLesArticles(Article lesArticles) {
+        this.lesArticles = lesArticles;
+    }
+
+    public Rayon getLesRayons() {
+        return lesRayons;
+    }
+
+    public void setLesRayons(Rayon lesRayons) {
+        this.lesRayons = lesRayons;
     }
 
 

@@ -39,7 +39,7 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
     public Employe chercherEmployeParId(int id) {
         Employe result;
     
-        Query req = getEntityManager().createQuery("SELECT e FROM Employe AS e WHERE e.id =: id");
+        Query req = getEntityManager().createQuery("SELECT e FROM Employe AS e WHERE e.id =:id");
         req.setParameter("idMagasin", id);
         
         result = (Employe) req.getSingleResult();
@@ -48,28 +48,26 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
     }
     
     
-    
-     public void modifierEmploye(Employe E, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    @Override
+     public void modifierEmploye(Employe E, String nom, String prenom, String login, String mdp, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
      {
          
         E.setNomPersonne(nom);
         E.setPrenomPersonne(prenom);
         E.setLogin(login);
         E.setPassword(mdp);
-        E.setDateCreationCompte(dateCreationCompte);
         E.setTypeCompte(typeCompte);
         E.setLeMagasin(magasin);
         E.setLeRayon(rayon);
         em.merge(E);
-         
-         
-         
+ 
      }
+     
+     @Override
      public void supprimerEmploye(Employe E)
      {
          em.remove(E);
-    
-}
+     }
 
     @Override
     public Collection<Employe> afficherTousEmployes() {
@@ -77,6 +75,6 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
         Query req = em.createQuery("SELECT e FROM Employe AS e");
         e = req.getResultList();
         return e;
-    }      
+    }
      
 }

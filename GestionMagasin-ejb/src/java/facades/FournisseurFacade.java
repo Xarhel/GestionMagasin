@@ -9,6 +9,7 @@ import Entites.Personne.Fournisseur;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -38,6 +39,19 @@ public class FournisseurFacade extends AbstractFacade<Fournisseur> implements Fo
         em.persist(fournisseur);
     }
   
+    @Override
+    public Fournisseur rechercherFournisseurParId(int id)
+    {
+         Fournisseur result;
     
+        Query req = getEntityManager().createQuery("SELECT f FROM Fournisseur AS f WHERE f.id=:id");
+        req.setParameter("id", id);
+        
+        result = (Fournisseur) req.getSingleResult();
+        
+        return result;
+        
+    }
+    }
     
-}
+

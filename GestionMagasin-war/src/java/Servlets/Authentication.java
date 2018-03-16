@@ -53,11 +53,12 @@ public class Authentication extends HttpServlet {
         
         // If-else inital permettant de diriger les requètes utilisateurs       
         // Jsp par defaut lorsque l'utilisateur exécute la solution
+        
         if((action==null) || (action.equals("null")))
         {
             jspClient="/login.jsp";           
         }
-               
+  
         else if(action.equals("connexion")) {
             HttpSession session = request.getSession(true);
             String login = request.getParameter("userName");
@@ -73,7 +74,7 @@ public class Authentication extends HttpServlet {
                         message = "Administrateur";
                         session.setAttribute("user", p);
                         request.setAttribute("message", message);
-                        jspClient ="/Administrateur";
+                        jspClient ="/include/menu.jsp";
                     }
                     if (p instanceof ChefDeRayon)
                     {
@@ -86,7 +87,7 @@ public class Authentication extends HttpServlet {
                     if (p instanceof EmployeDeCaisse)
                     {
                         EmployeDeCaisse c = (EmployeDeCaisse) p;
-                        message = "Employ� de caisse";
+                        message = "Employé de caisse";
                         session.setAttribute("user", c);
                         request.setAttribute("message", message);
                         jspClient ="/login.jsp";
@@ -94,7 +95,7 @@ public class Authentication extends HttpServlet {
                     if (p instanceof EmployeRayon)
                     {
                         EmployeRayon r = (EmployeRayon) p;
-                        message = "Employ� de rayon";
+                        message = "Employé de rayon";
                         session.setAttribute("user", r);
                         request.setAttribute("message", message);
                         jspClient ="/login.jsp";
@@ -102,7 +103,7 @@ public class Authentication extends HttpServlet {
                     if (p instanceof GerantMagasin)
                     {
                         GerantMagasin g = (GerantMagasin) p;
-                        message = "G�rant de magasin";
+                        message = "Gérant de magasin";
                         session.setAttribute("user", g);
                         request.setAttribute("message", message);
                         jspClient ="/login.jsp";
@@ -147,7 +148,7 @@ public class Authentication extends HttpServlet {
             }
         }              
         
-        
+                
         RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
         rd.forward(request, response);     

@@ -52,7 +52,7 @@
                             <td><a href="Menu?action=pagemodifierEmploye&id=<%=e.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Modifier un employée"></span>Modifier
                                 </a>
-                                <a href="Menu?action=pagesupprimerEmploye&id=<%=e.getId()%>" class="btn btn-info btn-md">
+                                <a href="Administrateur?action=supprimerEmploye&id=<%=e.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Supprimer un employe"></span>Supprimer
                                 </a>
 

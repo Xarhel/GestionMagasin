@@ -7,12 +7,15 @@ package facades;
 
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.Livraison;
+import Entites.Autre.Magasin;
 import Entites.Enum.StatutLivraison;
 import Entites.Personne.AgentDeLivraison;
+import java.util.Collection;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -49,6 +52,21 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
     
     
     @Override
+    public Collection <Livraison> afficherLivraisonsEnCours (Magasin magasin) {
+    
+        Collection<Livraison> result;
+        
+        Query req = getEntityManager().createQuery("select l from Livraison l join l.leBonDeCommande bdc join bdc.leChefDeRayon cdr join cdr.leMagasin mag Where l.statutLivraison =?0 And cdr.leMagasin=:magasin");
+        req.setParameter("magasin", magasin);
+        
+        result = req.getResultList();
+        
+        
+        
+    return result;
+    }
+    
+    @Override
     public void recevoirLivraison(Livraison livraison, Date dateReception)
     {
         
@@ -58,5 +76,18 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
         em.merge(livraison);
     }
     
+    
+    @Override
+    public Livraison rechercherLivraisonParId(int idLivraison)
+    {
+        Livraison result;
+    
+        Query req = getEntityManager().createQuery("SELECT liv FROM Livraison AS liv WHERE liv.id=:idLivraison");
+        req.setParameter("idLivraison", idLivraison);
+        
+        result = (Livraison) req.getSingleResult();
+        
+        return result;
+    }
     
 }

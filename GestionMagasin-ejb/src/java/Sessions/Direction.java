@@ -60,6 +60,7 @@ public class Direction implements DirectionLocal {
     
     
     
+    @Override
     public void ajouterPromotion(Article a, float prix)
     {
         if(a.isPromotion()==true && a.getPrixPromotion()==prix)
@@ -76,6 +77,7 @@ public class Direction implements DirectionLocal {
     }
     
     
+    @Override
     public void annulerPromotion(Article a)
     {
         if(a.isPromotion()==true)
@@ -84,37 +86,44 @@ public class Direction implements DirectionLocal {
         }
     }
     
+    @Override
     public Employe rechercherEmployeParId(int idEmploye)
     {
         Employe resutlat= employeFacade.chercherEmployeParId(idEmploye);
         return resutlat;
     }
     
+    @Override
     public void affecterGerantMagasin(GerantMagasin gm, Magasin mag)
     {
        gerantMagasinFacade.affecterGerantMagasin(gm, mag);
     }
     
+    @Override
     public void affecterChefDeRayon(ChefDeRayon cdr, Magasin mag, Rayon rayon)
     {
         chefDeRayonFacade.affecterChefDeRayon(cdr, mag, rayon);
     }
     
+    @Override
     public void affecterEmployeDeCaisse(EmployeDeCaisse edc, Magasin mag)
     {
         employeDeCaisseFacade.affecterEmployeDeCaisse(edc, mag);
     }
     
+    @Override
     public void affecterEmployeRayon(EmployeRayon er, Magasin mag,Rayon rayon)
     {
         employeRayonFacade.affecterEmployeDeRayon(er, mag, rayon);
     }
     
+    @Override
     public void affecterAgentLivraison(AgentDeLivraison adl, Magasin magasin)
     {
         agentDeLivraisonFacade.affecterAgentDeLivraison(adl, magasin);
     }
     
+    @Override
     public Collection<Article> afficherArticleParLibelle(String libelle)
     {
        Collection<Article> resultat= articleFacade.rechercherArticleParLibelle(libelle);
@@ -122,6 +131,7 @@ public class Direction implements DirectionLocal {
         return resultat;
     }
     
+    @Override
     public Article afficherArticleParReference(int reference)
     {
         Article resultat= articleFacade.rechercheArticleParReference(reference);

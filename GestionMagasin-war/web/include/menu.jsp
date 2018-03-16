@@ -20,16 +20,16 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrateur<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="creerEmploye.jsp" class="">Créer un employé</a></li>
-                        <li><a href="Menu?action=employes">Tous les employes</a></li>
-                        <li><a href="creerMagazin.jsp" class="">Créer un magasin</a></li>
-                        <li><a href="Menu?action=magasins.jsp" class="">Liste des magasins</a></li>
+                        <li><a href="creerMagasin.jsp" class="">Créer un magasin</a></li>
+                        <li><a href="Administrateur?action=afficherTousMagasins" class="">Liste des magasins</a></li>
                         <li><a href="rechercherMagasinParId.jsp" class="">Liste des magasins par Id</a></li>
                         <li><a href="rechercherMagasinParNom.jsp" class="">Liste des magasins par nom</a></li>
                         <li><a href="creerRayon.jsp" class="">Créer un rayon</a></li>
                         <li><a href="Menu?action=rayons" class="">Créer un employé</a></li>
                         <li><a href="chercherRayonParNomParMagasin.jsp" class="">Liste des rayons par nom</a></li>
                         <li><a href="listeDeRayonParMagasin.jsp" class="">Liste des rayons par magasin</a></li>
-                        
+                        <li><a href="supprimerUtilisateur.jsp" class="">Supprimer un utilisateur</a></li>
+                        <li><a href="Administrateur?action=afficherTousEmployes" class="">Afficher tous les employés</a></li>
                     </ul>
                 </li> 
                 

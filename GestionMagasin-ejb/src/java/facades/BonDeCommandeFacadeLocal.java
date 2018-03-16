@@ -5,8 +5,9 @@
  */
 package facades;
 
-import Entites.Autre.Article;
 import Entites.Autre.BonDeCommande;
+import Entites.Autre.Magasin;
+import Entites.Personne.ChefDeRayon;
 import Entites.Personne.Fournisseur;
 import java.util.Collection;
 import java.util.Date;
@@ -34,11 +35,25 @@ public interface BonDeCommandeFacadeLocal {
 
     int count();
 
-    void creerBonDeCommande(Date dateCommande);
+    
 
     public Collection<BonDeCommande> rechercherCommande(Date dateCommande, int idFournisseur, int idArticle);
     public Collection<BonDeCommande> rechercherCommandeParArticle( int idArticle);
 
     public Collection <BonDeCommande> getBonDeCommandes();
+
+    public BonDeCommande rechercherBonDeCommandeParId(int id);
+
+  
+
+    public Collection<BonDeCommande> rechercherBonDeCommandeParMagasin(Magasin mag);
+
+    public void creerBonDeCommande(ChefDeRayon cdr, Date dateCreation, Fournisseur fournisseur);
+
+    public Collection<BonDeCommande> rechercherBonDeCommandeParFournisseur(Fournisseur fournisseur);
+
+    public BonDeCommande rechercherBonDeCommandeParFournisseurDateEtChef(Fournisseur fournisseur, Date dateCreation, ChefDeRayon cdr);
+    
+    
     
 }
