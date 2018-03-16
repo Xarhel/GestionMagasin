@@ -16,7 +16,17 @@
         <jsp:useBean id="magasin" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
-            <input type="text" placeholder="Rechercher par nom du magasin..">
+            <div class="container">
+            <jsp:include page="include/menu.jsp"/>
+            <!-- BODY START -->
+            <form method="POST" action="...">
+                <div class="recherche">
+                    <div class="col-md-4">
+            <input type="text" name="keyword" placeholder="Rechercher.."value="Recherche"/>
+                    <button class="btn btn-success">ok</button>
+                    </div>
+                </div>
+            <h2>Liste des magasins</h2>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -32,5 +42,8 @@
                     <td><%=m.getNom()%></td>
                 </tr><%}%>
             </tbody>
+            </table>
+            </form>
+            </div>
     </body>
 </html>

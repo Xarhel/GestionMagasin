@@ -6,12 +6,14 @@
 
 <%@page import="Entites.Autre.Adresse"%>
 <%@page import="Entites.Autre.Rayon"%>
+<%@page import="Entites.Autre.Magasin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>        
         <title>Modifier un rayon</title>
         <jsp:useBean id="rayon" scope="request" type="Entites.Autre.Rayon"></jsp:useBean>
+        <jsp:useBean id="magasin" scope="request" type="Entites.Autre.Rayon"></jsp:useBean>
         <jsp:include page="include/header.jsp"/>
 
     </head>
@@ -34,8 +36,8 @@
                         <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
                         <select name="nom" class="col-md-3 form-control" required>
                             <option></option>
-                            <% Collection<Magasin> _magasins = magasins;
-                            for (magasin m : _magasins) {%>
+                            <% Collection<Magasin> _magasin = magasin;
+                            for (Magasin m : _magasin) {%>
                             <option value="<%=m.getId()%>"><%=m.getNom()%></option>
                             <%}%>
                         </select>  

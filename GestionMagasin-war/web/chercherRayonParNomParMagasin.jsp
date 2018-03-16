@@ -21,16 +21,17 @@
             <div class="container">
             <jsp:include page="include/menu.jsp"/>
             <!-- BODY START -->
-            <div>
-                
-            <form class="form-group">
+            <div>    
+           <form method="POST" action="...">
                 <div class="recherche">
+                    <div class="col-md-4">
                     <input type="text" name="keyword" placeholder="Rechercher par identifiant du rayon.."value="Recherche"/>
                     <button>ok</button>
+                    </div>
                 </div>
-            </form>
+            
                 <h1>Liste des rayons</h1>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Nom du rayon</th>
@@ -38,14 +39,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                <% Collection<Rayon> _rayons = rayons;
-                for (rayon r : _rayons) {%>
+                <% Collection<Rayon> _rayon = rayon;
+                for (Rayon r : _rayon) {%>
                 <tr>
                     <td><%=r.getRayonNom()%></td>
-                    <td><%=r.getMadasi().getNom()%></td>
+                    <td><%=r.getMagaasin().getNom()%></td>
                 </tr><%}%>
             </tbody>
             </table>
-            </div>
+           </form>
+           </div>
+            
     </body>
 </html>

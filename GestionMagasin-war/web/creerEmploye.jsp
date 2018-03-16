@@ -6,6 +6,7 @@
 <%@page import="java.util.Collection"%>
 <%@page import="Entites.Autre.Magasin"%>
 <%@page import="Entites.Autre.Rayon"%>
+<%@page import="Entites.Personne.Employe"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@
                 <!-- BODY START -->
                 <div>
                     <h1>Créer employe</h1>
-                    <form method="POST" action="Menu">
+                    <form method="POST" action="....">
                         <input hidden type="text" name="action" value="creerEmploye"/>
                         <div class="form-group row">
                             <label class="col-md-2">Nom<span class="requis">*</span></label>

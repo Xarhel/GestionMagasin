@@ -32,8 +32,8 @@
                         <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
                         <select name="nom" class="col-md-3 form-control" required>
                             <option></option>
-                            <% Collection<Magasin> _magasins = magasins;
-                            for (magasin m : _magasins) {%>
+                            <% Collection<Magasin> _magasin = magasin;
+                            for (Magasin m : _magasin) {%>
                             <option value="<%=m.getId()%>"><%=m.getNom()%></option>
                             <%}%>
                         </select>  

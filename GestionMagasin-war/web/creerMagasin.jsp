@@ -11,7 +11,7 @@
     <head>        
         <title>Créer un magasin</title>
         <jsp:include page="include/header.jsp"/>
-        <jsp:useBean id="Adresse" scope="request" type="Entites.Autre.Adresse"></jsp:useBean>
+        <jsp:useBean id="adresse" scope="request" type="Entites.Autre.Adresse"></jsp:useBean>
 
         </head>
         <body>
@@ -20,8 +20,8 @@
             <!-- BODY START -->
             <div>
                 <h1>Créer un magasin</h1>
-                <form method="POST" action="Menu">
-                    <input hidden type="text" name="action" value="creerEmploye"/>
+                <form method="POST" action="...">
+                    <input hidden type="text" name="action" value="creerMagasin"/>
                     <div class="form-group row">
                         <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
                         <div class="col-md-4">
@@ -32,16 +32,16 @@
                         <label class="col-md-2">Libelle adresse<span class="requis">*</span></label>
                         <select name="adresse" class="col-md-3 form-control" required>
                             <option></option>
-                        <% Collection<Adresse> _adresses = adresses;
-                            for (adresse a : _adresses) {%>
+                        <% Collection<Adresse> _adresses = adresse;
+                            for (Adresse a : _adresse) {%>
                             <option value="<%=a.getId()%>"><%=a.getlibelleAdresse()%></option>
                             <%}%>
                         </select>
                         <label class="col-md-2">Nom du rue<span class="requis">*</span></label>
                         <select name="adresse" class="col-md-3 form-control" required>
                             <option></option>
-                        <% Collection<Adresse> _adresses = adresses;
-                            for (adresse a : _adresses) {%>
+                        <% Collection<Adresse> _adresse = adresse;
+                            for (Adresse a : _adresse) {%>
                             <option value="<%=a.getId()%>"><%=a.getrueNom()%></option>
                             <%}%>
                         </select>
@@ -49,24 +49,24 @@
                         <label class="col-md-2">Complement du rue<span class="requis">*</span></label>
                         <select name="adresse" class="col-md-3 form-control" required>
                             <option></option>
-                        <% Collection<Adresse> _adresses = adresses;
-                            for (adresse a : _adresses) {%>
+                        <% Collection<Adresse> _adresse = adresse;
+                            for (Adresse a : _adresse) {%>
                             <option value="<%=a.getId()%>"><%=a.getrueComplement()%></option>
                             <%}%>
                         </select>
                         <label class="col-md-2">Code postal<span class="requis">*</span></label>
                         <select name="adresse" class="col-md-3 form-control" required>
                             <option></option>
-                        <% Collection<Adresse> _adresses = adresses;
-                            for (adresse a : _adresses) {%>
+                        <% Collection<Adresse> _adresse = adresse;
+                            for (Adresse a : _adresse) {%>
                             <option value="<%=a.getId()%>"><%=a.getcodePostal()%></option>>
                             <%}%>
                         </select>    
                         <label class="col-md-2">Ville<span class="requis">*</span></label>
                         <select name="adresse" class="col-md-3 form-control" required>
                             <option></option>
-                        <% Collection<Adresse> _adresses = adresses;
-                            for (adresse a : _adresses) {%>
+                        <% Collection<Adresse> _adresse = adresse;
+                            for (Adresse a : _adresse) {%>
                             <option value="<%=a.getId()%>"><%=a.getville()%></option>
                             <%}%>
                         </select>     
