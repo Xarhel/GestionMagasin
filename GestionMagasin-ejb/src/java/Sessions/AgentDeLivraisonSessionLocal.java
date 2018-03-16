@@ -6,6 +6,7 @@
 package Sessions;
 
 import Entites.Autre.CommandeLot;
+import Entites.Autre.Livraison;
 import java.util.Collection;
 import java.util.Date;
 import javax.ejb.Local;
@@ -22,5 +23,7 @@ public interface AgentDeLivraisonSessionLocal {
     public Collection<CommandeLot> AfficherCommandeLots(int idLivraison);
 
     public void enregistrerLivraisonLots(int idLivraison, int idCommandeLot, int quantiteAcceptee, int quantiteExpediee, int quantiteLivree);
+
+    public Collection<Livraison> listerLivraisonEnCours(int idMagasin);
     
 }

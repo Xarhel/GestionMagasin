@@ -10,12 +10,14 @@ import Entites.Autre.BonDeCommande;
 import Entites.Autre.CommandeLot;
 import Entites.Autre.Livraison;
 import Entites.Autre.LivraisonLot;
+import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Lot.Lot;
 import Entites.Personne.ChefDeRayon;
 import facades.CommandeLotFacadeLocal;
 import facades.LivraisonFacadeLocal;
 import facades.LivraisonLotFacadeLocal;
+import facades.MagasinFacadeLocal;
 import facades.StockFacadeLocal;
 import java.util.Collection;
 import java.util.Date;
@@ -30,6 +32,9 @@ import javax.ejb.Stateless;
 public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
 
     @EJB
+    private MagasinFacadeLocal magasinFacade;
+
+    @EJB
     private StockFacadeLocal stockFacade;
 
     @EJB
@@ -40,6 +45,8 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
     
     @EJB
     private LivraisonLotFacadeLocal livraisonLotFacade;
+    
+    
     
     
 
@@ -86,6 +93,16 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
         LivraisonLot livraisonLot = livraisonLotFacade.creerLivraisonLot(lotLivre, livraison, quantiteExpediee, quantiteAcceptee, quantiteLivree);
         stockFacade.ajouterLotAuStock(livraisonLot, rayon, article);
         
+    }
+    
+    @Override
+    public Collection<Livraison> listerLivraisonEnCours (int idMagasin){
+        
+        
+        
+        Magasin m = magasinFacade.rechercherMagasinParId(idMagasin);
+        Collection<Livraison> result=livraisonFacade.afficherLivraisonsEnCours(m);
+        return result;
     }
 
 }
