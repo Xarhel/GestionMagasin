@@ -6,10 +6,14 @@
 package Sessions;
 
 import Entites.Autre.BonDeCommande;
+import Entites.Autre.Livraison;
 import Entites.Personne.AgentDeLivraison;
+import Entites.Personne.Fournisseur;
 import facades.AgentDeLivraisonFacadeLocal;
 import facades.BonDeCommandeFacadeLocal;
+import facades.FournisseurFacadeLocal;
 import facades.LivraisonFacadeLocal;
+import java.util.Collection;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -20,6 +24,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class FournisseurSession implements FournisseurSessionLocal {
+
+    @EJB
+    private FournisseurFacadeLocal fournisseurFacade;
 
     @EJB
     private LivraisonFacadeLocal livraisonFacade;
@@ -43,4 +50,18 @@ public class FournisseurSession implements FournisseurSessionLocal {
         
         
     }
+    
+    @Override
+    public Collection <BonDeCommande> consulterBonDeCommande(int idFournisseur)
+    {
+        Fournisseur four=fournisseurFacade.rechercherFournisseurParId(idFournisseur);
+        Collection <BonDeCommande> resultat= bonDeCommandeFacade.rechercherBonDeCommandeParFournisseur(four);
+        return resultat;
+        
+        
+    } 
+            
+            
+            
+            
 }

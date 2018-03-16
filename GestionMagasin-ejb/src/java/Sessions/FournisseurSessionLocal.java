@@ -5,6 +5,8 @@
  */
 package Sessions;
 
+import Entites.Autre.BonDeCommande;
+import java.util.Collection;
 import java.util.Date;
 import javax.ejb.Local;
 
@@ -16,5 +18,7 @@ import javax.ejb.Local;
 public interface FournisseurSessionLocal {
 
     public void creerLivraison(int idAgentDeLivraison, int idBonDeCommande, Date dateDebutLivraison);
+
+    public Collection<BonDeCommande> consulterBonDeCommande(int idFournisseur);
     
 }

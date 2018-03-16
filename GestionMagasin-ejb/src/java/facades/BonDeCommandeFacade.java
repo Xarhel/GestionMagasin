@@ -116,13 +116,26 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
     {
      Collection <BonDeCommande> result;
     
-        Query req = getEntityManager().createQuery("SELECT bdr FROM BonDeCommande AS bdr inner join bdr.leChefDeRayon as cdr WHERE cdr.leMagasin=:mag");
+        Query req = getEntityManager().createQuery("SELECT bdc FROM BonDeCommande AS bdc inner join bdc.leChefDeRayon as cdr WHERE cdr.leMagasin=:mag");
         req.setParameter("mag", mag);
         result = req.getResultList();
         
         return result;
         
         
+    }
+    
+    
+    @Override
+    public Collection <BonDeCommande> rechercherBonDeCommandeParFournisseur(Fournisseur fournisseur)
+    {
+         Collection <BonDeCommande> result;
+    
+        Query req = getEntityManager().createQuery("SELECT bdc FROM BonDeCommande AS bdc  WHERE bdc.leFournisseur=:fournisseur");
+        req.setParameter("fournisseur", fournisseur);
+        result = req.getResultList();
+        
+        return result;
     }
     
     
