@@ -230,5 +230,18 @@ public class Administrateur implements AdministrateurLocal {
         Adresse adresse = adresseFacade.creerAdresse(libelle, rue, complement, codePostal, ville);
         return adresse;
     }     
+
+    @Override
+    public void supprimerPersonne(Personne personne) {
+        personneFacade.supprimerPersonne(personne);
+    }
+
+    @Override
+    public Personne rechercherPersonneParId(int idPersonne) {
+        Personne personne = personneFacade.rechercherPersonneParId(idPersonne);
+        return personne;
+    }
     
+    
+   
 }
