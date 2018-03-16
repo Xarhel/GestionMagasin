@@ -434,6 +434,7 @@ public class Administrateur extends HttpServlet {
         int idMagasin = Integer.parseInt(id);
         Magasin m = administrateur.rechercherMagasinParId(idMagasin);
         request.setAttribute("magasin", m);
+        request.setAttribute("message", m.getNom());
     }
     
 }
