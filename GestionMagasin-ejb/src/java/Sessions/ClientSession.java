@@ -7,10 +7,13 @@ package Sessions;
 
 import Entites.Autre.Adresse;
 import Entites.Autre.Article;
+import Entites.Enum.MoyenPaiement;
 import Entites.Personne.Client;
+import Entites.Vente.Panier;
 import facades.AdresseFacadeLocal;
 import facades.ArticleFacadeLocal;
 import facades.ClientFacadeLocal;
+import facades.PanierFacadeLocal;
 import java.util.Collection;
 import java.util.Date;
 import javax.ejb.EJB;
@@ -22,6 +25,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class ClientSession implements ClientSessionLocal {
+
+    @EJB
+    private PanierFacadeLocal panierFacade;
 
     @EJB
     private ArticleFacadeLocal articleFacade;
@@ -42,7 +48,7 @@ public class ClientSession implements ClientSessionLocal {
     }
 
     @Override
-    public void creerAdresse(Client client, String libelleAdresse, String rueNom, String rueComplement, int codePostal, String ville)
+    public void creerEtAssocierAdresse(Client client, String libelleAdresse, String rueNom, String rueComplement, int codePostal, String ville)
     {
         Adresse adresse=adresseFacade.creerAdresse(libelleAdresse, rueNom, rueComplement, codePostal, ville);
         
@@ -67,6 +73,9 @@ public class ClientSession implements ClientSessionLocal {
         
         return resultat;
     }
+    
+   
+    
     
 
     

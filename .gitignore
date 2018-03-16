@@ -7,3 +7,6 @@
 /GestionMagasin-ejb/build/
 /GestionMagasin-ejb/dist/
 /GestionMagasin-war/web/nbproject/private/
+/GestionMagasin-war/build/
+/build/
+/GestionMagasin-war/dist/

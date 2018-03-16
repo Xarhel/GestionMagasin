@@ -39,7 +39,7 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
     public Employe chercherEmployeParId(int id) {
         Employe result;
     
-        Query req = getEntityManager().createQuery("SELECT e FROM Employe AS e WHERE e.id =: id");
+        Query req = getEntityManager().createQuery("SELECT e FROM Employe AS e WHERE e.id =:id");
         req.setParameter("idMagasin", id);
         
         result = (Employe) req.getSingleResult();
@@ -49,6 +49,7 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
     
     
     
+    @Override
      public void modifierEmploye(Employe E, String nom, String prenom, String login, String mdp, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
      {
          
@@ -64,6 +65,7 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
          
          
      }
+    @Override
      public void supprimerEmploye(Employe E)
      {
          em.remove(E);

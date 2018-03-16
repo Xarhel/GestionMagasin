@@ -33,6 +33,7 @@ public class EmployeRayonFacade extends AbstractFacade<EmployeRayon> implements 
         super(EmployeRayon.class);
     }
     
+    @Override
      public void creerEmployeDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
     {
         EmployeRayon EDR= new EmployeRayon();
@@ -48,6 +49,7 @@ public class EmployeRayonFacade extends AbstractFacade<EmployeRayon> implements 
         
     }
       
+    @Override
         public void modifierEmployeDeRayon(EmployeRayon EDR, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
     {
        
@@ -63,11 +65,13 @@ public class EmployeRayonFacade extends AbstractFacade<EmployeRayon> implements 
         
     }
         
+    @Override
         public void supprimerEmployeDeRayon(EmployeRayon EDR)
         {
             em.remove(EDR);
 }
     
+    @Override
         public void affecterEmployeDeRayon(EmployeRayon er, Magasin magasin,Rayon rayon)
         {
         er.setLeMagasin(magasin);

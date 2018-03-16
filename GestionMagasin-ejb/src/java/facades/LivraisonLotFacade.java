@@ -8,6 +8,7 @@ package facades;
 import Entites.Autre.CommandeLot;
 import Entites.Autre.Livraison;
 import Entites.Autre.LivraisonLot;
+import Entites.Autre.LivraisonLot_;
 import Entites.Lot.Lot;
 import java.util.Collection;
 import java.util.Iterator;
@@ -35,7 +36,7 @@ public class LivraisonLotFacade extends AbstractFacade<LivraisonLot> implements 
     }
     
     
-    
+   /* 
     @Override
     public void creerLivraisonLots(Collection <CommandeLot> listeCommandeLot, Livraison livraison)
     {
@@ -63,12 +64,28 @@ public class LivraisonLotFacade extends AbstractFacade<LivraisonLot> implements 
             em.persist(livraisonlots);
             
             
+        } }
+*/            
+        
+        
+    @Override
+        public LivraisonLot creerLivraisonLot(Lot lot, Livraison livraison, int quantiteExpediee, int quantiteAcceptee, int quantiteLivree)
+        {
+            LivraisonLot livraisonLot= new LivraisonLot();
+            
+            livraisonLot.setLaLivraison(livraison);
+            livraisonLot.setQuantiteAcceptee(quantiteAcceptee);
+            livraisonLot.setLeLot(lot);
+            livraisonLot.setQuantiteExpediee(quantiteExpediee);
+            livraisonLot.setQuantiteLivree(quantiteLivree);
+            
+            
+            em.persist(livraisonLot);
+            return livraisonLot;
             
             
         }
         
         
-        
-        
     }
-}
+

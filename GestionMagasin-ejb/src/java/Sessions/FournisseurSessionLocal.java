@@ -20,5 +20,7 @@ public interface FournisseurSessionLocal {
     public void creerLivraison(int idAgentDeLivraison, int idBonDeCommande, Date dateDebutLivraison);
 
     public Collection<BonDeCommande> consulterBonDeCommande(int idFournisseur);
+
+    public BonDeCommande RechercherBonDeCommandeParDateChefEtFournisseur(int idChefDeRayon, Date dateCreation, int idFournisseur);
     
 }

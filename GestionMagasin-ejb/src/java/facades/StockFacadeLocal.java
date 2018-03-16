@@ -5,6 +5,8 @@
  */
 package facades;
 
+import Entites.Autre.Article;
+import Entites.Autre.LivraisonLot;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
@@ -53,5 +55,7 @@ public interface StockFacadeLocal {
     public void retirerStockDuRayon(Stock S, int quantite);
 
     public Collection<Stock> chercherStockMagasin(Magasin magasin);
+
+    public void ajouterLotAuStock(LivraisonLot livraisonLot, Rayon rayon, Article article);
     
 }

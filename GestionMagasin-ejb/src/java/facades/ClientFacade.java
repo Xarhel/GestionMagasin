@@ -13,6 +13,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -58,6 +59,23 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
         listeAdresse.add(a);
         c.setAdresses(listeAdresse);
         em.merge(c);
+       
+    }
+    
+    
+    @Override
+    public Client rechercherClientParId(int id)
+    {
+    Client result;
+    
+        Query req = getEntityManager().createQuery("SELECT cl FROM Client AS cl WHERE cl.id=:id");
+        req.setParameter("id", id);
+        
+        result = (Client) req.getSingleResult();
+        
+        return result;
+        
+        
     }
   
 }

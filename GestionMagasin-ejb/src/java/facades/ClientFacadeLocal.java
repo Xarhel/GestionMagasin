@@ -38,6 +38,8 @@ public interface ClientFacadeLocal {
 
     public void associerAdresse(Adresse a, Client c);
 
+    public Client rechercherClientParId(int id);
+
    
 
     

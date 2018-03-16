@@ -51,6 +51,8 @@ public interface BonDeCommandeFacadeLocal {
     public void creerBonDeCommande(ChefDeRayon cdr, Date dateCreation, Fournisseur fournisseur);
 
     public Collection<BonDeCommande> rechercherBonDeCommandeParFournisseur(Fournisseur fournisseur);
+
+    public BonDeCommande rechercherBonDeCommandeParFournisseurDateEtChef(Fournisseur fournisseur, Date dateCreation, ChefDeRayon cdr);
     
     
     

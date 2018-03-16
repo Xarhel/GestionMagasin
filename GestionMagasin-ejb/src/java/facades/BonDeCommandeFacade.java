@@ -138,6 +138,19 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
         return result;
     }
     
+    @Override
+    public  BonDeCommande rechercherBonDeCommandeParFournisseurDateEtChef(Fournisseur fournisseur, Date dateCreation, ChefDeRayon cdr)
+    {
+        BonDeCommande result;
+    
+        Query req = getEntityManager().createQuery("SELECT bdc FROM BonDeCommande AS bdc  WHERE bdc.leFournisseur=:fournisseur AND bdc.dateCommande=:fournisseur AND bdc.leChefDeRayon=:cdr");
+        req.setParameter("fournisseur", fournisseur);
+        req.setParameter("dateCreation", dateCreation);
+        req.setParameter("cdr", cdr);
+        result = (BonDeCommande) req.getSingleResult();
+        
+        return result;
+    }
     
 }
 
