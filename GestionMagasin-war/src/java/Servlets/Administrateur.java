@@ -53,7 +53,7 @@ public class Administrateur extends HttpServlet {
         // Jsp par défaut lorsque l'utilisateur exécute la solution
         if((action==null) || (action.equals("null")))
         {
-            jspClient="/Menu";
+            jspClient="/include/menu.jsp";
         }
         
         else if(action.equals("creerUtilisateur"))
@@ -83,7 +83,7 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("afficherTousMagasins"))
         {
             afficherTousMagasins(request, response);
-            jspClient="/modifierMagasin.jsp";
+            jspClient="/listeMagasin.jsp";
         }
         
         else if(action.equals("creerMagasin"))
@@ -390,7 +390,7 @@ public class Administrateur extends HttpServlet {
     }
     
     // Sous-entend que l'utilisateur arrive sur une liste de magasins et sélectionne le magasin pour lequel il souhaite afficher les rayons
-    protected void afficherTousRayons(HttpServletRequest request,
+    protected void afficherTousRayonsParMagasin(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException
     {
         String magasin = request.getParameter("magasin");

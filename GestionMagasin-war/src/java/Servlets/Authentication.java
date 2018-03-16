@@ -74,7 +74,7 @@ public class Authentication extends HttpServlet {
                         message = "Administrateur";
                         session.setAttribute("user", p);
                         request.setAttribute("message", message);
-                        jspClient ="/login.jsp";
+                        jspClient ="/include/menu.jsp";
                     }
                     if (p instanceof ChefDeRayon)
                     {
