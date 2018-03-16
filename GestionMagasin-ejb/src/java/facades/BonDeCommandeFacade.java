@@ -116,7 +116,7 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
     {
      Collection <BonDeCommande> result;
     
-        Query req = getEntityManager().createQuery("SELECT bdr FROM BonDeCommande AS bdr inner join bdr.leChefDeRayon as cdr WHERE cdr.leMagasin=:mag");
+        Query req = getEntityManager().createQuery("SELECT bdc FROM BonDeCommande AS bdc inner join bdc.leChefDeRayon as cdr WHERE cdr.leMagasin=:mag");
         req.setParameter("mag", mag);
         result = req.getResultList();
         
@@ -125,6 +125,32 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
         
     }
     
+    
+    @Override
+    public Collection <BonDeCommande> rechercherBonDeCommandeParFournisseur(Fournisseur fournisseur)
+    {
+         Collection <BonDeCommande> result;
+    
+        Query req = getEntityManager().createQuery("SELECT bdc FROM BonDeCommande AS bdc  WHERE bdc.leFournisseur=:fournisseur");
+        req.setParameter("fournisseur", fournisseur);
+        result = req.getResultList();
+        
+        return result;
+    }
+    
+    @Override
+    public  BonDeCommande rechercherBonDeCommandeParFournisseurDateEtChef(Fournisseur fournisseur, Date dateCreation, ChefDeRayon cdr)
+    {
+        BonDeCommande result;
+    
+        Query req = getEntityManager().createQuery("SELECT bdc FROM BonDeCommande AS bdc  WHERE bdc.leFournisseur=:fournisseur AND bdc.dateCommande=:fournisseur AND bdc.leChefDeRayon=:cdr");
+        req.setParameter("fournisseur", fournisseur);
+        req.setParameter("dateCreation", dateCreation);
+        req.setParameter("cdr", cdr);
+        result = (BonDeCommande) req.getSingleResult();
+        
+        return result;
+    }
     
 }
 

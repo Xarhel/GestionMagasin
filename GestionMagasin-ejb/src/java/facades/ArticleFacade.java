@@ -81,7 +81,7 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
         
     Collection<Article> result;
     
-        Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.libelle LIKE libelle ");
+        Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.libelle =:libelle ");
         req.setParameter("libelle", libelle);
         
         result = req.getResultList();

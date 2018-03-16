@@ -37,6 +37,10 @@ public interface EmployeFacadeLocal {
     Employe chercherEmployeParId(int id);
 
     Collection<Employe> afficherTousEmployes();
+
+    public void modifierEmploye(Employe E, String nom, String prenom, String login, String mdp, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
+
+    public void supprimerEmploye(Employe E);
     
     public void modifierEmploye(Employe E, String nom, String prenom, String login, String mdp, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
     

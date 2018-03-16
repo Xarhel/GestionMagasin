@@ -6,10 +6,16 @@
 package Sessions;
 
 import Entites.Autre.BonDeCommande;
+import Entites.Autre.Livraison;
 import Entites.Personne.AgentDeLivraison;
+import Entites.Personne.ChefDeRayon;
+import Entites.Personne.Fournisseur;
 import facades.AgentDeLivraisonFacadeLocal;
 import facades.BonDeCommandeFacadeLocal;
+import facades.ChefDeRayonFacadeLocal;
+import facades.FournisseurFacadeLocal;
 import facades.LivraisonFacadeLocal;
+import java.util.Collection;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -20,6 +26,12 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class FournisseurSession implements FournisseurSessionLocal {
+
+    @EJB
+    private ChefDeRayonFacadeLocal chefDeRayonFacade;
+
+    @EJB
+    private FournisseurFacadeLocal fournisseurFacade;
 
     @EJB
     private LivraisonFacadeLocal livraisonFacade;
@@ -43,4 +55,29 @@ public class FournisseurSession implements FournisseurSessionLocal {
         
         
     }
+    
+    @Override
+    public Collection <BonDeCommande> consulterBonDeCommande(int idFournisseur)
+    {
+        Fournisseur four=fournisseurFacade.rechercherFournisseurParId(idFournisseur);
+        Collection <BonDeCommande> resultat= bonDeCommandeFacade.rechercherBonDeCommandeParFournisseur(four);
+        return resultat;
+        
+        
+    } 
+            
+    
+    @Override
+    public BonDeCommande RechercherBonDeCommandeParDateChefEtFournisseur(int idChefDeRayon, Date dateCreation, int idFournisseur)
+    {
+        Fournisseur fournisseur= fournisseurFacade.rechercherFournisseurParId(idFournisseur);
+        ChefDeRayon cdr= chefDeRayonFacade.rechercherChefDeRayonParId(idFournisseur);
+        
+        
+        BonDeCommande bdc=bonDeCommandeFacade.rechercherBonDeCommandeParFournisseurDateEtChef(fournisseur, dateCreation, cdr);
+        return bdc;
+    }
+            
+            
+            
 }

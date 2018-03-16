@@ -23,6 +23,8 @@ public class Stock implements Serializable {
     
     @OneToOne
     private Article lArticle;
+    
+    
 
 
     private static final long serialVersionUID = 1L;
@@ -90,7 +92,7 @@ public class Stock implements Serializable {
     /**
      * Get the value of leStock
      *
-     * @return the value of leStock
+     * @param lArticle
      */
     public void setlArticle(Article lArticle) {
         this.lArticle = lArticle;

@@ -33,6 +33,8 @@ public class StockRetraitFacade extends AbstractFacade<StockRetrait> implements 
         super(StockRetrait.class);
     }
 
+    
+    // Besoin d'explication sur cette méthode, pas compris comment elle marche (Maxime)
     @Override
     public void retirerStockPerime(Collection<Stock> stockARetirer, Date dateRetrait) {
         

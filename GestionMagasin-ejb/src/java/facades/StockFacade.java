@@ -5,6 +5,8 @@
  */
 package facades;
 
+import Entites.Autre.Article;
+import Entites.Autre.LivraisonLot;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
@@ -160,6 +162,22 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         
         return result;
     }
+    
+    @Override
+    public void ajouterLotAuStock (LivraisonLot livraisonLot, Rayon rayon, Article article){
+        
+        int quantite = livraisonLot.getQuantiteAcceptee();
+        Stock stock = new Stock();
+        
+        stock.setLaLivraisonLot(livraisonLot);
+        stock.setLeRayon(rayon);
+        stock.setlArticle(article);
+        stock.setQuantiteStock(quantite);
+        
+        em.persist(quantite);
+       
+        
+        }
 }
 
 

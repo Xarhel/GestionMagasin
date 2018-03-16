@@ -5,8 +5,14 @@
  */
 package facades;
 
+import Entites.Autre.Magasin;
+import Entites.Enum.MoyenPaiement;
 import Entites.Enum.TypeLivraison;
+import Entites.Personne.Client;
+import Entites.Vente.Panier;
 import Entites.Vente.PanierInternet;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,12 +36,22 @@ public class PanierInternetFacade extends AbstractFacade<PanierInternet> impleme
         super(PanierInternet.class);
     }
 
-    @Override
-    public void creerPanierInternet(TypeLivraison TypeLivraison) {
-        PanierInternet pi= new PanierInternet();
-        pi.setTypeLivraison(TypeLivraison);
-        em.persist(pi);
+   @Override
+    public PanierInternet creerPanier(MoyenPaiement moyenPaiement, Client c, Magasin mag,TypeLivraison typeLivraison) {
+        PanierInternet p= new PanierInternet();
         
+        Date dateDuJour= new Date();
+        p.setDateJour((java.sql.Date) dateDuJour);
+        p.setMontantTotal(0);
+        p.setMoyenPaiement(moyenPaiement);
+        p.setLeMagasin(mag);
+        p.setLeClient(c);
+        p.setTypeLivraison(typeLivraison);
+        
+        em.persist(p);
+        return p;
     }
+    
+
     
 }

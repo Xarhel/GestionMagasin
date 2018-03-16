@@ -7,7 +7,6 @@ package Sessions;
 
 import Entites.Autre.Article;
 import Entites.Autre.RayonArticle;
-import facades.RayonArticleFacade;
 import java.util.Collection;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

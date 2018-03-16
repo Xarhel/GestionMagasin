@@ -77,11 +77,13 @@ public class MagasinFacade extends AbstractFacade<Magasin> implements MagasinFac
         return result;
         
     }
+    @Override
     public void supprimerMagasin(Magasin mag)
     {
         em.remove(mag);
     }
     
+    @Override
     public Collection<Magasin> afficherTousMagasins()
     {
         Collection<Magasin> magasin;

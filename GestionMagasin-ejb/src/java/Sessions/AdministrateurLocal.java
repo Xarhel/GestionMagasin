@@ -57,5 +57,9 @@ public interface AdministrateurLocal {
     Collection<Magasin> afficherTousMagasins();
 
     Adresse creerAdresse(String libelle, String rue, String complement, int codePostal, String ville);
+
+    void supprimerPersonne(Personne personne);
+
+    Personne rechercherPersonneParId(int idPersonne);
     
 }

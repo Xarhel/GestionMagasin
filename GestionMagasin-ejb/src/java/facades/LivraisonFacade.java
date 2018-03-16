@@ -7,8 +7,10 @@ package facades;
 
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.Livraison;
+import Entites.Autre.Magasin;
 import Entites.Enum.StatutLivraison;
 import Entites.Personne.AgentDeLivraison;
+import java.util.Collection;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -48,6 +50,21 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
         
     }
     
+    
+    @Override
+    public Collection <Livraison> afficherLivraisonsEnCours (Magasin magasin) {
+    
+        Collection<Livraison> result;
+        
+        Query req = getEntityManager().createQuery("select l from Livraison l join l.leBonDeCommande bdc join bdc.leChefDeRayon cdr join cdr.leMagasin mag Where l.statutLivraison =?0 And cdr.leMagasin=:magasin");
+        req.setParameter("magasin", magasin);
+        
+        result = req.getResultList();
+        
+        
+        
+    return result;
+    }
     
     @Override
     public void recevoirLivraison(Livraison livraison, Date dateReception)

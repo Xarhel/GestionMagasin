@@ -59,4 +59,19 @@ public class CommandeLotFacade extends AbstractFacade<CommandeLot> implements Co
         
     }
     
+    @Override
+    public CommandeLot rechercherCommandeLotParId(int cl)
+    {
+        CommandeLot result;
+    
+        Query req = getEntityManager().createQuery("SELECT c FROM CommandeLot AS c WHERE c.id=:cl");
+        req.setParameter("cl", cl);
+        
+        result = (CommandeLot) req.getSingleResult();
+        
+        return result;
+        
+        
+    }
+    
 }

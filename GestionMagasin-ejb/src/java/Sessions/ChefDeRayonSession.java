@@ -59,6 +59,7 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
     @Override
    public void ajouterFournisseur(String raisonSocial, String login, String password)
    {
+       
        fournisseurFacade.creerFournisseur(raisonSocial, login, password);
    }
    
