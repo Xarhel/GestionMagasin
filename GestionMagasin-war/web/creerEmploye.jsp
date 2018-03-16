@@ -3,6 +3,7 @@
     Created on : 14 mars 2018, 09:09:01
     Author     : 5153218
 --%>
+<%@page import="java.util.Collection"%>
 <%@page import="Entites.Autre.Magasin"%>
 <%@page import="Entites.Autre.Rayon"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -62,8 +63,8 @@
                             <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
                             <select name="nom" class="col-md-3 form-control" required>
                                 <option></option>
-                            <% Collection<Magasin> _magasins = magasins;
-                            for (magasin m : _magasins) {%>
+                            <% Collection<Magasin> _magasins = magasin;
+                            for (Magasin m : _magasins) {%>
                             <option value="<%=m.getId()%>"><%=m.getNom()%></option>
                             <%}%>
                         </select>  
@@ -73,8 +74,8 @@
                         <select name="nom" class="col-md-3 form-control" required>
                                 <option></option>
                             <% Collection<Rayon> _rayons = rayon;
-                            for (magasin m : _rayons) {%>
-                            <option value="<%=m.getId()%>"><%=m.getRayonNom()%></option>
+                            for (Rayon r : _rayons) {%>
+                            <option value="<%=r.getId()%>"><%=r.getRayonNom()%></option>
                             <%}%>
                         </select>  
                     </div> 

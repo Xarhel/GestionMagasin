@@ -22,7 +22,7 @@
                         <li><a href="creerEmploye.jsp" class="">Créer un employé</a></li>
                         <li><a href="Menu?action=employes">Tous les employes</a></li>
                         <li><a href="creerMagazin.jsp" class="">Créer un magasin</a></li>
-                        <li><a href="Menu?action=magasins.jsp" class="">Liste des magasins</a></li>
+                        <li><a href="Administrateur?action=afficherTousMagasins" class="">Liste des magasins</a></li>
                         <li><a href="rechercherMagasinParId.jsp" class="">Liste des magasins par Id</a></li>
                         <li><a href="rechercherMagasinParNom.jsp" class="">Liste des magasins par nom</a></li>
                         <li><a href="creerRayon.jsp" class="">Créer un rayon</a></li>

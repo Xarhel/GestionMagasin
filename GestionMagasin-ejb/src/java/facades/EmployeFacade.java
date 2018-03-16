@@ -48,7 +48,7 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
     }
     
     
-    
+    @Override
      public void modifierEmploye(Employe E, String nom, String prenom, String login, String mdp, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
      {
          
@@ -60,15 +60,14 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
         E.setLeMagasin(magasin);
         E.setLeRayon(rayon);
         em.merge(E);
-         
-         
-         
+ 
      }
+     
+     @Override
      public void supprimerEmploye(Employe E)
      {
          em.remove(E);
-    
-}
+     }
 
     @Override
     public Collection<Employe> afficherTousEmployes() {
