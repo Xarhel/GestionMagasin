@@ -15,12 +15,15 @@ import Entites.Personne.Direction;
 import Entites.Personne.Employe;
 import Entites.Personne.Personne;
 import static Entites.Personne.Personne_.typeCompte;
+import facades.AdresseFacadeLocal;
 import facades.AgentDeLivraisonFacadeLocal;
 import facades.ChefDeRayonFacadeLocal;
 import facades.DirectionFacadeLocal;
 import facades.EmployeDeCaisseFacadeLocal;
+import facades.EmployeFacadeLocal;
 import facades.EmployeRayonFacadeLocal;
 import facades.GerantMagasinFacadeLocal;
+import facades.MagasinFacadeLocal;
 import facades.PersonneFacadeLocal;
 import facades.RayonFacadeLocal;
 import java.util.Collection;
@@ -37,15 +40,16 @@ import javax.ejb.Stateless;
 public class Administrateur implements AdministrateurLocal {
 
     @EJB
+    private AdresseFacadeLocal adresseFacade;
+
+    @EJB
+    private EmployeFacadeLocal employeFacade;
+
+    @EJB
+    private MagasinFacadeLocal magasinFacade;
+
+    @EJB
     private PersonneFacadeLocal personneFacade;
-
-   
-    @EJB
-    private facades.AdresseFacade adresseFacade;
-  
-
-    @EJB
-    private facades.EmployeFacade employeFacade;
     
     @EJB
     private RayonFacadeLocal rayonFacade;
@@ -64,14 +68,7 @@ public class Administrateur implements AdministrateurLocal {
 
     @EJB
     private ChefDeRayonFacadeLocal chefDeRayonFacade;
-
-    
-    @EJB
-    private facades.MagasinFacadeLocal magasinFacadeLocal;
-    
-    @EJB
-    private facades.RayonFacadeLocal rayonFacadeLocal;
-    
+      
     @EJB
     private AgentDeLivraisonFacadeLocal agentDeLivraisonFacade;
     
@@ -83,8 +80,8 @@ public class Administrateur implements AdministrateurLocal {
     @Override
     public void creerEmploye(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, int idMagasin, int idRayon)
     {
-        Magasin Mag= magasinFacadeLocal.rechercherMagasinParId(idMagasin);
-        Rayon Ray=  rayonFacadeLocal.rechercherRayonParId(idRayon);
+        Magasin Mag= magasinFacade.rechercherMagasinParId(idMagasin);
+        Rayon Ray=  rayonFacade.rechercherRayonParId(idRayon);
         
      if(typeCompte==TypeCompte.agentDeLivraison)
      {
@@ -124,69 +121,81 @@ public class Administrateur implements AdministrateurLocal {
      
     }
     
+    @Override
     public void modifierEmploye(Employe employe, String nom, String prenom, String login, String mdp, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
     {
      employeFacade.modifierEmploye(employe, nom, prenom, login, mdp, typeCompte, magasin, rayon);
     }
     
+    @Override
     public void supprimerEmploye(Employe employe)
     {
         employeFacade.supprimerEmploye(employe);
     }
     
+    @Override
     public void creerMagasin(String nom, Adresse adresseMag)
     {
-        magasinFacadeLocal.creerMagasin(nom, adresseMag);
+        magasinFacade.creerMagasin(nom, adresseMag);
     }
     
+    @Override
     public void modifierMagasin( Magasin mag, String nom)
     {
-        magasinFacadeLocal.modifierMagasin(mag, nom);
+        magasinFacade.modifierMagasin(mag, nom);
     }
     
+    @Override
     public void supprimerMagasin(Magasin mag)
     {
-        magasinFacadeLocal.supprimerMagasin(mag);
+        magasinFacade.supprimerMagasin(mag);
     }
     
+    @Override
     public Magasin rechercherMagasinParId(int idMagasin)
     {
-        Magasin mag= magasinFacadeLocal.rechercherMagasinParId(idMagasin);
+        Magasin mag= magasinFacade.rechercherMagasinParId(idMagasin);
         return mag;
     }
     
+    @Override
     public Magasin rechercherMagasinParNom(String nom)
     {
-        Magasin mag= magasinFacadeLocal.rechercherMagasinParNom(nom);
+        Magasin mag= magasinFacade.rechercherMagasinParNom(nom);
         return mag;
     }
     
+    @Override
     public void creerRayon(String nom, Magasin mag)
     {
-        rayonFacadeLocal.creerRayon(nom, mag);
+        rayonFacade.creerRayon(nom, mag);
     }
     
+    @Override
     public void modifierRayon(Rayon r, String nom)
     {
-        rayonFacadeLocal.modifierRayon(r, nom);
+        rayonFacade.modifierRayon(r, nom);
     }
     
+    @Override
     public Rayon rechercherRayonParId(int idRayon)
 
     {
-       Rayon result= rayonFacadeLocal.rechercherRayonParId(idRayon);
+       Rayon result= rayonFacade.rechercherRayonParId(idRayon);
        return result;
     }
     
+    @Override
     public Collection<Rayon> rechercherListeRayon(Magasin mag)
     {
-        Collection<Rayon> result = rayonFacadeLocal.rechercherRayonParMagasin(mag);
+        Collection<Rayon> result = rayonFacade.rechercherRayonParMagasin(mag);
         return result;
     }
     
+    @Override
     public Rayon rechercherRayonParNomEtMagasin (String nomRayon, Magasin Mag)
     {
-        Rayon result= rayonFacadeLocal.rechercherRayonParNomMagasin(nomRayon, Mag);
+        Rayon result= rayonFacade.rechercherRayonParNomMagasin(nomRayon, Mag);
         return result;
         
     }
@@ -212,7 +221,7 @@ public class Administrateur implements AdministrateurLocal {
 
     @Override
     public Collection<Magasin> afficherTousMagasins() {
-        Collection<Magasin> magasin = magasinFacadeLocal.afficherTousMagasins();
+        Collection<Magasin> magasin = magasinFacade.afficherTousMagasins();
         return magasin;
     }
 

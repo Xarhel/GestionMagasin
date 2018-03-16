@@ -5,6 +5,9 @@
  */
 package facades;
 
+import Entites.Autre.Magasin;
+import Entites.Autre.Rayon;
+import Entites.Enum.TypeCompte;
 import Entites.Personne.Employe;
 import java.util.Collection;
 import java.util.List;
@@ -34,5 +37,9 @@ public interface EmployeFacadeLocal {
     Employe chercherEmployeParId(int id);
 
     Collection<Employe> afficherTousEmployes();
+    
+    public void modifierEmploye(Employe E, String nom, String prenom, String login, String mdp, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
+    
+    public void supprimerEmploye(Employe E);
     
 }
