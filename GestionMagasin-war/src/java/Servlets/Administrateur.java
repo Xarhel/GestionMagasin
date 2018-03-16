@@ -10,6 +10,7 @@ import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.Employe;
+import Entites.Personne.Personne;
 import Sessions.AdministrateurLocal;
 import facades.AgentDeLivraisonFacade;
 import java.io.IOException;
@@ -77,7 +78,7 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("supprimerEmploye"))
         {
             supprimerEmploye(request, response);
-            jspClient="/menuAdministrateur.jsp";
+            jspClient="/include/menu.jsp";
         }
         
         else if(action.equals("afficherTousMagasins"))
@@ -288,15 +289,14 @@ public class Administrateur extends HttpServlet {
     }
 
         */
- 
-        
+      
     protected void supprimerEmploye(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException
     {
         String id = request.getParameter("id");
         int idEmploye = Integer.parseInt(id);
-        Employe employe = administrateur.rechercherEmployeParId(idEmploye);
-        administrateur.supprimerEmploye(employe);
+        Personne personne = administrateur.rechercherPersonneParId(idEmploye);
+        administrateur.supprimerPersonne(personne);
     }
     
     protected void afficherTousMagasins(HttpServletRequest request,
