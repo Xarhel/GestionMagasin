@@ -6,7 +6,6 @@
 package facades;
 
 import Entites.Autre.Magasin;
-import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.GerantMagasin;
 import java.util.Date;

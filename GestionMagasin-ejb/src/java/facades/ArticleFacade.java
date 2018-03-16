@@ -63,7 +63,7 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
     public Article rechercheArticleParReference(int referenceArticle) {
             Article result;
     
-        Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.id =: referenceArticle");
+        Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.id =:referenceArticle");
         req.setParameter("referenceArticle", referenceArticle);
         
         result = (Article) req.getSingleResult();

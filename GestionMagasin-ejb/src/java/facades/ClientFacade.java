@@ -6,7 +6,6 @@
 package facades;
 
 import Entites.Autre.Adresse;
-import Entites.Autre.Article;
 import Entites.Personne.Client;
 import java.util.Date;
 import java.util.List;

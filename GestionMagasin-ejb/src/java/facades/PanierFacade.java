@@ -5,15 +5,10 @@
  */
 package facades;
 
-import Entites.Enum.MoyenPaiement;
 import Entites.Vente.Panier;
-import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import Entites.Personne.Client;
-import Entites.Vente.PanierInternet;
-import java.util.List;
 /**
  *
  * @author 3137574
