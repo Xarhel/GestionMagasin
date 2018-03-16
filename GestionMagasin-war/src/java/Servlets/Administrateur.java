@@ -90,13 +90,13 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("creerMagasin"))
         {
             creerMagasin(request, response);
-            jspClient="/menuAdministrateur.jsp";
+            jspClient="/listeMagasin.jsp";
         }
         
         else if(action.equals("modifierMagasin"))
         {
             modifierMagasin(request, response);
-            jspClient="/menuAdministrateur.jsp";
+            jspClient="/listeMagasin.jsp";
         }
         
         else if(action.equals("rechercherMagasinParId"))
@@ -324,6 +324,9 @@ public class Administrateur extends HttpServlet {
         message = "Votre magasin a bien été créé";
         Adresse adresse = administrateur.creerAdresse(libelle, rueNom, rueComplement, codePostalAdresse, ville);
         administrateur.creerMagasin(nom, adresse);        
+        
+        Collection<Magasin> magasin = administrateur.afficherTousMagasins();
+        request.setAttribute("magasin", magasin);
     }
     
     protected void modifierMagasin(HttpServletRequest request,
@@ -337,6 +340,9 @@ public class Administrateur extends HttpServlet {
         Magasin magasin = administrateur.rechercherMagasinParId(idMagasin);
         administrateur.modifierMagasin(magasin, nom);
         message = "Votre magasin " + magasin.getNom() + " a bien été modifié.";
+        
+        Collection<Magasin> listeMagasins = administrateur.afficherTousMagasins();
+        request.setAttribute("magasin", listeMagasins);
         request.setAttribute("message", message);
         
     }

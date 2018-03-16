@@ -8,7 +8,7 @@
         <jsp:include page="include/header.jsp"/>
         <style>
             .jumbotron{
-                background-image: url("images/Magasin.jpg");
+                background-image: url("images/Magasin_Aarhus.jpg");
                 width: 100%;                    
                 color: #fff;
                 background-size:cover;
