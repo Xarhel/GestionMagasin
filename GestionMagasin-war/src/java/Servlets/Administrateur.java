@@ -54,7 +54,7 @@ public class Administrateur extends HttpServlet {
         // Jsp par défaut lorsque l'utilisateur exécute la solution
         if((action==null) || (action.equals("null")))
         {
-            jspClient="/include/menu.jsp";
+            jspClient="/Administrateur/index.jsp";
         }
         
         else if(action.equals("creerUtilisateur"))
@@ -66,15 +66,9 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("afficherTousEmployes"))
         {
             afficherTousEmployes(request, response);
-            jspClient="/listeEmploye.jsp";
+            jspClient="/Administrateur/listeEmploye.jsp";
         }
-        
-        else if(action.equals("afficherTousEmployesSupprimer"))
-        {
-            afficherTousEmployes(request, response);
-            jspClient="/supprimerEmploye.jsp";
-        }
-        
+            
         else if(action.equals("supprimerEmploye"))
         {
             supprimerEmploye(request, response);
@@ -84,45 +78,20 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("afficherTousMagasins"))
         {
             afficherTousMagasins(request, response);
-            jspClient="/listeMagasin.jsp";
+            jspClient="/Administrateur/listeMagasin.jsp";
         }
         
         else if(action.equals("creerMagasin"))
         {
             creerMagasin(request, response);
-            jspClient="/listeMagasin.jsp";
+            jspClient="/Administrateur/listeMagasin.jsp";
         }
         
         else if(action.equals("modifierMagasin"))
         {
             modifierMagasin(request, response);
-            jspClient="/listeMagasin.jsp";
-        }
-        
-        else if(action.equals("rechercherMagasinParId"))
-        {
-            rechercherMagasinParId(request, response);
-            jspClient="/rechercherMagasinParId.jsp";
-        }
-        
-        else if(action.equals("rechercherMagasinParNom"))
-        {
-            rechercherMagasinParNom(request, response);
-            jspClient="/rechercherMagasinParNom.jsp";
-        }
-        
-        else if(action.equals("selectionnerMagasin"))
-        {
-            selectionnerMagasin(request, response);
-            // Nom à changer
-            jspClient="/listeMagasin.jsp";
-        }
-        
-        else if(action.equals("selectionnerEmploye"))
-        {
-            selectionnerEmploye(request, response);
-            jspClient="/listeEmploye.jsp";
-        }
+            jspClient="/Administrateur/listeMagasin.jsp";
+        }            
         
         else if(action.equals("creerRayon"))
         {
@@ -133,7 +102,7 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("versCreerRayon"))
         {
             versCreerRayon(request, response);
-            jspClient="/creerRayon.jsp";
+            jspClient="/Administrateur/creerRayon.jsp";
         }
         
         else if(action.equals("modifierRayon"))
@@ -145,19 +114,19 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("versModifierRayon"))
         {
             versModifierRayon(request, response);
-            jspClient="/modifierRayon.jsp";
+            jspClient="/Administrateur/modifierRayon.jsp";
         }
         
         else if(action.equals("versModifierMagasin"))
         {
             versModifierMagasin(request, response);
-            jspClient="/modifierMagasin.jsp";
+            jspClient="/Administrateur/modifierMagasin.jsp";
         }
         
         else if(action.equals("afficherTousRayonsParMagasin"))
         {
             afficherTousRayonsParMagasin(request, response);
-            jspClient="/listeRayon.jsp";
+            jspClient="/Administrateur/listeRayon.jsp";
         }
         
       
@@ -351,35 +320,6 @@ public class Administrateur extends HttpServlet {
         request.setAttribute("magasin", listeMagasins);
         request.setAttribute("message", message);
         
-    }
-     
-    protected void rechercherMagasinParId(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException
-    {
-        String id = request.getParameter("id");      
-        int idMagasin = Integer.parseInt(id);
-        Magasin magasin = administrateur.rechercherMagasinParId(idMagasin);
-        String message = "Voici le résultat de votre recherche";
-        request.setAttribute("message", message);
-    }
-     
-    protected void rechercherMagasinParNom(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException
-    {
-        String nom = request.getParameter("nom");
-        Magasin magasin = administrateur.rechercherMagasinParNom(nom);
-        String message = "Voici le résultat de votre rechercher";
-        request.setAttribute("message", message);
-    }
-    
-    protected void selectionnerMagasin(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException
-            
-    {
-        String id = request.getParameter("id");
-        int idMagasin = Integer.parseInt(id);
-        Magasin magasin = administrateur.rechercherMagasinParId(idMagasin);
-        request.setAttribute("magasin", magasin);
     }
     
     protected void selectionnerEmploye(HttpServletRequest request,

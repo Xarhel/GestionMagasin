@@ -8,15 +8,15 @@
 <html>
     <head>        
         <title>Créer un magasin</title>
-        <jsp:include page="include/header.jsp"/>
+        <jsp:include page="/include/header.jsp"/>
         </head>
         <body>
             <div class="container">
-            <jsp:include page="include/menu.jsp"/>
+            <jsp:include page="/include/menu.jsp"/>
             <!-- BODY START -->
             <div>
                 <h1>Créer un magasin</h1>
-                <form method="post" action="Administrateur">
+                <form method="post" action="../Administrateur">
                     <input hidden type="text" name="action" value="creerMagasin"/>
                     <div class="form-group row">
                         <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>

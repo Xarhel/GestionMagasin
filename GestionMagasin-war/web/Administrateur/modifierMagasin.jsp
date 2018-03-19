@@ -12,12 +12,12 @@
     <head>        
         <title>Modifier un magasin</title>
         <jsp:useBean id="magasin" scope="request" type="Entites.Autre.Magasin"></jsp:useBean>
-        <jsp:include page="include/header.jsp"/>
+        <jsp:include page="/include/header.jsp"/>
         
     </head>
     <body>
         <div class="container">
-            <jsp:include page="include/menu.jsp"/>
+            <jsp:include page="/include/menu.jsp"/>
             <!-- BODY START -->
             <h1>Modifier un magasin </h1>                    
                 <form method="post" action="Administrateur">
