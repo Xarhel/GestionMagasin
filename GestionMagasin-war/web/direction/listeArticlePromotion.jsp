@@ -11,6 +11,7 @@
 <html>
     <head>        
         <title>promotion</title>
+        
         <jsp:include page="include/header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="aticle" scope="request" class="java.util.Collection"></jsp:useBean>
@@ -34,7 +35,6 @@
                     <tfoot>
                         <tr>
                             <th>Article</th>
-                            <th>Promotion</th>
                             <th>Prix</th>
                             <th>Actions</th>
                         </tr>
@@ -43,7 +43,6 @@
                         <% Collection<Article> _article = article;
                             for (Article a : _article) {%>
                         <tr><td><%=a.getLibelle()%></td>
-                            <td><%=a.getPromotion()%></td>
                             <td><%=a.getPrixPromotion()%></td>
                             <td>
                                 <a href="annulerPromotion.jsp =<%=a.getId()%>" class="btn btn-danger btn-md">
