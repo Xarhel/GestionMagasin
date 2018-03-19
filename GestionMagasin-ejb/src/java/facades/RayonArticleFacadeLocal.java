@@ -47,6 +47,8 @@ public interface RayonArticleFacadeLocal {
 
     public void ajouterArticleARayon(Rayon r, Article a, float prixRayon);
 
+    public void modifierPrixRayonArticle(Article article, Rayon rayon, float prixRayon);
+
     
    
 }

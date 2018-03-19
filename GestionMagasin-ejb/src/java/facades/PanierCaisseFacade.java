@@ -11,6 +11,7 @@ import Entites.Vente.PanierCaisse;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -32,11 +33,27 @@ public class PanierCaisseFacade extends AbstractFacade<PanierCaisse> implements 
     }
 
     @Override
-    public void creerPanierCaisse(EmployeDeCaisse edc) {
+    public PanierCaisse creerPanierCaisse(EmployeDeCaisse edc) {
         PanierCaisse pc= new PanierCaisse();
         pc.setlEmployeDeCaisse(edc);
         pc.setPaiement(Boolean.FALSE);
         em.persist(pc);
+        return pc;
+    }
+    
+    @Override
+    public void ajouterTotal (float prixTotal, PanierCaisse pc) {
+        pc.setMontantTotal(prixTotal);
+        em.merge(pc);
+    
+    }
+    @Override
+    public PanierCaisse chercherPanierCaisseParId (long id){
+    PanierCaisse pc;
+    Query req = getEntityManager().createQuery("select pc from PanierCaisse pc WHERE pc.id=:id");
+    req.setParameter("id", id);
+    pc = (PanierCaisse) req.getSingleResult();
+    return pc;
     }
     
     @Override

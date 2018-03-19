@@ -12,6 +12,7 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -78,5 +79,18 @@ public class EmployeDeCaisseFacade extends AbstractFacade<EmployeDeCaisse> imple
         em.merge(edc);
     }
      
-     
+    @Override
+   public EmployeDeCaisse rechercherEmployeDeCaisse(int id)
+   {
+       EmployeDeCaisse result;
+    
+        Query req = getEntityManager().createQuery("SELECT edc FROM EmployeDeCaisse AS edc WHERE edc.id=:id");
+        req.setParameter("id", id);
+        
+        result = (EmployeDeCaisse) req.getSingleResult();
+        
+        return result;
+       
+       
+   }
 }

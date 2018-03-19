@@ -10,6 +10,7 @@ import Entites.Autre.LivraisonLot;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
+import Entites.Vente.ArticleVente;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -57,5 +58,7 @@ public interface StockFacadeLocal {
     public Collection<Stock> chercherStockMagasin(Magasin magasin);
 
     public void ajouterLotAuStock(LivraisonLot livraisonLot, Rayon rayon, Article article);
+
+    public Collection<Stock> retirerStockVente(Collection<ArticleVente> av);
     
 }

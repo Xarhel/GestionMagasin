@@ -13,5 +13,7 @@ import javax.ejb.Local;
  */
 @Local
 public interface EmployeDeCaisseSessionLocal {
+
+    public long creerPanierCaisse(int idEmployeDeCaisse);
     
 }
