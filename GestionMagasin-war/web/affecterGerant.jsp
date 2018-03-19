@@ -4,7 +4,8 @@
     Author     : 5153218
 --%>
 
-<<%@page import="entites.Magasin"%>
+<%@page import="Entites.Personne.GerantMagasin"%>
+<%@page import="Entites.Autre.Magasin"%>
 <%@page import="java.util.Collection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,6 +14,7 @@
         <title>Affecter des gérants</title>
         <jsp:include page="include/header.jsp"/>
         <jsp:useBean id="magasin" scope="request" class="java.util.Collection"></jsp:useBean>
+        <jsp:useBean id="gerant" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
             <div class="container">
@@ -20,47 +22,36 @@
             <!-- BODY START -->
             <div>
                 <h1>Selectionner  le gérant à affecter</h1>
-                <form method="POST" action="Menu">
+                <form method="POST" action="">
                     <input hidden type="text" name="action" value="affecterGerant"/>
                     <div class="form-group row">
-                        <label class="col-md-2">ID<span class="requis">*</span></label>                        
+                        <label class="col-md-2">Gerant du magasin<span class="requis">*</span></label>                        
                         <select name="gerant" class=" col-md-4 form-control" required>
                             <option></option>
-                            <% Collection<Gerant> _gerant = gerant;
-                                for (Gerant g : _gerant) {%>
-                                <option value="<%=g.getId()%>"><%=g.Id()%></option>
+                            <% Collection<GerantMagasin> _gerant = gerant;
+                                for (GerantMagasin g : _gerant) {%>
+                                <option value="<%=g.getId()%>"><%=g.getId()%></option>
+                                <option value="<%=g.getId()%>"><%=g.getNomPersonne()%></option>
+                                <option value="<%=g.getId()%>"><%=g.getPrenomPersonne()%></option>
                             <%}%>
                         </select>
                     </div>
+                        <h1>Selectionner le magasin</h1>
                         <div class="form-group row">
-                        <label class="col-md-2">ID<span class="requis">*</span></label>                        
+                        <label class="col-md-2">Magasin<span class="requis">*</span></label>                        
                         <select name="gerant" class=" col-md-4 form-control" required>
                             <option></option>
-                            <% Collection<Gerant> _gerant = gerant;
-                                for (Gerant g : _gerant) {%>
-                                <option value="<%=g.getId()%>"><%=g.Id()%></option>
+                            <% Collection<Magasin> _magasin = magasin;
+                                for (Magasin g : _magasin) {%>
+                                <option value="<%=g.getId()%>"><%=g.getId()%></option>
+                                <option value="<%=g.getId()%>"><%=g.getNom()%></option>
+                                <option value="<%=g.getId()%>"><%=g.getAdresse()%></option>
                             <%}%>
                         </select>
                     </div>
-                            <%-- <div class="form-group row">
-                        <label class="col-md-2">Abonné<span class="requis">*</span></label>
-                        <select name="abonne" class="col-md-4 form-control" required>
-                            <option></option>
-                            <% Collection<Abonne> _abonnes = abonnes;
-                                for (Abonne f : _abonnes) {%>
-                                <option value="<%=f.getId()%>"><%=f.getPrenom()%> <%=f.getNom()%></option>
-                            <%}%>
-                        </select>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2">Date de reservation<span class="requis">*</span></label>
-                        <div class="col-md-4">
-                            <input class="form-control" type="date" name="dateReservation" required/>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Enregistre</button>
-                    <button type="reset" class="btn btn-success">Remettre à zéro" </button>
-                </form> --%>
+                           
+                    <button type="submit" class="btn btn-success">Affecter</button>
+                </form> 
             </div>
             <!-- BODY END-->
         </div>

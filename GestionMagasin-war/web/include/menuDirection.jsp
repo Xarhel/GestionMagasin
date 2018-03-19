@@ -1,5 +1,5 @@
 <%-- 
-    Document   : menuEmployerRayon
+    Document   : menuDirection
     Created on : 16 mars 2018, 13:02:10
     Author     : 5153218
 --%>
@@ -22,22 +22,15 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="Menu">Accueil</a></li>                 
+                <li><a href="index.jsp">Accueil</a></li>                 
                 <li class="dropdown <%=display%>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="ajouterPromotion.jsp" class="">Ajouter prix promotion</a></li>
-                        <li><a href="Menu?action=employes">Tous les employes</a></li>
+                        <li><a href="afficherEmploye">Tous les employes</a></li>
                         <li><a href="annulerPromotion.jsp" class="">Annuler promotion</a></li>
-                        <li><a href="Menu?action=magasins.jsp" class="">Liste des magasins</a></li>
                         <li><a href="rechercherEmployeParMatricule.jsp" class="">Liste des employées</a></li>
-                        <li><a href="affecterGeranr.jsp" class="">Affecter les gérants</a></li>
-                        <li><a href="affecterChefRayon.jsp" class="">Affecter les chefs rayon</a></li>
-                        <li><a href="affecterAgentCaise" class="">Affecter les agents da caise</a></li>
-                        <li><a href="affecterEmployeRayon.jsp" class="">Affecter les employées de rayon</a></li>
-                        <li><a href="affecterAgentLivraison.jsp" class="">Affecte les agent de livraison</a></li>
-                        <li><a href="listeArticleParLibelle.jsp" class="">Liste des articles</a></li>
-                        <li><a href="affecterAgentLivraison.jsp" class="">Affecte les agent de livraison</a></li>
+                        <li><a href="listeArticle.jsp" class="">Liste des articles</a></li>
                         
                     </ul>
                 </li> 
