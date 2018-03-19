@@ -4,7 +4,7 @@
     Author     : jules
 --%>
 
-<%@page import="entites.Autre.Article"%>
+<%@page import="Entites.Autre.Article"%>
 <%@page import="java.util.Collection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
