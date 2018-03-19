@@ -27,7 +27,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @Inheritance
-(strategy=InheritanceType.JOINED)
+(strategy=InheritanceType.SINGLE_TABLE)
 public class Lot implements Serializable {
 
     @OneToMany(mappedBy = "leLot")

@@ -39,7 +39,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     public Collection<Stock> chercherRayonStockParLibelleArticle(String libelle, Rayon rayon) {
         Collection<Stock> result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon WHERE ar.libelle= libelle AND s.leRayon := rayon");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon WHERE ar.libelle=:libelle AND s.leRayon=:rayon");
         req.setParameter("libelle", libelle);
         req.setParameter("rayon", rayon);
         
@@ -52,9 +52,10 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         
     Collection<Stock> result;
     
-       Query req = getEntityManager().createQuery("SELECT s FROM Stock s inner join s.lArticle ar inner join ar.lots l where l.dtype = :Alimentaire and s.leRayon");
+       Query req = getEntityManager().createQuery("SELECT s FROM Stock s join s.lArticle ar join ar.lots l Where l.DTYPE=:Alimentaire And l.datePeremption<:date and s.leRayon=:rayon");
        req.setParameter ("Alimentaire", "Alimentaire");
        req.setParameter ("rayon", rayon);
+       req.setParameter ("date", date);
        result = req.getResultList();   
        return result;
         
@@ -75,7 +76,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     public Collection<Stock> chercherMagasinStockParLibelleArticle(String libelle, Magasin magasin) {
         Collection<Stock> result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE ar.libelle=: libelle AND  r.leMagasin=: magasin");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE ar.libelle=:libelle AND  r.leMagasin=:magasin");
         req.setParameter("libelle", libelle);
         req.setParameter("magasin", magasin);
         
@@ -88,7 +89,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     public Collection<Stock> chercherMagasinStockParReferenceArticle(String reference, Magasin magasin) {
         Collection<Stock> result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE ar.referenceArticle=: reference AND  r.leMagasin= magasin");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE ar.referenceArticle=:reference AND  r.leMagasin=:magasin");
         req.setParameter("reference", reference);
         req.setParameter("magasin", magasin);
         
@@ -101,7 +102,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         public Collection<Stock> chercherStockMagasin(Magasin magasin) {
         Collection<Stock> result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE r.leMagasin= magasin");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE r.leMagasin=:magasin");
         req.setParameter("magasin", magasin);
         
         result = req.getResultList();
@@ -113,7 +114,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     public Collection<Stock> chercherStockRayon (Rayon rayon) {
         Collection<Stock> result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon WHERE s.leRayon := rayon");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon WHERE s.leRayon=:rayon");
         req.setParameter("rayon", rayon);
         
         result = req.getResultList();
@@ -125,7 +126,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     public Stock chercherLotPourVente (Magasin magasin,int reference) {
         Stock result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock as s join s.lArticle ar join s.leRayon r where ar.referenceArticle =: reference AND r.leMagasin = magasin");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock as s join s.lArticle ar join s.leRayon r where ar.referenceArticle=:reference AND r.leMagasin=:magasin");
         req.setParameter("magasin", magasin);
         req.setParameter("reference", reference);
         
