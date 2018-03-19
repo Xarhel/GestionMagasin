@@ -4,9 +4,9 @@
     Author     : jules
 --%>
 
+<%@page import="Entites.Personne.Employe"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.Collection"%>
-<%@page import="Entites.Personne"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,8 +38,8 @@
                 <% Collection<Employe> _employe = employe;
                     for (Employe e : _employe) {%>
                 <tr>
-                    <td><%=e.getNom()%></td>
-                    <td><%=e.getPrenom()%></td>
+                    <td><%=e.getNomPersonne()%></td>
+                    <td><%=e.getPrenomPersonne()%></td>
                 </tr><%}%>
             </tbody>
             </table>

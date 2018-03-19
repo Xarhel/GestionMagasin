@@ -4,14 +4,16 @@
     Author     : jules
 --%>
 
+
 <%@page import="Entites.Autre.Article"%>
+<%@page import="java.util.Collection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>        
         <title>Promotion</title>
         <jsp:include page="include/header.jsp"/>
-        <jsp:useBean id="article" scope="request" type="Entites.Autre.Article"></jsp:useBean>
+        <jsp:useBean id="article" scope="request" type="java.util.Collection"></jsp:useBean>
 
         </head>
         <body>
@@ -26,7 +28,7 @@
                         <label class="col-md-2">Nom de l'article<span class="requis">*</span></label>
                         <select name="libelle" class="col-md-3 form-control" readonly>
                             <option></option>
-                            <% Collection<Article> _article = article;
+                            <% Collection<Article> _article= article;
                             for (Article a : _article) {%>
                             <option value="<%=a.getId()%>"><%=a.getLibelle()%></option>
                             <%}%>
@@ -38,7 +40,7 @@
                             <input class="form-control" type="text" promtion="promotion" readonly/>
                         </div>                        
                     </div>
-                    <button type="submit" class="btn btn-success">Enregistre</button>                    
+                    <button type="submit" class="btn btn-success">Annuler</button>                    
                 </form> 
             </div>
             <!-- BODY END-->
