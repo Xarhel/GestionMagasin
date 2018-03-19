@@ -123,4 +123,25 @@ public class Panier implements Serializable {
     }
 
     
+        private Boolean Paiement;
+
+    /**
+     * Get the value of Paiement
+     *
+     * @return the value of Paiement
+     */
+    public Boolean getPaiement() {
+        return Paiement;
+    }
+
+    /**
+     * Set the value of Paiement
+     *
+     * @param Paiement new value of Paiement
+     */
+    public void setPaiement(Boolean Paiement) {
+        this.Paiement = Paiement;
+    }
+
+    
 }
