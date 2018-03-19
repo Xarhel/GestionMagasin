@@ -78,7 +78,6 @@ public class Authentication extends HttpServlet {
                         session.setAttribute("user", p);
                         request.setAttribute("message", message);
                         response.sendRedirect("Administrateur");
-                        
                     }
                     if (p instanceof ChefDeRayon)
                     {

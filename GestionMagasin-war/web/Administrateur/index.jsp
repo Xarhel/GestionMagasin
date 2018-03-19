@@ -9,7 +9,7 @@
         <jsp:include page="/include/menu.jsp"/>   
         <style>
             .jumbotron{
-                background-image: url("../images/Magasin_Aarhus.jpg");
+                background-image: url("images/Magasin_Aarhus.jpg");
                 width: 100%;                    
                 color: #fff;
                 background-size:cover;

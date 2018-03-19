@@ -17,14 +17,14 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="http://localhost:8080/GestionMagasin-war/Administrateur/index.jsp">Accueil</a></li>                 
+                <li><a href="http://localhost:8080/GestionMagasin-war/Administrateur">Accueil</a></li>                 
                 <li class="dropdown <%=display%>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrateur<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="Administrateur/creerEmploye.jsp" class="">Créer un employé</a></li>
                         <li><a href="Administrateur/creerMagasin.jsp" class="">Créer un magasin</a></li>
-                        <li><a href="../Administrateur?action=afficherTousEmployes" class="">Liste des employés</a></li>
-                        <li><a href="../Administrateur?action=afficherTousMagasins" class="">Liste des magasins</a></li>
+                        <li><a href="Administrateur?action=afficherTousEmployes" class="">Liste des employés</a></li>
+                        <li><a href="Administrateur?action=afficherTousMagasins" class="">Liste des magasins</a></li>
                     </ul>
                 </li> 
                 
