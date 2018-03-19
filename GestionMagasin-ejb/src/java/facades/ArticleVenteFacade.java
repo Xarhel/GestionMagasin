@@ -8,7 +8,9 @@ package facades;
 import Entites.Autre.Article;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
+import Entites.Autre.Stock;
 import Entites.Vente.ArticleVente;
+import Entites.Vente.PanierCaisse;
 import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -53,6 +55,23 @@ public class ArticleVenteFacade extends AbstractFacade<ArticleVente> implements 
         float prixUnitaire= ra.getPrixVente();
         result= result+(quantiteArticle*prixUnitaire);}
         return result;
+    
+    }
+    
+    
+    @Override
+    public void creerArticleVenteCaisse(PanierCaisse pc, int quantite, Stock s)
+    {
+    ArticleVente av= new ArticleVente();
+    
+    
+    
+    av.setLePanierCaisse(pc);
+    av.setQuantite(quantite);
+    av.setStock(s);
+    
+    em.persist(av);
+    
     
     }
     
