@@ -11,7 +11,7 @@
     <head>        
         <title>Créer un rayon</title>
         <jsp:include page="include/header.jsp"/>
-        <jsp:useBean id="Magasin" scope="request" type="Entites.Autre.Magasin"></jsp:useBean>
+        <jsp:useBean id="magasin" scope="request" type="Entites.Autre.Magasin"></jsp:useBean>
 
         </head>
         <body>
@@ -20,27 +20,23 @@
             <!-- BODY START -->
             <div>
                 <h1>Créer un rayon</h1>
-                <form method="POST" action="Menu">
-                    <input hidden type="text" name="action" value="creerEmploye"/>
+                <form method="POST" action="Administrateur">
+                    <input hidden type="text" name="action" value="creerRayon"/>
+                    <input hidden type="text" name="id" value="<%=magasin.getId()%>" />
+                    
+                    <div class="form-group row">
+                        <label class="col-md-2">Nom du magasin<span class="">*</span></label>
+                        <div class="col-md-4">
+                            <input class="form-control" type="text" name="" value="<%=magasin.getNom()%>" disabled="" />
+                            </div>                        
+                    </div>
                     <div class="form-group row">
                         <label class="col-md-2">Nom du rayon<span class="requis">*</span></label>
                         <div class="col-md-4">
-                            <input class="form-control" type="text" rayonNom="nom" required/>
+                            <input class="form-control" type="text" name="nom" required/>
                         </div>                        
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
-                        <select name="nom" class="col-md-3 form-control" required>
-                            <option></option>
-                            <% Collection<Magasin> _magasin = magasin;
-                            for (Magasin m : _magasin) {%>
-                            <option value="<%=m.getId()%>"><%=m.getNom()%></option>
-                            <%}%>
-                        </select>  
-
-                    </div>                      
-
-                    <button type="submit" class="btn btn-success">Enregistre</button>                    
+                    </div>                     
+                    <button type="submit" class="btn btn-success">Enregistrer</button>                    
                 </form> 
             </div>
             <!-- BODY END-->

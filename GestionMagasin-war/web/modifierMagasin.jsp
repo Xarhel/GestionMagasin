@@ -34,8 +34,8 @@
                         <label class="col-md-2">Libellé de l'adresse<span class="requis">*</span></label>
                         <div class="col-md-4">
                             <input class="form-control" type="text" name="nom" value="<%=magasin.getAdresse().getLibelleAdresse()%>"readonly/>
-                        </div>                        
-                    </div>
+                            </div>                        
+                        </div>
                     <div class="form-group row">
                         <label class="col-md-2">Rue<span class="requis">*</span></label>
                         <div class="col-md-4">

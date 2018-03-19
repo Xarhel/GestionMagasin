@@ -59,7 +59,7 @@ public class RayonFacade extends AbstractFacade<Rayon> implements RayonFacadeLoc
         
     Rayon result;
     
-        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.id =: idRayon");
+        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.id = :idRayon");
         req.setParameter("idRayon", idRayon);
         
         result = (Rayon) req.getSingleResult();

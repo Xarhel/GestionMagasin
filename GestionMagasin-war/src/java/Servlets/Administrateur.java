@@ -127,31 +127,37 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("creerRayon"))
         {
             creerRayon(request, response);
-            jspClient="/menuAdministrateur";
+            jspClient="/include/menu.jsp";
         }
         
         else if(action.equals("versCreerRayon"))
         {
-            afficherTousMagasins(request, response);
+            versCreerRayon(request, response);
             jspClient="/creerRayon.jsp";
         }
         
         else if(action.equals("modifierRayon"))
         {
             modifierRayon(request, response);
-            jspClient="/menuAdministrateur.jsp";
+            jspClient="/include/menu.jsp";
         }
         
         else if(action.equals("versModifierRayon"))
         {
-            afficherTousMagasins(request, response);
-            jspClient="/listeRayons.jsp";
+            versModifierRayon(request, response);
+            jspClient="/modifierRayon.jsp";
         }
         
         else if(action.equals("versModifierMagasin"))
         {
             versModifierMagasin(request, response);
             jspClient="/modifierMagasin.jsp";
+        }
+        
+        else if(action.equals("afficherTousRayonsParMagasin"))
+        {
+            afficherTousRayonsParMagasin(request, response);
+            jspClient="/listeRayon.jsp";
         }
         
       
@@ -390,7 +396,7 @@ public class Administrateur extends HttpServlet {
     {
         // Il est nécessaire de faire appel à la méthode afficherTousMagasins pour récupérer la liste des magasins avant d'aller sur la page de création
         String nom = request.getParameter("nom");
-        String id = request.getParameter("magasin");
+        String id = request.getParameter("id");
         String message;
         
         int idMagasin = Integer.parseInt(id);
@@ -405,26 +411,22 @@ public class Administrateur extends HttpServlet {
     protected void afficherTousRayonsParMagasin(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException
     {
-        String magasin = request.getParameter("magasin");
-        String message;
-        
-        int idMagasin = Integer.parseInt("magasin");
-        Magasin magasinRecherche = administrateur.rechercherMagasinParId(idMagasin);
-        Collection<Rayon> rayon = administrateur.rechercherListeRayon(magasinRecherche);
-        message = "Voici les rayons pour le magasin " + magasinRecherche.getNom();
+        String id = request.getParameter("id");
+        int idMagasin = Integer.parseInt(id);
+        Magasin magasin;
+        magasin = administrateur.rechercherMagasinParId(idMagasin);
+        Collection<Rayon> rayon = administrateur.rechercherListeRayon(magasin);
         request.setAttribute("rayon", rayon);
-        request.setAttribute("magasin", magasinRecherche);
-        request.setAttribute("message", message);
     }
     
     protected void modifierRayon(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException
     {
-        String idRayon = request.getParameter("rayon");
+        String id = request.getParameter("id");
         String nom = request.getParameter("nom");
         String message;
         
-        int RayonId = Integer.parseInt("rayon");
+        int RayonId = Integer.parseInt(id);
         
         Rayon rayon = administrateur.rechercherRayonParId(RayonId);
         
@@ -441,6 +443,25 @@ public class Administrateur extends HttpServlet {
         Magasin m = administrateur.rechercherMagasinParId(idMagasin);
         request.setAttribute("magasin", m);
         request.setAttribute("message", m.getNom());
+    }
+    
+    protected void versCreerRayon(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        int idMagasin = Integer.parseInt(id);
+        Magasin m = administrateur.rechercherMagasinParId(idMagasin);
+        request.setAttribute("magasin", m);
+    }
+    
+    protected void versModifierRayon(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        
+        int idRayon = Integer.parseInt(id);
+        Rayon rayon = administrateur.rechercherRayonParId(idRayon);
+        request.setAttribute("rayon", rayon);
     }
     
 }

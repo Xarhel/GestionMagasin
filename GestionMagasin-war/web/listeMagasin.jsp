@@ -42,7 +42,12 @@
                             <td><a href="Administrateur?action=versModifierMagasin&id=<%=m.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Modifier un magasin"></span>Modifier
                                 </a>
-
+                                <a href="Administrateur?action=versCreerRayon&id=<%=m.getId()%>" class="btn btn-info btn-md">
+                                    <span class="glyphicon glyphicon-edit" title="Créer un rayon"></span>Créer un rayon
+                                </a>
+                                <a href="Administrateur?action=afficherTousRayonsParMagasin&id=<%=m.getId()%>" class="btn btn-info btn-md">
+                                    <span class="glyphicon glyphicon-edit" title="Afficher les rayons"></span>Afficher les rayons
+                                </a>
                             </td>
                         </tr><%}%>
                     </tbody>
