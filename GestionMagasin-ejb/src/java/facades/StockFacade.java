@@ -39,7 +39,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     public Collection<Stock> chercherRayonStockParLibelleArticle(String libelle, Rayon rayon) {
         Collection<Stock> result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon WHERE ar.libelle=:libelle AND s.leRayon=:rayon");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon AS r  WHERE ar.libelle=:libelle AND s.leRayon=:rayon");
         req.setParameter("libelle", libelle);
         req.setParameter("rayon", rayon);
         

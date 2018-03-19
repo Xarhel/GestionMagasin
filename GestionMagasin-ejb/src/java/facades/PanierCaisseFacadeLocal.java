@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Enum.MoyenPaiement;
 import Entites.Personne.EmployeDeCaisse;
 import Entites.Vente.PanierCaisse;
 import java.util.List;
@@ -32,5 +33,9 @@ public interface PanierCaisseFacadeLocal {
     int count();
 
     void creerPanierCaisse(EmployeDeCaisse edc);
+
+    public void choisirModeDePaiement(PanierCaisse pc, MoyenPaiement typeDePaiement);
+
+    public boolean validerLePaiement(PanierCaisse pc);
     
 }
