@@ -41,5 +41,7 @@ public interface EmployeDeCaisseFacadeLocal {
     public void supprimerEmployeDeCaisse(EmployeDeCaisse EDC);
 
     void affecterEmployeDeCaisse(EmployeDeCaisse edc, Magasin magasin);
+
+    public EmployeDeCaisse rechercherEmployeDeCaisse(int id);
     
 }

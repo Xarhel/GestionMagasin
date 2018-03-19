@@ -6,6 +6,7 @@
 package facades;
 
 import Entites.Vente.ArticleVente;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +30,7 @@ public interface ArticleVenteFacadeLocal {
     List<ArticleVente> findRange(int[] range);
 
     int count();
+
+    public float calculerTotalVente(Collection<ArticleVente> av);
     
 }

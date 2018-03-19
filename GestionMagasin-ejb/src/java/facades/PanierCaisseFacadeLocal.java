@@ -31,6 +31,10 @@ public interface PanierCaisseFacadeLocal {
 
     int count();
 
-    void creerPanierCaisse(EmployeDeCaisse edc);
+    public PanierCaisse creerPanierCaisse(EmployeDeCaisse edc);
+
+    public void ajouterTotal(float prixTotal, PanierCaisse pc);
+
+    public PanierCaisse chercherPanierCaisseParId(long id);
     
 }
