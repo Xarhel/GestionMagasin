@@ -7,7 +7,6 @@ package facades;
 
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
-import Entites.Personne.ChefDeRayon;
 import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -59,7 +58,7 @@ public class RayonFacade extends AbstractFacade<Rayon> implements RayonFacadeLoc
         
     Rayon result;
     
-        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.id =: idRayon");
+        Query req = getEntityManager().createQuery("SELECT r FROM Rayon AS r WHERE r.id =:idRayon");
         req.setParameter("idRayon", idRayon);
         
         result = (Rayon) req.getSingleResult();

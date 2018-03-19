@@ -65,6 +65,7 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
          
          
      }
+    @Override
      public void supprimerAgentDeLivraison(AgentDeLivraison ADL)
      {
          em.remove(ADL);
@@ -78,11 +79,12 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
         
     }
      
+    @Override
     public AgentDeLivraison rechercherAgentParIdEmploye(int idADL)
     {
         AgentDeLivraison result;
     
-        Query req = getEntityManager().createQuery("SELECT adl FROM AgentDeLivraison AS adl WHERE a.id =: idADL");
+        Query req = getEntityManager().createQuery("SELECT adl FROM AgentDeLivraison AS adl WHERE adl.id =:idADL");
         req.setParameter("idADL", idADL);
         
         result = (AgentDeLivraison) req.getSingleResult();

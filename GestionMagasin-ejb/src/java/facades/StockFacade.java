@@ -99,7 +99,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     }   
     
     @Override
-        public Collection<Stock> chercherStockMagasin(Magasin magasin) {
+        public Collection<Stock> chercherStockMagasin(Magasin magasinAChercher) {
         Collection<Stock> result;
     
         Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE r.leMagasin=:magasin");

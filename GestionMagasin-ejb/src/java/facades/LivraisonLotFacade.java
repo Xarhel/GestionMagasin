@@ -5,13 +5,9 @@
  */
 package facades;
 
-import Entites.Autre.CommandeLot;
 import Entites.Autre.Livraison;
 import Entites.Autre.LivraisonLot;
-import Entites.Autre.LivraisonLot_;
 import Entites.Lot.Lot;
-import java.util.Collection;
-import java.util.Iterator;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -54,11 +54,13 @@ public class StockRetraitFacade extends AbstractFacade<StockRetrait> implements 
     
     
     
+    @Override
     public void ajouterStockRetrait(StockRetrait sr,int quantite)
     {
         sr.setQuantiteRetrait(quantite+sr.getQuantiteRetrait());
     }
     
+    @Override
     public StockRetrait rechercherStockRetraitParIdStock(long idStock)
     {
         StockRetrait result;
