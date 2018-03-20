@@ -10,13 +10,13 @@
 <html>
     <head>        
         <title>Liste des articles</title>
-        <jsp:include page="header.jsp"/>        
+        <jsp:include page="header.jsp"/>
+        <jsp:include page="menuDirection.jsp"/>
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="article" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
             <div class="container">
-            <jsp:include page=""/>
             <!-- BODY START -->
             <div>
                 <h1>Liste des articles</h1>
@@ -41,10 +41,10 @@
                         <tr><td><%=a.getLibelle()%></td>
                            
                             <td><a href="Menu?action=AjouterPromotion&id=<%=a.getId()%>" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-edit" title="Faire une promotion"></span>Edit promotion
+                                    <span class="glyphicon glyphicon-edit" title="Faire une promotion"></span>Ajouter une promotion
                                 </a>
                                 <a href="Menu?action=ModifierPrixArticle&id=<%=a.getId()%>" class="btn btn-success btn-md">
-                                    <span class="glyphicon glyphicon-pencil" title="Modifier prix article"></span> Modifier prix
+                                    <span class="glyphicon glyphicon-pencil" title="Modifier prix article"></span>Modifier une promotion
                                 </a>
                                 
                             </td>

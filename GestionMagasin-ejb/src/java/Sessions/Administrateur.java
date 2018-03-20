@@ -216,9 +216,7 @@ public class Administrateur implements AdministrateurLocal {
 
     //Authentification d'un utilisateur
     @Override
-    public Personne authentification(String login, String password) {
-        
-   
+    public Personne authentification(String login, String password) {        
         Personne p = personneFacade.authentification(login, password);
         return p;
     }    

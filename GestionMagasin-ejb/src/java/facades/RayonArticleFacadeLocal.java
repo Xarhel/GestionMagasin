@@ -38,7 +38,7 @@ public interface RayonArticleFacadeLocal {
     public RayonArticle rechercherRayonArticle(Rayon r, Article a);
 
     public RayonArticle rechercherRayonArticleParLibelle(Rayon r, String libelle);
-
+    
     public RayonArticle rechercherRayonArticleParReference(Rayon r, int reference);
     
     public void commencerPromotion(Collection<RayonArticle> cra, float prixPromotion);
@@ -49,8 +49,7 @@ public interface RayonArticleFacadeLocal {
 
     public void modifierPrixRayonArticle(Article article, Rayon rayon, float prixRayon);
 
-    public Collection<RayonArticle> chercherRayonArticlesParReference(int ref);
-
+    public Collection<RayonArticle> chercherRayonArticlesParReference (int ref);
     
    
 }

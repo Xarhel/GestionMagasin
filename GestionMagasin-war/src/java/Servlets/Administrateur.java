@@ -6,6 +6,7 @@
 package Servlets;
 
 import Entites.Autre.Adresse;
+import Entites.Autre.Article;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
@@ -14,6 +15,7 @@ import Entites.Personne.Personne;
 import Sessions.AdministrateurLocal;
 import Sessions.DirectionLocal;
 import facades.AgentDeLivraisonFacade;
+import facades.EmployeFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -31,7 +33,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author 3137574
  */
 public class Administrateur extends HttpServlet {
-
+    
     @EJB
     private DirectionLocal direction;
 
@@ -143,18 +145,13 @@ public class Administrateur extends HttpServlet {
             jspClient="/Administrateur/creerEmploye.jsp";
             versCreerUtilisateur(request, response);
         }
-        
-        
-        
-        
-        
+   
         
         /////////////////////////////////////////////////
         //                Direction                    //
         
         else if(action.equals("redirigerMenuDirection"))
         {
-            action="";
             jspClient="/direction/index.jsp";
         }
         
@@ -178,9 +175,26 @@ public class Administrateur extends HttpServlet {
         }
         */
         
-        else if(action.equals("versRechercheEmployé"))
+        else if(action.equals("versRechercheEmploye"))
         {
-            jspClient="/direction/rechercheEmploye.jsp";
+            jspClient="/direction/rechercherEmploye.jsp";
+        }
+        
+        else if(action.equals("rechercherEmploye"))
+        {
+            rechercherEmploye(request, response);
+            jspClient="/direction/listeEmploye.jsp";
+        }
+        
+        else if(action.equals("versRechercheArticleParNom"))
+        {
+            jspClient="/direction/rechercherArticle.jsp";
+        }
+        
+        else if(action.equals("rechercherArticleParNom"))
+        {
+            rechercherArticleParNom(request, response);
+            jspClient="/direction/listeArticle.jsp";
         }
         
         /////////////////////////////////////////////////
@@ -466,10 +480,10 @@ public class Administrateur extends HttpServlet {
         request.setAttribute("rayon", rayon);
     }
     
-    protected void afficherListeArticles(HttpServletRequest request,
+    protected void afficherListeArticlesParNom(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException
     {
-       // Méthode à réaliser
+       
     }
     
     protected void versCreerUtilisateur(HttpServletRequest request,
@@ -477,6 +491,31 @@ public class Administrateur extends HttpServlet {
     {
         Collection<Magasin> magasin = administrateur.afficherTousMagasins();
         request.setAttribute("magasin", magasin);        
+    }
+    
+    protected void rechercherEmploye(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String name = request.getParameter("nom");
+        Collection<Employe> employe = direction.rechercherEmployeParNom(name);
+        request.setAttribute("employe", employe);
+    }
+    
+    protected void rechercherArticleParNom(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String name = request.getParameter("nom");
+        Collection<Article> article = direction.afficherArticleParLibelle(name);
+        request.setAttribute("article", article);
+    }
+    
+    protected void versAjouterPromotion(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String reference = request.getParameter("reference");
+        int referenceArticle = Integer.parseInt(reference);
+        Article article = direction.afficherArticleParReference(referenceArticle);
+        request.setAttribute("article", article);
     }
     
 }
