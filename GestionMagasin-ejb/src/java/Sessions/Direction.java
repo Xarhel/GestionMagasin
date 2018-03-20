@@ -8,6 +8,7 @@ package Sessions;
 import Entites.Autre.Article;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
+import Entites.Autre.RayonArticle;
 import Entites.Personne.AgentDeLivraison;
 import Entites.Personne.ChefDeRayon;
 import Entites.Personne.Employe;
@@ -52,6 +53,12 @@ public class Direction implements DirectionLocal {
 
     @EJB
     private ArticleFacadeLocal articleFacade;
+    
+        @EJB
+    private facades.RayonArticleFacade rayonFacade;
+    
+    @EJB
+    private facades.ArticleFacade article;
     
     
 
@@ -137,5 +144,37 @@ public class Direction implements DirectionLocal {
         Article resultat= articleFacade.rechercheArticleParReference(reference);
         return resultat;
     }
+    
+    @Override
+    public void demarrerUnePrommotion (int reference, float prixPromotion) {
+    
+        Article ar = article.rechercheArticleParReference(reference);
+        article.modifierPrixArticle(ar, prixPromotion);
+        Collection<RayonArticle> articleDansRayons =rayonFacade.chercherRayonArticlesParReference(reference);
+        rayonFacade.commencerPromotion(articleDansRayons, prixPromotion);
+    }
+    
+    @Override
+    public void cloturerPromotion (int reference){
+        Article ar = article.rechercheArticleParReference(reference);
+        Collection<RayonArticle> articleDansRayons =rayonFacade.chercherRayonArticlesParReference(reference);
+        article.annulerPromotion(ar);
+        rayonFacade.cloturerPromotion(articleDansRayons);
+    }
+    
+    @Override
+    public Collection<Employe> rechercherEmployeParNom(String nom)
+    {
+        Collection<Employe> result= employeFacade.chercherEmployeParNom(nom);
+    
+    
+        return result;
+        
+        
+        
+        
+    }
+    
+    
     
 }
