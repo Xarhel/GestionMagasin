@@ -40,10 +40,10 @@
                             for (Article a : _article) {%>
                         <tr><td><%=a.getLibelle()%></td>
                            
-                            <td><a href="Menu?action=AjouterPromotion&id=<%=a.getId()%>" class="btn btn-info btn-md">
+                            <td><a href="Administrateur?action=versAjouterPromotion&id=<%=a.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Faire une promotion"></span>Ajouter une promotion
                                 </a>
-                                <a href="Menu?action=ModifierPrixArticle&id=<%=a.getId()%>" class="btn btn-success btn-md">
+                                <a href="Administrateur?action=ModifierPrixArticle&id=<%=a.getId()%>" class="btn btn-success btn-md">
                                     <span class="glyphicon glyphicon-pencil" title="Modifier prix article"></span>Modifier une promotion
                                 </a>
                                 

@@ -197,6 +197,12 @@ public class Administrateur extends HttpServlet {
             jspClient="/direction/listeArticle.jsp";
         }
         
+        else if(action.equals("versAjouterPromotion"))
+        {
+            versAjouterPromotion(request, response);
+            jspClient="/direction/ajouterPromotion.jsp";
+        }
+        
         /////////////////////////////////////////////////
         
         
@@ -512,9 +518,9 @@ public class Administrateur extends HttpServlet {
     protected void versAjouterPromotion(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException
     {
-        String reference = request.getParameter("reference");
-        int referenceArticle = Integer.parseInt(reference);
-        Article article = direction.afficherArticleParReference(referenceArticle);
+        String id = request.getParameter("id");
+        int referenceArticle = Integer.parseInt(id);
+        Article article = direction.rechercherArticleParId(referenceArticle);
         request.setAttribute("article", article);
     }
     
