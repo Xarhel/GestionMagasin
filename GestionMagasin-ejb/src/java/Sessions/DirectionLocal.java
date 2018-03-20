@@ -51,6 +51,8 @@ public interface DirectionLocal {
       public void cloturerPromotion (int reference);
 
     public Collection<Employe> rechercherEmployeParNom(String nom);
+
+    public Article rechercherArticleParId(int id);
 }
 
 

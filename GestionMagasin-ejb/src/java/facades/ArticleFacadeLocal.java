@@ -40,5 +40,7 @@ public interface ArticleFacadeLocal {
     Article rechercheArticleParReference(int referenceArticle);
 
     public Collection<Article> rechercherArticleParLibelle(String libelle);
+
+    public Article rechercherArticleParId(int id);
     
 }

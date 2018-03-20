@@ -175,6 +175,17 @@ public class Direction implements DirectionLocal {
         
     }
     
+      @Override
+    public Article rechercherArticleParId(int id)
+    {
+       Article result= articleFacade.rechercherArticleParId(id);
     
+    
+        return result;
+        
+        
+        
+        
+    }
     
 }
