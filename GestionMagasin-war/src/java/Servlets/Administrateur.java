@@ -12,6 +12,7 @@ import Entites.Enum.TypeCompte;
 import Entites.Personne.Employe;
 import Entites.Personne.Personne;
 import Sessions.AdministrateurLocal;
+import Sessions.DirectionLocal;
 import facades.AgentDeLivraisonFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,6 +31,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author 3137574
  */
 public class Administrateur extends HttpServlet {
+
+    @EJB
+    private DirectionLocal direction;
 
     @EJB
     private AdministrateurLocal administrateur;   
@@ -96,7 +100,7 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("creerRayon"))
         {
             creerRayon(request, response);
-            jspClient="/include/menu.jsp";
+            jspClient="/Administrateur/listeRayon.jsp";
         }
         
         else if(action.equals("versCreerRayon"))
@@ -108,7 +112,7 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("modifierRayon"))
         {
             modifierRayon(request, response);
-            jspClient="/include/menu.jsp";
+            jspClient="/Administrateur/listeRayon.jsp";
         }
         
         else if(action.equals("versModifierRayon"))
@@ -133,6 +137,44 @@ public class Administrateur extends HttpServlet {
         {
             jspClient="/Administrateur/creerMagasin.jsp";
         }
+        
+        /////////////////////////////////////////////////
+        //                Direction                    //
+        
+        else if(action.equals("redirigerMenuDirection"))
+        {
+            action="";
+            jspClient="/direction/index.jsp";
+        }
+        
+        else if(action.equals("afficherTousEmployesDirection"))
+        {
+            afficherTousEmployes(request, response);
+            jspClient="/direction/listeEmploye.jsp";
+        }
+        
+        else if(action.equals("supprimerEmployeDirection"))
+        {
+            supprimerEmploye(request, response);
+            jspClient="/direction/index.jsp";
+        }
+        
+        /* À modifier
+        else if(action.equals("modifierEmploye"))
+        {
+            modifierEmploye(request, response);
+            jspClient="/modifierEmploye.jsp";
+        }
+        */
+        
+        else if(action.equals("versRechercheEmployé"))
+        {
+            jspClient="/direction/rechercheEmploye.jsp";
+        }
+        
+        /////////////////////////////////////////////////
+        
+        
         
       
         RequestDispatcher rd;
@@ -347,6 +389,8 @@ public class Administrateur extends HttpServlet {
         int idMagasin = Integer.parseInt(id);
         Magasin magasin = administrateur.rechercherMagasinParId(idMagasin);
         administrateur.creerRayon(nom, magasin);
+        Collection<Rayon> rayon = administrateur.rechercherListeRayon(magasin);
+        request.setAttribute("rayon", rayon);
         message = "Le rayon " + nom + " a bien été créé";
         request.setAttribute("message", message);
         
@@ -371,13 +415,15 @@ public class Administrateur extends HttpServlet {
         String nom = request.getParameter("nom");
         String message;
         
-        int RayonId = Integer.parseInt(id);
+        int RayonId = Integer.parseInt(id);       
+        Rayon rayonModifie = administrateur.rechercherRayonParId(RayonId);      
+        administrateur.modifierRayon(rayonModifie, nom);
         
-        Rayon rayon = administrateur.rechercherRayonParId(RayonId);
-        
-        administrateur.modifierRayon(rayon, nom);
-        message = "Le rayon " + rayon.getRayonNom() + " a bien été modifié";
-        request.setAttribute("message", message);        
+        Magasin magasin = rayonModifie.getLeMagasin();
+        Collection<Rayon> rayon = administrateur.rechercherListeRayon(magasin);
+        message = "Le rayon " + rayonModifie.getRayonNom() + " a bien été modifié";
+        request.setAttribute("message", message);
+        request.setAttribute("rayon", rayon);
     }
    
     protected void versModifierMagasin(HttpServletRequest request,
@@ -407,6 +453,12 @@ public class Administrateur extends HttpServlet {
         int idRayon = Integer.parseInt(id);
         Rayon rayon = administrateur.rechercherRayonParId(idRayon);
         request.setAttribute("rayon", rayon);
+    }
+    
+    protected void afficherListeArticles(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+       // Méthode à réaliser
     }
     
 }
