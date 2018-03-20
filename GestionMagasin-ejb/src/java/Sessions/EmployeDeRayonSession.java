@@ -6,10 +6,17 @@
 package Sessions;
 
 import Entites.Autre.Article;
+import Entites.Autre.BonDeCommande;
+import Entites.Autre.CommandeLot;
+import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import Entites.Autre.Stock;
 import Entites.Lot.Lot;
+import facades.BonDeCommandeFacadeLocal;
+import facades.CommandeLotFacadeLocal;
+import facades.MagasinFacade;
+import facades.MagasinFacadeLocal;
 import facades.RayonArticleFacadeLocal;
 import facades.StockFacadeLocal;
 import facades.StockRetraitFacadeLocal;
@@ -28,6 +35,15 @@ import javax.ejb.Stateless;
 public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
 
     @EJB
+    private BonDeCommandeFacadeLocal bonDeCommandeFacade;
+
+    @EJB
+    private CommandeLotFacadeLocal commandeLotFacade;
+
+    @EJB
+    private MagasinFacadeLocal magasinFacade;
+
+    @EJB
     private StockRetraitFacadeLocal stockRetraitFacade;
 
     @EJB
@@ -35,7 +51,8 @@ public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
 
     @EJB
     private RayonArticleFacadeLocal rayonArticleFacade;
-
+ 
+    
     
 
     @Override
@@ -61,4 +78,18 @@ public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
          stockFacade.retirerStockPerimeRayon(s);
          
      }
+     
+     
+    @Override
+     public Collection <BonDeCommande> rechercherParMagasin(int idMagasin)
+     {
+         Magasin mag= magasinFacade.rechercherMagasinParId(idMagasin);
+         
+         Collection <BonDeCommande> bdc= bonDeCommandeFacade.rechercherBonDeCommandeParMagasin(mag);
+         
+         return bdc;
+         
+         
+     }
+     
 }

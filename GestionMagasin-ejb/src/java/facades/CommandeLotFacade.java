@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import Entites.Autre.BonDeCommande;
+import Entites.Autre.Magasin;
 import java.util.List;
 
 /**
@@ -76,4 +77,6 @@ public class CommandeLotFacade extends AbstractFacade<CommandeLot> implements Co
         
     }
     
+    
+     
 }
