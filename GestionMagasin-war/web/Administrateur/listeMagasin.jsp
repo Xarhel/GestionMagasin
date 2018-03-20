@@ -11,13 +11,13 @@
 <html>
     <head>        
         <title>Liste des magasins</title>
-        <jsp:include page="../include/header.jsp"/>        
+        <jsp:include page="header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="magasin" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
             <div class="container">
-            <jsp:include page="../include/menu.jsp"/>
+            <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
                 <h1>Liste des magasin</h1>

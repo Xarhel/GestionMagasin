@@ -11,12 +11,12 @@
     <head>        
         <title>Modifier un rayon</title>
         <jsp:useBean id="rayon" scope="request" type="Entites.Autre.Rayon"></jsp:useBean>
-        <jsp:include page="/include/header.jsp"/>
+        <jsp:include page="header.jsp"/>
 
     </head>
     <body>
         <div class="container">
-            <jsp:include page="/include/menu.jsp"/>
+            <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <h1>Modifier un rayon</h1>              
             <form method="POST" action="Administrateur">

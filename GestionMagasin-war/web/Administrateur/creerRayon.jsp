@@ -10,13 +10,13 @@
 <html>
     <head>        
         <title>Créer un rayon</title>
-        <jsp:include page="/include/header.jsp"/>
+        <jsp:include page="header.jsp"/>
         <jsp:useBean id="magasin" scope="request" type="Entites.Autre.Magasin"></jsp:useBean>
 
         </head>
         <body>
             <div class="container">
-            <jsp:include page="/include/menu.jsp"/>
+            <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
                 <h1>Créer un rayon</h1>

@@ -129,6 +129,11 @@ public class Administrateur extends HttpServlet {
             jspClient="/Administrateur/listeRayon.jsp";
         }
         
+        else if(action.equals("versCreerMagasin"))
+        {
+            jspClient="/Administrateur/creerMagasin.jsp";
+        }
+        
       
         RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);

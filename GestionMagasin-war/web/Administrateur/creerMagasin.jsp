@@ -8,11 +8,11 @@
 <html>
     <head>        
         <title>Créer un magasin</title>
-        <jsp:include page="/include/header.jsp"/>
+        <jsp:include page="header.jsp"/>
         </head>
         <body>
             <div class="container">
-            <jsp:include page="/include/menu.jsp"/>
+            <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
                 <h1>Créer un magasin</h1>
