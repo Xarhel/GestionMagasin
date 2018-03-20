@@ -34,7 +34,7 @@ public interface EmployeDeCaisseFacadeLocal {
 
     int count();
 
-    public void creerEmployeDeCaisse(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin);
+    public void creerEmployeDeCaisse(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte);
 
     public void modifierEmployeDeCaisse(EmployeDeCaisse EDC, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin);
 

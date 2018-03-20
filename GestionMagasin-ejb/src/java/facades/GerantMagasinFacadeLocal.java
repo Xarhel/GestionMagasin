@@ -34,12 +34,14 @@ public interface GerantMagasinFacadeLocal {
 
     int count();
 
-    public void creerGerantMagasin(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin);
+    public void creerGerantMagasin(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte);
 
     public void modifierGerantMagasin(GerantMagasin GM, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin);
 
     public void supprimerGerantMagasin(GerantMagasin GM);
 
     void affecterGerantMagasin(GerantMagasin gm, Magasin magasin);
+
+    public GerantMagasin rechercherGerantMagasinParId(int id);
     
 }

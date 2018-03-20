@@ -54,7 +54,7 @@ public class Direction implements DirectionLocal {
     @EJB
     private ArticleFacadeLocal articleFacade;
     
-        @EJB
+    @EJB
     private facades.RayonArticleFacade rayonFacade;
     
     @EJB
@@ -175,6 +175,17 @@ public class Direction implements DirectionLocal {
         
     }
     
+      @Override
+    public Article rechercherArticleParId(int id)
+    {
+       Article result= articleFacade.rechercherArticleParId(id);
     
+    
+        return result;
+        
+        
+        
+        
+    }
     
 }

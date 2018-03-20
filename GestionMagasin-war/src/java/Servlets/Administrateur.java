@@ -266,7 +266,7 @@ public class Administrateur extends HttpServlet {
             int idMagasin = Integer.valueOf(magasin);
             int idRayon = Integer.valueOf(rayon);
             
-            administrateur.creerEmploye(nom, prenom, login, mdp, dateCreation, typeDuCompte, idMagasin, idRayon);
+            administrateur.creerEmploye(nom, prenom, login, mdp, dateCreation, typeDuCompte);
             message = "Utilisateur créé avec succès";
             // Nom du menu à changer
             jspClient ="Administrateur";

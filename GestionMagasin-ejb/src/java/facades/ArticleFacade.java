@@ -91,6 +91,19 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
     }
     
     
+    @Override
+    public Article rechercherArticleParId(int id) {
+        
+    Article result;
+    
+        Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.id =:id ");
+        req.setParameter("id", id);
+        
+        result = (Article) req.getSingleResult();
+        
+        return result;
+        
+    }
     
     
 }
