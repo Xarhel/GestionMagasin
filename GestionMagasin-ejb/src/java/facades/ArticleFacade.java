@@ -9,6 +9,7 @@ import Entites.Autre.Article;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -61,13 +62,17 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
 
     @Override
     public Article rechercheArticleParReference(int referenceArticle) {
-            Article result;
+        
+        List <Article> articles;
+        
+        Article result = null;
     
-        Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.id =:referenceArticle");
+        Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.referenceArticle =:referenceArticle");
         req.setParameter("referenceArticle", referenceArticle);
         
-        result = (Article) req.getSingleResult();
-        
+        articles = req.getResultList();
+        if (articles.isEmpty()) System.out.println("Erreur!! Article non existant");
+        else result = articles.get(0);
         return result;
     }
     

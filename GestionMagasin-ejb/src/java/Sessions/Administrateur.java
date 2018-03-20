@@ -15,6 +15,7 @@ import Entites.Personne.Direction;
 import Entites.Personne.Employe;
 import Entites.Personne.Personne;
 import static Entites.Personne.Personne_.typeCompte;
+import facades.AdministrateurFacadeLocal;
 import facades.AdresseFacadeLocal;
 import facades.AgentDeLivraisonFacadeLocal;
 import facades.ChefDeRayonFacadeLocal;
@@ -31,6 +32,7 @@ import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 
 /**
  *
@@ -38,6 +40,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class Administrateur implements AdministrateurLocal {
+
+    @EJB
+    private AdministrateurFacadeLocal administrateurFacade;
 
     @EJB
     private AdresseFacadeLocal adresseFacade;
@@ -73,9 +78,21 @@ public class Administrateur implements AdministrateurLocal {
     private AgentDeLivraisonFacadeLocal agentDeLivraisonFacade;
     
     
+    
+    
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+    
+    @Override
+    public void creerAdminDemarrage (){
+        
+
+    if (administrateurFacade.adminCree()== true){
+        administrateurFacade.creerAdminParDefaut();}
+    }
+    
+    
     
     @Override
     public void creerEmploye(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, int idMagasin, int idRayon)

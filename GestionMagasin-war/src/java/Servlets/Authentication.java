@@ -56,7 +56,12 @@ public class Authentication extends HttpServlet {
         
         if((action==null) || (action.equals("null")))
         {
-            jspClient="/login.jsp";           
+            
+            jspClient="/login.jsp";
+            administrateur.creerAdminDemarrage();
+            RequestDispatcher rd;
+            rd = getServletContext().getRequestDispatcher(jspClient);
+            rd.forward(request, response);
         }
   
         else if(action.equals("connexion")) {
@@ -74,7 +79,7 @@ public class Authentication extends HttpServlet {
                         message = "Administrateur";
                         session.setAttribute("user", p);
                         request.setAttribute("message", message);
-                        jspClient ="/include/menu.jsp";
+                        response.sendRedirect("Administrateur");
                     }
                     if (p instanceof ChefDeRayon)
                     {
@@ -148,10 +153,11 @@ public class Authentication extends HttpServlet {
             }
         }              
         
-                
+        /*      
         RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
-        rd.forward(request, response);     
+        rd.forward(request, response);
+        */
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

@@ -10,6 +10,7 @@ import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.ChefDeRayon;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -91,7 +92,9 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
         Query req = getEntityManager().createQuery("SELECT cdr FROM ChefDeRayon AS cdr WHERE cdr=:id");
         req.setParameter("id", id);
         
-        result = (ChefDeRayon) req.getSingleResult();
+        List <ChefDeRayon> cdfs = req.getResultList();
+        
+        result = cdfs.get(0);
         
         return result;
         

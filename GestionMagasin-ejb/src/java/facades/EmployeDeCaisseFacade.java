@@ -9,6 +9,7 @@ import Entites.Autre.Magasin;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.EmployeDeCaisse;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -87,7 +88,9 @@ public class EmployeDeCaisseFacade extends AbstractFacade<EmployeDeCaisse> imple
         Query req = getEntityManager().createQuery("SELECT edc FROM EmployeDeCaisse AS edc WHERE edc.id=:id");
         req.setParameter("id", id);
         
-        result = (EmployeDeCaisse) req.getSingleResult();
+        List <EmployeDeCaisse> adcs = req.getResultList();
+        
+        result = adcs.get(0);
         
         return result;
        

@@ -5,6 +5,7 @@
  */
 package facades;
 
+import Entites.Enum.MoyenPaiement;
 import Entites.Personne.EmployeDeCaisse;
 import Entites.Vente.PanierCaisse;
 import javax.ejb.Stateless;
@@ -35,6 +36,7 @@ public class PanierCaisseFacade extends AbstractFacade<PanierCaisse> implements 
     public PanierCaisse creerPanierCaisse(EmployeDeCaisse edc) {
         PanierCaisse pc= new PanierCaisse();
         pc.setlEmployeDeCaisse(edc);
+        pc.setPaiement(Boolean.FALSE);
         em.persist(pc);
         return pc;
     }
@@ -53,5 +55,34 @@ public class PanierCaisseFacade extends AbstractFacade<PanierCaisse> implements 
     pc = (PanierCaisse) req.getSingleResult();
     return pc;
     }
+    
+    @Override
+    public void choisirModeDePaiement(PanierCaisse pc , MoyenPaiement typeDePaiement)
+    {
+        pc.setMoyenPaiement(typeDePaiement);
+        em.merge(pc);
+        
+        
+        
+    }
+    
+    @Override
+    public boolean validerLePaiement(PanierCaisse pc)
+            
+    {
+        pc.setPaiement(Boolean.TRUE);
+        
+        em.merge(pc);
+        boolean result = pc.getPaiement();
+        
+        return result;
+        
+        
+        
+        
+    }
+    
+    
+    
     
 }

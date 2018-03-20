@@ -11,6 +11,7 @@ import Entites.Personne.ChefDeRayon;
 import Entites.Personne.Fournisseur;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -103,8 +104,8 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
     
         Query req = getEntityManager().createQuery("SELECT bdr FROM BonDeCommande AS bdr WHERE bdr.id=:id");
         req.setParameter("id", id);
-        
-        result = (BonDeCommande) req.getSingleResult();
+        List<BonDeCommande> commandes = req.getResultList();
+        result= commandes.get(0);
         
         return result;
         
@@ -143,11 +144,13 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
     {
         BonDeCommande result;
     
-        Query req = getEntityManager().createQuery("SELECT bdc FROM BonDeCommande AS bdc  WHERE bdc.leFournisseur=:fournisseur AND bdc.dateCommande=:fournisseur AND bdc.leChefDeRayon=:cdr");
+        Query req = getEntityManager().createQuery("SELECT bdc FROM BonDeCommande AS bdc  WHERE bdc.leFournisseur=:fournisseur AND bdc.dateCommande=:dateCreation AND bdc.leChefDeRayon=:cdr");
         req.setParameter("fournisseur", fournisseur);
         req.setParameter("dateCreation", dateCreation);
         req.setParameter("cdr", cdr);
-        result = (BonDeCommande) req.getSingleResult();
+        List<BonDeCommande> commandes = req.getResultList();
+        
+        result = commandes.get(0);
         
         return result;
     }
