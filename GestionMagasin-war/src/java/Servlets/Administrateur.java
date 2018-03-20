@@ -138,6 +138,17 @@ public class Administrateur extends HttpServlet {
             jspClient="/Administrateur/creerMagasin.jsp";
         }
         
+        else if(action.equals("versCreerUtilisateur"))
+        {
+            jspClient="/Administrateur/creerEmploye.jsp";
+            versCreerUtilisateur(request, response);
+        }
+        
+        
+        
+        
+        
+        
         /////////////////////////////////////////////////
         //                Direction                    //
         
@@ -459,6 +470,13 @@ public class Administrateur extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException
     {
        // Méthode à réaliser
+    }
+    
+    protected void versCreerUtilisateur(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        Collection<Magasin> magasin = administrateur.afficherTousMagasins();
+        request.setAttribute("magasin", magasin);        
     }
     
 }

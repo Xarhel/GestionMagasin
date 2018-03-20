@@ -21,7 +21,7 @@
                 <li class="dropdown <%=display%>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrateur<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="Administrateur/creerEmploye.jsp" class="">Créer un employé</a></li>
+                        <li><a href="Administrateur?action=versCreerUtilisateur" class="">Créer un employé</a></li>
                         <li><a href="Administrateur?action=versCreerMagasin" class="">Créer un magasin</a></li>
                         <li><a href="Administrateur?action=afficherTousEmployes" class="">Liste des employés</a></li>
                         <li><a href="Administrateur?action=afficherTousMagasins" class="">Liste des magasins</a></li>
