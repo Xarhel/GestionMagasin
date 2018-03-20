@@ -10,6 +10,7 @@ import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.AgentDeLivraison;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -82,12 +83,18 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
     @Override
     public AgentDeLivraison rechercherAgentParIdEmploye(int idADL)
     {
+        List <AgentDeLivraison> agents;
         AgentDeLivraison result;
     
-        Query req = getEntityManager().createQuery("SELECT adl FROM AgentDeLivraison AS adl WHERE adl.id =:idADL");
+        Query req = getEntityManager().createQuery("SELECT adl FROM AgentDeLivraison AS adl WHERE adl.id=:idADL");
         req.setParameter("idADL", idADL);
         
-        result = (AgentDeLivraison) req.getSingleResult();
+        agents =  req.getResultList();
+        
+        if (agents.isEmpty()){
+            System.out.println("Erreur!! Aucun Agent");
+        result = null;}
+        else result = agents.get(0);
         
         return result;
         

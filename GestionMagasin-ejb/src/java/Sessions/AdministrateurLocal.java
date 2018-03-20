@@ -62,6 +62,8 @@ public interface AdministrateurLocal {
 
     Personne rechercherPersonneParId(int idPersonne);
 
+    public void creerAdminDemarrage();
+    
     public void creerEmploye(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte);
 
     public void associerEmployeAMagasin(int idEmploye, int idMagasin);

@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import Entites.Autre.BonDeCommande;
+import java.util.List;
 
 /**
  *
@@ -66,8 +67,9 @@ public class CommandeLotFacade extends AbstractFacade<CommandeLot> implements Co
     
         Query req = getEntityManager().createQuery("SELECT c FROM CommandeLot AS c WHERE c.id=:cl");
         req.setParameter("cl", cl);
+        List <CommandeLot> commandes = req.getResultList();
         
-        result = (CommandeLot) req.getSingleResult();
+        result = commandes.get(0);
         
         return result;
         

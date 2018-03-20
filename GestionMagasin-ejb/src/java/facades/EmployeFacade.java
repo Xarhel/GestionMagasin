@@ -10,6 +10,7 @@ import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.Employe;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -40,8 +41,9 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
     
         Query req = getEntityManager().createQuery("SELECT e FROM Employe AS e WHERE e.id =:id");
         req.setParameter("idMagasin", id);
+        List <Employe> employes = req.getResultList();
         
-        result = (Employe) req.getSingleResult();
+        result = employes.get(0);
         
         return result;
     }
