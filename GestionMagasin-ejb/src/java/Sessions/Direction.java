@@ -54,7 +54,7 @@ public class Direction implements DirectionLocal {
     @EJB
     private ArticleFacadeLocal articleFacade;
     
-        @EJB
+    @EJB
     private facades.RayonArticleFacade rayonFacade;
     
     @EJB

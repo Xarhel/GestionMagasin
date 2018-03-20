@@ -48,7 +48,7 @@ public interface AdministrateurLocal {
 
     public Personne authentification(String login, String password);
 
-    public void creerEmploye(String nom, String prenom, String login, String mdp,Date dateCreationCompte, TypeCompte typeCompte, int idMagasin, int idRayon);
+  
 
     Collection<Employe> afficherTousEmployes();
 
@@ -61,5 +61,11 @@ public interface AdministrateurLocal {
     void supprimerPersonne(Personne personne);
 
     Personne rechercherPersonneParId(int idPersonne);
+
+    public void creerEmploye(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte);
+
+    public void associerEmployeAMagasin(int idEmploye, int idMagasin);
+
+    public void associerEmployeAMagasinEtRayon(int idEmploye, int idMagasin, int idRayon);
     
 }

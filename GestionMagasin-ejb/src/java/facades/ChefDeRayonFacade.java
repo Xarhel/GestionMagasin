@@ -36,7 +36,7 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
     
     
     @Override
-    public void creerChefDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    public void creerChefDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte)
     {
         ChefDeRayon CDR= new ChefDeRayon();
         CDR.setNomPersonne(nom);
@@ -45,8 +45,7 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
         CDR.setPassword(mdp);
         CDR.setDateCreationCompte(dateCreationCompte);
         CDR.setTypeCompte(typeCompte);
-        CDR.setLeMagasin(magasin);
-        CDR.setLeRayon(rayon);
+       
         em.persist(CDR);
         
     }

@@ -35,7 +35,7 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
     }
     
     @Override
-     public void creerAgentDeLivraison(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin)
+     public void creerAgentDeLivraison(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte)
     {
         AgentDeLivraison ADL= new AgentDeLivraison();
         ADL.setNomPersonne(nom);
@@ -44,7 +44,7 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
         ADL.setPassword(mdp);
         ADL.setDateCreationCompte(dateCreationCompte);
         ADL.setTypeCompte(typeCompte);
-        ADL.setLeMagasin(magasin);
+       
         em.persist(ADL);
         
     }

@@ -34,7 +34,7 @@ public class EmployeDeCaisseFacade extends AbstractFacade<EmployeDeCaisse> imple
     }
     
     @Override
-    public void creerEmployeDeCaisse(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin)
+    public void creerEmployeDeCaisse(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte)
     {
         EmployeDeCaisse EDC= new EmployeDeCaisse();
         EDC.setNomPersonne(nom);
@@ -43,7 +43,7 @@ public class EmployeDeCaisseFacade extends AbstractFacade<EmployeDeCaisse> imple
         EDC.setPassword(mdp);
         EDC.setDateCreationCompte(dateCreationCompte);
         EDC.setTypeCompte(typeCompte);
-        EDC.setLeMagasin(magasin);
+  
         
         em.persist(EDC);
         
