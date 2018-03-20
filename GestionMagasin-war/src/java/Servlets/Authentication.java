@@ -85,7 +85,7 @@ public class Authentication extends HttpServlet {
                         message = "Chef de rayon";
                         session.setAttribute("user", r);
                         request.setAttribute("message", message);
-                        jspClient ="/login.jsp";
+                        response.sendRedirect("");
                     } 
                     if (p instanceof EmployeDeCaisse)
                     {
@@ -125,7 +125,7 @@ public class Authentication extends HttpServlet {
                         message = "Direction";
                         session.setAttribute("user", d);
                         request.setAttribute("message", message);
-                        jspClient ="/login.jsp";
+                        response.sendRedirect("Administrateur?action=redirigerMenuDirection");
                     }
                     if (p instanceof Fournisseur)
                     {

@@ -10,7 +10,7 @@
 <html>
     <head>        
         <title>Liste des articles</title>
-        <jsp:include page="include/header.jsp"/>        
+        <jsp:include page="header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="article" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
@@ -40,10 +40,10 @@
                             for (Article a : _article) {%>
                         <tr><td><%=a.getLibelle()%></td>
                            
-                            <td><a href="Menu?action=pageAjouterPromotion&id=<%=a.getId()%>" class="btn btn-info btn-md">
+                            <td><a href="Menu?action=AjouterPromotion&id=<%=a.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Faire une promotion"></span>Edit promotion
                                 </a>
-                                <a href="Menu?action=pageModifierPrixArticle&id=<%=a.getId()%>" class="btn btn-success btn-md">
+                                <a href="Menu?action=ModifierPrixArticle&id=<%=a.getId()%>" class="btn btn-success btn-md">
                                     <span class="glyphicon glyphicon-pencil" title="Modifier prix article"></span> Modifier prix
                                 </a>
                                 
