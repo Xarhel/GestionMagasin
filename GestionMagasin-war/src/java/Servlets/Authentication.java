@@ -56,7 +56,9 @@ public class Authentication extends HttpServlet {
         
         if((action==null) || (action.equals("null")))
         {
+            
             jspClient="/login.jsp";
+            administrateur.creerAdminDemarrage();
             RequestDispatcher rd;
             rd = getServletContext().getRequestDispatcher(jspClient);
             rd.forward(request, response);

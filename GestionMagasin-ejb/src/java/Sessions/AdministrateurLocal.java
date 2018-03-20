@@ -61,5 +61,7 @@ public interface AdministrateurLocal {
     void supprimerPersonne(Personne personne);
 
     Personne rechercherPersonneParId(int idPersonne);
+
+    public void creerAdminDemarrage();
     
 }
