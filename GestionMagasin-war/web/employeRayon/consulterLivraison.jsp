@@ -29,17 +29,17 @@
                             <th>Agent de livraison</th>
                             <th>Date de reception</th>
                             <th>Statut de livraison</th>
-                            
-                            <th>Actions</th>
+                           
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Nom</th>
-                            <th>Prenom</th>
-                            <th>Adresse</th>
-                            
-                            <th>Actions</th>
+                            <th>Livraison lots</th>
+                            <th>Date de créeation</th>
+                            <th>Agent de livraison</th>
+                            <th>Date de reception</th>
+                            <th>Statut de livraison</th>
+                           
                         </tr>
                     </tfoot>
                     <tbody>

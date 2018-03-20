@@ -29,7 +29,7 @@
                             <th>Date de commande</th>
                             <th>Prix</th>
                             <th>Quantité</th>
-                            <th>Actions</th>
+                           
                         </tr>
                     </thead>
                     <tfoot>
@@ -37,7 +37,7 @@
                             <th>Libelle article</th>
                             <th>Prix</th>
                             <th>Quantité</th>
-                            <th>Actions</th>
+                            
                         </tr>
                     </tfoot>
                     <tbody>

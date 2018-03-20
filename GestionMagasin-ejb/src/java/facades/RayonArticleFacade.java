@@ -125,6 +125,7 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
      
      }
      
+    @Override
      public void ajouterArticleARayon (Rayon r, Article a, float prixRayon) {
      
      RayonArticle ra = new RayonArticle();

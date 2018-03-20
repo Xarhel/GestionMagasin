@@ -1,36 +1,45 @@
 <%-- 
-    Document   : listeArticle
-    Created on : 19 mars 2018, 10:09:39
+    Document   : rechercherArticle
+    Created on : 20 mars 2018, 11:04:24
     Author     : jules
 --%>
-<%@page import="Entites.Autre.Article"%>
-<%@page import="java.util.Collection"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Collection"%>
+<%@page import="Entites.Autre.Article"%>
 <!DOCTYPE html>
 <html>
-    <head>        
-        <title>Liste des articles</title>
+    <head>
+        <title>Chercher article</title>
         <jsp:include page="include/header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="article" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
             <div class="container">
-            <jsp:include page=""/>
+            <jsp:include page="include/menu.jsp"/>
             <!-- BODY START -->
-            <div>
-                <h1>Liste des articles</h1>
+            <div>    
+                <form method="POST" action=" ">
+                    <div class="recherche">
+                        <div class="col-md-4">
+                            <input type="text" name="keyword" placeholder="Rechercher un article.."value="Recherche"/>
+                            <button>Rechercher</button>
+                        </div>
+                    </div>
+
+                    <h1>Liste des articles</h1>
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Libelle</th>
+                            <th>Libelle article</th>
                             
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Libelle</th>
+                            <th>Libelle article</th>
                             
                             <th>Actions</th>
                         </tr>
@@ -49,10 +58,10 @@
                                 
                             </td>
                         </tr><%}%>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </form>
             </div>
-            <!-- BODY END-->
-        </div>
-    </body>
+            </div>
+        </body>
 </html>
