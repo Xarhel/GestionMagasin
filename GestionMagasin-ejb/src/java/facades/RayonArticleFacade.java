@@ -9,6 +9,7 @@ import Entites.Autre.Article;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -92,8 +93,9 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
         Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra inner join ra.lesArticles ar WHERE ra.lesRayons =:r AND ar.libelle=:libelle" );
         req.setParameter("r", r);
         req.setParameter("libelle", libelle);
+        List<RayonArticle> ras = req.getResultList();
         
-        result = (RayonArticle) req.getSingleResult();
+        result = ras.get(0);
         
         return result;
         
@@ -113,6 +115,7 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
         return result;
         
     }
+    @Override
      public Collection<RayonArticle> chercherRayonArticlesParReference (int ref){
      
          Collection<RayonArticle> result;

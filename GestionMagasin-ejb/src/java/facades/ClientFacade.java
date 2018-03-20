@@ -69,8 +69,9 @@ public class ClientFacade extends AbstractFacade<Client> implements ClientFacade
     
         Query req = getEntityManager().createQuery("SELECT cl FROM Client AS cl WHERE cl.id=:id");
         req.setParameter("id", id);
+        List <Client> clients = req.getResultList();
         
-        result = (Client) req.getSingleResult();
+        result = clients.get(0);
         
         return result;
         

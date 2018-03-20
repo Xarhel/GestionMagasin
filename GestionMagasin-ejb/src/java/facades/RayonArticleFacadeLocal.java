@@ -49,6 +49,8 @@ public interface RayonArticleFacadeLocal {
 
     public void modifierPrixRayonArticle(Article article, Rayon rayon, float prixRayon);
 
+    public Collection<RayonArticle> chercherRayonArticlesParReference(int ref);
+
     
    
 }

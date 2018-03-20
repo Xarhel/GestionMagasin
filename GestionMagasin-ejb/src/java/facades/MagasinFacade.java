@@ -8,6 +8,7 @@ package facades;
 import Entites.Autre.Adresse;
 import Entites.Autre.Magasin;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -57,8 +58,9 @@ public class MagasinFacade extends AbstractFacade<Magasin> implements MagasinFac
     
         Query req = getEntityManager().createQuery("SELECT m FROM Magasin AS m WHERE m.nom = :nom");
         req.setParameter("nom", nom);
+        List <Magasin> magasins = req.getResultList();
         
-        result = (Magasin) req.getSingleResult();
+        result =magasins.get(0);
         
         return result;
         
