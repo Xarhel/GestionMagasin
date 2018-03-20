@@ -47,7 +47,7 @@
                 for (Rayon r : _rayon) {%>
                         <tr>
                             <td><%=r.getRayonNom()%></td>
-                            <td><%=r.getMagasin().getNom()%></td>
+                            <td><%=r.getLeMagasin().getNom()%></td>
                         </tr><%}%>
                     </tbody>
                 </table>
