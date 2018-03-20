@@ -76,4 +76,16 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
         return e;
     }
      
+    
+    @Override
+     public Collection <Employe> chercherEmployeParNom(String nom) {
+       Collection <Employe> result;
+    
+        Query req = getEntityManager().createQuery("SELECT e FROM Employe AS e WHERE e.nomPersonne =:nom");
+        req.setParameter("nom", nom);
+        
+        result =   req.getResultList();
+        
+        return result;
+    }
 }
