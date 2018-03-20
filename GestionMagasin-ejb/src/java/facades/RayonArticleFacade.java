@@ -64,11 +64,6 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
     }
         }
     
-    
-    
-    
-    
-    
     @Override
     public RayonArticle rechercherRayonArticle(Rayon r, Article a)
     {
@@ -100,7 +95,7 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
     }
     
     @Override
-     public RayonArticle rechercherRayonArticleParReference(Rayon r, int reference)
+    public RayonArticle rechercherRayonArticleParReference(Rayon r, int reference)
     {
         RayonArticle result;
     
@@ -113,10 +108,12 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
         return result;
         
     }
-     public Collection<RayonArticle> chercherRayonArticlesParReference (int ref){
+     @Override
      
-         Collection<RayonArticle> result;
-         Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra inner join ra.lesArticles ar  WHERE ar.referenceArticle=:ref" );
+    public Collection<RayonArticle> chercherRayonArticlesParReference(int ref){
+     
+        Collection<RayonArticle> result;
+        Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra inner join ra.lesArticles ar  WHERE ar.referenceArticle=:ref" );
         req.setParameter("ref", ref);
                
         result = req.getResultList();

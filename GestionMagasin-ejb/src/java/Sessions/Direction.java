@@ -22,6 +22,8 @@ import facades.EmployeDeCaisseFacadeLocal;
 import facades.EmployeFacadeLocal;
 import facades.EmployeRayonFacadeLocal;
 import facades.GerantMagasinFacadeLocal;
+import facades.RayonArticleFacadeLocal;
+import facades.RayonFacadeLocal;
 import java.util.Collection;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -32,6 +34,18 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class Direction implements DirectionLocal {
+
+    @EJB
+    private RayonArticleFacadeLocal rayonArticleFacade;
+
+    @EJB
+    private RayonFacadeLocal rayonFacade;
+
+    @EJB
+    private ArticleFacadeLocal articleFacade1;
+
+    @EJB
+    private EmployeFacadeLocal employeFacade1;
 
     @EJB
     private AgentDeLivraisonFacadeLocal agentDeLivraisonFacade;
@@ -53,12 +67,6 @@ public class Direction implements DirectionLocal {
 
     @EJB
     private ArticleFacadeLocal articleFacade;
-    
-        @EJB
-    private facades.RayonArticleFacade rayonFacade;
-    
-    @EJB
-    private facades.ArticleFacade article;
     
     
 
@@ -148,18 +156,18 @@ public class Direction implements DirectionLocal {
     @Override
     public void demarrerUnePrommotion (int reference, float prixPromotion) {
     
-        Article ar = article.rechercheArticleParReference(reference);
-        article.modifierPrixArticle(ar, prixPromotion);
-        Collection<RayonArticle> articleDansRayons =rayonFacade.chercherRayonArticlesParReference(reference);
-        rayonFacade.commencerPromotion(articleDansRayons, prixPromotion);
+        Article ar = articleFacade.rechercheArticleParReference(reference);
+        articleFacade.modifierPrixArticle(ar, prixPromotion);
+        Collection<RayonArticle> articleDansRayons =rayonArticleFacade.chercherRayonArticlesParReference(reference);
+        rayonArticleFacade.commencerPromotion(articleDansRayons, prixPromotion);
     }
     
     @Override
     public void cloturerPromotion (int reference){
-        Article ar = article.rechercheArticleParReference(reference);
-        Collection<RayonArticle> articleDansRayons =rayonFacade.chercherRayonArticlesParReference(reference);
-        article.annulerPromotion(ar);
-        rayonFacade.cloturerPromotion(articleDansRayons);
+        Article ar = articleFacade.rechercheArticleParReference(reference);
+        Collection<RayonArticle> articleDansRayons =rayonArticleFacade.chercherRayonArticlesParReference(reference);
+        articleFacade.annulerPromotion(ar);
+        rayonArticleFacade.cloturerPromotion(articleDansRayons);
     }
     
     @Override
@@ -168,13 +176,8 @@ public class Direction implements DirectionLocal {
         Collection<Employe> result= employeFacade.chercherEmployeParNom(nom);
     
     
-        return result;
-        
-        
-        
+        return result;      
         
     }
-    
-    
     
 }
