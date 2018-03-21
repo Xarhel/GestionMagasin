@@ -5,8 +5,12 @@
  */
 package Sessions;
 
+import Entites.Autre.BonDeCommande;
+import Entites.Autre.Livraison;
+import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
+import java.util.Collection;
 import java.util.Date;
 import javax.ejb.Local;
 
@@ -22,5 +26,9 @@ public interface EmployeDeRayonSessionLocal {
     public RayonArticle RechercheArticleParReference(Rayon r, int reference);
 
     public void retirerStockPerime(Date date, Rayon r);
+
+    public Collection<BonDeCommande> rechercherParMagasin(int idMagasin);
+
+    public Collection<Livraison> rechercheLivraisonEnCours(int idMag);
     
 }
