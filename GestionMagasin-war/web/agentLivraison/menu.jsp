@@ -27,13 +27,10 @@
                 <li class="dropdown <%=display%>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="ajouterArticle.jsp" class="">Ajouter article</a></li>
-                        <li><a href="ajouterFournisseur.jsp">Ajouter fournisseur</a></li>
-                        <li><a href="ajouterPrixArticle.jsp" class="">Ajouter le prix</a></li>
-                        <li><a href="creerCommande.jsp" class="">Créer commande</a></li>
-                        <li><a href="listeArticle.jsp" class="">Liste des articles</a></li>
-                        <li><a href="modifierPrix.jsp" class="">Modifier le prix</a></li>
-                        
+                        <li><a href="creerLivraison.jsp" class="">Créer livraison</a></li>
+                        <li><a href="listeLivraison.jsp">Liste livraison</a></li>
+                        <li><a href=".jsp" class=""></a></li>
+
                     </ul>
                 </li> 
                 

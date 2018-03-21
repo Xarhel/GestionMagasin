@@ -12,6 +12,7 @@
         <title>Créer un article</title>
         <jsp:include page="include/header.jsp"/>
         
+        
     </head>
     <body>
         <div class="container">
@@ -34,6 +35,10 @@
                             <input class="form-control" type="text" name="referenceArticle" required/>
                         </div>                        
                     </div>
+                     <div class="form-group row">
+                        <label class="col-md-1">Agent de livraison<span class="requis">*</span></label>
+                        
+                    </div> 
                     <button type="submit" class="btn btn-success">Enregistre</button>                    
                 </form> 
             </div>
