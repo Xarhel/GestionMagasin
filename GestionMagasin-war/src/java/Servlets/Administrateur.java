@@ -20,7 +20,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -201,6 +203,18 @@ public class Administrateur extends HttpServlet {
         {
             versAjouterPromotion(request, response);
             jspClient="/direction/ajouterPromotion.jsp";
+        }
+        
+        else if(action.equals("ajouterPromotion"))
+        {
+            ajouterPromotion(request, response);
+            jspClient="/direction/listeArticle.jsp";
+        }
+        
+        else if(action.equals("supprimerPromotion"))
+        {
+            annulerPromotion(request, response);
+            jspClient="/direction/listeArticle.jsp";
         }
         
         /////////////////////////////////////////////////
@@ -521,6 +535,35 @@ public class Administrateur extends HttpServlet {
         String id = request.getParameter("id");
         int referenceArticle = Integer.parseInt(id);
         Article article = direction.rechercherArticleParId(referenceArticle);
+        request.setAttribute("article", article);
+    }
+    
+    protected void ajouterPromotion(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String nom = request.getParameter("nom");
+        String id = request.getParameter ("id");
+        String prixPromotion = request.getParameter("prixPromotion");
+        
+        int idArticle = Integer.parseInt(id);
+        float prix = Float.parseFloat(prixPromotion);
+        
+        Article articleModifie = direction.rechercherArticleParId(idArticle);
+        direction.ajouterPromotion(articleModifie, prix);
+        Collection<Article> article = direction.afficherArticleParLibelle(nom);
+
+        request.setAttribute("article", article);
+    }
+    
+    protected void annulerPromotion(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        int idArticle = Integer.parseInt(id);
+        Article articleModifie = direction.rechercherArticleParId(idArticle);
+        direction.annulerPromotion(articleModifie);
+        Collection<Article> article = null;
+        article.add(direction.rechercherArticleParId(idArticle));
         request.setAttribute("article", article);
     }
     
