@@ -7,6 +7,7 @@ package Servlets;
 
 import Entites.Enum.CategorieArticle;
 import Sessions.ChefDeRayonSession;
+import Sessions.ChefDeRayonSessionLocal;
 import facades.ArticleFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ChefDeRayon extends HttpServlet {
 
     @EJB
-    private ChefDeRayonSession chefDeRayon;
+    private ChefDeRayonSessionLocal chefDeRayon;
     
     
    
@@ -48,15 +49,20 @@ public class ChefDeRayon extends HttpServlet {
         String action = request.getParameter("action");
         
         
-        if((action.equals("null")) || (action==null))
+        if((action==null) || (action.equals("null")))
         {
             jspClient="/chefDeRayon/index.jsp";
         }
         
         else if (action.equals("ajouterArticle"))
         {
-        ajouterArticle(request,response);
-        jspClient="/chefDeRayon/ajouterArticle.jsp";
+            jspClient="/chefDeRayon/ajouterArticle.jsp";
+            ajouterArticle(request,response);
+
+        }
+                else if (action.equals("versAjouterArticle"))
+        {
+            jspClient="/chefDeRayon/ajouterArticle.jsp";
         }
                
         

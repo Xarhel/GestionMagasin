@@ -77,6 +77,19 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
         return result;
     }
     
+    @Override
+        public List <Article> rechercheArticlesParReference(int referenceArticle) {
+        
+        List <Article> articles;
+        
+    
+        Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.referenceArticle =:referenceArticle");
+        req.setParameter("referenceArticle", referenceArticle);
+        
+        articles = req.getResultList();
+        return articles;
+ 
+    }
     /**
      *
      * @param libelle

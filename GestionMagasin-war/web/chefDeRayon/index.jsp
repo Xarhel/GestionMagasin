@@ -5,8 +5,8 @@
 <html>
     <head>        
         <title>Gestion Magasin</title>
-        <jsp:include page="header.jsp"/>
-        <jsp:include page="menu.jsp"/>   
+        <jsp:include page="/chefDeRayon/header.jsp"/>
+        <jsp:include page="/chefDeRayon/menu.jsp"/>   
         <style>
             .jumbotron{
                 background-image: url("images/Magasin_Aarhus.jpg");

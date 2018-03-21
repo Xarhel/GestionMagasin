@@ -21,6 +21,7 @@ import facades.FournisseurFacadeLocal;
 import facades.LotFacadeLocal;
 import facades.RayonArticleFacadeLocal;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -68,8 +69,8 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
    public void ajouterArticle(int referenceArticle, String libelle, CategorieArticle categorie)
            
    {
-      Article testExistant= articleFacade.rechercheArticleParReference(referenceArticle);
-      if(testExistant.getReferenceArticle()==referenceArticle)
+      List <Article> articles = articleFacade.rechercheArticlesParReference(referenceArticle); 
+      if(articles.isEmpty()==false)
       {
           System.out.println("Erreur, article déjà existant");
       }

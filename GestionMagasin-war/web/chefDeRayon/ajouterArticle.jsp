@@ -10,17 +10,17 @@
 <html>
     <head>        
         <title>Créer un article</title>
-         <jsp:include page="include/header.jsp"/> 
+         <jsp:include page="header.jsp"/> 
         
     </head>
     <body>
         <div class="container">
-            <jsp:include page="include/menu.jsp"/>
+            <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
                 <h1>Créer article</h1>
-                <form method="POST" action=".....">
-                    <input hidden type="text" name="action" value="creerArticle"/>
+                <form method="POST" action="ChefDeRayon">
+                    <input hidden type="text" name="action" value="ajouterArticle"/>
                      <div class="form-group row">
                         <label class="col-md-2">Libelle<span class="requis">*</span></label>
                         <div class="col-md-4">
@@ -31,7 +31,7 @@
                         
                         <label class="col-md-2">Reference de l'article<span class="requis">*</span></label>
                         <div class="col-md-4">
-                            <input class="form-control" type="text" name="referenceArticle" required/>
+                            <input class="form-control" type="text" name="reference" required/>
                         </div>                        
                     </div>
                     <div class="form-group row">
