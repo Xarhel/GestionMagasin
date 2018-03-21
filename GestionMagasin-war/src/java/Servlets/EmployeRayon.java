@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -52,27 +53,51 @@ public class EmployeRayon extends HttpServlet {
         
          if((action==null) || (action.equals("null")))
         {
-            jspClient="/EmployeRayon/index.jsp";
-        }
-         
-        else if(action.equals("consulterCommande"))
-        {
-            consulterCommande(request, response);
-            jspClient="consulterCommande.jsp";
+            jspClient="/employeRayon/index.jsp";
         }
          
            else if(action.equals("consulterLivraison"))
         {
             consulterLivraison(request, response);
-            jspClient="consulterLivraison.jsp";
+            jspClient="/employeRayon/consulterLivraison.jsp";
         }
         
           else if(action.equals("retraitArticlePerimer"))
         {
-            jspClient="retraitArticlePerimer.jsp";
+            jspClient="/EmployeRayon/retraitArticlePerimer.jsp";
+        }
+         
+         
+          else if(action.equals("versConsulterCommande"))
+        {
+            jspClient="/employeRayon/consulterCommande.jsp";
+            versConsulterCommande(request, response);
+            
         }
          
           ////////////////////////DIRECTION//////////////////////
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          RequestDispatcher rd;
+        rd = getServletContext().getRequestDispatcher(jspClient);
+        rd.forward(request, response);
+          
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -99,7 +124,7 @@ public class EmployeRayon extends HttpServlet {
 
 
     
-    protected void consulterCommande(HttpServletRequest request,
+    protected void versConsulterCommande(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException
             
     {
@@ -121,8 +146,9 @@ public class EmployeRayon extends HttpServlet {
         HttpSession session= request.getSession();
         Employe e=(Employe) session.getAttribute("user");
         
-        Collection<Livraison> l = employeDeRayonSession.rechercheLivraisonEnCours(e.getIdMagasin());
         
+        Collection<Livraison> l = employeDeRayonSession.rechercheLivraisonEnCours(e.getIdMagasin());
+       
         String message = "Voici la liste des livraisons recensées";
         request.setAttribute("livraison", l);
         request.setAttribute("message", message);        
