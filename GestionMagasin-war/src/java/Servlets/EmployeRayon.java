@@ -56,11 +56,7 @@ public class EmployeRayon extends HttpServlet {
             jspClient="/employeRayon/index.jsp";
         }
          
-           else if(action.equals("consulterLivraison"))
-        {
-            consulterLivraison(request, response);
-            jspClient="/employeRayon/consulterLivraison.jsp";
-        }
+          
         
           else if(action.equals("retraitArticlePerimer"))
         {
@@ -70,10 +66,19 @@ public class EmployeRayon extends HttpServlet {
          
           else if(action.equals("versConsulterCommande"))
         {
-            jspClient="/employeRayon/consulterCommande.jsp";
             versConsulterCommande(request, response);
+            jspClient="/employeRayon/consulterCommande.jsp";
+            
             
         }
+         
+          else if(action.equals("versConsulterLivraison"))
+                  {
+                      jspClient="/employeRayon/consulterLivraison.jsp";
+                      versConsulterLivraison(request, response);
+                  }
+         
+         
          
           ////////////////////////DIRECTION//////////////////////
           
@@ -133,13 +138,15 @@ public class EmployeRayon extends HttpServlet {
         
         Collection<BonDeCommande> c = employeDeRayonSession.rechercherParMagasin(e.getIdMagasin());
         
+        
+  
         String message = "Voici la liste des commandes recensées";
         request.setAttribute("commande", c);
         request.setAttribute("message", message);        
     }   
     
     
-    protected void consulterLivraison(HttpServletRequest request,
+    protected void versConsulterLivraison(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException
             
     {
