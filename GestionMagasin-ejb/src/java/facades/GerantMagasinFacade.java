@@ -12,6 +12,7 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -33,7 +34,7 @@ public class GerantMagasinFacade extends AbstractFacade<GerantMagasin> implement
     }
     
     @Override
-    public void creerGerantMagasin(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin)
+    public void creerGerantMagasin(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte)
     {
         GerantMagasin GM= new GerantMagasin();
         GM.setNomPersonne(nom);
@@ -42,7 +43,7 @@ public class GerantMagasinFacade extends AbstractFacade<GerantMagasin> implement
         GM.setPassword(mdp);
         GM.setDateCreationCompte(dateCreationCompte);
         GM.setTypeCompte(typeCompte);
-        GM.setLeMagasin(magasin);
+      
         em.persist(GM);
         
     }
@@ -76,5 +77,24 @@ public class GerantMagasinFacade extends AbstractFacade<GerantMagasin> implement
        em.merge(gm);
     }
      
+    /**
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public GerantMagasin rechercherGerantMagasinParId(int id)
+    {
+    GerantMagasin result;
+    
+        Query req = getEntityManager().createQuery("SELECT gm FROM GerantMagasin AS gm WHERE gm.id=:id");
+        req.setParameter("id", id);
+        
+        result = (GerantMagasin) req.getSingleResult();
+        
+        return result;
+        
+        
+    }
      
 }

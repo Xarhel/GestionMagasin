@@ -10,6 +10,7 @@ import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.AgentDeLivraison;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -35,7 +36,7 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
     }
     
     @Override
-     public void creerAgentDeLivraison(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin)
+     public void creerAgentDeLivraison(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte)
     {
         AgentDeLivraison ADL= new AgentDeLivraison();
         ADL.setNomPersonne(nom);
@@ -44,7 +45,7 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
         ADL.setPassword(mdp);
         ADL.setDateCreationCompte(dateCreationCompte);
         ADL.setTypeCompte(typeCompte);
-        ADL.setLeMagasin(magasin);
+       
         em.persist(ADL);
         
     }
@@ -82,12 +83,18 @@ public class AgentDeLivraisonFacade extends AbstractFacade<AgentDeLivraison> imp
     @Override
     public AgentDeLivraison rechercherAgentParIdEmploye(int idADL)
     {
+        List <AgentDeLivraison> agents;
         AgentDeLivraison result;
     
-        Query req = getEntityManager().createQuery("SELECT adl FROM AgentDeLivraison AS adl WHERE adl.id =:idADL");
+        Query req = getEntityManager().createQuery("SELECT adl FROM AgentDeLivraison AS adl WHERE adl.id=:idADL");
         req.setParameter("idADL", idADL);
         
-        result = (AgentDeLivraison) req.getSingleResult();
+        agents =  req.getResultList();
+        
+        if (agents.isEmpty()){
+            System.out.println("Erreur!! Aucun Agent");
+        result = null;}
+        else result = agents.get(0);
         
         return result;
         

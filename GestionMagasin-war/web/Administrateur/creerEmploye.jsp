@@ -4,6 +4,7 @@
     Author     : 5153218
 --%>
 <%@page import="java.util.Collection"%>
+<%@page import="Entites.Enum.TypeCompte"%>
 <%@page import="Entites.Autre.Magasin"%>
 <%@page import="Entites.Autre.Rayon"%>
 <%@page import="Entites.Personne.Employe"%>
@@ -12,17 +13,31 @@
 <html>
     <head>        
         <title>Créer un employe</title>
-        <jsp:include page="include/header.jsp"/>
+        <jsp:include page="header.jsp"/>
+        <script>
+            function showDiv(){
+                if(typeCompte == 'ChefDeRayon')
+                {
+                    document.getElementById("magasin").style.display = 'block';
+                    document.getElementById("rayon").style.display = 'inline';
+                }
+                else
+                {
+                    document.getElementById("magasin").style.display = 'none';
+                    document.getElementById("rayon").style.display = 'none';
+                }
+            }
+        </script>
     </head>
     <body>
         <div class="container">
-            <jsp:include page="include/menu.jsp"/>
+            <jsp:include page="menu.jsp"/>
             <jsp:useBean id="magasin" scope="request" class="java.util.Collection"></jsp:useBean>
-            <jsp:useBean id="rayon" scope="request" class="java.util.Collection"></jsp:useBean>
+          <%--  <jsp:useBean id="rayon" scope="request" class="java.util.Collection"></jsp:useBean> --%>
                 <!-- BODY START -->
                 <div>
                     <h1>Créer employe</h1>
-                    <form method="POST" action="....">
+                    <form method="POST" action="Administrateur">
                         <input hidden type="text" name="action" value="creerEmploye"/>
                         <div class="form-group row">
                             <label class="col-md-2">Nom<span class="requis">*</span></label>
@@ -54,13 +69,13 @@
                                 </div>                        
                             </div> 
                         </div>
-                        <div class="form-group row">
-                            <label class="col-md-2">Type de Compte<span class="requis">*</span></label>
-                            <div class="col-md-4">
-                                <input class="form-control" type="text" name="typeCompte" required/>
-                            </div>                        
-                        </div>
-                        <div class="form-group row">
+                        <div id="typeCompte" class="form-group row">
+                            <label class="col-md-2">Type de compte<span class="requis">*</span></label>
+                            <select name="typeCompte" class="col-md-3 form-control" required>
+                                <option></option>
+                                <option value="<%=TypeCompte. %>>"><%=m.getNom()%></option>
+                            <%}%>
+                        <div id="magasin" class="form-group row">
                             <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
                             <select name="nom" class="col-md-3 form-control" required>
                                 <option></option>
@@ -70,7 +85,8 @@
                             <%}%>
                         </select>  
                     </div>
-                    <div class="form-group row">
+                    <%--
+                    <div id="rayon" class="form-group row">
                         <label class="col-md-2">Nom du rayon<span class="requis">*</span></label>
                         <select name="nom" class="col-md-3 form-control" required>
                                 <option></option>
@@ -80,8 +96,8 @@
                             <%}%>
                         </select>  
                     </div> 
-
-                    <button type="submit" class="btn btn-success">Enregistre</button>                    
+                    --%>
+                    <button type="submit" class="btn btn-success">Enregistrer</button>                    
                 </form> 
             </div>
             <!-- BODY END-->

@@ -5,10 +5,18 @@
  */
 package facades;
 
+import Entites.Autre.Article;
+import Entites.Autre.Rayon;
+import Entites.Autre.RayonArticle;
+import Entites.Autre.Stock;
 import Entites.Vente.ArticleVente;
+import Entites.Vente.PanierCaisse;
+import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +35,46 @@ public class ArticleVenteFacade extends AbstractFacade<ArticleVente> implements 
 
     public ArticleVenteFacade() {
         super(ArticleVente.class);
+    }
+    
+    @Override
+    public float calculerTotalVente (Collection <ArticleVente> av){
+        float result=0;
+        
+        for(ArticleVente a: av){
+            RayonArticle ra;
+            Article article= a.getStock().getlArticle();
+            Rayon rayon= a.getStock().getLeRayon();
+            
+     Query req = getEntityManager().createQuery("select ra from RayonArticle ra WHERE ra.lesArticles=:article AND ra.lesRayons=:rayon");
+     req.setParameter("article", article);
+     req.setParameter("rayon", rayon);
+     List <RayonArticle> ras = req.getResultList();
+     
+     ra = ras.get(0);
+            
+        int quantiteArticle= a.getQuantite();
+        float prixUnitaire= ra.getPrixVente();
+        result= result+(quantiteArticle*prixUnitaire);}
+        return result;
+    
+    }
+    
+    
+    @Override
+    public void creerArticleVenteCaisse(PanierCaisse pc, int quantite, Stock s)
+    {
+    ArticleVente av= new ArticleVente();
+    
+    
+    
+    av.setLePanierCaisse(pc);
+    av.setQuantite(quantite);
+    av.setStock(s);
+    
+    em.persist(av);
+    
+    
     }
     
 }

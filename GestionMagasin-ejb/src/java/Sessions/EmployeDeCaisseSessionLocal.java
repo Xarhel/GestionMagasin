@@ -13,5 +13,9 @@ import javax.ejb.Local;
  */
 @Local
 public interface EmployeDeCaisseSessionLocal {
+
+    public long creerPanierCaisse(int idEmployeDeCaisse);
+
+    public void ajouterArticleVente(long idPanier, int referenceArticle, int quantite, int idMagasin);
     
 }

@@ -8,6 +8,7 @@ package Sessions;
 import Entites.Autre.Article;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
+import Entites.Autre.RayonArticle;
 import Entites.Personne.AgentDeLivraison;
 import Entites.Personne.ChefDeRayon;
 import Entites.Personne.Employe;
@@ -21,6 +22,8 @@ import facades.EmployeDeCaisseFacadeLocal;
 import facades.EmployeFacadeLocal;
 import facades.EmployeRayonFacadeLocal;
 import facades.GerantMagasinFacadeLocal;
+import facades.RayonArticleFacadeLocal;
+import facades.RayonFacadeLocal;
 import java.util.Collection;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -31,6 +34,18 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class Direction implements DirectionLocal {
+
+    @EJB
+    private RayonArticleFacadeLocal rayonArticleFacade;
+
+    @EJB
+    private RayonFacadeLocal rayonFacade;
+
+    @EJB
+    private ArticleFacadeLocal articleFacade1;
+
+    @EJB
+    private EmployeFacadeLocal employeFacade1;
 
     @EJB
     private AgentDeLivraisonFacadeLocal agentDeLivraisonFacade;
@@ -51,10 +66,8 @@ public class Direction implements DirectionLocal {
     private EmployeFacadeLocal employeFacade;
 
     @EJB
-    private ArticleFacadeLocal articleFacade;
+    private ArticleFacadeLocal articleFacade;   
     
-    
-
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
@@ -136,6 +149,46 @@ public class Direction implements DirectionLocal {
     {
         Article resultat= articleFacade.rechercheArticleParReference(reference);
         return resultat;
+    }
+    
+    @Override
+    public void demarrerUnePrommotion (int reference, float prixPromotion) {
+    
+        Article ar = articleFacade.rechercheArticleParReference(reference);
+        articleFacade.modifierPrixArticle(ar, prixPromotion);
+        Collection<RayonArticle> articleDansRayons =rayonArticleFacade.chercherRayonArticlesParReference(reference);
+        rayonArticleFacade.commencerPromotion(articleDansRayons, prixPromotion);
+    }
+    
+    @Override
+    public void cloturerPromotion (int reference){
+        Article ar = articleFacade.rechercheArticleParReference(reference);
+        Collection<RayonArticle> articleDansRayons =rayonArticleFacade.chercherRayonArticlesParReference(reference);
+        articleFacade.annulerPromotion(ar);
+        rayonArticleFacade.cloturerPromotion(articleDansRayons);
+    }
+    
+    @Override
+    public Collection<Employe> rechercherEmployeParNom(String nom)
+    {
+        Collection<Employe> result= employeFacade.chercherEmployeParNom(nom);
+    
+    
+        return result;      
+        
+    }
+    
+      @Override
+    public Article rechercherArticleParId(int id)
+    {
+       Article result= articleFacade.rechercherArticleParId(id);
+    
+    
+        return result;
+        
+        
+        
+        
     }
     
 }

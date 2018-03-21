@@ -11,10 +11,13 @@ import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.AgentDeLivraison;
 import Entites.Personne.ChefDeRayon;
-import Entites.Personne.Direction;
 import Entites.Personne.Employe;
+import Entites.Personne.EmployeDeCaisse;
+import Entites.Personne.EmployeRayon;
+import Entites.Personne.GerantMagasin;
 import Entites.Personne.Personne;
 import static Entites.Personne.Personne_.typeCompte;
+import facades.AdministrateurFacadeLocal;
 import facades.AdresseFacadeLocal;
 import facades.AgentDeLivraisonFacadeLocal;
 import facades.ChefDeRayonFacadeLocal;
@@ -28,9 +31,9 @@ import facades.PersonneFacadeLocal;
 import facades.RayonFacadeLocal;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 
 /**
  *
@@ -38,6 +41,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class Administrateur implements AdministrateurLocal {
+
+    @EJB
+    private AdministrateurFacadeLocal administrateurFacade;
 
     @EJB
     private AdresseFacadeLocal adresseFacade;
@@ -73,25 +79,33 @@ public class Administrateur implements AdministrateurLocal {
     private AgentDeLivraisonFacadeLocal agentDeLivraisonFacade;
     
     
+    
+    
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
     @Override
-    public void creerEmploye(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, int idMagasin, int idRayon)
+    public void creerAdminDemarrage (){
+        
+
+    if (administrateurFacade.adminCree()== true){
+        administrateurFacade.creerAdminParDefaut();}
+    }  
+  
+    @Override
+    public void creerEmploye(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte)
     {
-        Magasin Mag= magasinFacade.rechercherMagasinParId(idMagasin);
-        Rayon Ray=  rayonFacade.rechercherRayonParId(idRayon);
         
      if(typeCompte==TypeCompte.agentDeLivraison)
      {
          
-         agentDeLivraisonFacade.creerAgentDeLivraison(nom, prenom, login, mdp, dateCreationCompte, typeCompte, Mag);
+         agentDeLivraisonFacade.creerAgentDeLivraison(nom, prenom, login, mdp, dateCreationCompte, typeCompte);
      }
         
      if(typeCompte==TypeCompte.chefDeRayon)
      {
-         chefDeRayonFacade.creerChefDeRayon(nom, prenom, login, mdp, dateCreationCompte, typeCompte, Mag, Ray);
+         chefDeRayonFacade.creerChefDeRayon(nom, prenom, login, mdp, dateCreationCompte, typeCompte);
      }
         
      if(typeCompte==TypeCompte.direction)
@@ -101,17 +115,17 @@ public class Administrateur implements AdministrateurLocal {
         
      if(typeCompte==TypeCompte.employeDeCaisse)
      {
-       employeDeCaisseFacade.creerEmployeDeCaisse(nom, prenom, login, mdp, dateCreationCompte, typeCompte, Mag);
+       employeDeCaisseFacade.creerEmployeDeCaisse(nom, prenom, login, mdp, dateCreationCompte, typeCompte);
      }
      
      if(typeCompte==TypeCompte.employeRayon)
      {
-        employeRayonFacade.creerEmployeDeRayon(nom, prenom, login, mdp, dateCreationCompte, typeCompte, Mag, Ray);
+        employeRayonFacade.creerEmployeDeRayon(nom, prenom, login, mdp, dateCreationCompte, typeCompte);
      }
      
      if(typeCompte==TypeCompte.gerantMagasin)
      {
-         gerantMagasinFacade.creerGerantMagasin(nom, prenom, login, mdp, dateCreationCompte, typeCompte,Mag);
+         gerantMagasinFacade.creerGerantMagasin(nom, prenom, login, mdp, dateCreationCompte, typeCompte);
      }
      
      else 
@@ -202,7 +216,7 @@ public class Administrateur implements AdministrateurLocal {
 
     //Authentification d'un utilisateur
     @Override
-    public Personne authentification(String login, String password) {
+    public Personne authentification(String login, String password) {        
         Personne p = personneFacade.authentification(login, password);
         return p;
     }    
@@ -241,5 +255,65 @@ public class Administrateur implements AdministrateurLocal {
         Personne personne = personneFacade.rechercherPersonneParId(idPersonne);
         return personne;
     }
+    
+    
+    @Override
+    public void associerEmployeAMagasin(int idEmploye, int idMagasin)
+    {
+        Employe e= employeFacade.chercherEmployeParId(idEmploye);
+        Magasin m= magasinFacade.rechercherMagasinParId(idMagasin);
+        
+        TypeCompte tc= e.getTypeCompte();
+        
+        if(tc==TypeCompte.agentDeLivraison)
+        {
+            AgentDeLivraison adl= agentDeLivraisonFacade.rechercherAgentParIdEmploye(idEmploye);
+            agentDeLivraisonFacade.affecterAgentDeLivraison(adl, m);
+        }
+        
+      
+        
+        if(tc==TypeCompte.employeDeCaisse)
+        {
+            EmployeDeCaisse edc= employeDeCaisseFacade.rechercherEmployeDeCaisse(idEmploye);
+            employeDeCaisseFacade.affecterEmployeDeCaisse(edc, m);
+            
+            
+            
+        }
+        
+        if(tc==TypeCompte.gerantMagasin)
+        {
+            GerantMagasin gm= gerantMagasinFacade.rechercherGerantMagasinParId(idMagasin);
+            gerantMagasinFacade.affecterGerantMagasin(gm, m);
+            
+        }
+        
+       
+    }
   
+    
+    @Override
+    public void associerEmployeAMagasinEtRayon(int idEmploye, int idMagasin, int idRayon)
+    {
+        Employe e= employeFacade.chercherEmployeParId(idEmploye);
+        Magasin m= magasinFacade.rechercherMagasinParId(idMagasin);
+        Rayon r= rayonFacade.rechercherRayonParId(idRayon);
+        
+         TypeCompte tc= e.getTypeCompte();
+          if(tc==TypeCompte.chefDeRayon)
+          {
+              ChefDeRayon cdr= chefDeRayonFacade.rechercherChefDeRayonParId(idEmploye);
+              chefDeRayonFacade.affecterChefDeRayon(cdr, m, r);
+          }
+        
+           if(tc==TypeCompte.employeRayon)
+           {
+               EmployeRayon er= employeRayonFacade.rechercherEmployeRayonParId(idEmploye);
+               employeRayonFacade.affecterEmployeDeRayon(er, m, r);
+               
+           }
+        
+        
+    }
 }

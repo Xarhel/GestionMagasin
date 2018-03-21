@@ -44,6 +44,15 @@ public interface DirectionLocal {
 
     public Article afficherArticleParReference(int reference);
     
+     
+      
+      public void demarrerUnePrommotion (int reference, float prixPromotion);
+      
+      public void cloturerPromotion (int reference);
+
+    public Collection<Employe> rechercherEmployeParNom(String nom);
+
+    public Article rechercherArticleParId(int id);
 }
 
 

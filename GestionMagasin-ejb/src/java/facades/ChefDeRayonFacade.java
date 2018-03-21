@@ -10,6 +10,7 @@ import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.ChefDeRayon;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,7 +37,7 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
     
     
     @Override
-    public void creerChefDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+    public void creerChefDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte)
     {
         ChefDeRayon CDR= new ChefDeRayon();
         CDR.setNomPersonne(nom);
@@ -45,8 +46,7 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
         CDR.setPassword(mdp);
         CDR.setDateCreationCompte(dateCreationCompte);
         CDR.setTypeCompte(typeCompte);
-        CDR.setLeMagasin(magasin);
-        CDR.setLeRayon(rayon);
+       
         em.persist(CDR);
         
     }
@@ -91,7 +91,9 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
         Query req = getEntityManager().createQuery("SELECT cdr FROM ChefDeRayon AS cdr WHERE cdr=:id");
         req.setParameter("id", id);
         
-        result = (ChefDeRayon) req.getSingleResult();
+        List <ChefDeRayon> cdfs = req.getResultList();
+        
+        result = cdfs.get(0);
         
         return result;
         

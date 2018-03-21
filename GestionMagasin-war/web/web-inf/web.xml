@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>Authentication</servlet-name>
         <servlet-class>Servlets.Authentication</servlet-class>
@@ -8,6 +8,14 @@
         <servlet-name>Administrateur</servlet-name>
         <servlet-class>Servlets.Administrateur</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChefDeRayon</servlet-name>
+        <servlet-class>Servlets.ChefDeRayon</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeRayon</servlet-name>
+        <servlet-class>Servlets.EmployeRayon</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Authentication</servlet-name>
         <url-pattern>/Authentication</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>Administrateur</servlet-name>
         <url-pattern>/Administrateur</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChefDeRayon</servlet-name>
+        <url-pattern>/ChefDeRayon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeRayon</servlet-name>
+        <url-pattern>/EmployeRayon</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

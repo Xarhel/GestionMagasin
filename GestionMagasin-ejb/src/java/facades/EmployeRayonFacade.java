@@ -13,6 +13,7 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -34,7 +35,7 @@ public class EmployeRayonFacade extends AbstractFacade<EmployeRayon> implements 
     }
     
     @Override
-     public void creerEmployeDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon)
+     public void creerEmployeDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte)
     {
         EmployeRayon EDR= new EmployeRayon();
         EDR.setNomPersonne(nom);
@@ -43,8 +44,7 @@ public class EmployeRayonFacade extends AbstractFacade<EmployeRayon> implements 
         EDR.setPassword(mdp);
         EDR.setDateCreationCompte(dateCreationCompte);
         EDR.setTypeCompte(typeCompte);
-        EDR.setLeMagasin(magasin);
-        EDR.setLeRayon(rayon);
+        
         em.persist(EDR);
         
     }
@@ -79,4 +79,21 @@ public class EmployeRayonFacade extends AbstractFacade<EmployeRayon> implements 
         em.merge(er);
             
         }
+        
+         @Override
+    public EmployeRayon rechercherEmployeRayonParId(int id)
+    {
+    EmployeRayon result;
+    
+        Query req = getEntityManager().createQuery("SELECT er FROM EmployeRayon AS er WHERE er.id=:id");
+        req.setParameter("id", id);
+        
+        result = (EmployeRayon) req.getSingleResult();
+        
+        return result;
+        
+        
+    }
+        
+        
 }

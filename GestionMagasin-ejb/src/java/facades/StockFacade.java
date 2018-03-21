@@ -10,7 +10,9 @@ import Entites.Autre.LivraisonLot;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
+import Entites.Vente.ArticleVente;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -39,7 +41,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     public Collection<Stock> chercherRayonStockParLibelleArticle(String libelle, Rayon rayon) {
         Collection<Stock> result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon WHERE ar.libelle=:libelle AND s.leRayon=:rayon");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE ar.libelle=:libelle AND s.leRayon=:rayon");
         req.setParameter("libelle", libelle);
         req.setParameter("rayon", rayon);
         
@@ -86,7 +88,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     }  
     
                 @Override
-    public Collection<Stock> chercherMagasinStockParReferenceArticle(String reference, Magasin magasin) {
+    public Collection<Stock> chercherMagasinStockParReferenceArticle(int reference, Magasin magasin) {
         Collection<Stock> result;
     
         Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE ar.referenceArticle=:reference AND  r.leMagasin=:magasin");
@@ -114,7 +116,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
     public Collection<Stock> chercherStockRayon (Rayon rayon) {
         Collection<Stock> result;
     
-        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon WHERE s.leRayon=:rayon");
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE s.leRayon=:rayon");
         req.setParameter("rayon", rayon);
         
         result = req.getResultList();
@@ -129,8 +131,9 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         Query req = getEntityManager().createQuery("SELECT s FROM Stock as s join s.lArticle ar join s.leRayon r where ar.referenceArticle=:reference AND r.leMagasin=:magasin");
         req.setParameter("magasin", magasin);
         req.setParameter("reference", reference);
+        List<Stock> stocks = req.getResultList();
         
-        result = (Stock) req.getSingleResult();
+        result =stocks.get(0);
         
         return result;
     }     
@@ -179,6 +182,58 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
        
         
         }
+
+    
+    @Override
+    public Collection <Stock> retirerStockVente(Collection<ArticleVente> av)
+    {
+        Collection <Stock> listeStock=null;
+        for (ArticleVente a: av){
+        int quantiteVendu=a.getQuantite();
+
+        while (quantiteVendu!=0)
+                {       Article article= a.getStock().getlArticle();
+            Rayon rayon= a.getStock().getLeRayon();
+            
+     Query req = getEntityManager().createQuery("select s from Stock s WHERE s.lArticle=:article AND s.leRayon=:rayon");
+     req.setParameter("article", article);
+     req.setParameter("rayon", rayon);
+     
+     List <Stock> cs = req.getResultList();
+     Stock s= cs.get(0);
+        int quantiteStock = s.getQuantiteStock();
+        if (quantiteVendu==quantiteStock){
+        quantiteVendu=quantiteVendu-quantiteStock;
+        em.remove(s);
+        }
+        else if(quantiteVendu<quantiteStock){
+        quantiteStock=quantiteStock-quantiteVendu;
+        s.setQuantiteStock(quantiteStock);
+        em.merge(s);
+        quantiteVendu=0;}
+        else if (quantiteVendu>quantiteStock){
+        if (quantiteVendu==quantiteStock){
+        quantiteVendu=quantiteVendu-quantiteStock;
+        em.remove(s);
+                }
+ }}}
+        
+        
+        
+        return listeStock;
+    }
+    
+    @Override
+    public Stock chercherStockParArticleEtRayon (Article article, Rayon rayon){
+    
+         Query req = getEntityManager().createQuery("select s from Stock s WHERE s.lArticle=:article AND s.leRayon=:rayon");
+     req.setParameter("article", article);
+     req.setParameter("rayon", rayon);
+     
+     List <Stock> cs = req.getResultList();
+     Stock s= cs.get(0);
+    return s;}
+            
 }
 
 

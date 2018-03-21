@@ -9,9 +9,11 @@ import Entites.Autre.Magasin;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.EmployeDeCaisse;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -33,7 +35,7 @@ public class EmployeDeCaisseFacade extends AbstractFacade<EmployeDeCaisse> imple
     }
     
     @Override
-    public void creerEmployeDeCaisse(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin)
+    public void creerEmployeDeCaisse(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte)
     {
         EmployeDeCaisse EDC= new EmployeDeCaisse();
         EDC.setNomPersonne(nom);
@@ -42,7 +44,7 @@ public class EmployeDeCaisseFacade extends AbstractFacade<EmployeDeCaisse> imple
         EDC.setPassword(mdp);
         EDC.setDateCreationCompte(dateCreationCompte);
         EDC.setTypeCompte(typeCompte);
-        EDC.setLeMagasin(magasin);
+  
         
         em.persist(EDC);
         
@@ -78,5 +80,20 @@ public class EmployeDeCaisseFacade extends AbstractFacade<EmployeDeCaisse> imple
         em.merge(edc);
     }
      
-     
+    @Override
+   public EmployeDeCaisse rechercherEmployeDeCaisse(int id)
+   {
+       EmployeDeCaisse result;
+    
+        Query req = getEntityManager().createQuery("SELECT edc FROM EmployeDeCaisse AS edc WHERE edc.id=:id");
+        req.setParameter("id", id);
+        
+        List <EmployeDeCaisse> adcs = req.getResultList();
+        
+        result = adcs.get(0);
+        
+        return result;
+       
+       
+   }
 }

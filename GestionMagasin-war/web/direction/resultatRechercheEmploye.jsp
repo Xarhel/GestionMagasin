@@ -11,13 +11,13 @@
 <html>
     <head>
         <title>Rechercher employé</title>
-        <jsp:include page="include/header.jsp"/>        
+        <jsp:include page="header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="employe" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
             <div class="container">
-            <jsp:include page="include/menu.jsp"/>
+            <jsp:include page="menuDirection.jsp"/>
             <!-- BODY START -->
             <form method="POST" action="...">
                 <div class="recherche">

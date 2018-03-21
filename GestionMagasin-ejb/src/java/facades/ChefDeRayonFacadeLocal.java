@@ -34,13 +34,14 @@ public interface ChefDeRayonFacadeLocal {
 
     int count();
 
-    public void creerChefDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
-
+  
     public void modifierChefDeRayon(ChefDeRayon CDR, String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte, Magasin magasin, Rayon rayon);
 
     public void supprimerChefDeRayon(ChefDeRayon CDR);
 
     void affecterChefDeRayon(ChefDeRayon cdr, Magasin magasin, Rayon rayon);
     public ChefDeRayon rechercherChefDeRayonParId(int id);
+
+    public void creerChefDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte);
     
 }

@@ -6,13 +6,16 @@
 package Servlets;
 
 import Entites.Autre.Adresse;
+import Entites.Autre.Article;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Enum.TypeCompte;
 import Entites.Personne.Employe;
 import Entites.Personne.Personne;
 import Sessions.AdministrateurLocal;
+import Sessions.DirectionLocal;
 import facades.AgentDeLivraisonFacade;
+import facades.EmployeFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -30,6 +33,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author 3137574
  */
 public class Administrateur extends HttpServlet {
+    
+    @EJB
+    private DirectionLocal direction;
 
     @EJB
     private AdministrateurLocal administrateur;   
@@ -54,7 +60,7 @@ public class Administrateur extends HttpServlet {
         // Jsp par défaut lorsque l'utilisateur exécute la solution
         if((action==null) || (action.equals("null")))
         {
-            jspClient="/include/menu.jsp";
+            jspClient="/Administrateur/index.jsp";
         }
         
         else if(action.equals("creerUtilisateur"))
@@ -66,15 +72,9 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("afficherTousEmployes"))
         {
             afficherTousEmployes(request, response);
-            jspClient="/listeEmploye.jsp";
+            jspClient="/Administrateur/listeEmploye.jsp";
         }
-        
-        else if(action.equals("afficherTousEmployesSupprimer"))
-        {
-            afficherTousEmployes(request, response);
-            jspClient="/supprimerEmploye.jsp";
-        }
-        
+            
         else if(action.equals("supprimerEmploye"))
         {
             supprimerEmploye(request, response);
@@ -84,81 +84,122 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("afficherTousMagasins"))
         {
             afficherTousMagasins(request, response);
-            jspClient="/listeMagasin.jsp";
+            jspClient="/Administrateur/listeMagasin.jsp";
         }
         
         else if(action.equals("creerMagasin"))
         {
             creerMagasin(request, response);
-            jspClient="/listeMagasin.jsp";
+            jspClient="/Administrateur/listeMagasin.jsp";
         }
         
         else if(action.equals("modifierMagasin"))
         {
             modifierMagasin(request, response);
-            jspClient="/listeMagasin.jsp";
-        }
-        
-        else if(action.equals("rechercherMagasinParId"))
-        {
-            rechercherMagasinParId(request, response);
-            jspClient="/rechercherMagasinParId.jsp";
-        }
-        
-        else if(action.equals("rechercherMagasinParNom"))
-        {
-            rechercherMagasinParNom(request, response);
-            jspClient="/rechercherMagasinParNom.jsp";
-        }
-        
-        else if(action.equals("selectionnerMagasin"))
-        {
-            selectionnerMagasin(request, response);
-            // Nom à changer
-            jspClient="/listeMagasin.jsp";
-        }
-        
-        else if(action.equals("selectionnerEmploye"))
-        {
-            selectionnerEmploye(request, response);
-            jspClient="/listeEmploye.jsp";
-        }
+            jspClient="/Administrateur/listeMagasin.jsp";
+        }            
         
         else if(action.equals("creerRayon"))
         {
             creerRayon(request, response);
-            jspClient="/include/menu.jsp";
+            jspClient="/Administrateur/listeRayon.jsp";
         }
         
         else if(action.equals("versCreerRayon"))
         {
             versCreerRayon(request, response);
-            jspClient="/creerRayon.jsp";
+            jspClient="/Administrateur/creerRayon.jsp";
         }
         
         else if(action.equals("modifierRayon"))
         {
             modifierRayon(request, response);
-            jspClient="/include/menu.jsp";
+            jspClient="/Administrateur/listeRayon.jsp";
         }
         
         else if(action.equals("versModifierRayon"))
         {
             versModifierRayon(request, response);
-            jspClient="/modifierRayon.jsp";
+            jspClient="/Administrateur/modifierRayon.jsp";
         }
         
         else if(action.equals("versModifierMagasin"))
         {
             versModifierMagasin(request, response);
-            jspClient="/modifierMagasin.jsp";
+            jspClient="/Administrateur/modifierMagasin.jsp";
         }
         
         else if(action.equals("afficherTousRayonsParMagasin"))
         {
             afficherTousRayonsParMagasin(request, response);
-            jspClient="/listeRayon.jsp";
+            jspClient="/Administrateur/listeRayon.jsp";
         }
+        
+        else if(action.equals("versCreerMagasin"))
+        {
+            jspClient="/Administrateur/creerMagasin.jsp";
+        }
+        
+        else if(action.equals("versCreerUtilisateur"))
+        {
+            jspClient="/Administrateur/creerEmploye.jsp";
+            versCreerUtilisateur(request, response);
+        }
+   
+        
+        /////////////////////////////////////////////////
+        //                Direction                    //
+        
+        else if(action.equals("redirigerMenuDirection"))
+        {
+            jspClient="/direction/index.jsp";
+        }
+        
+        else if(action.equals("afficherTousEmployesDirection"))
+        {
+            afficherTousEmployes(request, response);
+            jspClient="/direction/listeEmploye.jsp";
+        }
+        
+        else if(action.equals("supprimerEmployeDirection"))
+        {
+            supprimerEmploye(request, response);
+            jspClient="/direction/index.jsp";
+        }
+        
+        /* À modifier
+        else if(action.equals("modifierEmploye"))
+        {
+            modifierEmploye(request, response);
+            jspClient="/modifierEmploye.jsp";
+        }
+        */
+        
+        else if(action.equals("versRechercheEmploye"))
+        {
+            jspClient="/direction/rechercherEmploye.jsp";
+        }
+        
+        else if(action.equals("rechercherEmploye"))
+        {
+            rechercherEmploye(request, response);
+            jspClient="/direction/listeEmploye.jsp";
+        }
+        
+        else if(action.equals("versRechercheArticleParNom"))
+        {
+            jspClient="/direction/rechercherArticle.jsp";
+        }
+        
+        else if(action.equals("rechercherArticleParNom"))
+        {
+            rechercherArticleParNom(request, response);
+            jspClient="/direction/listeArticle.jsp";
+        }
+        
+        /////////////////////////////////////////////////
+        
+        
         
       
         RequestDispatcher rd;
@@ -239,7 +280,7 @@ public class Administrateur extends HttpServlet {
             int idMagasin = Integer.valueOf(magasin);
             int idRayon = Integer.valueOf(rayon);
             
-            administrateur.creerEmploye(nom, prenom, login, mdp, dateCreation, typeDuCompte, idMagasin, idRayon);
+            administrateur.creerEmploye(nom, prenom, login, mdp, dateCreation, typeDuCompte);
             message = "Utilisateur créé avec succès";
             // Nom du menu à changer
             jspClient ="Administrateur";
@@ -352,35 +393,6 @@ public class Administrateur extends HttpServlet {
         request.setAttribute("message", message);
         
     }
-     
-    protected void rechercherMagasinParId(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException
-    {
-        String id = request.getParameter("id");      
-        int idMagasin = Integer.parseInt(id);
-        Magasin magasin = administrateur.rechercherMagasinParId(idMagasin);
-        String message = "Voici le résultat de votre recherche";
-        request.setAttribute("message", message);
-    }
-     
-    protected void rechercherMagasinParNom(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException
-    {
-        String nom = request.getParameter("nom");
-        Magasin magasin = administrateur.rechercherMagasinParNom(nom);
-        String message = "Voici le résultat de votre rechercher";
-        request.setAttribute("message", message);
-    }
-    
-    protected void selectionnerMagasin(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException
-            
-    {
-        String id = request.getParameter("id");
-        int idMagasin = Integer.parseInt(id);
-        Magasin magasin = administrateur.rechercherMagasinParId(idMagasin);
-        request.setAttribute("magasin", magasin);
-    }
     
     protected void selectionnerEmploye(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException
@@ -402,6 +414,8 @@ public class Administrateur extends HttpServlet {
         int idMagasin = Integer.parseInt(id);
         Magasin magasin = administrateur.rechercherMagasinParId(idMagasin);
         administrateur.creerRayon(nom, magasin);
+        Collection<Rayon> rayon = administrateur.rechercherListeRayon(magasin);
+        request.setAttribute("rayon", rayon);
         message = "Le rayon " + nom + " a bien été créé";
         request.setAttribute("message", message);
         
@@ -426,13 +440,15 @@ public class Administrateur extends HttpServlet {
         String nom = request.getParameter("nom");
         String message;
         
-        int RayonId = Integer.parseInt(id);
+        int RayonId = Integer.parseInt(id);       
+        Rayon rayonModifie = administrateur.rechercherRayonParId(RayonId);      
+        administrateur.modifierRayon(rayonModifie, nom);
         
-        Rayon rayon = administrateur.rechercherRayonParId(RayonId);
-        
-        administrateur.modifierRayon(rayon, nom);
-        message = "Le rayon " + rayon.getRayonNom() + " a bien été modifié";
-        request.setAttribute("message", message);        
+        Magasin magasin = rayonModifie.getLeMagasin();
+        Collection<Rayon> rayon = administrateur.rechercherListeRayon(magasin);
+        message = "Le rayon " + rayonModifie.getRayonNom() + " a bien été modifié";
+        request.setAttribute("message", message);
+        request.setAttribute("rayon", rayon);
     }
    
     protected void versModifierMagasin(HttpServletRequest request,
@@ -462,6 +478,44 @@ public class Administrateur extends HttpServlet {
         int idRayon = Integer.parseInt(id);
         Rayon rayon = administrateur.rechercherRayonParId(idRayon);
         request.setAttribute("rayon", rayon);
+    }
+    
+    protected void afficherListeArticlesParNom(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+       
+    }
+    
+    protected void versCreerUtilisateur(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        Collection<Magasin> magasin = administrateur.afficherTousMagasins();
+        request.setAttribute("magasin", magasin);        
+    }
+    
+    protected void rechercherEmploye(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String name = request.getParameter("nom");
+        Collection<Employe> employe = direction.rechercherEmployeParNom(name);
+        request.setAttribute("employe", employe);
+    }
+    
+    protected void rechercherArticleParNom(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String name = request.getParameter("nom");
+        Collection<Article> article = direction.afficherArticleParLibelle(name);
+        request.setAttribute("article", article);
+    }
+    
+    protected void versAjouterPromotion(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String reference = request.getParameter("reference");
+        int referenceArticle = Integer.parseInt(reference);
+        Article article = direction.afficherArticleParReference(referenceArticle);
+        request.setAttribute("article", article);
     }
     
 }

@@ -29,5 +29,9 @@ public interface AdministrateurFacadeLocal {
     List<Administrateur> findRange(int[] range);
 
     int count();
+
+    public void creerAdminParDefaut();
+
+    public boolean adminCree();
     
 }

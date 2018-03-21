@@ -56,7 +56,12 @@ public class Authentication extends HttpServlet {
         
         if((action==null) || (action.equals("null")))
         {
-            jspClient="/login.jsp";           
+            
+            jspClient="/login.jsp";
+            administrateur.creerAdminDemarrage();
+            RequestDispatcher rd;
+            rd = getServletContext().getRequestDispatcher(jspClient);
+            rd.forward(request, response);
         }
   
         else if(action.equals("connexion")) {
@@ -74,7 +79,7 @@ public class Authentication extends HttpServlet {
                         message = "Administrateur";
                         session.setAttribute("user", p);
                         request.setAttribute("message", message);
-                        jspClient ="/include/menu.jsp";
+                        response.sendRedirect("Administrateur");
                     }
                     if (p instanceof ChefDeRayon)
                     {
@@ -82,7 +87,7 @@ public class Authentication extends HttpServlet {
                         message = "Chef de rayon";
                         session.setAttribute("user", r);
                         request.setAttribute("message", message);
-                        jspClient ="/login.jsp";
+                        response.sendRedirect("ChefDeRayon");
                     } 
                     if (p instanceof EmployeDeCaisse)
                     {
@@ -98,7 +103,7 @@ public class Authentication extends HttpServlet {
                         message = "Employé de rayon";
                         session.setAttribute("user", r);
                         request.setAttribute("message", message);
-                        jspClient ="/login.jsp";
+                        response.sendRedirect("EmployeRayon");
                     }
                     if (p instanceof GerantMagasin)
                     {
@@ -122,7 +127,7 @@ public class Authentication extends HttpServlet {
                         message = "Direction";
                         session.setAttribute("user", d);
                         request.setAttribute("message", message);
-                        jspClient ="/login.jsp";
+                        response.sendRedirect("Administrateur?action=redirigerMenuDirection");
                     }
                     if (p instanceof Fournisseur)
                     {
@@ -148,10 +153,11 @@ public class Authentication extends HttpServlet {
             }
         }              
         
-                
+        /*      
         RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
-        rd.forward(request, response);     
+        rd.forward(request, response);
+        */
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

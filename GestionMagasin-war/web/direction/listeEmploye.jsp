@@ -11,14 +11,14 @@
 <html>
     <head>        
         <title>Liste des employées</title>
-        <jsp:include page="include/header.jsp"/>        
+        <jsp:include page="header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="employe" scope="request" class="java.util.Collection"></jsp:useBean>
        
         </head>
         <body>
             <div class="container">
-            <jsp:include page="include/menu.jsp"/>
+            <jsp:include page="menuDirection.jsp"/>
             <!-- BODY START -->
             <div>
                 <h1>Liste des employées</h1>
@@ -49,10 +49,10 @@
                             <td><%=e.getDateCreationCompte()%></td>
                             <td><%=e.getTypeCompte()%></td>
 
-                            <td><a href="Menu?action=pagemodifierEmploye&id=<%=e.getId()%>" class="btn btn-info btn-md">
+                            <td><a href="Menu?action=modifierEmployeDirection&id=<%=e.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Modifier un employée"></span>Modifier
                                 </a>
-                                <a href="Administrateur?action=supprimerEmploye&id=<%=e.getId()%>" class="btn btn-info btn-md">
+                                <a href="Administrateur?action=supprimerEmployeDirection&id=<%=e.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Supprimer un employe"></span>Supprimer
                                 </a>
 

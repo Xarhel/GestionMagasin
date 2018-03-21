@@ -9,6 +9,7 @@ import Entites.Autre.Article;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -64,11 +65,6 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
     }
         }
     
-    
-    
-    
-    
-    
     @Override
     public RayonArticle rechercherRayonArticle(Rayon r, Article a)
     {
@@ -92,15 +88,16 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
         Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra inner join ra.lesArticles ar WHERE ra.lesRayons =:r AND ar.libelle=:libelle" );
         req.setParameter("r", r);
         req.setParameter("libelle", libelle);
+        List<RayonArticle> ras = req.getResultList();
         
-        result = (RayonArticle) req.getSingleResult();
+        result = ras.get(0);
         
         return result;
         
     }
     
     @Override
-     public RayonArticle rechercherRayonArticleParReference(Rayon r, int reference)
+    public RayonArticle rechercherRayonArticleParReference(Rayon r, int reference)
     {
         RayonArticle result;
     
@@ -113,10 +110,12 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
         return result;
         
     }
-     public Collection<RayonArticle> chercherRayonArticlesParReference (int ref){
+     @Override
      
-         Collection<RayonArticle> result;
-         Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra inner join ra.lesArticles ar  WHERE ar.referenceArticle=:ref" );
+    public Collection<RayonArticle> chercherRayonArticlesParReference(int ref){
+     
+        Collection<RayonArticle> result;
+        Query req = getEntityManager().createQuery("SELECT ra FROM RayonArticle AS ra inner join ra.lesArticles ar  WHERE ar.referenceArticle=:ref" );
         req.setParameter("ref", ref);
                
         result = req.getResultList();
@@ -133,6 +132,22 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
      ra.setLesArticles(a);
      ra.setLesRayons(r);
      em.persist(ra);}
+     
+    @Override
+     public void modifierPrixRayonArticle (Article article, Rayon rayon, float prixRayon)
+     {RayonArticle ra;
+     Query req = getEntityManager().createQuery("select ra from RayonArticle ra WHERE ra.lesArticles=:article AND ra.lesRayons=:rayon");
+     req.setParameter("article", article);
+     req.setParameter("rayon", rayon);
+     
+     ra = (RayonArticle) req.getSingleResult();
+     ra.setPrixRayon(prixRayon);
+     boolean a=article.isPromotion();
+     if (a==false) {
+     ra.setPrixVente(prixRayon);}
+     em.merge(ra);
+     }
+
      
     
      
