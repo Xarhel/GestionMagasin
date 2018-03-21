@@ -12,7 +12,7 @@
 <html>
     <head>        
         <title>Liste de stock perimé</title>
-        <jsp:include page="include/header.jsp"/>        
+        <jsp:include page="header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="stock" scope="request" class="java.util.Collection"></jsp:useBean>
         <jsp:useBean id="stockRetrait" scope="request" class="java.util.Collection"></jsp:useBean>
