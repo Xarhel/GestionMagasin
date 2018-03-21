@@ -19,7 +19,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
  * @author 5153218
  */
 @Entity
-public class Electromenager extends Lot implements Serializable {
+public class Electromenager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

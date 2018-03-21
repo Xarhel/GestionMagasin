@@ -10,6 +10,7 @@ import Entites.Autre.BonDeCommande;
 import Entites.Autre.CommandeLot;
 import Entites.Autre.LivraisonLot;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -132,5 +133,66 @@ public class Lot implements Serializable {
     public void setCommandeLots(List<CommandeLot> commandeLots) {
         this.commandeLots = commandeLots;
     }
+    
+        private Date dateDePeremption;
+
+    /**
+     * Get the value of dateDePeremption
+     *
+     * @return the value of dateDePeremption
+     */
+    public Date getDateDePeremption() {
+        return dateDePeremption;
+    }
+
+    /**
+     * Set the value of dateDePeremption
+     *
+     * @param dateDePeremption new value of dateDePeremption
+     */
+    public void setDateDePeremption(Date dateDePeremption) {
+        this.dateDePeremption = dateDePeremption;
+    }
+
+        private String taille;
+
+    /**
+     * Get the value of taille
+     *
+     * @return the value of taille
+     */
+    public String getTaille() {
+        return taille;
+    }
+
+    /**
+     * Set the value of taille
+     *
+     * @param taille new value of taille
+     */
+    public void setTaille(String taille) {
+        this.taille = taille;
+    }
+
+        private int dureeGarantie;
+
+    /**
+     * Get the value of dureeGarantie
+     *
+     * @return the value of dureeGarantie
+     */
+    public int getDureeGarantie() {
+        return dureeGarantie;
+    }
+
+    /**
+     * Set the value of dureeGarantie
+     *
+     * @param dureeGarantie new value of dureeGarantie
+     */
+    public void setDureeGarantie(int dureeGarantie) {
+        this.dureeGarantie = dureeGarantie;
+    }
+
     
 }

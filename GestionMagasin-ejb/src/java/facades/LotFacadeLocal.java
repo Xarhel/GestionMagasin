@@ -7,6 +7,7 @@ package facades;
 
 import Entites.Autre.Article;
 import Entites.Lot.Lot;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -31,6 +32,12 @@ public interface LotFacadeLocal {
 
     int count();
 
-    Lot creerLot(Article lArticle, int quantite);
+    Lot creerLotGeneral(Article lArticle, int quantite);
+
+    public void ajouterDatePeremption (Lot l, Date date);
+
+    public void ajouterTaille (Lot l, String taille);
+
+    public void ajouterDureeGarantie (Lot l, int garantie);
     
 }
