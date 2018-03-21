@@ -4,6 +4,7 @@
     Author     : jules
 --%>
 
+<%@page import="java.util.Collection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Entites.Autre.Magasin"%>
 <!DOCTYPE html>

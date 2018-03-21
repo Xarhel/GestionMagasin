@@ -1,8 +1,9 @@
 <%-- 
     Document   : listeArticle
-    Created on : 19 mars 2018, 10:09:39
+    Created on : 20 mars 2018, 15:45:59
     Author     : jules
 --%>
+
 <%@page import="Entites.Autre.Article"%>
 <%@page import="java.util.Collection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,13 +11,13 @@
 <html>
     <head>        
         <title>Liste des articles</title>
-        <jsp:include page="header.jsp"/>
-        <jsp:include page="menuDirection.jsp"/>
+        <jsp:include page="include/header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="article" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
             <div class="container">
+            <jsp:include page=""/>
             <!-- BODY START -->
             <div>
                 <h1>Liste des articles</h1>
@@ -24,7 +25,7 @@
                     <thead>
                         <tr>
                             <th>Libelle</th>
-                            
+                            <th>Reference article</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -39,12 +40,11 @@
                         <% Collection<Article> _article = article;
                             for (Article a : _article) {%>
                         <tr><td><%=a.getLibelle()%></td>
+                            <td><%=a.getReferenceArticle()%></td>
                            
-                            <td><a href="Menu?action=AjouterPromotion&id=<%=a.getId()%>" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-edit" title="Faire une promotion"></span>Ajouter une promotion
-                                </a>
-                                <a href="Menu?action=ModifierPrixArticle&id=<%=a.getId()%>" class="btn btn-success btn-md">
-                                    <span class="glyphicon glyphicon-pencil" title="Modifier prix article"></span>Modifier une promotion
+                            <td>
+                                <a href="Menu?action=pageModifiPrix&id=<%=a.getId()%>" class="btn btn-success btn-md">
+                                    <span class="glyphicon glyphicon-pencil" title="Modifier prix article"></span> Modifier prix
                                 </a>
                                 
                             </td>

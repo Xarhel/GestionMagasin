@@ -14,7 +14,7 @@
         
         <jsp:include page="include/header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
-        <jsp:useBean id="aticle" scope="request" class="java.util.Collection"></jsp:useBean>
+        <jsp:useBean id="article" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
             <div class="container">
@@ -48,6 +48,10 @@
                                 <a href="annulerPromotion.jsp =<%=a.getId()%>" class="btn btn-danger btn-md">
                                     <span class="glyphicon glyphicon-remove" tabindex="Annulesla promotion"></span>Annuler
                                 </a>
+                                    <td><a href="Menu?action=pageAjouterPromotion&id=<%=a.getId()%>" class="btn btn-info btn-md">
+                                    <span class="glyphicon glyphicon-edit" title="Faire une promotion"></span>Edit promotion
+                                </a>   
+                            </td>
                             </td>
                         </tr><%}%>
                     </tbody>
