@@ -7,6 +7,7 @@ package Servlets;
 
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.CommandeLot;
+import Entites.Autre.Livraison;
 import Entites.Personne.Employe;
 import Entites.Personne.Personne;
 import Sessions.EmployeDeRayonSessionLocal;
@@ -62,6 +63,7 @@ public class EmployeRayon extends HttpServlet {
          
            else if(action.equals("consulterLivraison"))
         {
+            consulterLivraison(request, response);
             jspClient="consulterLivraison.jsp";
         }
         
@@ -111,6 +113,20 @@ public class EmployeRayon extends HttpServlet {
         request.setAttribute("message", message);        
     }   
     
+    
+    protected void consulterLivraison(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+            
+    {
+        HttpSession session= request.getSession();
+        Employe e=(Employe) session.getAttribute("user");
+        
+        Collection<Livraison> l = employeDeRayonSession.rechercheLivraisonEnCours(e.getIdMagasin());
+        
+        String message = "Voici la liste des livraisons recensées";
+        request.setAttribute("livraison", l);
+        request.setAttribute("message", message);        
+    }
    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -8,6 +8,7 @@ package Sessions;
 import Entites.Autre.Article;
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.CommandeLot;
+import Entites.Autre.Livraison;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
@@ -15,6 +16,7 @@ import Entites.Autre.Stock;
 import Entites.Lot.Lot;
 import facades.BonDeCommandeFacadeLocal;
 import facades.CommandeLotFacadeLocal;
+import facades.LivraisonFacadeLocal;
 import facades.MagasinFacade;
 import facades.MagasinFacadeLocal;
 import facades.RayonArticleFacadeLocal;
@@ -33,6 +35,9 @@ import javax.ejb.Stateless;
 
 @Stateless
 public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
+
+    @EJB
+    private LivraisonFacadeLocal livraisonFacade;
 
     @EJB
     private BonDeCommandeFacadeLocal bonDeCommandeFacade;
@@ -88,6 +93,17 @@ public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
          Collection <BonDeCommande> bdc= bonDeCommandeFacade.rechercherBonDeCommandeParMagasin(mag);
          
          return bdc;
+         
+         
+     }
+     
+    @Override
+     public Collection<Livraison> rechercheLivraisonEnCours(int idMag)
+     {
+         
+         Magasin mag= magasinFacade.rechercherMagasinParId(idMag);
+         Collection<Livraison> result= livraisonFacade.afficherLivraisonsEnCours(mag);
+         return result;
          
          
      }

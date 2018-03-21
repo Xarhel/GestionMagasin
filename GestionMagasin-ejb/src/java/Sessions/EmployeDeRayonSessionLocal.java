@@ -6,6 +6,8 @@
 package Sessions;
 
 import Entites.Autre.BonDeCommande;
+import Entites.Autre.Livraison;
+import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import java.util.Collection;
@@ -26,5 +28,7 @@ public interface EmployeDeRayonSessionLocal {
     public void retirerStockPerime(Date date, Rayon r);
 
     public Collection<BonDeCommande> rechercherParMagasin(int idMagasin);
+
+    public Collection<Livraison> rechercheLivraisonEnCours(int idMag);
     
 }
