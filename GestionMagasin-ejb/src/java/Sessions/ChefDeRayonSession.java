@@ -9,6 +9,7 @@ import Entites.Autre.Article;
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
+import Entites.Enum.CategorieArticle;
 import Entites.Lot.Lot;
 import Entites.Personne.ChefDeRayon;
 import Entites.Personne.Fournisseur;
@@ -64,7 +65,7 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
    }
    
     @Override
-   public void ajouterArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion)
+   public void ajouterArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion, CategorieArticle categorie)
            
    {
       Article testExistant= articleFacade.rechercheArticleParReference(referenceArticle);
@@ -74,7 +75,7 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
       }
       else
       {
-          articleFacade.creerArticle(referenceArticle, libelle, codeBarre, promotion);
+          articleFacade.creerArticle(referenceArticle, libelle, codeBarre, promotion, categorie);
       }
    }
    
@@ -102,9 +103,9 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
     @Override
    public void creerCommandeLot(BonDeCommande commande, float prixAchat, Article lArticle, int quantite)
    {
-       
-       
-       Lot lot= lotFacade.creerLot(lArticle, quantite);
+       Lot lot = new Lot();
+       lot= lotFacade.creerLotGeneral(lArticle, quantite);
+    
        commandeLotFacade.creerCommandeLot(lot, commande, prixAchat);
        
        

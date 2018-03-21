@@ -8,6 +8,7 @@ package Sessions;
 import Entites.Autre.Article;
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.Rayon;
+import Entites.Enum.CategorieArticle;
 import Entites.Lot.Lot;
 import java.util.Date;
 import javax.ejb.Local;
@@ -21,7 +22,7 @@ public interface ChefDeRayonSessionLocal {
 
     public void ajouterFournisseur(String raisonSocial, String login, String password);
 
-    public void ajouterArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion);
+    public void ajouterArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion, CategorieArticle categorie);
 
     public void modifierPrixArticle(Rayon r, Article a, float prix);
 

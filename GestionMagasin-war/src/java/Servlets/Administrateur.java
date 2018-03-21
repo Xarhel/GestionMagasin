@@ -78,7 +78,7 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("supprimerEmploye"))
         {
             supprimerEmploye(request, response);
-            jspClient="/include/menu.jsp";
+            jspClient="/Administrateur/listeEmploye.jsp";
         }
         
         else if(action.equals("afficherTousMagasins"))

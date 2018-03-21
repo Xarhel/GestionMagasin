@@ -41,7 +41,7 @@ public class ChefDeRayon extends HttpServlet {
         {
             jspClient="/chefDeRayon/index.jsp";
         }
-        
+               
         
         
         try (PrintWriter out = response.getWriter()) {

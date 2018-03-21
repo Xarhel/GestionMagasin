@@ -7,6 +7,7 @@ package facades;
 
 import Entites.Autre.Article;
 import Entites.Lot.Lot;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,12 +33,38 @@ public class LotFacade extends AbstractFacade<Lot> implements LotFacadeLocal {
 
     // Création du lot
     @Override
-    public Lot creerLot(Article lArticle, int quantite) {
+    public Lot creerLotGeneral(Article lArticle, int quantite) {
         Lot lot = new Lot();
         lot.setlArticle(lArticle);
         lot.setQuantite(quantite);
         em.persist(lot);
         return lot;
+    }
+    
+    @Override
+    public void ajouterDatePeremption (Lot l, Date date){
+            l.setDateDePeremption(date);
+
+
+        em.merge(l);
+    }
+    
+    @Override
+        public void ajouterTaille (Lot l, String taille){
+            l.setTaille(taille);
+
+
+        em.merge(l);
+    }
+        
+    @Override
+        public void ajouterDureeGarantie (Lot l, int garantie){
+            l.setDureeGarantie(garantie);
+
+
+        em.merge(l);
+        
+
     }
     
     
