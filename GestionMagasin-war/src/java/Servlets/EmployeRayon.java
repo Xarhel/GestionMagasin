@@ -8,12 +8,16 @@ package Servlets;
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.CommandeLot;
 import Entites.Autre.Livraison;
+import Entites.Autre.Rayon;
+import Entites.Autre.Stock;
 import Entites.Personne.Employe;
 import Entites.Personne.Personne;
 import Sessions.EmployeDeRayonSessionLocal;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -78,7 +82,21 @@ public class EmployeRayon extends HttpServlet {
                       versConsulterLivraison(request, response);
                   }
          
+          else if(action.equals("versRetraitArticlePerime"))
+          {
+              jspClient="/employeRayon/retraitArticlePerime.jsp";
+              versArticlePerime(request, response);
+              
+          }
          
+          else if(action.equals("supprimerProduitPerime"))
+              
+          {supprimerProduitPerime(request, response);
+         
+         jspClient="/employeRayon/retraitArticlePerime.jsp";}
+         
+              
+
          
           ////////////////////////DIRECTION//////////////////////
           
@@ -129,8 +147,7 @@ public class EmployeRayon extends HttpServlet {
 
 
     
-    protected void versConsulterCommande(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException
+    protected void versConsulterCommande(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
             
     {
         HttpSession session= request.getSession();
@@ -146,8 +163,7 @@ public class EmployeRayon extends HttpServlet {
     }   
     
     
-    protected void versConsulterLivraison(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException
+    protected void versConsulterLivraison(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
             
     {
         HttpSession session= request.getSession();
@@ -161,6 +177,39 @@ public class EmployeRayon extends HttpServlet {
         request.setAttribute("message", message);        
     }
    
+     protected void versArticlePerime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+            
+    {
+        HttpSession session= request.getSession();
+        Employe e=(Employe) session.getAttribute("user");
+        
+        Rayon r= e.getLeRayon();
+        Date d= new Date();
+        
+        Collection <Stock> s=employeDeRayonSession.rechercherStockAvecProduitPerime(d, r);
+        
+        String message = "Voici la liste des livraisons recensées";
+        request.setAttribute("message", message);  
+        request.setAttribute("stock", s);
+   
+    }
+    
+     
+     protected void supprimerProduitPerime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+     {
+        HttpSession session= request.getSession();
+        Employe e=(Employe) session.getAttribute("user");
+        
+        Rayon r= e.getLeRayon();
+        Date d= new Date();
+        
+        employeDeRayonSession.retirerStockPerime(d, r);
+        
+        String message="Bravo, vous avez enlevé le stock périmé";
+        request.setAttribute("message", message);
+
+  
+     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

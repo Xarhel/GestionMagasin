@@ -10,6 +10,7 @@ import Entites.Autre.LivraisonLot;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
+import Entites.Enum.CategorieArticle;
 import Entites.Vente.ArticleVente;
 import java.util.Collection;
 import java.util.List;
@@ -53,10 +54,12 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
        public Collection<Stock> rechercherLotRayonPerimeParDate(java.util.Date date, Rayon rayon) {
         
     Collection<Stock> result;
-    
-       Query req = getEntityManager().createQuery("SELECT s FROM Stock s join s.lArticle ar join ar.lots l Where l.dateDePeremption<:date and s.leRayon=:rayon HAVING ar.Categorie IN (1)");
+        CategorieArticle ca;
+        ca=CategorieArticle.Alimentaire;
+       Query req = getEntityManager().createQuery("SELECT s FROM Stock s join s.lArticle ar join ar.lots l Where l.dateDePeremption<:date and s.leRayon=:rayon and ar.Categorie =:ca");
        req.setParameter ("rayon", rayon);
        req.setParameter ("date", date);
+       req.setParameter ("ca", ca);
        result = req.getResultList();   
        return result;
         

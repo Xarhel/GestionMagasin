@@ -28,7 +28,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="EmployeRayon?action=versConsulterCommande" class="">Consulter commande</a></li>
                         <li><a href="EmployeRayon?action=versConsulterLivraison">Consulter livraison</a></li>
-                        <li><a href="retraitArticlePerime.jsp" class="">Retrait ariticle</a></li>
+                        <li><a href="EmployeRayon?action=versRetraitArticlePerime" class="">Retrait ariticle</a></li>
                     </ul>
                 </li> 
                 
