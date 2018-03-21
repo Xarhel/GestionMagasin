@@ -12,22 +12,27 @@
         <jsp:include page="header.jsp"/>  
         <jsp:include page="menuDirection.jsp"/>
         <script src="js/script.js" type="text/javascript"></script>
-        </head>
-        <body>
-            <div class="container">
+    </head>
+    <body>
+        <div class="container">
             <!-- BODY START -->
             <div>    
                 <form method="POST" action="Administrateur">
                     <div class="recherche">
-                        <div class="col-md-4">
-                            <input type="text" name="nom" placeholder="Nom"/>
-                            <input type="hidden" name="action" value="rechercherEmploye">
-                            <button type="submit">Rechercher</button>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" name="nom" placeholder="Nom" class="form-control left-rounded">
+                                    <input type="hidden" name="action" value="rechercherEmploye">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-success right-rounded">Rechercher</button>
+                                    </div> 
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
             </div>
-            </div>
-        </body>
+    </body>
 </html>
 
