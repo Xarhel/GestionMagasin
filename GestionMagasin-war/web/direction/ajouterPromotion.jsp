@@ -22,7 +22,9 @@
             <div>
                 <h1>Ajouter une promotion</h1>
                 <form method="POST" action="Administrateur">
-                    <input hidden type="text" name="action" value="ajouterPromotion"/> 
+                    <input hidden type="text" name="action" value="ajouterPromotion"/>
+                    <input hidden type="text" name="id" value="<%=article.getId().toString()%>"/>
+                    <input hidden type="text" name="nom" value="<%=article.getLibelle()%>"/>
                     <div class="form-group row">
                         <label class="col-md-2">Nom de l'article</label>
                         <div class="col-md-4">

@@ -30,9 +30,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="Administrateur?action=afficherTousEmployesDirection">Liste des employés</a></li>
                         <li><a href="Administrateur?action=versRechercheEmploye">Rechercher un employé</a></li>
-                        <li><a href="Administrateur?action=versRechercheArticleParNom" class="">Rechercher un article</a></li>
-                        <li><a href="ajouterPromotion.jsp" class="">Ajouter prix promotion</a></li>
-                        <li><a href="annulerPromotion.jsp" class="">Annuler promotion</a></li>                       
+                        <li><a href="Administrateur?action=versRechercheArticleParNom" class="">Rechercher un article</a></li>                     
                     </ul>
                 </li> 
                 

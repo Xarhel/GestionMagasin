@@ -25,6 +25,10 @@
                         <tr>
                             <th>Libelle</th>
                             
+                            <th>Promotion en cours</th>
+                            
+                            <th>Prix</th>
+                            
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -32,19 +36,37 @@
                         <tr>
                             <th>Libelle</th>
                             
+                            <th>Promotion en cours</th>
+                            
+                            <th>Prix</th>
+                            
                             <th>Actions</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         <% Collection<Article> _article = article;
                             for (Article a : _article) {%>
-                        <tr><td><%=a.getLibelle()%></td>
+                        <tr>
+                            <td><%=a.getLibelle()%></td>
+                            
+                            <td><% if(a.isPromotion()==true)
+                            {%>
+                            Oui
+                            <%
+                            }
+                            else if(a.isPromotion()==false)
+                            {%>
+                            Non
+                            <%
+                            }%>
+                            
+                            <td><%=a.getPrixPromotion()%>€</td>
                            
                             <td><a href="Administrateur?action=versAjouterPromotion&id=<%=a.getId()%>" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-edit" title="Faire une promotion"></span>Ajouter une promotion
+                                    <span class="glyphicon glyphicon-edit" title="Faire une promotion"></span>Ajouter/modifier une promotion
                                 </a>
-                                <a href="Administrateur?action=ModifierPrixArticle&id=<%=a.getId()%>" class="btn btn-success btn-md">
-                                    <span class="glyphicon glyphicon-pencil" title="Modifier prix article"></span>Modifier une promotion
+                                <a href="Administrateur?action=supprimerPromotion&id=<%=a.getId()%>" class="btn btn-success btn-md">
+                                    <span class="glyphicon glyphicon-pencil" title="Modifier prix article"></span>Supprimer une promotion
                                 </a>
                                 
                             </td>
