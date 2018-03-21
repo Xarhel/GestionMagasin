@@ -562,8 +562,9 @@ public class Administrateur extends HttpServlet {
         int idArticle = Integer.parseInt(id);
         Article articleModifie = direction.rechercherArticleParId(idArticle);
         direction.annulerPromotion(articleModifie);
-        Collection<Article> article = null;
-        article.add(direction.rechercherArticleParId(idArticle));
+        ArrayList<Article> articleList = new ArrayList<>();
+        articleList.add(articleModifie);
+        Collection<Article> article = (Collection<Article>) articleList;
         request.setAttribute("article", article);
     }
     
