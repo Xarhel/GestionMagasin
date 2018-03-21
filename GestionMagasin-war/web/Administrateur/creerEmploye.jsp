@@ -14,12 +14,13 @@
     <head>        
         <title>Créer un employe</title>
         <jsp:include page="header.jsp"/>
+        
         <script>
             function showDiv(){
-                if(typeCompte == 'ChefDeRayon')
+                if(typeCompte.value() = "ChefDeRayon")
                 {
-                    document.getElementById("magasin").style.display = 'block';
-                    document.getElementById("rayon").style.display = 'inline';
+                    document.getElementById("test1").style.display = 'block';
+                    document.getElementById("test2").style.display = 'inline';
                 }
                 else
                 {
@@ -28,11 +29,14 @@
                 }
             }
         </script>
+        
     </head>
     <body>
         <div class="container">
             <jsp:include page="menu.jsp"/>
             <jsp:useBean id="magasin" scope="request" class="java.util.Collection"></jsp:useBean>
+            <jsp:useBean id="typeCompte" scope="request" class="java.util.Collection"></jsp:useBean>
+            
           <%--  <jsp:useBean id="rayon" scope="request" class="java.util.Collection"></jsp:useBean> --%>
                 <!-- BODY START -->
                 <div>
@@ -62,19 +66,36 @@
                             <div class="col-md-4">
                                 <input class="form-control" type="text" name="mdp" required/>
                             </div>
+                        </div>
                             <div class="form-group row">
                                 <label class="col-md-2">Date de création du compte<span class="requis">*</span></label>
                                 <div class="col-md-4">
                                     <input class="form-control" type="date" name="dateCreationCompte"/>
                                 </div>                        
-                            </div> 
+                            </div>
+                        <div id="test1" class="form-group row">
+                            <label class="col-md-2">Test Affichage<span class="requis">*</span></label>
+                            <div class="col-md-4">
+                                <input class="form-control" type="text" required/>
+                            </div>
+                        </div>
+                        <div id="test2" class="form-group row">
+                            <label class="col-md-2">Test Affichage<span class="requis">*</span></label>
+                            <div class="col-md-4">
+                                <input class="form-control" type="text" required/>
+                            </div>
                         </div>
                         <div id="typeCompte" class="form-group row">
                             <label class="col-md-2">Type de compte<span class="requis">*</span></label>
                             <select name="typeCompte" class="col-md-3 form-control" required>
-                                <option></option>
-                                <option value="<%=TypeCompte. %>>"><%=m.getNom()%></option>
-                            <%}%>
+                                <% Collection<TypeCompte> tc = typeCompte;
+                                for(TypeCompte t : tc )
+                                {%>
+                                <option value="<%=t%>"><%=t.name()%></option>
+                                <%}%>
+                            </select>
+                        </div>
+                        <%--
                         <div id="magasin" class="form-group row">
                             <label class="col-md-2">Nom du magasin<span class="requis">*</span></label>
                             <select name="nom" class="col-md-3 form-control" required>
@@ -85,7 +106,7 @@
                             <%}%>
                         </select>  
                     </div>
-                    <%--
+                        
                     <div id="rayon" class="form-group row">
                         <label class="col-md-2">Nom du rayon<span class="requis">*</span></label>
                         <select name="nom" class="col-md-3 form-control" required>

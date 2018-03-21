@@ -21,6 +21,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
@@ -65,10 +66,10 @@ public class Administrateur extends HttpServlet {
             jspClient="/Administrateur/index.jsp";
         }
         
-        else if(action.equals("creerUtilisateur"))
+        else if(action.equals("creerEmploye"))
         {
             creerUtilisateur(request, response);
-            jspClient="/creerUtilisateur.jsp";
+            //jspClient="/Administrateur/listeEmploye.jsp";
         }
         
         else if(action.equals("afficherTousEmployes"))
@@ -289,28 +290,20 @@ public class Administrateur extends HttpServlet {
         String mdp = request.getParameter("mdp");
         String dateCreationCompte = request.getParameter("dateCreationCompte");
         String typeCompte = request.getParameter("typeCompte");
-        String magasin = request.getParameter("magasin");
-        String rayon = request.getParameter("rayon");
         String message;
-        String jspClient;
         if(!(nom.trim().isEmpty()) && !(prenom.trim().isEmpty()) && !(login.trim().isEmpty()) && !(mdp.trim().isEmpty()) && !dateCreationCompte.trim().isEmpty() && !(typeCompte.trim().isEmpty()))
         {
             Date dateCreation = Date.valueOf(dateCreationCompte);
-            TypeCompte typeDuCompte = TypeCompte.valueOf(typeCompte);
-            int idMagasin = Integer.valueOf(magasin);
-            int idRayon = Integer.valueOf(rayon);
-            
+            TypeCompte typeDuCompte = TypeCompte.valueOf(typeCompte);            
             administrateur.creerEmploye(nom, prenom, login, mdp, dateCreation, typeDuCompte);
             message = "Utilisateur créé avec succès";
-            // Nom du menu à changer
-            jspClient ="Administrateur";
+            Collection <Employe> employe = administrateur.afficherTousEmployes();
+            request.setAttribute("employe", employe);
         }
         else
         {
             message = "Merci de saisir les champs précédés d'un astérisque";
             request.setAttribute("message", message);
-            // Nom du menu à changer
-            jspClient ="menuAdministrateur";
         }
     }
     
@@ -510,6 +503,16 @@ public class Administrateur extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException
     {
         Collection<Magasin> magasin = administrateur.afficherTousMagasins();
+        TypeCompte[] typeCompte = TypeCompte.values();
+        ArrayList<TypeCompte> typeCompteList = new ArrayList<>();
+        typeCompteList.add(typeCompte[0]);
+        typeCompteList.add(typeCompte[1]);
+        typeCompteList.add(typeCompte[2]);
+        typeCompteList.add(typeCompte[3]);
+        typeCompteList.add(typeCompte[4]);
+        typeCompteList.add(typeCompte[6]);
+        typeCompteList.add(typeCompte[8]);
+        request.setAttribute("typeCompte", typeCompteList);
         request.setAttribute("magasin", magasin);        
     }
     
