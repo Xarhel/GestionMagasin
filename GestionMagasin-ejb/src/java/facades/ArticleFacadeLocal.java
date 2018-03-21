@@ -32,7 +32,7 @@ public interface ArticleFacadeLocal {
 
     int count();
 
-    void creerArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion, CategorieArticle ca);
+    void creerArticle(int referenceArticle, String libelle, CategorieArticle ca);
 
     void modifierPrixArticle(Article a, float prixPromotion);
 

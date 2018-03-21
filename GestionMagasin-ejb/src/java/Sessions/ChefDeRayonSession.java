@@ -65,7 +65,7 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
    }
    
     @Override
-   public void ajouterArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion, CategorieArticle categorie)
+   public void ajouterArticle(int referenceArticle, String libelle, CategorieArticle categorie)
            
    {
       Article testExistant= articleFacade.rechercheArticleParReference(referenceArticle);
@@ -75,7 +75,7 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
       }
       else
       {
-          articleFacade.creerArticle(referenceArticle, libelle, codeBarre, promotion, categorie);
+          articleFacade.creerArticle(referenceArticle, libelle, categorie);
       }
    }
    

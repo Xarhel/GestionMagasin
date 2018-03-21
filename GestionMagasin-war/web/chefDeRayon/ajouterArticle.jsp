@@ -10,7 +10,7 @@
 <html>
     <head>        
         <title>Créer un article</title>
-        <jsp:include page="include/header.jsp"/>
+         <jsp:include page="include/header.jsp"/> 
         
     </head>
     <body>
@@ -34,7 +34,19 @@
                             <input class="form-control" type="text" name="referenceArticle" required/>
                         </div>                        
                     </div>
-                    <button type="submit" class="btn btn-success">Enregistre</button>                    
+                    <div class="form-group row">
+                        
+                        <label class="col-md-2">Catégorie de l'article<span class="requis">*</span></label>
+                        <div class="col-md-4">
+                            <select name="categorie">
+                                <option value="0"></option>
+                                <option value="1">Alimentaire</option>
+                                <option value="2">Vêtements</option>
+                                <option value="3">Electroménager</option>
+                            </select>
+                        </div>                        
+                    </div>
+                    <button type="submit" class="btn btn-success">Ajouter</button>                    
                 </form> 
             </div>
             <!-- BODY END-->
