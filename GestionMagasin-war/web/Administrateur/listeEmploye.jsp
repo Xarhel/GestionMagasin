@@ -14,7 +14,6 @@
         <jsp:include page="header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="employe" scope="request" class="java.util.Collection"></jsp:useBean>
-       
         </head>
         <body>
             <div class="container">
@@ -63,15 +62,21 @@
                                 <%} else {e.getLeMagasin().getNom();}%> 
                             </td>
                             
-                            <td><a href="Menu?action=pagemodifierEmploye&id=<%=e.getId()%>" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-edit" title="Modifier un employée"></span>Modifier
-                                </a>
-                                <a href="Administrateur?action=supprimerEmploye&id=<%=e.getId()%>" class="btn btn-info btn-md">
+                            <td><a href="Administrateur?action=supprimerEmploye&id=<%=e.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Supprimer un employe"></span>Supprimer
                                 </a>
+                                <% if(e.getTypeCompte().toString() != "direction")
+                                {%>
                                 <a href="Administrateur?action=versAssignerMagasin&id=<%=e.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit"></span>Assigner un magasin
                                 </a>
+                                <%}%>
+                                <% if(e.getTypeCompte().toString() != "direction" && e.getLeMagasin()!=null)
+                                {%>
+                                <a href="Administrateur?action=versAssignerRayon&id=<%=e.getId()%>" class="btn btn-info btn-md">
+                                    <span class="glyphicon glyphicon-edit"></span>Assigner un rayon
+                                </a>
+                                <%}%>
                             </td>
                         </tr><%}%>
                     </tbody>
