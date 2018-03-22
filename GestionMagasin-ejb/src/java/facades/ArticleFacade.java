@@ -58,6 +58,7 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
     @Override
     public void annulerPromotion(Article a) {
         a.setPromotion(false);
+        a.setPrixPromotion(0);
         em.merge(a);
     }
 
