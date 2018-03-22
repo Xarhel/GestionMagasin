@@ -148,6 +148,9 @@ public class Authentication extends HttpServlet {
                     message = "Identifiant ou mot de passe invalide";
                     request.setAttribute("message", message);
                     jspClient ="/login.jsp";
+                    RequestDispatcher rd;
+                    rd = getServletContext().getRequestDispatcher(jspClient);
+                    rd.forward(request, response);
                 }
             }
             else
@@ -155,6 +158,9 @@ public class Authentication extends HttpServlet {
                 String message = "Le nom de compte et le mot de passe sont obligatoires";
                 request.setAttribute("message", message);
                 jspClient="/login.jsp";
+                RequestDispatcher rd;
+                rd = getServletContext().getRequestDispatcher(jspClient);
+                rd.forward(request, response);
             }
         }              
         
