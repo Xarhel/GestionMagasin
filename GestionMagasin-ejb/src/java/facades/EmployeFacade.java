@@ -40,7 +40,7 @@ public class EmployeFacade extends AbstractFacade<Employe> implements EmployeFac
         Employe result;
     
         Query req = getEntityManager().createQuery("SELECT e FROM Employe AS e WHERE e.id =:id");
-        req.setParameter("idMagasin", id);
+        req.setParameter("id", id);
         List <Employe> employes = req.getResultList();
         
         result = employes.get(0);

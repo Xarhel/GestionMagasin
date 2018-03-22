@@ -14,26 +14,10 @@
     <head>        
         <title>Créer un employe</title>
         <jsp:include page="header.jsp"/>
-        
-        <script>
-            function showDiv(){
-                if(typeCompte.value() = "ChefDeRayon")
-                {
-                    document.getElementById("test1").style.display = 'block';
-                    document.getElementById("test2").style.display = 'inline';
-                }
-                else
-                {
-                    document.getElementById("magasin").style.display = 'none';
-                    document.getElementById("rayon").style.display = 'none';
-                }
-            }
-        </script>
-        
+        <jsp:include page="menu.jsp"/>
     </head>
     <body>
         <div class="container">
-            <jsp:include page="menu.jsp"/>
             <jsp:useBean id="magasin" scope="request" class="java.util.Collection"></jsp:useBean>
             <jsp:useBean id="typeCompte" scope="request" class="java.util.Collection"></jsp:useBean>
             
@@ -73,18 +57,6 @@
                                     <input class="form-control" type="date" name="dateCreationCompte"/>
                                 </div>                        
                             </div>
-                        <div id="test1" class="form-group row">
-                            <label class="col-md-2">Test Affichage<span class="requis">*</span></label>
-                            <div class="col-md-4">
-                                <input class="form-control" type="text" required/>
-                            </div>
-                        </div>
-                        <div id="test2" class="form-group row">
-                            <label class="col-md-2">Test Affichage<span class="requis">*</span></label>
-                            <div class="col-md-4">
-                                <input class="form-control" type="text" required/>
-                            </div>
-                        </div>
                         <div id="typeCompte" class="form-group row">
                             <label class="col-md-2">Type de compte<span class="requis">*</span></label>
                             <select name="typeCompte" class="col-md-3 form-control" required>

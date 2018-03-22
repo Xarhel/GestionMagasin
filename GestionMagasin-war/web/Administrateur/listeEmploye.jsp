@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>        
-        <title>Liste des employées</title>
+        <title>Liste des employés</title>
         <jsp:include page="header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="employe" scope="request" class="java.util.Collection"></jsp:useBean>
@@ -29,6 +29,8 @@
                             <th>Prenom</th>
                             <th>Date de création du compte</th>
                             <th>Type de Compte</th>
+                            <th>Magasin</th>
+                            <th>Rayon</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -38,6 +40,8 @@
                             <th>Prenom</th>
                             <th>Date de création du compte</th>
                             <th>Type de Compte</th>
+                            <th>Magasin</th>
+                            <th>Rayon</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
@@ -46,16 +50,28 @@
                             for (Employe e : _employe) {%>
                         <tr><td><%=e.getNomPersonne()%></td>
                             <td><%=e.getPrenomPersonne()%></td>
-                            <td><%=e.getDateCreationCompte()%></td>
-                            <td><%=e.getTypeCompte()%></td>
-
+                            <td><%=e.getDateCreationCompte()%></td>    
+                            <td><%=e.getTypeCompte()%></td>   
+                            
+                            <td><% if(e.getLeMagasin()!=null){%>                                
+                                <%=e.getLeMagasin().getNom()%>
+                                <%} else {%> Aucun <%}%> 
+                            </td>
+                            
+                            <td><% if(e.getLeRayon() == null){%>                                
+                                Aucun
+                                <%} else {e.getLeMagasin().getNom();}%> 
+                            </td>
+                            
                             <td><a href="Menu?action=pagemodifierEmploye&id=<%=e.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Modifier un employée"></span>Modifier
                                 </a>
                                 <a href="Administrateur?action=supprimerEmploye&id=<%=e.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Supprimer un employe"></span>Supprimer
                                 </a>
-
+                                <a href="Administrateur?action=versAssignerMagasin&id=<%=e.getId()%>" class="btn btn-info btn-md">
+                                    <span class="glyphicon glyphicon-edit"></span>Assigner un magasin
+                                </a>
                             </td>
                         </tr><%}%>
                     </tbody>

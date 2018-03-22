@@ -14,16 +14,11 @@ import Entites.Personne.Employe;
 import Entites.Personne.Personne;
 import Sessions.AdministrateurLocal;
 import Sessions.DirectionLocal;
-import facades.AgentDeLivraisonFacade;
-import facades.EmployeFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -69,7 +64,7 @@ public class Administrateur extends HttpServlet {
         else if(action.equals("creerEmploye"))
         {
             creerUtilisateur(request, response);
-            //jspClient="/Administrateur/listeEmploye.jsp";
+            jspClient="/Administrateur/listeEmploye.jsp";
         }
         
         else if(action.equals("afficherTousEmployes"))
@@ -145,8 +140,19 @@ public class Administrateur extends HttpServlet {
         
         else if(action.equals("versCreerUtilisateur"))
         {
-            jspClient="/Administrateur/creerEmploye.jsp";
             versCreerUtilisateur(request, response);
+            jspClient="/Administrateur/creerEmploye.jsp";
+        }
+        
+        else if(action.equals("versAssignerMagasin"))
+        {
+            versAssignerMagasin(request, response);
+            jspClient="/Administrateur/assignerMagasin.jsp";
+        }
+        else if(action.equals("assignerMagasin"))
+        {
+            assignerMagasin(request, response);
+            jspClient="/Administrateur/listeEmploye.jsp";
         }
    
         
@@ -569,6 +575,35 @@ public class Administrateur extends HttpServlet {
         articleList.add(articleModifie);
         Collection<Article> article = (Collection<Article>) articleList;
         request.setAttribute("article", article);
+    }
+    
+    protected void versAssignerMagasin(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        int idEmploye = Integer.parseInt(id);
+        Employe employe = administrateur.rechercherEmployeParId(idEmploye);
+        Collection<Magasin> magasin = administrateur.afficherTousMagasins();
+        request.setAttribute("magasin", magasin);
+        request.setAttribute("employe", employe);
+    }
+    
+    protected void assignerMagasin(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        String magasin = request.getParameter("magasin");
+        
+        // Assignation du magasin à l'employé
+        
+        int idEmploye = Integer.parseInt(id);
+        int idMagasin = Integer.parseInt(magasin);
+        
+        administrateur.associerEmployeAMagasin(idEmploye, idMagasin);
+        
+        ArrayList<Employe> employeList = new ArrayList<>();
+        employeList.add(administrateur.rechercherEmployeParId(idEmploye));
+        request.setAttribute("employe", employeList);
     }
     
 }
