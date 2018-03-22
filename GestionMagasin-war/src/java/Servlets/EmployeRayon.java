@@ -6,14 +6,11 @@
 package Servlets;
 
 import Entites.Autre.BonDeCommande;
-import Entites.Autre.CommandeLot;
 import Entites.Autre.Livraison;
 import Entites.Autre.Rayon;
 import Entites.Autre.Stock;
 import Entites.Personne.Employe;
-import Entites.Personne.Personne;
 import Sessions.EmployeDeRayonSessionLocal;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
@@ -25,7 +22,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.jboss.weld.servlet.SessionHolder;
 
 
 /**

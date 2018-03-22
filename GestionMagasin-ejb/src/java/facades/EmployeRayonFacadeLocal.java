@@ -40,8 +40,12 @@ public interface EmployeRayonFacadeLocal {
 
     public void supprimerEmployeDeRayon(EmployeRayon EDR);
 
-    public void affecterEmployeDeRayon(EmployeRayon er, Magasin magasin, Rayon rayon);
+  
 
     public EmployeRayon rechercherEmployeRayonParId(int id);
+
+    public void affecterEmployeRayon(EmployeRayon er, Magasin magasin);
+
+    public void affecterRayonAEmployeDeRayon(EmployeRayon er, Rayon rayon);
     
 }

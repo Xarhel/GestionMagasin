@@ -74,10 +74,10 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
 }
 
     @Override
-    public void affecterChefDeRayon(ChefDeRayon cdr, Magasin magasin, Rayon rayon) {
+    public void affecterRayonAChefDeRayon(ChefDeRayon cdr,Rayon rayon) {
         
         cdr.setLeRayon(rayon);
-        cdr.setLeMagasin(magasin);
+        
         
         em.merge(cdr);
     }
@@ -96,6 +96,16 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
         result = cdfs.get(0);
         
         return result;
+        
+        
+    }
+    
+    @Override
+    public void affecterMagasinAChefDeRayon(ChefDeRayon cdr, Magasin mag)
+    {
+        cdr.setLeMagasin(mag);
+        
+        em.merge(cdr);
         
         
     }

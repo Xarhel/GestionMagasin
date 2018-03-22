@@ -39,9 +39,13 @@ public interface ChefDeRayonFacadeLocal {
 
     public void supprimerChefDeRayon(ChefDeRayon CDR);
 
-    void affecterChefDeRayon(ChefDeRayon cdr, Magasin magasin, Rayon rayon);
+   
     public ChefDeRayon rechercherChefDeRayonParId(int id);
 
     public void creerChefDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte);
+
+    public void affecterMagasinAChefDeRayon(ChefDeRayon cdr, Magasin mag);
+
+    public void affecterRayonAChefDeRayon(ChefDeRayon cdr, Rayon rayon);
     
 }

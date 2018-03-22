@@ -112,11 +112,7 @@ public class Direction implements DirectionLocal {
        gerantMagasinFacade.affecterGerantMagasin(gm, mag);
     }
     
-    @Override
-    public void affecterChefDeRayon(ChefDeRayon cdr, Magasin mag, Rayon rayon)
-    {
-        chefDeRayonFacade.affecterChefDeRayon(cdr, mag, rayon);
-    }
+  
     
     @Override
     public void affecterEmployeDeCaisse(EmployeDeCaisse edc, Magasin mag)
@@ -124,11 +120,7 @@ public class Direction implements DirectionLocal {
         employeDeCaisseFacade.affecterEmployeDeCaisse(edc, mag);
     }
     
-    @Override
-    public void affecterEmployeRayon(EmployeRayon er, Magasin mag,Rayon rayon)
-    {
-        employeRayonFacade.affecterEmployeDeRayon(er, mag, rayon);
-    }
+ 
     
     @Override
     public void affecterAgentLivraison(AgentDeLivraison adl, Magasin magasin)
@@ -190,5 +182,9 @@ public class Direction implements DirectionLocal {
         
         
     }
+    
+
+    
+    
     
 }
