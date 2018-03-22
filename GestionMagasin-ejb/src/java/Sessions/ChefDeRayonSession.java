@@ -20,6 +20,7 @@ import facades.CommandeLotFacadeLocal;
 import facades.FournisseurFacadeLocal;
 import facades.LotFacadeLocal;
 import facades.RayonArticleFacadeLocal;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -78,6 +79,13 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
       {
           articleFacade.creerArticle(referenceArticle, libelle, categorie);
       }
+   }
+   
+    @Override
+   public Collection<Article> afficherTousLesArticles(){
+       Collection<Article> articles;
+       articles = articleFacade.afficherTousLesArticles();
+       return articles;
    }
    
    // Faire un 

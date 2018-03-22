@@ -31,7 +31,7 @@
                         <li><a href="ajouterFournisseur.jsp">Ajouter fournisseur</a></li>
                         <li><a href="ajouterPrixArticle.jsp" class="">Ajouter le prix</a></li>
                         <li><a href="creerCommande.jsp" class="">Créer commande</a></li>
-                        <li><a href="listeArticle.jsp" class="">Liste des articles</a></li>
+                        <li><a href="ChefDeRayon?action=afficherTousLesArticles" class="">Liste des articles</a></li>
                         <li><a href="modifierPrix.jsp" class="">Modifier le prix</a></li>
                         
                     </ul>

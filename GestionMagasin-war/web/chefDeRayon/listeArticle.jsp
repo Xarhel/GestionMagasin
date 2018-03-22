@@ -11,13 +11,13 @@
 <html>
     <head>        
         <title>Liste des articles</title>
-        <jsp:include page="include/header.jsp"/>        
+        <jsp:include page="header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="article" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
             <div class="container">
-            <jsp:include page=""/>
+            <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
                 <h1>Liste des articles</h1>
@@ -42,9 +42,9 @@
                         <tr><td><%=a.getLibelle()%></td>
                             <td><%=a.getReferenceArticle()%></td>
                            
-                            <td>
-                                <a href="Menu?action=pageModifiPrix&id=<%=a.getId()%>" class="btn btn-success btn-md">
-                                    <span class="glyphicon glyphicon-pencil" title="Modifier prix article"></span> Modifier prix
+                            <td>                               
+                                <a href="ChefDeRayon?action=versAjouterAuRayon&idArticle=<%=a.getId()%>" class="btn btn-success btn-md">
+                                    <span class="glyphicon glyphicon-pencil" title="ajouterAuRayon"></span> Ajouter au rayon
                                 </a>
                                 
                             </td>

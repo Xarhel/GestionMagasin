@@ -47,5 +47,7 @@ public interface ArticleFacadeLocal {
     public Collection<Article> rechercherArticleParCategorie(int categorie);
 
     public List<Article> rechercheArticlesParReference(int referenceArticle);
+
+    public Collection<Article> afficherTousLesArticles();
     
 }

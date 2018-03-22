@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import Entites.Autre.Article;
 import Entites.Enum.CategorieArticle;
 import Sessions.ChefDeRayonSession;
 import Sessions.ChefDeRayonSessionLocal;
@@ -12,6 +13,7 @@ import facades.ArticleFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.Collection;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -63,6 +65,22 @@ public class ChefDeRayon extends HttpServlet {
                 else if (action.equals("versAjouterArticle"))
         {
             jspClient="/chefDeRayon/ajouterArticle.jsp";
+        }
+        
+                else if (action.equals("afficherTousLesArticles"))
+        {
+            jspClient="/chefDeRayon/listeArticle.jsp";
+            afficherTousLesArticles(request,response);
+
+        }
+                else if (action.equals("versAjouterAuRayon"))
+        {
+            jspClient="/chefDeRayon/ajouterArticleAuRayon.jsp";
+        }
+                else if (action.equals("ajouterAuRayon"))
+        {
+            jspClient="/chefDeRayon/ajouterArticleAuRayon.jsp";
+            ajouterAuRayon(request,response);
         }
                
         
@@ -157,6 +175,18 @@ public class ChefDeRayon extends HttpServlet {
         }
         
                 
+    }
+
+    private void afficherTousLesArticles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String message = "Voici la liste des articles";
+        Collection <Article> article = chefDeRayon.afficherTousLesArticles();
+        request.setAttribute("message", message);
+        request.setAttribute("article", article);
+    }
+    
+    private void ajouterAuRayon(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    { 
+    
     }
 
 }

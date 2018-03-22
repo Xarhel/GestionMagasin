@@ -137,5 +137,15 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
    
     }
     
+    @Override
+        public Collection <Article> afficherTousLesArticles (){
+    Collection <Article> result;
+    Query req = getEntityManager().createQuery("SELECT a FROM Article a");
+
+        
+        result = req.getResultList();
+        
+        return result;}
+    
     
 }
