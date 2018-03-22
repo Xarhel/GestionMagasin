@@ -11,7 +11,7 @@
 <html>
     <head>        
         <title>Liste des livraison</title>
-        <jsp:include page="include/header.jsp"/>        
+        <jsp:include page="header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="livraison" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
@@ -24,7 +24,7 @@
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Livraison lots</th>
+                            
                             <th>Date de créeation</th>
                             <th>Agent de livraison</th>
                             <th>Date de reception</th>
@@ -34,7 +34,7 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Livraison lots</th>
+                            
                             <th>Date de créeation</th>
                             <th>Agent de livraison</th>
                             <th>Date de reception</th>
@@ -45,9 +45,9 @@
                     <tbody>
                         <% Collection<Livraison> _livraison = livraison;
                             for (Livraison l : _livraison) {%>
-                        <tr><td><%=l.getLivraisonLots()%></td>
+                        <tr>
                             <td><%=l.getDateCreationLivraison()%></td>
-                            <td><%=l.getlAgentDeLivraison()%></td>
+                            <td><%=l.getlAgentDeLivraison().getNomPersonne() %></td>
                             <td><%=l.getDateReceptionLivraison()%></td>
                             <td><%=l.getStatutLivraison()%></td>
                         </tr><%}%>

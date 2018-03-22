@@ -32,11 +32,11 @@ public interface DirectionLocal {
 
     public void affecterGerantMagasin(GerantMagasin gm, Magasin mag);
 
-    public void affecterChefDeRayon(ChefDeRayon cdr, Magasin mag, Rayon rayon);
+
 
     public void affecterEmployeDeCaisse(EmployeDeCaisse edc, Magasin mag);
 
-    public void affecterEmployeRayon(EmployeRayon er, Magasin mag, Rayon rayon);
+   
 
     public void affecterAgentLivraison(AgentDeLivraison adl, Magasin magasin);
 

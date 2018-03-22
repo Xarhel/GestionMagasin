@@ -277,40 +277,48 @@ public class Administrateur implements AdministrateurLocal {
         {
             EmployeDeCaisse edc= employeDeCaisseFacade.rechercherEmployeDeCaisse(idEmploye);
             employeDeCaisseFacade.affecterEmployeDeCaisse(edc, m);
-            
-            
-            
         }
         
         if(tc==TypeCompte.gerantMagasin)
         {
-            GerantMagasin gm= gerantMagasinFacade.rechercherGerantMagasinParId(idMagasin);
-            gerantMagasinFacade.affecterGerantMagasin(gm, m);
-            
+            GerantMagasin gm= gerantMagasinFacade.rechercherGerantMagasinParId(idEmploye);
+            gerantMagasinFacade.affecterGerantMagasin(gm, m); 
+        }
+        if(tc==TypeCompte.employeRayon)
+        {
+            EmployeRayon er= employeRayonFacade.rechercherEmployeRayonParId(idEmploye);
+            employeRayonFacade.affecterEmployeRayon(er, m);
         }
         
+        if(tc==TypeCompte.chefDeRayon)
+        {
+            ChefDeRayon cdr= chefDeRayonFacade.rechercherChefDeRayonParId(idEmploye);
+            chefDeRayonFacade.affecterMagasinAChefDeRayon(cdr, m);
+        }
+        
+       
        
     }
   
     
     @Override
-    public void associerEmployeAMagasinEtRayon(int idEmploye, int idMagasin, int idRayon)
+    public void associerEmployeAUnRayon(int idEmploye, int idRayon)
     {
         Employe e= employeFacade.chercherEmployeParId(idEmploye);
-        Magasin m= magasinFacade.rechercherMagasinParId(idMagasin);
+       
         Rayon r= rayonFacade.rechercherRayonParId(idRayon);
         
          TypeCompte tc= e.getTypeCompte();
           if(tc==TypeCompte.chefDeRayon)
           {
               ChefDeRayon cdr= chefDeRayonFacade.rechercherChefDeRayonParId(idEmploye);
-              chefDeRayonFacade.affecterChefDeRayon(cdr, m, r);
+              chefDeRayonFacade.affecterRayonAChefDeRayon(cdr, r);
           }
         
            if(tc==TypeCompte.employeRayon)
            {
                EmployeRayon er= employeRayonFacade.rechercherEmployeRayonParId(idEmploye);
-               employeRayonFacade.affecterEmployeDeRayon(er, m, r);
+               employeRayonFacade.affecterRayonAEmployeDeRayon(er, r);
                
            }
         

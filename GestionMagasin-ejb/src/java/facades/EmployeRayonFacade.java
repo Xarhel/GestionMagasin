@@ -72,9 +72,9 @@ public class EmployeRayonFacade extends AbstractFacade<EmployeRayon> implements 
 }
     
     @Override
-        public void affecterEmployeDeRayon(EmployeRayon er, Magasin magasin,Rayon rayon)
+        public void affecterRayonAEmployeDeRayon(EmployeRayon er,Rayon rayon)
         {
-        er.setLeMagasin(magasin);
+      
         er.setLeRayon(rayon);
         em.merge(er);
             
@@ -95,5 +95,14 @@ public class EmployeRayonFacade extends AbstractFacade<EmployeRayon> implements 
         
     }
         
+    
+       @Override
+    public void affecterEmployeRayon(EmployeRayon er, Magasin magasin) {
+        
+        
+        er.setLeMagasin(magasin);
+        
+        em.merge(er);
+    }
         
 }

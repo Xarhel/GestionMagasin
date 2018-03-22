@@ -56,9 +56,9 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
     
         Collection<Livraison> result;
         
-        Query req = getEntityManager().createQuery("select l from Livraison l join l.leBonDeCommande bdc join bdc.leChefDeRayon cdr join cdr.leMagasin mag Where l.statutLivraison =?0 And cdr.leMagasin=:magasin");
+        Query req = getEntityManager().createQuery("select l from Livraison l join l.leBonDeCommande bdc join bdc.leChefDeRayon cdr join cdr.leMagasin mag Where l.statutLivraison =:encours And cdr.leMagasin=:magasin");
         req.setParameter("magasin", magasin);
-        
+        req.setParameter("encours", StatutLivraison.enCours);
         result = req.getResultList();
         
         

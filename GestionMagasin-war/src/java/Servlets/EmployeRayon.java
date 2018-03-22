@@ -6,21 +6,22 @@
 package Servlets;
 
 import Entites.Autre.BonDeCommande;
-import Entites.Autre.CommandeLot;
 import Entites.Autre.Livraison;
+import Entites.Autre.Rayon;
+import Entites.Autre.Stock;
 import Entites.Personne.Employe;
-import Entites.Personne.Personne;
 import Sessions.EmployeDeRayonSessionLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
+import java.util.Date;
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.jboss.weld.servlet.SessionHolder;
 
 
 /**
@@ -52,27 +53,70 @@ public class EmployeRayon extends HttpServlet {
         
          if((action==null) || (action.equals("null")))
         {
-            jspClient="/EmployeRayon/index.jsp";
+            jspClient="/employeRayon/index.jsp";
         }
          
-        else if(action.equals("consulterCommande"))
-        {
-            consulterCommande(request, response);
-            jspClient="consulterCommande.jsp";
-        }
-         
-           else if(action.equals("consulterLivraison"))
-        {
-            consulterLivraison(request, response);
-            jspClient="consulterLivraison.jsp";
-        }
+          
         
           else if(action.equals("retraitArticlePerimer"))
         {
-            jspClient="retraitArticlePerimer.jsp";
+            jspClient="/EmployeRayon/retraitArticlePerimer.jsp";
         }
          
+         
+          else if(action.equals("versConsulterCommande"))
+        {
+            versConsulterCommande(request, response);
+            jspClient="/employeRayon/consulterCommande.jsp";
+            
+            
+        }
+         
+          else if(action.equals("versConsulterLivraison"))
+                  {
+                      jspClient="/employeRayon/consulterLivraison.jsp";
+                      versConsulterLivraison(request, response);
+                  }
+         
+          else if(action.equals("versRetraitArticlePerime"))
+          {
+              jspClient="/employeRayon/retraitArticlePerime.jsp";
+              versArticlePerime(request, response);
+              
+          }
+         
+          else if(action.equals("supprimerProduitPerime"))
+              
+          {supprimerProduitPerime(request, response);
+         
+         jspClient="/employeRayon/retraitArticlePerime.jsp";}
+         
+              
+
+         
           ////////////////////////DIRECTION//////////////////////
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          RequestDispatcher rd;
+        rd = getServletContext().getRequestDispatcher(jspClient);
+        rd.forward(request, response);
+          
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -99,8 +143,7 @@ public class EmployeRayon extends HttpServlet {
 
 
     
-    protected void consulterCommande(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException
+    protected void versConsulterCommande(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
             
     {
         HttpSession session= request.getSession();
@@ -108,26 +151,61 @@ public class EmployeRayon extends HttpServlet {
         
         Collection<BonDeCommande> c = employeDeRayonSession.rechercherParMagasin(e.getIdMagasin());
         
+        
+  
         String message = "Voici la liste des commandes recensées";
         request.setAttribute("commande", c);
         request.setAttribute("message", message);        
     }   
     
     
-    protected void consulterLivraison(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException
+    protected void versConsulterLivraison(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
             
     {
         HttpSession session= request.getSession();
         Employe e=(Employe) session.getAttribute("user");
         
-        Collection<Livraison> l = employeDeRayonSession.rechercheLivraisonEnCours(e.getIdMagasin());
         
+        Collection<Livraison> l = employeDeRayonSession.rechercheLivraisonEnCours(e.getIdMagasin());
+       
         String message = "Voici la liste des livraisons recensées";
         request.setAttribute("livraison", l);
         request.setAttribute("message", message);        
     }
    
+     protected void versArticlePerime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+            
+    {
+        HttpSession session= request.getSession();
+        Employe e=(Employe) session.getAttribute("user");
+        
+        Rayon r= e.getLeRayon();
+        Date d= new Date();
+        
+        Collection <Stock> s=employeDeRayonSession.rechercherStockAvecProduitPerime(d, r);
+        
+        String message = "Voici la liste des livraisons recensées";
+        request.setAttribute("message", message);  
+        request.setAttribute("stock", s);
+   
+    }
+    
+     
+     protected void supprimerProduitPerime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+     {
+        HttpSession session= request.getSession();
+        Employe e=(Employe) session.getAttribute("user");
+        
+        Rayon r= e.getLeRayon();
+        Date d= new Date();
+        
+        employeDeRayonSession.retirerStockPerime(d, r);
+        
+        String message="Bravo, vous avez enlevé le stock périmé";
+        request.setAttribute("message", message);
+
+  
+     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
