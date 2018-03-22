@@ -26,9 +26,8 @@
                 <li class="dropdown <%=display%>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href=".jsp" class=""></a></li>
-                        <li><a href=".jsp"></a></li>
-                        <li><a href="e.jsp" class=""></a></li>
+                        <li><a href="enregistreVente.jsp" class="vente"></a>Enregistre une vente</li>
+                        
                     </ul>
                 </li> 
                 
