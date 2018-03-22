@@ -20,6 +20,7 @@ import facades.CommandeLotFacadeLocal;
 import facades.FournisseurFacadeLocal;
 import facades.LotFacadeLocal;
 import facades.RayonArticleFacadeLocal;
+import facades.RayonFacadeLocal;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -54,12 +55,22 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
     @EJB
     private FournisseurFacadeLocal fournisseurFacade;
     
+        @EJB
+    private RayonFacadeLocal rayonFacade;
+    
     
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
     @Override
+        public void ajouterArticleAuRayon (Article a, Rayon r, float prix){
+            boolean promo = a.isPromotion();
+             rayonArticleFacade.ajouterArticleARayon(r, a, prix);}
+   
+        
+        
+        @Override
    public void ajouterFournisseur(String raisonSocial, String login, String password)
    {
        
@@ -126,6 +137,30 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
        Fournisseur fournisseur= fournisseurFacade.rechercherFournisseurParId(idChefDeRayon);
        ChefDeRayon cdr= chefDeRayonFacade.rechercherChefDeRayonParId(idChefDeRayon);
        bonDeCommandeFacade.creerBonDeCommande(cdr, dateCommande, fournisseur);
+        
+        
+    }
+    @Override
+        public Article rechercherArticleParId(int id)
+    {
+       Article result= articleFacade.rechercherArticleParId(id);
+    
+    
+        return result;
+        
+        
+        
+        
+    }
+    @Override
+              public Rayon rechercherRayonParId(int id)
+    {
+       Rayon result= rayonFacade.rechercherRayonParId(id) ;
+    
+    
+        return result;
+        
+        
         
         
     }

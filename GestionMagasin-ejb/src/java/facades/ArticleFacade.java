@@ -142,6 +142,7 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
     Collection <Article> result;
     Query req = getEntityManager().createQuery("SELECT a FROM Article a");
 
+
         
         result = req.getResultList();
         

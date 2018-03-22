@@ -6,7 +6,9 @@
 package Servlets;
 
 import Entites.Autre.Article;
+import Entites.Autre.Rayon;
 import Entites.Enum.CategorieArticle;
+import Entites.Personne.Employe;
 import Sessions.ChefDeRayonSession;
 import Sessions.ChefDeRayonSessionLocal;
 import facades.ArticleFacadeLocal;
@@ -20,6 +22,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -75,11 +78,13 @@ public class ChefDeRayon extends HttpServlet {
         }
                 else if (action.equals("versAjouterAuRayon"))
         {
+            
             jspClient="/chefDeRayon/ajouterArticleAuRayon.jsp";
+              versAjouterAuRayon(request,response);
         }
                 else if (action.equals("ajouterAuRayon"))
         {
-            jspClient="/chefDeRayon/ajouterArticleAuRayon.jsp";
+            jspClient="/chefDeRayon/listeArticle.jsp";
             ajouterAuRayon(request,response);
         }
                
@@ -178,6 +183,7 @@ public class ChefDeRayon extends HttpServlet {
     }
 
     private void afficherTousLesArticles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         String message = "Voici la liste des articles";
         Collection <Article> article = chefDeRayon.afficherTousLesArticles();
         request.setAttribute("message", message);
@@ -186,6 +192,43 @@ public class ChefDeRayon extends HttpServlet {
     
     private void ajouterAuRayon(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
     { 
+        HttpSession session = request.getSession();
+        Employe e = (Employe) session.getAttribute("user");
+        int r = e.getIdRayon();
+        
+        int idArticle = Integer.parseInt(request.getParameter("idArticle"));
+        Article articleAjouter = chefDeRayon.rechercherArticleParId(idArticle);
+
+        String prix = request.getParameter("prix");
+        Rayon rayon = chefDeRayon.rechercherRayonParId(r);
+        if(!(prix.isEmpty())) {
+        float prixVente = Float.valueOf(prix);
+        chefDeRayon.ajouterArticleAuRayon(articleAjouter, rayon, prixVente);
+        Collection <Article> article = chefDeRayon.afficherTousLesArticles();
+        request.setAttribute("article", article);
+        
+}
+        
+        
+        
+        
+        
+        
+    
+    }
+        private void versAjouterAuRayon(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    { 
+        HttpSession session = request.getSession();
+        Employe e = (Employe) session.getAttribute("user");
+        int r = e.getIdRayon();
+        Rayon rayon = chefDeRayon.rechercherRayonParId(r);
+        int idArticle = Integer.parseInt(request.getParameter("idArticle"));
+        Article article = chefDeRayon.rechercherArticleParId(idArticle);
+        request.setAttribute("article", article);
+        request.setAttribute("rayon", rayon);
+        
+        
+        
     
     }
 

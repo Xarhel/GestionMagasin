@@ -33,5 +33,11 @@ public interface ChefDeRayonSessionLocal {
 
     public Collection<Article> afficherTousLesArticles();
 
+    public Article rechercherArticleParId(int id);
+
+    public Rayon rechercherRayonParId(int id);
+
+    public void ajouterArticleAuRayon(Article a, Rayon r, float prix);
+
     
 }

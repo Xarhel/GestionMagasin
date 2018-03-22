@@ -131,6 +131,10 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
      ra.setPrixRayon(prixRayon);
      ra.setLesArticles(a);
      ra.setLesRayons(r);
+     if (a.isPromotion()) {ra.setPrixVente(a.getPrixPromotion());}
+     if (!a.isPromotion()) ra.setPrixVente(prixRayon);
+     
+     
      em.persist(ra);}
      
     @Override

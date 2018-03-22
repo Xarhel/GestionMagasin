@@ -6,6 +6,7 @@
 package facades;
 
 import Entites.Autre.Article;
+import Entites.Autre.Rayon;
 import Entites.Enum.CategorieArticle;
 import java.util.Collection;
 import java.util.List;
