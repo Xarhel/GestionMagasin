@@ -26,9 +26,9 @@
                 <li class="dropdown <%=display%>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="consulterCommande.jsp" class="">Consulter commande</a></li>
-                        <li><a href="consulterLivraison.jsp">Consulter livraison</a></li>
-                        <li><a href="retraitArticlePerime.jsp" class="">Retrait ariticle</a></li>
+                        <li><a href="saisirLivraison.jsp" class="saisir">Saisir Livraison</a></li>
+                        <li><a href="listeLivraison.jsp">Liste des livraisons</a></li>
+                        <li><a href=".jsp" class=""></a></li>
                     </ul>
                 </li> 
                 

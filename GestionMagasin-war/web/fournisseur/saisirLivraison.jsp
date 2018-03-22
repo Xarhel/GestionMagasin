@@ -19,6 +19,7 @@
     <body>
         <div class="container">
             <jsp:include page="include/menuFournisseur.jsp"/>
+            <div class="jumbotron">
             <!-- BODY START -->
             <div>
                 <h1>Créer un livraison</h1>
@@ -40,7 +41,7 @@
                             <option></option>
                             <% Collection<Livraison> _livraison = livraison;
                                 for (Livraison l : _livraison) {%>
-                                <option value="<%=l.getId()%>"><%=l.getlAgentDeLivraison()%>)</option>
+                                <option value="<%=l.getId()%>"><%=l.getlAgentDeLivraison().getNomPersonne()%><%=l.getlAgentDeLivraison().getPrenomPersonne()%>)</option>
                             <%}%>
                         </select>
                     </div> 
@@ -53,6 +54,7 @@
                     <button type="submit" class="btn btn-success">Enregistre</button>
                       
                 </form> 
+            </div>
             </div>
             <!-- BODY END-->
         </div>
