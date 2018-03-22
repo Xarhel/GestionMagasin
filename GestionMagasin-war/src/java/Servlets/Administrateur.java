@@ -154,6 +154,18 @@ public class Administrateur extends HttpServlet {
             assignerMagasin(request, response);
             jspClient="/Administrateur/listeEmploye.jsp";
         }
+        
+        else if(action.equals("versAssignerRayon"))
+        {
+            versAssignerRayon(request, response);
+            jspClient="/Administrateur/assignerRayon.jsp";
+        }
+        
+        else if(action.equals("assignerRayon"))
+        {
+            assignerRayon(request, response);
+            jspClient="/Administrateur/listeEmploye.jsp";
+        }
    
         
         /////////////////////////////////////////////////
@@ -604,6 +616,33 @@ public class Administrateur extends HttpServlet {
         ArrayList<Employe> employeList = new ArrayList<>();
         employeList.add(administrateur.rechercherEmployeParId(idEmploye));
         request.setAttribute("employe", employeList);
+    }
+    
+    protected void versAssignerRayon(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        int idEmploye = Integer.parseInt(id);
+        Employe employe = administrateur.rechercherEmployeParId(idEmploye);
+        Collection<Rayon> rayon = employe.getLeMagasin().getRayons();       
+        request.setAttribute("employe", employe);
+        request.setAttribute("rayon", rayon);
+    }
+    
+    protected void assignerRayon(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        String rayon = request.getParameter("rayon");
+        
+        int idEmploye = Integer.parseInt(id);
+        int idRayon = Integer.parseInt(rayon);
+        
+        administrateur.associerEmployeAUnRayon(idEmploye, idRayon);
+        
+        ArrayList<Employe> employeList = new ArrayList<>();
+        employeList.add(administrateur.rechercherEmployeParId(idEmploye));
+        request.setAttribute("employe", employeList);       
     }
     
 }
