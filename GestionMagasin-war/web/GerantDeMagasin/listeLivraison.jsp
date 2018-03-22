@@ -44,7 +44,7 @@
                         <% Collection<Livraison> _livraison = livraison;
                             for (Livraison l : _livraison) {%>
                         <tr>
-                            <td><%=l.getlAgentDeLivraison()%></td>
+                            <td><%=l.getlAgentDeLivraison().getNomPersonne()%><%=l.getlAgentDeLivraison().getPrenomPersonne() %></td>
                             <td><%=l.getDateCreationLivraison()%></td>
                             <td><%=l.getDateReceptionLivraison()%></td>
                             
