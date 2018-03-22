@@ -28,14 +28,14 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="creerLivraison.jsp" class="">Créer livraison</a></li>
-                        <li><a href="listeLivraison.jsp">Liste livraison</a></li>
+                        <li><a href="AgentLivraison?action=versListeLivraison">Liste livraison</a></li>
                         <li><a href=".jsp" class=""></a></li>
 
                     </ul>
                 </li> 
                 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="Menu?action=logout">Bonjour! <%=nom%>, Déconexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
+                <li><a href="Menu?action=logout">Bonjour! <%=nom%>, Déconnexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
