@@ -76,12 +76,14 @@ public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
     
      
     @Override
-     public void retirerStockPerime(Date date, Rayon r)
+     public Collection<Stock> retirerStockPerime(Date date, Rayon r)
      {
          Collection<Stock> s = stockFacade.rechercherLotRayonPerimeParDate(date, r);
          stockRetraitFacade.retirerStockPerime(s, date);
          stockFacade.retirerStockPerimeRayon(s);
          
+         
+         return s;
      }
      
      
@@ -107,5 +109,16 @@ public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
          
          
      }
+     
+     
+    @Override
+     public Collection<Stock> rechercherStockAvecProduitPerime(Date d, Rayon r)
+     {
+        Collection<Stock> result= stockFacade.rechercherLotRayonPerimeParDate(d, r);
+         
+         return result;
+         
+     }
+     
      
 }

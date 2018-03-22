@@ -154,7 +154,7 @@ public class Authentication extends HttpServlet {
             {
                 String message = "Le nom de compte et le mot de passe sont obligatoires";
                 request.setAttribute("message", message);
-                jspClient="login.jsp";
+                jspClient="/login.jsp";
             }
         }              
         

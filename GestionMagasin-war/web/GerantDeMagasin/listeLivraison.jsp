@@ -1,7 +1,7 @@
 <%-- 
-    Document   : consulterLivraison
-    Created on : 19 mars 2018, 14:53:16
-    Author     : jules
+    Document   : listeLivraison
+    Created on : 21 mars 2018, 09:33:17
+    Author     : 5153218
 --%>
 
 <%@page import="Entites.Autre.Livraison"%>
@@ -10,49 +10,48 @@
 <!DOCTYPE html>
 <html>
     <head>        
-        <title>Liste des livraison</title>
+        <title>Liste des livraisons</title>
         <jsp:include page="header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="livraison" scope="request" class="java.util.Collection"></jsp:useBean>
+        <jsp:useBean id="magasin" scope="request" class="Entites.Autre.Magasin"></jsp:useBean>
         </head>
         <body>
             <div class="container">
-            <jsp:include page="menuEmployeRayon.jsp"/>
+            <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
-                <h1>Liste des Livraison</h1>
+                <h1>Liste des livraisons</h1>
+                <form method="POST" action=".....">
+                    <input hidden type="text" name="id" value="<%=magasin.getId()%>" />
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
-                            
-                            <th>Date de créeation</th>
                             <th>Agent de livraison</th>
-                            <th>Date de reception</th>
-                            <th>Statut de livraison</th>
-                           
+                            <th>Date de création livraison</th>
+                            <th>Date de livraison</th>
+                            
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            
-                            <th>Date de créeation</th>
                             <th>Agent de livraison</th>
-                            <th>Date de reception</th>
-                            <th>Statut de livraison</th>
-                           
+                            <th>Date de création livraison</th>
+                            <th>Date de livraison</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         <% Collection<Livraison> _livraison = livraison;
                             for (Livraison l : _livraison) {%>
                         <tr>
+                            <td><%=l.getlAgentDeLivraison().getNomPersonne()%><%=l.getlAgentDeLivraison().getPrenomPersonne() %></td>
                             <td><%=l.getDateCreationLivraison()%></td>
-                            <td><%=l.getlAgentDeLivraison().getNomPersonne() %></td>
                             <td><%=l.getDateReceptionLivraison()%></td>
-                            <td><%=l.getStatutLivraison()%></td>
+                            
                         </tr><%}%>
                     </tbody>
                 </table>
+                </form>
             </div>
             <!-- BODY END-->
         </div>

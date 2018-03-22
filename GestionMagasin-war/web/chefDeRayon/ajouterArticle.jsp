@@ -12,6 +12,7 @@
         <title>Créer un article</title>
          <jsp:include page="header.jsp"/> 
         
+        
     </head>
     <body>
         <div class="container">

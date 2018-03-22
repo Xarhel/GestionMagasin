@@ -68,6 +68,8 @@ public interface AdministrateurLocal {
 
     public void associerEmployeAMagasin(int idEmploye, int idMagasin);
 
-    public void associerEmployeAMagasinEtRayon(int idEmploye, int idMagasin, int idRayon);
+    public void associerEmployeAUnRayon(int idEmploye, int idRayon);
+
+  
     
 }

@@ -13,8 +13,8 @@
     <head>        
         <title>Affecter des gérants</title>
         <jsp:include page="include/header.jsp"/>
-        <jsp:useBean id="magasin" scope="request" class="Entites.Autre.Magasin"></jsp:useBean>
-        <jsp:useBean id="gerant" scope="request" class="Entites.Personne.GerantMagasin"></jsp:useBean>
+        <jsp:useBean id="magasin" scope="request" class="java.util.Collection"></jsp:useBean>
+        <jsp:useBean id="gerant" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
             <div class="container">

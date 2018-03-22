@@ -1,8 +1,9 @@
 <%-- 
-    Document   : menuEmployeRayon
-    Created on : 21 mars 2018, 08:46:28
-    Author     : 5153218
+    Document   : menuChefRayon
+    Created on : 20 mars 2018, 17:10:42
+    Author     : jules
 --%>
+
 
 <% String id = (String) session.getAttribute("id");%>
 <% String nom = (String) session.getAttribute("nom");%>
@@ -26,9 +27,10 @@
                 <li class="dropdown <%=display%>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="EmployeRayon?action=versConsulterCommande" class="">Consulter commande</a></li>
-                        <li><a href="EmployeRayon?action=versConsulterLivraison">Consulter livraison</a></li>
-                        <li><a href="EmployeRayon?action=versRetraitArticlePerime" class="">Retrait ariticle</a></li>
+                        <li><a href="creerLivraison.jsp" class="">Créer livraison</a></li>
+                        <li><a href="listeLivraison.jsp">Liste livraison</a></li>
+                        <li><a href=".jsp" class=""></a></li>
+
                     </ul>
                 </li> 
                 
@@ -38,4 +40,3 @@
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
 </nav>
-<!--/ EmployeRayon  Administrateur?action=versCreerUtilisateur --- >

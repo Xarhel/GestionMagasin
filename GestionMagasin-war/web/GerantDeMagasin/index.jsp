@@ -1,12 +1,16 @@
+<%-- 
+    Document   : index
+    Created on : 21 mars 2018, 08:51:17
+    Author     : 5153218
+--%>
 
-<%@page session="true"%>
+<%@page session="true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>        
         <title>Gestion Magasin</title>
         <jsp:include page="header.jsp"/>
-        <jsp:include page="menu.jsp"/>   
         <style>
             .jumbotron{
                 background-image: url("images/Magasin_Aarhus.jpg");
@@ -18,12 +22,13 @@
         </style>
     </head>
     <body>
-        <div class="container">         
+        <div class="container">
+            <jsp:include page="menuEmployeRayon.jsp"/>            
             <!-- Main component for a primary marketing message or call to action -->
             <div class="jumbotron">                
-                <h1 >Bienvenue dans votre espace personnalisé</h1>
+                <h1 >Bienvenue dans votre magasin</h1>
             </div>
         </div> <!-- /container -->
     </div>
 </body>
-</html>
+</html>>
