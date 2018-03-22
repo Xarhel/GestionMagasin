@@ -15,6 +15,8 @@ import Entites.Personne.Fournisseur;
 import Entites.Personne.GerantMagasin;
 import Entites.Personne.Personne;
 import Sessions.AdministrateurLocal;
+import Sessions.ChefDeRayonSession;
+import Sessions.ChefDeRayonSessionLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -34,6 +36,9 @@ public class Authentication extends HttpServlet {
 
     @EJB
     private AdministrateurLocal administrateur;
+    
+        @EJB
+    private ChefDeRayonSessionLocal chefDeRayon;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

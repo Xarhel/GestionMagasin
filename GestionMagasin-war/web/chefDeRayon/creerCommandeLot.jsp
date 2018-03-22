@@ -35,16 +35,16 @@
                             <%}%>
                         </select>  
                     </div>
-                        <div class="form-group row">
+                        
                             <label class="col-md-2">Fournisseur<span class="requis">*</span></label>
-                            <select name="libelle" class="col-md-3 form-control" required>
+                            
                             <% Collection<FournisseurMagasin> _fournisseur = fournisseur;
                             for (FournisseurMagasin f : _fournisseur) {%>
                             <option value="<%=f.getId()%>"><%=f.getLeFournisseur()%></option>
                             
                             <%}%>
-                        </select>  
-                    </div>
+                          
+                    
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2">Quantité<span class="requis">*</span></label>

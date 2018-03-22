@@ -8,6 +8,7 @@ package facades;
 import Entites.Autre.Article;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
+import Entites.Enum.CategorieArticle;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -36,13 +37,13 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
 
     //Méthode de création d'un article
     @Override
-    public void creerArticle(int referenceArticle, String libelle, int codeBarre, boolean promotion) {
+    public void creerArticle(int referenceArticle, String libelle, CategorieArticle ca) {
         Article a = new Article();
         a.setReferenceArticle(referenceArticle);
         a.setLibelle(libelle);
-        a.setCodeBarre(codeBarre);
         a.setPromotion(false);
         a.setPrixPromotion(0);
+        a.setCategorie(ca);
         em.persist(a);
     }
     
@@ -76,6 +77,19 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
         return result;
     }
     
+    @Override
+        public List <Article> rechercheArticlesParReference(int referenceArticle) {
+        
+        List <Article> articles;
+        
+    
+        Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.referenceArticle =:referenceArticle");
+        req.setParameter("referenceArticle", referenceArticle);
+        
+        articles = req.getResultList();
+        return articles;
+ 
+    }
     /**
      *
      * @param libelle
@@ -109,6 +123,29 @@ public class ArticleFacade extends AbstractFacade<Article> implements ArticleFac
         return result;
         
     }
+    
+    @Override
+    public Collection <Article> rechercherArticleParCategorie (int categorie){
+    Collection <Article> result;
+    Query req = getEntityManager().createQuery("SELECT a FROM Article AS a WHERE a.Categorie=:categorie");
+        req.setParameter("categorie", categorie);
+        
+        result = req.getResultList();
+        
+        return result;
+    
+   
+    }
+    
+    @Override
+        public Collection <Article> afficherTousLesArticles (){
+    Collection <Article> result;
+    Query req = getEntityManager().createQuery("SELECT a FROM Article a");
+
+        
+        result = req.getResultList();
+        
+        return result;}
     
     
 }

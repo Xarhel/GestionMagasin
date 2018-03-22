@@ -12,11 +12,13 @@ import Entites.Autre.Livraison;
 import Entites.Autre.LivraisonLot;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
+import Entites.Enum.CategorieArticle;
 import Entites.Lot.Lot;
 import Entites.Personne.ChefDeRayon;
 import facades.CommandeLotFacadeLocal;
 import facades.LivraisonFacadeLocal;
 import facades.LivraisonLotFacadeLocal;
+import facades.LotFacadeLocal;
 import facades.MagasinFacadeLocal;
 import facades.StockFacadeLocal;
 import java.util.Collection;
@@ -32,6 +34,9 @@ import javax.ejb.Stateless;
 public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
 
     @EJB
+    private LotFacadeLocal lotFacade;
+
+    @EJB
     private MagasinFacadeLocal magasinFacade;
 
     @EJB
@@ -45,6 +50,8 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
     
     @EJB
     private LivraisonLotFacadeLocal livraisonLotFacade;
+    
+    
     
     
     
@@ -79,7 +86,7 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
     
     
     @Override
-    public void enregistrerLivraisonLots(int idLivraison, int idCommandeLot, int quantiteAcceptee, int quantiteExpediee, int quantiteLivree)
+    public void enregistrerLivraisonLots(int idLivraison, int idCommandeLot, int quantiteAcceptee, int quantiteExpediee, int quantiteLivree, Date date, String taille, int duree)
     {
                 
         Livraison livraison=livraisonFacade.rechercherLivraisonParId(idLivraison);
@@ -89,8 +96,19 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
         BonDeCommande bdc = commandeLot.getLeBonDeCommande();
         ChefDeRayon cdr = bdc.getLeChefDeRayon();
         Rayon rayon = cdr.getLeRayon();
+        LivraisonLot livraisonLot = new LivraisonLot();
         
-        LivraisonLot livraisonLot = livraisonLotFacade.creerLivraisonLot(lotLivre, livraison, quantiteExpediee, quantiteAcceptee, quantiteLivree);
+        if (article.getCategorie()==CategorieArticle.Général)
+                {livraisonLot = livraisonLotFacade.creerLivraisonLot(lotLivre, livraison, quantiteExpediee, quantiteAcceptee, quantiteLivree);}
+        if (article.getCategorie()==CategorieArticle.Alimentaire)
+                {livraisonLot = livraisonLotFacade.creerLivraisonLot(lotLivre, livraison, quantiteExpediee, quantiteAcceptee, quantiteLivree);
+                lotFacade.ajouterDatePeremption(lotLivre, date);}
+        if (article.getCategorie()==CategorieArticle.Vêtements)
+                {livraisonLot = livraisonLotFacade.creerLivraisonLot(lotLivre, livraison, quantiteExpediee, quantiteAcceptee, quantiteLivree);
+                lotFacade.ajouterTaille(lotLivre, taille);}
+        if (article.getCategorie()==CategorieArticle.Electroménager)
+                {livraisonLot = livraisonLotFacade.creerLivraisonLot(lotLivre, livraison, quantiteExpediee, quantiteAcceptee, quantiteLivree);
+                lotFacade.ajouterDureeGarantie(lotLivre, duree);}        
         stockFacade.ajouterLotAuStock(livraisonLot, rayon, article);
         
     }

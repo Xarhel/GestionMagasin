@@ -54,8 +54,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         
     Collection<Stock> result;
     
-       Query req = getEntityManager().createQuery("SELECT s FROM Stock s join s.lArticle ar join ar.lots l Where l.DTYPE=:Alimentaire And l.datePeremption<:date and s.leRayon=:rayon");
-       req.setParameter ("Alimentaire", "Alimentaire");
+       Query req = getEntityManager().createQuery("SELECT s FROM Stock s join s.lArticle ar join ar.lots l Where l.dateDePeremption<:date and s.leRayon=:rayon HAVING ar.Categorie IN (1)");
        req.setParameter ("rayon", rayon);
        req.setParameter ("date", date);
        result = req.getResultList();   

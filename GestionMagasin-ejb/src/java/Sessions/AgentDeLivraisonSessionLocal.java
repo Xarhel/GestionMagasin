@@ -22,7 +22,7 @@ public interface AgentDeLivraisonSessionLocal {
 
     public Collection<CommandeLot> AfficherCommandeLots(int idLivraison);
 
-    public void enregistrerLivraisonLots(int idLivraison, int idCommandeLot, int quantiteAcceptee, int quantiteExpediee, int quantiteLivree);
+    public void enregistrerLivraisonLots(int idLivraison, int idCommandeLot, int quantiteAcceptee, int quantiteExpediee, int quantiteLivree, Date date, String taille, int duree);
 
     public Collection<Livraison> listerLivraisonEnCours(int idMagasin);
     

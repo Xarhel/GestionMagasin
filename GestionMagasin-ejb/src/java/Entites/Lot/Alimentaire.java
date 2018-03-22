@@ -22,7 +22,7 @@ import javax.persistence.Temporal;
  * @author 5153218
  */
 @Entity
-public class Alimentaire extends Lot implements Serializable {
+public class Alimentaire implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

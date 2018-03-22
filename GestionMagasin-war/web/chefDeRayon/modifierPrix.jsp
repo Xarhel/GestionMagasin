@@ -50,7 +50,7 @@
                     </div>                        
                 </div>
 
-                <button type= "submit" class="btn btn-success">Enregistre </button>                     
+                <button type= "submit" class="btn btn-success">Valider</button>                     
             </form> 
         </div>
         <!-- BODY END-->

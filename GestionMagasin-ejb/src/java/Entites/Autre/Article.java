@@ -5,6 +5,7 @@
  */
 package Entites.Autre;
 
+import Entites.Enum.CategorieArticle;
 import Entites.Lot.Lot;
 import java.io.Serializable;
 import java.util.List;
@@ -204,6 +205,26 @@ public class Article implements Serializable {
         this.lots = lots;
     }
 
+
+        private CategorieArticle Categorie;
+
+    /**
+     * Get the value of Categorie
+     *
+     * @return the value of Categorie
+     */
+    public CategorieArticle getCategorie() {
+        return Categorie;
+    }
+
+    /**
+     * Set the value of Categorie
+     *
+     * @param Categorie new value of Categorie
+     */
+    public void setCategorie(CategorieArticle Categorie) {
+        this.Categorie = Categorie;
+    }
 
     
     
