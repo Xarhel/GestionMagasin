@@ -16,8 +16,10 @@
         <jsp:useBean id="employe" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
-            <div class="container">
+            <div class="container-fluid">
+                
             <jsp:include page="menu.jsp"/>
+            <div class="jumbotron">
             <!-- BODY START -->
             <div>
                 <h1>Liste des employées</h1>
@@ -62,18 +64,18 @@
                                 <%} else {e.getLeMagasin().getNom();}%> 
                             </td>
                             
-                            <td><a href="Administrateur?action=supprimerEmploye&id=<%=e.getId()%>" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-edit" title="Supprimer un employe"></span>Supprimer
+                            <td><a href="Administrateur?action=supprimerEmploye&id=<%=e.getId()%>"  class="btn btn-danger">
+                                    <span class=" glyphicon glyphicon-remove" title="Supprimer un employe"></span>Supprimer
                                 </a>
                                 <% if(e.getTypeCompte().toString() != "direction")
                                 {%>
-                                <a href="Administrateur?action=versAssignerMagasin&id=<%=e.getId()%>" class="btn btn-info btn-md">
+                                <a href="Administrateur?action=versAssignerMagasin&id=<%=e.getId()%>" class="btn btn-success">
                                     <span class="glyphicon glyphicon-edit"></span>Assigner un magasin
                                 </a>
                                 <%}%>
                                 <% if(e.getTypeCompte().toString() != "direction" && e.getLeMagasin()!=null)
                                 {%>
-                                <a href="Administrateur?action=versAssignerRayon&id=<%=e.getId()%>" class="btn btn-info btn-md">
+                                <a href="Administrateur?action=versAssignerRayon&id=<%=e.getId()%>" class="btn btn-success">
                                     <span class="glyphicon glyphicon-edit"></span>Assigner un rayon
                                 </a>
                                 <%}%>
@@ -82,6 +84,7 @@
                     </tbody>
                 </table>
             </div>
+                </div>
             <!-- BODY END-->
         </div>
     </body>

@@ -18,6 +18,7 @@
         <body>
             <div class="container">
             <jsp:include page="menu.jsp"/>
+            <div class="jumbotron">
             <!-- BODY START -->
             <div>
                 <h1>Liste des magasin</h1>
@@ -39,20 +40,21 @@
                         <% Collection<Magasin> _magasin = magasin;
                             for (Magasin m : _magasin) {%>
                         <tr><td><%=m.getNom()%></td>
-                            <td><a href="Administrateur?action=versModifierMagasin&id=<%=m.getId()%>" class="btn btn-info btn-md">
+                            <td><a href="Administrateur?action=versModifierMagasin&id=<%=m.getId()%>" class="btn btn-warning">
                                     <span class="glyphicon glyphicon-edit" title="Modifier un magasin"></span>Modifier
                                 </a>
-                                <a href="Administrateur?action=versCreerRayon&id=<%=m.getId()%>" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-edit" title="Créer un rayon"></span>Créer un rayon
+                                <a href="Administrateur?action=versCreerRayon&id=<%=m.getId()%>" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-plus" title="Créer un rayon"></span>Créer un rayon
                                 </a>
-                                <a href="Administrateur?action=afficherTousRayonsParMagasin&id=<%=m.getId()%>" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-edit" title="Afficher les rayons"></span>Afficher les rayons
+                                <a href="Administrateur?action=afficherTousRayonsParMagasin&id=<%=m.getId()%>" class="btn btn-info">
+                                    <span class="glyphicon glyphicon-th-list" title="Afficher les rayons"></span>Afficher les rayons
                                 </a>
                             </td>
                         </tr><%}%>
                     </tbody>
                 </table>
                 </form>
+            </div>
             </div>
             <!-- BODY END-->
         </div>

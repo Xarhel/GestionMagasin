@@ -18,6 +18,7 @@
     </head>
     <body>
         <div class="container">
+            <div class="jumbotron">
             <jsp:useBean id="magasin" scope="request" class="java.util.Collection"></jsp:useBean>
             <jsp:useBean id="typeCompte" scope="request" class="java.util.Collection"></jsp:useBean>
             
@@ -92,6 +93,7 @@
                     --%>
                     <button type="submit" class="btn btn-success">Enregistrer</button>                    
                 </form> 
+            </div>
             </div>
             <!-- BODY END-->
         </div>
