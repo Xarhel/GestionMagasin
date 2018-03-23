@@ -50,8 +50,12 @@ public class ChefDeRayon extends HttpServlet {
         String jspClient = null;
         String action = request.getParameter("action");
         
+        if(request.getSession(false).getAttribute("name") == null)
+        {
+            jspClient="/login.jsp";
+        }
         
-        if((action==null) || (action.equals("null")))
+        else if((action==null) || (action.equals("null")))
         {
             jspClient="/chefDeRayon/index.jsp";
         }

@@ -3,7 +3,7 @@
     Created on : 18 janv. 2018, 00:22:08
     Author     : jules
 --%>
-<%@page session="true"%>
+<%@page session="false"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

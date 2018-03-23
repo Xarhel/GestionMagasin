@@ -55,7 +55,12 @@ public class Administrateur extends HttpServlet {
         String jspClient = null;
         String action = request.getParameter("action");
         
-        if((action==null) || (action.equals("null")))
+        if(request.getSession(false).getAttribute("name") == null)
+        {
+            jspClient="/login.jsp";
+        }
+        
+        else if((action==null) || (action.equals("null")))
         {
             jspClient="/Administrateur/index.jsp";
         }
@@ -168,7 +173,7 @@ public class Administrateur extends HttpServlet {
         
         else if(action.equals("logout"))
         {
-            request.getSession().invalidate();
+            request.getSession(false).invalidate();
             jspClient="/login.jsp";
         }
    
@@ -608,8 +613,10 @@ public class Administrateur extends HttpServlet {
     {
         String id = request.getParameter("id");
         int idEmploye = Integer.parseInt(id);
+        
         Employe employe = administrateur.rechercherEmployeParId(idEmploye);
-        Collection<Rayon> rayon = employe.getLeMagasin().getRayons();       
+        Collection<Rayon> rayon = administrateur.rechercherListeRayon(employe.getLeMagasin());
+        
         request.setAttribute("employe", employe);
         request.setAttribute("rayon", rayon);
     }
