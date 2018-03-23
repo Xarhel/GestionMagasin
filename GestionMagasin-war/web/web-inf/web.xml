@@ -29,8 +29,7 @@
     </servlet>
     
     <!-- Servlet mapping -->
-    
-=======
+
 
     <servlet-mapping>
         <servlet-name>Authentication</servlet-name>

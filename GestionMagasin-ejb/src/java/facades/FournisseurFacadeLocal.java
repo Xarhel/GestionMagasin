@@ -6,6 +6,7 @@
 package facades;
 
 import Entites.Personne.Fournisseur;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,8 +31,10 @@ public interface FournisseurFacadeLocal {
 
     int count();
 
-    void creerFournisseur(String raisonSocial, String login, String password);
+    void creerFournisseur(String raisonSocial, String login, String password, String nom, String prenom);
 
     public Fournisseur rechercherFournisseurParId(int id);
+
+    public Collection<Fournisseur> listerLesFournisseurs();
     
 }

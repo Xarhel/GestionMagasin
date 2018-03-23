@@ -10,6 +10,7 @@ import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import Entites.Enum.CategorieArticle;
 import Entites.Personne.Employe;
+import Entites.Personne.Fournisseur;
 import Sessions.ChefDeRayonSession;
 import Sessions.ChefDeRayonSessionLocal;
 import facades.ArticleFacadeLocal;
@@ -68,7 +69,6 @@ public class ChefDeRayon extends HttpServlet {
         {
             ajouterArticle(request,response);
             jspClient="/chefDeRayon/listeArticle.jsp";
-            
 
         }
                 else if (action.equals("versAjouterArticle"))
@@ -82,27 +82,63 @@ public class ChefDeRayon extends HttpServlet {
             afficherTousLesArticles(request,response);
 
         }
+                else if (action.equals("ajouterFournisseur"))
+        {                
+                ajouterFournisseur(request,response);
+                jspClient="/chefDeRayon/listeFournisseur.jsp";
+                
+                        }
+                
+                
+                else if (action.equals("versAjouterFournisseur"))
+        {                
+                versAjouterFournisseur(request,response);
+                jspClient="/chefDeRayon/ajouterFournisseur.jsp";
+                
+                        }
+                        
+                
+                
+                else if (action.equals("listerFournisseur"))
+        {
+            jspClient="/chefDeRayon/listeFournisseur.jsp";
+                listerFournisseur (request,response); }
+                        
+                
+                
+                
                 else if (action.equals("versAjouterAuRayon"))
         {
             
             jspClient="/chefDeRayon/ajouterArticleAuRayon.jsp";
               versAjouterAuRayon(request,response);
         }
+                
+                
+                
                 else if (action.equals("ajouterAuRayon"))
         {
             jspClient="/chefDeRayon/listeRayonArticle.jsp";
             ajouterAuRayon(request,response);
         }
+                
+                
+                
                 else if (action.equals("versModifierRayonArticle"))
         {
         versModifierRayonArticle(request,response);
         jspClient="/chefDeRayon/modifierPrix.jsp";}
         
-            else if (action.equals("listerLesRayonArticle"))
+           
+                
+                
+                else if (action.equals("listerLesRayonArticle"))
         {jspClient="/chefDeRayon/listeRayonArticle.jsp";
         afficherTousLesRayonArticles(request,response);}
         
-        else if (action.equals("modifierPrix"))
+        
+                
+                else if (action.equals("modifierPrix"))
         {
             modifierPrix(request,response);
             jspClient="/chefDeRayon/listeRayonArticle.jsp";
@@ -216,7 +252,7 @@ public class ChefDeRayon extends HttpServlet {
     { 
         HttpSession session = request.getSession();
         Employe e = (Employe) session.getAttribute("user");
-        int r = e.getIdRayon();
+        long r = e.getLeRayon().getId();
         
         int idArticle = Integer.parseInt(request.getParameter("idArticle"));
         Article articleAjouter = chefDeRayon.rechercherArticleParId(idArticle);
@@ -242,7 +278,7 @@ public class ChefDeRayon extends HttpServlet {
     { 
         HttpSession session = request.getSession();
         Employe e = (Employe) session.getAttribute("user");
-        int r = e.getIdRayon();
+        long r = e.getLeRayon().getId();
         Rayon rayon = chefDeRayon.rechercherRayonParId(r);
         int idArticle = Integer.parseInt(request.getParameter("idArticle"));
         Article article = chefDeRayon.rechercherArticleParId(idArticle);
@@ -271,9 +307,9 @@ public class ChefDeRayon extends HttpServlet {
         String message = "Voici la liste des articles dans le rayon";
         HttpSession session = request.getSession();
         Employe e = (Employe) session.getAttribute("user");
-        int r = e.getIdRayon();
-        Rayon rayon = chefDeRayon.rechercherRayonParId(r);
-        Collection <RayonArticle> rayonArticle = chefDeRayon.listerRayonArticleParRayon(rayon);
+        Rayon r = e.getLeRayon();
+//        Rayon rayon = chefDeRayon.rechercherRayonParId(r);
+        Collection <RayonArticle> rayonArticle = chefDeRayon.listerRayonArticleParRayon(r);
         request.setAttribute("message", message);
         request.setAttribute("rayonArticle", rayonArticle);
     }
@@ -292,5 +328,39 @@ public class ChefDeRayon extends HttpServlet {
 
         
     }
+
+    private void listerFournisseur(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        String message = "Voici la liste des fournisseurs";
+        Collection <Fournisseur> fournisseur = chefDeRayon.listerFournisseur();
+        request.setAttribute("message", message);
+        request.setAttribute("fournisseur", fournisseur);
+        
+    }
+
+    private void ajouterFournisseur(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        
+        String raisonSociale = request.getParameter("raisonSociale");
+        String nom = request.getParameter("nom");
+        String prenom = request.getParameter("prenom");
+        String login = request.getParameter("login");
+        String mdp = request.getParameter("mdp");
+        
+        if(!(raisonSociale.isEmpty()) && !(nom.trim().isEmpty()) && !(prenom.trim().isEmpty()) && !(login.trim().isEmpty()) && !(mdp.trim().isEmpty()))
+        {
+            chefDeRayon.ajouterFournisseur(raisonSociale, login, prenom, nom, prenom);
+        
+        
+                String message = "Voici la liste des fournisseurs";
+        Collection <Fournisseur> fournisseur = chefDeRayon.listerFournisseur();
+        request.setAttribute("message", message);
+        request.setAttribute("fournisseur", fournisseur);}
+        
+        
+        
+    }
+    
+    
+    private void versAjouterFournisseur(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{}
 
 }

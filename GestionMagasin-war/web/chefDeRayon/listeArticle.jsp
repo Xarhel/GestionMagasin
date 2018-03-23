@@ -21,7 +21,9 @@
             <!-- BODY START -->
             <div>
                 <h1>Liste des articles</h1>
+                <a style="float: right; " class="btn btn-success" href="ChefDeRayon?action=versAjouterArticle">Ajouter Article</a>
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
+                    
                     <thead>
                         <tr>
                             <th>Libelle</th>
@@ -32,6 +34,7 @@
                     <tfoot>
                         <tr>
                             <th>Libelle</th>
+                            <th>Reference Article</th>
                             
                             <th>Actions</th>
                         </tr>
@@ -51,6 +54,7 @@
                         </tr><%}%>
                     </tbody>
                 </table>
+                     
             </div>
             <!-- BODY END-->
         </div>
