@@ -12,13 +12,15 @@
             
         <title>Liste de stock perimé</title>
         <jsp:include page="header.jsp"/>
-        <jsp:include page="menuEmployeRayon.jsp"/>
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="stock" scope="request" class="java.util.Collection"></jsp:useBean>         
         <body>
             <div class="container">
+                <jsp:include page="menuEmployeRayon.jsp"/>
+                
             <!-- BODY START -->
             <div>
+                <div class="jumbotron">
                 <h1>Liste de stock perimé</h1>
                 <form method="post" action="EmployeRayon">
                     <input hidden type="text" name="action" value="retraitArticlePerime"/>
@@ -33,8 +35,6 @@
                         <tr>
                             <th>Libelle article</th>
                             <th>Quantité stock</th>
-                            
-
 
                         </tr>
                     </thead>
@@ -42,7 +42,6 @@
                         <tr>
                             <th>Libelle article</th>
                             <th>Quantité stock</th>
-
 
                         </tr>
                     </tfoot>
@@ -62,6 +61,7 @@
                     
                 </table>
             </div>
+                </div>
             <!-- BODY END--> 
             
         </div>

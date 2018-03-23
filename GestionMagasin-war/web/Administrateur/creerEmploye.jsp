@@ -14,10 +14,10 @@
     <head>        
         <title>Créer un employe</title>
         <jsp:include page="header.jsp"/>
-        <jsp:include page="menu.jsp"/>
     </head>
     <body>
         <div class="container">
+            <jsp:include page="menu.jsp"/>
             <div class="jumbotron">
             <jsp:useBean id="magasin" scope="request" class="java.util.Collection"></jsp:useBean>
             <jsp:useBean id="typeCompte" scope="request" class="java.util.Collection"></jsp:useBean>

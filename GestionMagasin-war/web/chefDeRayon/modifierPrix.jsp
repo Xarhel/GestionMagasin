@@ -19,6 +19,7 @@
     <body>
         <div class="container">
             <jsp:include page="menu.jsp"/>
+            <div class="jumbotron">
             <!-- BODY START -->
             <h1>Modifier un prix </h1>              
             <form method="POST" action="ChefDeRayon">

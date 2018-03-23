@@ -20,6 +20,7 @@
             <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
+                 <div class="jumbotron">
                 <h1>Liste des livraisons</h1>
                 <form method="POST" action=".....">
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
@@ -49,6 +50,7 @@
                     </tbody>
                 </table>
                 </form>
+            </div>
             </div>
             <!-- BODY END-->
         </div>

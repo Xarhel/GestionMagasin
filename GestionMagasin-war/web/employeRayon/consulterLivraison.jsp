@@ -21,6 +21,7 @@
             <!-- BODY START -->
             <div>
                 <h1>Liste des Livraison</h1>
+                <div class="jumbotron">
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
@@ -56,5 +57,6 @@
             </div>
             <!-- BODY END-->
         </div>
+            </div>
     </body>
 </html>
