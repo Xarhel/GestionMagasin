@@ -16,7 +16,7 @@
             <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
-                <h1>Créer un livraison</h1>
+                <h1>Créer une livraison</h1>
                 <form method="POST" action="">
                     <input hidden type="text" name="action" value="creerLivraison"/>
                    <div class="form-group row">

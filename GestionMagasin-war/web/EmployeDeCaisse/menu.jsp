@@ -23,15 +23,14 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Accueil</a></li>                 
-                <li class="dropdown <%=display%>">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href=".jsp" class=""></a></li>
-                        <li><a href=".jsp"></a></li>
-                        <li><a href="e.jsp" class=""></a></li>
-                    </ul>
-                </li> 
-                
+                <li class="dropdown <%=display%>"></li>
+                    
+
+                <li><a href="enregistreVente.jsp" class="vente"></a>Enregistre une vente</li>
+
+            </ul>
+   
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="Menu?action=logout">Bonjour! <%=nom%>, Déconexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
             </ul>

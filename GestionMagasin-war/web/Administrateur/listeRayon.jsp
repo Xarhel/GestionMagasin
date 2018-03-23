@@ -18,6 +18,7 @@
         <body>
             <div class="container">
             <jsp:include page="menu.jsp"/>
+            <div class="jumbotron">
             <!-- BODY START -->
             <div>
                 <h1>Liste des rayons</h1>
@@ -39,7 +40,7 @@
                         <% Collection<Rayon> _rayon = rayon;
                             for (Rayon r : _rayon) {%>
                         <tr><td><%=r.getRayonNom()%></td>
-                            <td><a href="Administrateur?action=versModifierRayon&id=<%=r.getId()%>" class="btn btn-info btn-md">
+                            <td><a href="Administrateur?action=versModifierRayon&id=<%=r.getId()%>" class="btn btn-warning">
                                     <span class="glyphicon glyphicon-edit" title="Modifier un rayon"></span>Modifier
                                 </a>
                             </td>
@@ -47,6 +48,7 @@
                     </tbody>
                 </table>
                 </form>
+            </div>
             </div>
             <!-- BODY END-->
         </div>

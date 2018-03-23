@@ -24,14 +24,14 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Accueil</a></li>                 
-                <li class="dropdown <%=display%>">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
+                <li class="dropdown <%=display%>"> </li> 
+                    
+                    
                         <li><a href="EmployeRayon?action=versConsulterCommande" class="">Consulter commande</a></li>
                         <li><a href="EmployeRayon?action=versConsulterLivraison">Consulter livraison</a></li>
                         <li><a href="EmployeRayon?action=versRetraitArticlePerime" class="">Retrait ariticle</a></li>
                     </ul>
-                </li> 
+               
                 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="Menu?action=logout">Bonjour! <%=user.getNomPersonne()%>, Déconnexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    

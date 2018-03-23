@@ -19,6 +19,7 @@
         <body>
             <div class="container">
             <jsp:include page="menuDirection.jsp"/>
+            <div class="jumbotron">
             <!-- BODY START -->
             <div>
                 <h1>Liste des employées</h1>
@@ -49,17 +50,18 @@
                             <td><%=e.getDateCreationCompte()%></td>
                             <td><%=e.getTypeCompte()%></td>
 
-                            <td><a href="Menu?action=modifierEmployeDirection&id=<%=e.getId()%>" class="btn btn-info btn-md">
+                            <td><a href="Menu?action=modifierEmployeDirection&id=<%=e.getId()%>" class="btn btn-warning">
                                     <span class="glyphicon glyphicon-edit" title="Modifier un employée"></span>Modifier
                                 </a>
-                                <a href="Administrateur?action=supprimerEmployeDirection&id=<%=e.getId()%>" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-edit" title="Supprimer un employe"></span>Supprimer
+                                <a href="Administrateur?action=supprimerEmployeDirection&id=<%=e.getId()%>" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-remove" title="Supprimer un employe"></span>Supprimer
                                 </a>
 
                             </td>
                         </tr><%}%>
                     </tbody>
                 </table>
+            </div>
             </div>
             <!-- BODY END-->
         </div>

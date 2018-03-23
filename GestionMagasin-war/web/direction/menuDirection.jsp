@@ -25,14 +25,14 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="http://localhost:8080/GestionMagasin-war/Administrateur?action=redirigerMenuDirection">Accueil</a></li>                 
-                <li class="dropdown <%=display%>">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
+                <li class="dropdown <%=display%>"></li> 
+                    
+                    
                         <li><a href="Administrateur?action=afficherTousEmployesDirection">Liste des employés</a></li>
                         <li><a href="Administrateur?action=versRechercheEmploye">Rechercher un employé</a></li>
                         <li><a href="Administrateur?action=versRechercheArticleParNom" class="">Rechercher un article</a></li>                     
                     </ul>
-                </li> 
+                
                 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="Menu?action=logout">Bonjour! <%=user.getNomPersonne()%>, Déconexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    

@@ -46,15 +46,7 @@
                         <tr>
                             <td><%=l.getlAgentDeLivraison()%></td>
                             <td><%=l.getDateCreationLivraison()%></td>
-                            <td><%=l.getDateReceptionLivraison()%></td>
-                         <td><a href="Menu?action=pagReclamation&id=<%=l.getId()%>" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-edit" title="Reclamer"></span>Reclamation
-                                </a>
-                                <a href="AgentLivraison?action=RetourProduit&id=<%=l.getId()%>" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-edit" title="Retour"></span>Retourner
-                                </a>
-
-                         </td>   
+                            <td><%=l.getDateReceptionLivraison()%></td>  
                         </tr><%}%>
                     </tbody>
                 </table>
