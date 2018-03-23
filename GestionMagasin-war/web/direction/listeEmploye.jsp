@@ -30,6 +30,8 @@
                             <th>Prenom</th>
                             <th>Date de création du compte</th>
                             <th>Type de Compte</th>
+                            <th>Magasin</th>
+                            <th>Rayon</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -39,6 +41,8 @@
                             <th>Prenom</th>
                             <th>Date de création du compte</th>
                             <th>Type de Compte</th>
+                            <th>Magasin</th>
+                            <th>Rayon</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
@@ -47,16 +51,36 @@
                             for (Employe e : _employe) {%>
                         <tr><td><%=e.getNomPersonne()%></td>
                             <td><%=e.getPrenomPersonne()%></td>
-                            <td><%=e.getDateCreationCompte()%></td>
-                            <td><%=e.getTypeCompte()%></td>
-
-                            <td><a href="Menu?action=modifierEmployeDirection&id=<%=e.getId()%>" class="btn btn-warning">
-                                    <span class="glyphicon glyphicon-edit" title="Modifier un employée"></span>Modifier
+                            <td><%=e.getDateCreationCompte()%></td>    
+                            <td><%=e.getTypeCompte()%></td>   
+                            
+                            <td><% if(e.getLeMagasin()!=null){%>                                
+                                <%=e.getLeMagasin().getNom()%>
+                                <%} else {%> Aucun <%}%> 
+                            </td>
+                            
+                            <td><% if(e.getLeRayon()!=null){%>                                
+                                <%=e.getLeRayon().getRayonNom()%>
+                                <%} else {%> Aucun <%}%> 
+                            </td>
+                            
+                            <td><% if(e.getTypeCompte().toString() != "direction" && e.getTypeCompte().toString() != "administrateur" )
+                                {%>
+                                <a href="Administrateur?action=versAssignerMagasinDirection&id=<%=e.getId()%>" class="btn btn-info btn-md">
+                                    <span class="glyphicon glyphicon-edit"></span>Assigner un magasin
                                 </a>
-                                <a href="Administrateur?action=supprimerEmployeDirection&id=<%=e.getId()%>" class="btn btn-danger">
-                                    <span class="glyphicon glyphicon-remove" title="Supprimer un employe"></span>Supprimer
+                                <%}%>
+                                <% if(e.getTypeCompte().toString() != "direction" &&
+                                        e.getTypeCompte().toString() != "administrateur" &&
+                                        e.getTypeCompte().toString() != "agentDeLivraison" &&
+                                        e.getTypeCompte().toString() != "employeDeCaisse" &&
+                                        e.getTypeCompte().toString() != "gerantMagasin" &&
+                                        e.getLeMagasin()!=null)
+                                {%>
+                                <a href="Administrateur?action=versAssignerRayonDirection&id=<%=e.getId()%>" class="btn btn-info btn-md">
+                                    <span class="glyphicon glyphicon-edit"></span>Assigner un rayon
                                 </a>
-
+                                <%}%>
                             </td>
                         </tr><%}%>
                     </tbody>

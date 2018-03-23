@@ -55,6 +55,7 @@ public class Authentication extends HttpServlet {
         
         String jspClient = null;
         String action = request.getParameter("action");
+        HttpSession sessionTest = request.getSession(false);
         
         // If-else inital permettant de diriger les requètes utilisateurs       
         // Jsp par defaut lorsque l'utilisateur exécute la solution
@@ -73,6 +74,7 @@ public class Authentication extends HttpServlet {
             HttpSession session = request.getSession(true);
             String login = request.getParameter("userName");
             String password = request.getParameter("mdp");
+            session.setAttribute("name", "Utilisateur");
             Personne p;
             if (!(login.trim().isEmpty()))
             {
@@ -148,6 +150,10 @@ public class Authentication extends HttpServlet {
                     message = "Identifiant ou mot de passe invalide";
                     request.setAttribute("message", message);
                     jspClient ="/login.jsp";
+                    RequestDispatcher rd;
+                    rd = getServletContext().getRequestDispatcher(jspClient);
+                    rd.forward(request, response);
+                    request.getSession(false).invalidate();
                 }
             }
             else
@@ -155,6 +161,9 @@ public class Authentication extends HttpServlet {
                 String message = "Le nom de compte et le mot de passe sont obligatoires";
                 request.setAttribute("message", message);
                 jspClient="/login.jsp";
+                RequestDispatcher rd;
+                rd = getServletContext().getRequestDispatcher(jspClient);
+                rd.forward(request, response);
             }
         }              
         

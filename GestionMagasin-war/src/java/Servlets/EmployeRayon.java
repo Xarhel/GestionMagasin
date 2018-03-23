@@ -51,12 +51,16 @@ public class EmployeRayon extends HttpServlet {
         
         // Jsp par défaut lorsque l'utilisateur exécute la solution
         
-         if((action==null) || (action.equals("null")))
+        if(request.getSession(false).getAttribute("name") == null)
+        {
+            jspClient="/login.jsp";
+        }
+        
+        else if((action==null) || (action.equals("null")))
         {
             jspClient="/employeRayon/index.jsp";
         }
          
-          
         
           else if(action.equals("RetraitArticlePerime"))
         {

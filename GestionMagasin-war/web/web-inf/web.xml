@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+    <!-- Servlet declaration -->
+
     <servlet>
         <servlet-name>Authentication</servlet-name>
         <servlet-class>Servlets.Authentication</servlet-class>
@@ -20,6 +23,10 @@
         <servlet-name>AgentLivraison</servlet-name>
         <servlet-class>Servlets.AgentLivraison</servlet-class>
     </servlet>
+=======
+    
+    <!-- Servlet mapping -->
+    
     <servlet-mapping>
         <servlet-name>Authentication</servlet-name>
         <url-pattern>/Authentication</url-pattern>
@@ -40,6 +47,16 @@
         <servlet-name>AgentLivraison</servlet-name>
         <url-pattern>/AgentLivraison</url-pattern>
     </servlet-mapping>
+    
+    <!-- Error handling -->
+    
+    <error-page>
+        <exception-type>java.lang.InstantiationException</exception-type>
+        <location>/erreur.jsp</location>
+    </error-page>
+    
+    <!-- Session configuration -->
+
     <session-config>
         <session-timeout>
             30

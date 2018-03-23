@@ -25,6 +25,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -54,9 +55,12 @@ public class Administrateur extends HttpServlet {
         String jspClient = null;
         String action = request.getParameter("action");
         
+        if(request.getSession(false).getAttribute("name") == null)
+        {
+            jspClient="/login.jsp";
+        }
         
-        // Jsp par défaut lorsque l'utilisateur exécute la solution
-        if((action==null) || (action.equals("null")))
+        else if((action==null) || (action.equals("null")))
         {
             jspClient="/Administrateur/index.jsp";
         }
@@ -154,6 +158,24 @@ public class Administrateur extends HttpServlet {
             assignerMagasin(request, response);
             jspClient="/Administrateur/listeEmploye.jsp";
         }
+        
+        else if(action.equals("versAssignerRayon"))
+        {
+            versAssignerRayon(request, response);
+            jspClient="/Administrateur/assignerRayon.jsp";
+        }
+        
+        else if(action.equals("assignerRayon"))
+        {
+            assignerRayon(request, response);
+            jspClient="/Administrateur/listeEmploye.jsp";
+        }
+        
+        else if(action.equals("logout"))
+        {
+            request.getSession(false).invalidate();
+            jspClient="/login.jsp";
+        }
    
         
         /////////////////////////////////////////////////
@@ -175,14 +197,6 @@ public class Administrateur extends HttpServlet {
             supprimerEmploye(request, response);
             jspClient="/direction/index.jsp";
         }
-        
-        /* À modifier
-        else if(action.equals("modifierEmploye"))
-        {
-            modifierEmploye(request, response);
-            jspClient="/modifierEmploye.jsp";
-        }
-        */
         
         else if(action.equals("versRechercheEmploye"))
         {
@@ -224,9 +238,30 @@ public class Administrateur extends HttpServlet {
             jspClient="/direction/listeArticle.jsp";
         }
         
+        else if(action.equals("versAssignerMagasinDirection"))
+        {
+            versAssignerMagasin(request, response);
+            jspClient="/direction/assignerMagasin.jsp";
+        }
+        else if(action.equals("assignerMagasinDirection"))
+        {
+            assignerMagasin(request, response);
+            jspClient="/direction/listeEmploye.jsp";
+        }
+        
+        else if(action.equals("versAssignerRayonDirection"))
+        {
+            versAssignerRayon(request, response);
+            jspClient="/direction/assignerRayon.jsp";
+        }
+        
+        else if(action.equals("assignerRayonDirection"))
+        {
+            assignerRayon(request, response);
+            jspClient="/direction/listeEmploye.jsp";
+        }   
+        
         /////////////////////////////////////////////////
-        
-        
         
       
         RequestDispatcher rd;
@@ -322,39 +357,6 @@ public class Administrateur extends HttpServlet {
         request.setAttribute("employe", e);
         request.setAttribute("message", message);        
     }   
- 
-        /* Requête à modifier
-    
-    protected void modifierEmploye(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException
-    {       
-        
-        String id = request.getParameter("id");
-        String nom = request.getParameter("nom");
-        String prenom = request.getParameter("prenom");
-        String login = request.getParameter("login");
-        String mdp_1 = request.getParameter("mdp_1");
-        String typeCompte = request.getParameter("typeCompte");
-        String rayon = request.getParameter("rayon");
-        String magasin = request.getParameter("magasin");
-        String message;
-        
-        request.getSession().setAttribute("rayon", rayon);
-        request.setAttribute("rayon", rayon);
-        request.getSession().setAttribute("magasin", magasin);
-        request.setAttribute("magasin", magasin);
-        
-        int idEmploye = Integer.valueOf(id);
-        TypeCompte typeCompteEmploye = TypeCompte.valueOf(typeCompte);
-        
-        Employe e = administrateur.rechercherEmployeParId(idEmploye);
-        administrateur.modifierEmploye(e, nom, prenom, login, mdp_1, typeCompteEmploye, magasin, rayon);
-        
-        
-        
-    }
-
-        */
       
     protected void supprimerEmploye(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException
@@ -604,6 +606,35 @@ public class Administrateur extends HttpServlet {
         ArrayList<Employe> employeList = new ArrayList<>();
         employeList.add(administrateur.rechercherEmployeParId(idEmploye));
         request.setAttribute("employe", employeList);
+    }
+    
+    protected void versAssignerRayon(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        int idEmploye = Integer.parseInt(id);
+        
+        Employe employe = administrateur.rechercherEmployeParId(idEmploye);
+        Collection<Rayon> rayon = administrateur.rechercherListeRayon(employe.getLeMagasin());
+        
+        request.setAttribute("employe", employe);
+        request.setAttribute("rayon", rayon);
+    }
+    
+    protected void assignerRayon(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        String rayon = request.getParameter("rayon");
+        
+        int idEmploye = Integer.parseInt(id);
+        int idRayon = Integer.parseInt(rayon);
+        
+        administrateur.associerEmployeAUnRayon(idEmploye, idRayon);
+        
+        ArrayList<Employe> employeList = new ArrayList<>();
+        employeList.add(administrateur.rechercherEmployeParId(idEmploye));
+        request.setAttribute("employe", employeList);       
     }
     
 }

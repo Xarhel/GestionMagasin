@@ -88,7 +88,7 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
     {
     ChefDeRayon result;
     
-        Query req = getEntityManager().createQuery("SELECT cdr FROM ChefDeRayon AS cdr WHERE cdr=:id");
+        Query req = getEntityManager().createQuery("SELECT cdr FROM ChefDeRayon AS cdr WHERE cdr.id=:id");
         req.setParameter("id", id);
         
         List <ChefDeRayon> cdfs = req.getResultList();

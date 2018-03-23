@@ -3,7 +3,7 @@
     Created on : 18 janv. 2018, 00:22:08
     Author     : jules
 --%>
-<%@page session="true" %>
+<%@page session="false"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -72,10 +72,20 @@
                         <h3 class="form-signin-heading">Connectez-vous</h3>
                         <hr class="colorgraph"><br>
                         <input type="text" name="action" value="connexion" hidden/>
-                        <input type="text" class="form-control" name="userName" placeholder="Entre votre Login" required="" autofocus="" />
+                        <input type="text" class="form-control" name="userName" placeholder="Entrez votre Login" required="" autofocus="" />
                         <input type="password" class="form-control" name="mdp" placeholder="Votre mot de passe" required=""/>     		  
 
-                        <button class="btn btn-lg btn-primary btn-block"  name="Submit" type="Submit">Connexion</button>  			
+                        <button class="btn btn-lg btn-primary btn-block"  name="Submit" type="Submit">Connexion</button>
+                        <br>
+                        <p style="text-align: center"><font color="red"><%String attribut = (String) request.getAttribute("message");
+                        
+                        if(attribut!=null){
+                        out.println(attribut);
+                        } else
+                        {
+                        out.println("Veuillez renseigner vos informations de connexion");
+                        } %></font></p>
+                        
                     </form>			
                 </div>
             </div>            

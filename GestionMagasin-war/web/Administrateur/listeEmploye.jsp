@@ -59,21 +59,26 @@
                                 <%} else {%> Aucun <%}%> 
                             </td>
                             
-                            <td><% if(e.getLeRayon() == null){%>                                
-                                Aucun
-                                <%} else {e.getLeMagasin().getNom();}%> 
+                            <td><% if(e.getLeRayon()!=null){%>                                
+                                <%=e.getLeRayon().getRayonNom()%>
+                                <%} else {%> Aucun <%}%> 
                             </td>
                             
                             <td><a href="Administrateur?action=supprimerEmploye&id=<%=e.getId()%>"  class="btn btn-danger">
                                     <span class=" glyphicon glyphicon-remove" title="Supprimer un employe"></span>Supprimer
                                 </a>
-                                <% if(e.getTypeCompte().toString() != "direction")
+                                <% if(e.getTypeCompte().toString() != "direction" && e.getTypeCompte().toString() != "administrateur" )
                                 {%>
                                 <a href="Administrateur?action=versAssignerMagasin&id=<%=e.getId()%>" class="btn btn-success">
                                     <span class="glyphicon glyphicon-edit"></span>Assigner un magasin
                                 </a>
                                 <%}%>
-                                <% if(e.getTypeCompte().toString() != "direction" && e.getLeMagasin()!=null)
+                                <% if(e.getTypeCompte().toString() != "direction" &&
+                                        e.getTypeCompte().toString() != "administrateur" &&
+                                        e.getTypeCompte().toString() != "agentDeLivraison" &&
+                                        e.getTypeCompte().toString() != "employeDeCaisse" &&
+                                        e.getTypeCompte().toString() != "gerantMagasin" &&
+                                        e.getLeMagasin()!=null)
                                 {%>
                                 <a href="Administrateur?action=versAssignerRayon&id=<%=e.getId()%>" class="btn btn-success">
                                     <span class="glyphicon glyphicon-edit"></span>Assigner un rayon

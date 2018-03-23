@@ -178,6 +178,14 @@ public class Magasin implements Serializable {
         this.creneaus = creneaus;
     }
 
+    public List<Rayon> getRayons() {
+        return rayons;
+    }
+
+    public void setRayons(List<Rayon> rayons) {
+        this.rayons = rayons;
+    }
+
 
 
     
