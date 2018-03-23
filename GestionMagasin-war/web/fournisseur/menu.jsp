@@ -24,7 +24,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Accueil</a></li>                 
                 <li class="dropdown <%=display%>"></li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
+                    
                     
                         <li><a href="saisirLivraison.jsp" class="saisir">Saisir Livraison</a></li>
                         <li><a href="listeLivraison.jsp">Liste des livraisons</a></li>

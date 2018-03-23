@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="http://localhost:8080/GestionMagasin-war/Administrateur?action=redirigerMenuDirection">Accueil</a></li>                 
                 <li class="dropdown <%=display%>"></li> 
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
+                    
                     
                         <li><a href="Administrateur?action=afficherTousEmployesDirection">Liste des employés</a></li>
                         <li><a href="Administrateur?action=versRechercheEmploye">Rechercher un employé</a></li>

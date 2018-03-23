@@ -25,7 +25,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Accueil</a></li>                 
                 <li class="dropdown <%=display%>"></li> 
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
+                    
                     
                         <li><a href="ChefDeRayon?action=versAjouterArticle" class="">Ajouter article</a></li>
                         <li><a href="ajouterFournisseur.jsp">Ajouter fournisseur</a></li>
