@@ -142,7 +142,7 @@ public class Authentication extends HttpServlet {
                         message = "Fournisseur";
                         session.setAttribute("user", f);
                         request.setAttribute("message", message);
-                        jspClient ="/login.jsp";
+                        response.sendRedirect("Fournisseur");
                     }
                 }
                 catch (EJBTransactionRolledbackException e)

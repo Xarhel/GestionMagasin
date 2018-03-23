@@ -20,7 +20,7 @@ import javax.persistence.OneToMany;
  * @author 6137220
  */
 @Entity
-public class Fournisseur extends Employe implements Serializable {
+public class Fournisseur extends Personne implements Serializable {
 
     @OneToMany(mappedBy = "leFournisseur")
     private List<FournisseurMagasin> fournisseurMagasins;
