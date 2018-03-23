@@ -174,6 +174,12 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
     Collection<Fournisseur> result;
     result = fournisseurFacade.listerLesFournisseurs();
     return result;}
+    
+    @Override
+    public Collection <BonDeCommande> listerCommandesParRayon (Rayon r){
+    Collection<BonDeCommande> commande;
+    commande = bonDeCommandeFacade.listerCommandesParRayon(r);
+    return commande;}
            
            
 }

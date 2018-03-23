@@ -6,6 +6,7 @@
 package Servlets;
 
 import Entites.Autre.Article;
+import Entites.Autre.BonDeCommande;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import Entites.Enum.CategorieArticle;
@@ -144,7 +145,15 @@ public class ChefDeRayon extends HttpServlet {
             jspClient="/chefDeRayon/listeRayonArticle.jsp";
             
 
-        }        
+        }  
+        
+        else if (action.equals("listerCommande"))
+        {
+            listerCommande(request,response);
+            jspClient="/chefDeRayon/listeCommande.jsp";
+            
+
+        }   
                
         
         
@@ -362,5 +371,19 @@ public class ChefDeRayon extends HttpServlet {
     
     
     private void versAjouterFournisseur(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{}
+
+    private void listerCommande(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+        
+        String message = "Voici la liste des commandes du rayon";
+        HttpSession session = request.getSession();
+        Employe e = (Employe) session.getAttribute("user");
+        Rayon r = e.getLeRayon();
+//        Rayon rayon = chefDeRayon.rechercherRayonParId(r);
+        Collection <BonDeCommande> commande = chefDeRayon.listerCommandesParRayon(r);
+        request.setAttribute("message",message);
+        request.setAttribute("commande",commande);
+        
+    
+    }
 
 }

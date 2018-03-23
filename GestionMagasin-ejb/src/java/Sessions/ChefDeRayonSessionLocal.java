@@ -46,5 +46,7 @@ public interface ChefDeRayonSessionLocal {
     public Collection<RayonArticle> listerRayonArticleParRayon(Rayon r);
     public Collection<Fournisseur> listerFournisseur ();
 
+    public Collection<BonDeCommande> listerCommandesParRayon(Rayon r);
+
     
 }
