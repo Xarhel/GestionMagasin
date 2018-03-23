@@ -40,7 +40,7 @@ public class FournisseurFacade extends AbstractFacade<Fournisseur> implements Fo
     }
   
     @Override
-    public Fournisseur rechercherFournisseurParId(int id)
+    public Fournisseur rechercherFournisseurParId(long id)
     {
          Fournisseur result;
     

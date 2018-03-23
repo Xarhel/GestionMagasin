@@ -9,6 +9,7 @@ import Entites.Autre.BonDeCommande;
 import Entites.Autre.Livraison;
 import Entites.Autre.Magasin;
 import Entites.Personne.AgentDeLivraison;
+import Entites.Personne.Fournisseur;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -35,12 +36,13 @@ public interface LivraisonFacadeLocal {
 
     int count();
 
-    public void creerLivraison(BonDeCommande bdc, AgentDeLivraison adl, Date dateCreationCommande);
+    public Livraison creerLivraison(BonDeCommande bdc, Date dateCreationCommande);
 
     public void recevoirLivraison(Livraison livraison, Date dateReception);
 
     public Livraison rechercherLivraisonParId(int idLivraison);
 
     public Collection<Livraison> afficherLivraisonsEnCours(Magasin magasin);
+    public Collection <Livraison> afficherLivraisonsEnCours (Fournisseur f);
     
 }
