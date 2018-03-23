@@ -6,6 +6,7 @@
 package facades;
 
 import Entites.Autre.Article;
+import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import java.util.Collection;
@@ -168,9 +169,18 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
      return ra;
      }
 
-     
-    
-     
+    @Override
+    public Collection rechercherRayonArticleParIdMagasin(int idMagasin) {
+        Collection<RayonArticle> rayonArticle;
+        
+        Query req = em.createQuery("SELECT ra FROM RayonArticle ra inner join ra.lesRayons lr inner join lr.lesRayonArticles lra WHERE ra.id =:id");
+        
+        req.setParameter("id", idMagasin);
+        
+        rayonArticle = req.getResultList();
+        return null;       
+        
+    }
         
     }
     

@@ -5,6 +5,7 @@
  */
 package Sessions;
 
+import java.util.Collection;
 import javax.ejb.Local;
 
 /**
@@ -17,5 +18,7 @@ public interface EmployeDeCaisseSessionLocal {
     public long creerPanierCaisse(int idEmployeDeCaisse);
 
     public void ajouterArticleVente(long idPanier, int referenceArticle, int quantite, int idMagasin);
+
+    Collection rechercherRayonArticleParIdMagasin(int idMagasin);
     
 }

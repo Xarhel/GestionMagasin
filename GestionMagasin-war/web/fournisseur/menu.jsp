@@ -33,7 +33,7 @@
                  
                 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="Menu?action=logout">Bonjour! <%=nom%>, Déconnexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
+                <li><a href="Fournisseur?action=logout">Bonjour! <%=nom%>, Déconexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
