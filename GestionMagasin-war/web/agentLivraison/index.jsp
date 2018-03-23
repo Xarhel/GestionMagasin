@@ -18,7 +18,8 @@
         </style>
     </head>
     <body>
-        <div class="container">         
+        <div class="container">   
+          
             <!-- Main component for a primary marketing message or call to action -->
             <div class="jumbotron">                
                 <h1 >Bienvenue dans votre espace personnalisé</h1>

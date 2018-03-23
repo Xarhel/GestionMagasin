@@ -67,7 +67,7 @@ public class MagasinFacade extends AbstractFacade<Magasin> implements MagasinFac
     }
 
     @Override
-    public Magasin rechercherMagasinParId(int idMagasin) {
+    public Magasin rechercherMagasinParId(long idMagasin) {
         
     Magasin result;
     

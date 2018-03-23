@@ -9,11 +9,11 @@
 <html>
     <head>        
         <title>Créer un livraison</title>
-        <jsp:include page="include/header.jsp"/>
+        <jsp:include page="header.jsp"/>
     </head>
     <body>
         <div class="container">
-            <jsp:include page="menuAgentLivraison.jsp"/>
+            <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
                 <h1>Créer un livraison</h1>
@@ -38,7 +38,7 @@
                         </div>                        
                     </div>
                                       
-                    <button type="submit" class="btn btn-success">Enregistre</button>                    
+                    <button type="submit" class="btn btn-success">Enregistrer</button>                    
                 </form> 
             </div>
             <!-- BODY END-->

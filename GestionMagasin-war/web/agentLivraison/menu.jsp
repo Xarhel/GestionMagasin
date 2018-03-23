@@ -4,9 +4,10 @@
     Author     : jules
 --%>
 
-
-<% String id = (String) session.getAttribute("id");%>
-<% String nom = (String) session.getAttribute("nom");%>
+<jsp:useBean id="user" scope="session" class="Entites.Personne.Personne"></jsp:useBean>
+    
+<% String id = (String) session.getAttribute(user.getId().toString());%>
+<% String nom = (String) session.getAttribute(user.getNomPersonne());%>
 <% String display = (String) session.getAttribute("display");%>
 <!-- Static navbar -->
 
@@ -27,15 +28,15 @@
                 <li class="dropdown <%=display%>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="creerLivraison.jsp" class="">Créer livraison</a></li>
-                        <li><a href="listeLivraison.jsp">Liste livraison</a></li>
+                        <li><a href="AgentLivraison?action=versCreerLivraison">Créer livraison</a></li>
+                        <li><a href="AgentLivraison?action=versListeLivraison">Liste livraison</a></li>
                         <li><a href=".jsp" class=""></a></li>
 
                     </ul>
                 </li> 
                 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="Menu?action=logout">Bonjour! <%=nom%>, Déconexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
+                <li><a href="Menu?action=logout">Bonjour! <%=user.getNomPersonne()%>, Déconnexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->

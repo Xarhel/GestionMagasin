@@ -124,7 +124,7 @@ public class Authentication extends HttpServlet {
                         message = "Agent de livraison";
                         session.setAttribute("user", a);
                         request.setAttribute("message", message);
-                        jspClient ="/login.jsp";
+                        response.sendRedirect("AgentLivraison");
                     }
                     if (p instanceof Direction)
                     {

@@ -58,9 +58,10 @@ public class EmployeRayon extends HttpServlet {
          
           
         
-          else if(action.equals("retraitArticlePerimer"))
+          else if(action.equals("RetraitArticlePerime"))
         {
-            jspClient="/EmployeRayon/retraitArticlePerimer.jsp";
+            jspClient="/EmployeRayon/index.jsp";
+            // Méthode de retrait des articles périmés
         }
          
          

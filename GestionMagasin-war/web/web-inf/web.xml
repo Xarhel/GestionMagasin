@@ -16,6 +16,10 @@
         <servlet-name>EmployeRayon</servlet-name>
         <servlet-class>Servlets.EmployeRayon</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AgentLivraison</servlet-name>
+        <servlet-class>Servlets.AgentLivraison</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Authentication</servlet-name>
         <url-pattern>/Authentication</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>EmployeRayon</servlet-name>
         <url-pattern>/EmployeRayon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgentLivraison</servlet-name>
+        <url-pattern>/AgentLivraison</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
