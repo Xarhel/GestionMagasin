@@ -46,18 +46,19 @@ public class FournisseurSession implements FournisseurSessionLocal {
    
     
     @Override
-    public void creerLivraison(int idAgentDeLivraison, int idBonDeCommande, Date dateDebutLivraison)
+    public Livraison creerLivraison(int idBonDeCommande, Date dateDebutLivraison)
     {
-        AgentDeLivraison adl= agentDeLivraisonFacade.rechercherAgentParIdEmploye(idAgentDeLivraison);
+        
         BonDeCommande bdc= bonDeCommandeFacade.rechercherBonDeCommandeParId(idBonDeCommande);
         
-        livraisonFacade.creerLivraison(bdc, adl, dateDebutLivraison);
+      Livraison l=  livraisonFacade.creerLivraison(bdc, dateDebutLivraison);
         
+      return l;
         
     }
     
     @Override
-    public Collection <BonDeCommande> consulterBonDeCommande(int idFournisseur)
+    public Collection <BonDeCommande> consulterBonDeCommande(long idFournisseur)
     {
         Fournisseur four=fournisseurFacade.rechercherFournisseurParId(idFournisseur);
         Collection <BonDeCommande> resultat= bonDeCommandeFacade.rechercherBonDeCommandeParFournisseur(four);
@@ -78,6 +79,17 @@ public class FournisseurSession implements FournisseurSessionLocal {
         return bdc;
     }
             
+    
+    @Override
+    public Collection <Livraison> afficherLivraisonsEnCours (long idF)
+    {
+        Fournisseur f=fournisseurFacade.rechercherFournisseurParId(idF);
+        Collection <Livraison> result = livraisonFacade.afficherLivraisonsEnCours(f);
+        
+        return result;
+        
+        
+    }
             
             
 }

@@ -5,19 +5,33 @@
  */
 package Servlets;
 
+import Entites.Autre.BonDeCommande;
+import Entites.Autre.Livraison;
+import Entites.Personne.Fournisseur;
+import Sessions.FournisseurSessionLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.Collection;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 /**
  *
  * @author 6137220
  */
-public class Fournisseur extends HttpServlet {
+public class FournisseurServlet extends HttpServlet {
+
+    @EJB
+    private FournisseurSessionLocal fournisseurSession;
+
+  
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,7 +58,28 @@ public class Fournisseur extends HttpServlet {
             
           
         }
+          
+          else if(action.equals("versListeLivraison"))
+        {
+            jspClient="/fournisseur/listeLivraison.jsp";
+            afficherListeLivraison(request, response);
+          
+        }
+          
+          else if(action.equals("versSaisirLivraison"))
+          {
+              
+              jspClient="/fournisseur/saisirLivraison.jsp";
+              saisirLivraison(request, response);
+          }
         
+          
+          
+          else if(action.equals("creerLivraison"))
+          {
+              jspClient="/fournisseur/gestionLivraisonLots.jsp";
+              creerLivraison(request, response);
+          }
              RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
         rd.forward(request, response); 
@@ -63,6 +98,68 @@ public class Fournisseur extends HttpServlet {
             out.println("</html>");
         }
     }
+    
+    
+    
+    protected void afficherListeLivraison(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+    
+        HttpSession session= request.getSession();
+        Entites.Personne.Fournisseur four=(Fournisseur) session.getAttribute("user");    
+       
+      
+        
+        
+      Collection <Livraison> result =fournisseurSession.afficherLivraisonsEnCours(four.getId());
+       
+       
+        
+        request.setAttribute("livraison", result);
+        
+    }
+    
+    protected void saisirLivraison(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+    
+     HttpSession session= request.getSession();
+        Entites.Personne.Fournisseur four=(Fournisseur) session.getAttribute("user");
+        
+        long idFour= four.getId();
+        
+        Collection<BonDeCommande> result=fournisseurSession.consulterBonDeCommande(idFour);
+        
+        request.setAttribute("bdc", result);
+    
+    
+    
+    }
+    
+    
+     protected void creerLivraison(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+       String stringIdCommande = request.getParameter("bonCommande");
+       String dateLiv= request.getParameter("dateLivraison");
+        
+        int idCommande=Integer.parseInt(stringIdCommande);
+        Date d= Date.valueOf(dateLiv);
+        
+        
+        Livraison l=fournisseurSession.creerLivraison(idCommande, d);
+        
+        
+        request.setAttribute("livraison", l);
+        
+        
+        
+        
+    }
+     
+    
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

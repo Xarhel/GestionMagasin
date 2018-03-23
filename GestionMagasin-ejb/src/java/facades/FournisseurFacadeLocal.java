@@ -32,6 +32,6 @@ public interface FournisseurFacadeLocal {
 
     void creerFournisseur(String raisonSocial, String login, String password);
 
-    public Fournisseur rechercherFournisseurParId(int id);
+    public Fournisseur rechercherFournisseurParId(long id);
     
 }

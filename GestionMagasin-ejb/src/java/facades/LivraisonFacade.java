@@ -10,6 +10,7 @@ import Entites.Autre.Livraison;
 import Entites.Autre.Magasin;
 import Entites.Enum.StatutLivraison;
 import Entites.Personne.AgentDeLivraison;
+import Entites.Personne.Fournisseur;
 import java.util.Collection;
 import java.util.Date;
 import javax.ejb.Stateless;
@@ -38,14 +39,15 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
     
     
     @Override
-    public void creerLivraison(BonDeCommande bdc, AgentDeLivraison adl, Date dateCreationCommande)
+    public Livraison creerLivraison(BonDeCommande bdc, Date dateCreationCommande)
     {
         Livraison l=new Livraison();
         l.setLeBonDeCommande(bdc);
         l.setDateCreationLivraison(dateCreationCommande);
-        l.setlAgentDeLivraison(adl);
+       
         l.setStatutLivraison(StatutLivraison.enCours);
         em.persist(l);
+        return l;
         
         
     }
@@ -65,6 +67,23 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
         
     return result;
     }
+    
+     @Override
+    public Collection <Livraison> afficherLivraisonsEnCours (Fournisseur f) {
+    
+        Collection<Livraison> result;
+        
+        Query req = getEntityManager().createQuery("SELECT L FROM Livraison as l inner join l.leBonDeCommande as bdc WHERE l.statutLivraison =:encours AND bdc.leFournisseur=:fournisseur ");
+        req.setParameter("fournisseur", f);
+        req.setParameter("encours", StatutLivraison.enCours);
+        result = req.getResultList();
+        
+        
+        
+    return result;
+    }
+    
+    
     
     @Override
     public void recevoirLivraison(Livraison livraison, Date dateReception)

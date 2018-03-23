@@ -26,14 +26,14 @@
                 <li class="dropdown <%=display%>"></li>
                     
                     
-                        <li><a href="saisirLivraison.jsp" class="saisir">Saisir Livraison</a></li>
-                        <li><a href="listeLivraison.jsp">Liste des livraisons</a></li>
+                        <li><a href="FournisseurServlet?action=versSaisirLivraison" class="saisir">Saisir Livraison</a></li>
+                        <li><a href="FournisseurServlet?action=versListeLivraison">Liste des livraisons</a></li>
                         <li><a href=".jsp" class=""></a></li>
                     </ul>
                  
                 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="Menu?action=logout">Bonjour! <%=nom%>, Déconexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
+                <li><a href="Menu?action=logout">Bonjour! <%=nom%>, Déconnexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
