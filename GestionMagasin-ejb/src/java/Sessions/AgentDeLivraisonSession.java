@@ -114,7 +114,7 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
     }
     
     @Override
-    public Collection<Livraison> listerLivraisonEnCours (int idMagasin){
+    public Collection<Livraison> listerLivraisonEnCours (long idMagasin){
         
         
         

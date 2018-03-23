@@ -24,6 +24,6 @@ public interface AgentDeLivraisonSessionLocal {
 
     public void enregistrerLivraisonLots(int idLivraison, int idCommandeLot, int quantiteAcceptee, int quantiteExpediee, int quantiteLivree, Date date, String taille, int duree);
 
-    public Collection<Livraison> listerLivraisonEnCours(int idMagasin);
+    public Collection<Livraison> listerLivraisonEnCours(long idMagasin);
     
 }

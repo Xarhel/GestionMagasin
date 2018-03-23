@@ -5,13 +5,21 @@
  */
 package Servlets;
 
+import Entites.Autre.Livraison;
+import Entites.Autre.Magasin;
+import Entites.Personne.Employe;
+import Sessions.AgentDeLivraisonSessionLocal;
+import facades.MagasinFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,6 +27,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AgentLivraison extends HttpServlet {
 
+    @EJB
+    private MagasinFacadeLocal magasinFacade;
+
+    @EJB
+    private AgentDeLivraisonSessionLocal agentDeLivraisonSession;
+
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,6 +58,24 @@ public class AgentLivraison extends HttpServlet {
             jspClient="/agentLivraison/index.jsp";
         }
         
+          else if ((action.equals("versListeLivraison")))
+              
+          {
+              
+              jspClient="/agentLivraison/listeLivraison.jsp";
+              afficherListeLivraison(request, response);
+          }
+           
+          else if ((action.equals("versCreerLivraison")))
+          {
+              
+              jspClient="/agentLivraison/creerLivraison.jsp";
+              
+          }
+              
+              
+              
+              
           RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
         rd.forward(request, response); 
@@ -116,4 +149,19 @@ public class AgentLivraison extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    protected void afficherListeLivraison(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+    
+        HttpSession session= request.getSession();
+        Employe e=(Employe) session.getAttribute("user");    
+        
+        Magasin m= e.getLeMagasin();
+        
+        Collection <Livraison> result =agentDeLivraisonSession.listerLivraisonEnCours(m.getId());
+        
+        request.setAttribute("livraison", result);
+        
+    }
+    
 }
