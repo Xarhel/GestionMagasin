@@ -60,7 +60,7 @@
                 </form> 
             </div><br/><br/>
             <h1>Liste des articles et la somme de prix du client</h1>
-            <table id="example" class="table table-striped table-bordered" cellspacing="0">
+            <table class="table table-hover" >
                 <thead>
                     <tr>
                         <th>Libelle de l'article</th>
@@ -94,9 +94,10 @@
                 </div>
                 <div class="buton">
                 <button type="submit" class="btn btn-success">Valider</button>
-                <button type="submit" class="btn btn-success">Imprimer facture</button>
+                <button type="submit" class="btn btn-success">Imprimer la facture</button>
                 </div>
                     </tbody>
+            </table>
 
 
                     <!-- BODY END-->

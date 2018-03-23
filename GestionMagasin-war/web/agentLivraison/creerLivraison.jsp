@@ -8,15 +8,15 @@
 <!DOCTYPE html>
 <html>
     <head>        
-        <title>Créer un livraison</title>
+        <title>Créer une livraison</title>
         <jsp:include page="include/header.jsp"/>
     </head>
     <body>
         <div class="container">
-            <jsp:include page="menuAgentLivraison.jsp"/>
+            <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
-                <h1>Créer un livraison</h1>
+                <h1>Créer une livraison</h1>
                 <form method="POST" action="">
                     <input hidden type="text" name="action" value="creerLivraison"/>
                    <div class="form-group row">

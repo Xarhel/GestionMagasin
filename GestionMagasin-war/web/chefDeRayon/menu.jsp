@@ -24,9 +24,9 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Accueil</a></li>                 
-                <li class="dropdown <%=display%>">
+                <li class="dropdown <%=display%>"></li> 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
+                    
                         <li><a href="ChefDeRayon?action=versAjouterArticle" class="">Ajouter article</a></li>
                         <li><a href="ajouterFournisseur.jsp">Ajouter fournisseur</a></li>
                         <li><a href="ajouterPrixArticle.jsp" class="">Ajouter le prix</a></li>
@@ -35,7 +35,7 @@
                         <li><a href="modifierPrix.jsp" class="">Modifier le prix</a></li>
                         
                     </ul>
-                </li> 
+                
                 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="Menu?action=logout">Bonjour! <%=nom%>, Déconexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
