@@ -19,6 +19,7 @@
             <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
+                 <div class="jumbotron">
                 <h1>Créer article</h1>
                 <form method="POST" action="ChefDeRayon">
                     <input hidden type="text" name="action" value="ajouterArticle"/>
@@ -49,6 +50,7 @@
                     </div>
                     <button type="submit" class="btn btn-success">Ajouter</button>                    
                 </form> 
+            </div>
             </div>
             <!-- BODY END-->
         </div>

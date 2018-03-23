@@ -10,11 +10,11 @@
     <head>
         <title>Rechercher un article</title>
         <jsp:include page="header.jsp"/>
-        <jsp:include page="menuDirection.jsp"/>
         <script src="js/script.js" type="text/javascript"></script>
     </head>
     <body>
-        <div class="container-fluid">
+        <div class="container">
+            <jsp:include page="menuDirection.jsp"/>
             <!-- BODY START -->
             <div>    
                 <form method="POST" action="Administrateur">

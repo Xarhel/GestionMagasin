@@ -19,6 +19,7 @@
     <body>
         <div class="container">
             <jsp:include page="menu.jsp"/>
+             <div class="jumbotron">
             <!-- BODY START -->
             <h1>Ajouter L'article Au Rayon </h1>              
             <form method="POST" action="ChefDeRayon">
@@ -52,6 +53,7 @@
 
                 <button type= "submit" class="btn btn-success">Enregistrer </button>                     
             </form> 
+        </div>
         </div>
         <!-- BODY END-->
     </div>

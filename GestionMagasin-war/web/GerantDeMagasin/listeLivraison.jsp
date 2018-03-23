@@ -21,6 +21,7 @@
             <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
+                <div class="jumbotron">
                 <h1>Liste des livraisons</h1>
                 <form method="POST" action=".....">
                     <input hidden type="text" name="id" value="<%=magasin.getId()%>" />
@@ -52,6 +53,7 @@
                     </tbody>
                 </table>
                 </form>
+            </div>
             </div>
             <!-- BODY END-->
         </div>

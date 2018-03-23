@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Accueil</a></li>                 
                 <li class="dropdown <%=display%>">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Direction<span class="caret"></span></a>
+                    
                     <ul class="dropdown-menu">
                         <li><a href="AgentLivraison?action=versCreerLivraison">Créer livraison</a></li>
                         <li><a href="AgentLivraison?action=versListeLivraison">Liste livraison</a></li>

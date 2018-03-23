@@ -29,8 +29,10 @@
                     
                     
                         <li><a href="creerRayon.jsp" class="">Créer rayon</a></li>
-                        <li><a href=".jsp"></a></li>
-                        <li><a href=".jsp" class=""></a></li>
+                        <li><a href="listeCommande.jsp">Liste des commandes</a></li>
+                        <li><a href="listeLivraison.jsp" class="">Liste des livraisons</a></li>
+                        <li><a href="rechercherCommande.jsp">Recherher de commandes</a></li>
+                        <li><a href="rechercherLivraison.jsp" class="">Rechercher de livraisons</a></li>
                    
           
                 

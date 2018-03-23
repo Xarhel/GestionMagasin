@@ -17,6 +17,7 @@
             <!-- BODY START -->
             <div>
                 <h1>Créer fournisseur</h1>
+                 <div class="jumbotron">
                 <form method="POST" action="">
                     <input hidden type="text" name="action" value="creerFournisseur"/>
                     <div class="form-group row">
@@ -63,6 +64,7 @@
                     </div>                    
                     <button type="submit" class="btn btn-success">Enregistre</button>                    
                 </form> 
+            </div>
             </div>
             <!-- BODY END-->
         </div>

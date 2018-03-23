@@ -20,6 +20,7 @@
             <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <div>
+                <div class="jumbotron">
                 <h1>Liste des articles</h1>
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
@@ -53,6 +54,7 @@
                         </tr><%}%>
                     </tbody>
                 </table>
+                </div>
             </div>
             <!-- BODY END-->
         </div>

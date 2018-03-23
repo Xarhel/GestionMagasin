@@ -21,6 +21,7 @@
             <jsp:include page="menuEmployeRayon.jsp"/>
             <!-- BODY START -->
             <div>
+                <div class="jumbotron">
                 <h1>Liste des commandes</h1>
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
@@ -54,5 +55,6 @@
             </div>
             <!-- BODY END-->
         </div>
+            </div>
     </body>
 </html>
