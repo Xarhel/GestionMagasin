@@ -26,13 +26,13 @@
                 <li class="dropdown <%=display%>"></li>
                     
 
-                <li><a href="enregistreVente.jsp" class="vente"></a>Enregistre une vente</li>
+                <li><a href="EmployeCaisse?action=versEnregistrerVente" class="vente">Enregistrer une vente</a></li>
 
             </ul>
    
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="EmployeDeCaisse?action=logout">Bonjour! <%=nom%>, Déconexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
+                <li><a href="EmployeCaisse?action=logout">Bonjour! <%=nom%>, Déconexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->

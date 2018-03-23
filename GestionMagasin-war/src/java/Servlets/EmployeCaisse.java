@@ -5,8 +5,15 @@
  */
 package Servlets;
 
+import Entites.Autre.RayonArticle;
+import Entites.Personne.EmployeDeCaisse;
+import Entites.Vente.ArticleVente;
+import Sessions.EmployeDeCaisseSessionLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +25,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author 3137574
  */
 public class EmployeCaisse extends HttpServlet {
+
+    @EJB
+    private EmployeDeCaisseSessionLocal employeDeCaisseSession;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,7 +56,22 @@ public class EmployeCaisse extends HttpServlet {
             jspClient ="/EmployeDeCaisse/index.jsp";
         }
         
+        else if(action.equals("versEnregistrerVente"))
+        {
+            //versEnregistrerVente(request, response);
+            jspClient="/EmployeDeCaisse/enregistrerVente.jsp";
+        }
         
+        
+        
+        // Logout
+        
+        else if(action.equals("logout"))
+        {
+            request.getSession(false).invalidate();
+            jspClient="/login.jsp";
+        }
+    
         
         RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
@@ -106,4 +131,35 @@ public class EmployeCaisse extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
+    protected void versEnregistrerVente(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException
+    {
+        
+        // Création du panier
+        
+        EmployeDeCaisse employeCaisse = (EmployeDeCaisse) request.getSession().getAttribute("user");
+        int idEmploye = Integer.parseInt(employeCaisse.getId().toString());
+        long idPanier = employeDeCaisseSession.creerPanierCaisse(idEmploye);
+        
+        // Recherche des articles présents dans ce magasin
+        
+        ArrayList<RayonArticle> rayonArticlesArrayList = new ArrayList<>();
+        rayonArticlesArrayList = (ArrayList<RayonArticle>) employeDeCaisseSession.rechercherRayonArticleParIdMagasin(Integer.parseInt(employeCaisse.getLeMagasin().getId().toString()));
+        Collection<RayonArticle> rayonArticles = rayonArticlesArrayList;
+        
+        // Création d'une liste d'articles vide pour ne pas avoir d'erreur en important le bean sur la page d'ajout des articles au panier
+        
+        ArrayList<ArticleVente> articlesVenteArrayList = new ArrayList<>();
+        Collection<ArticleVente> articlesVente = articlesVenteArrayList;
+        
+        // Définition des paramètres utilisés dans la jsp
+        
+        request.setAttribute("idPanier", idPanier);
+        request.setAttribute("rayonArticles", rayonArticles);
+        request.setAttribute("articlesVente", articlesVente);
+        
+    }
+    
+    
 }

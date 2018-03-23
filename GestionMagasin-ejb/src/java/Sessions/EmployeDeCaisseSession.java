@@ -8,6 +8,7 @@ package Sessions;
 import Entites.Autre.Article;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
+import Entites.Autre.RayonArticle;
 import Entites.Autre.Stock;
 import Entites.Personne.EmployeDeCaisse;
 import Entites.Vente.PanierCaisse;
@@ -17,6 +18,7 @@ import facades.EmployeDeCaisseFacadeLocal;
 import facades.MagasinFacade;
 import facades.MagasinFacadeLocal;
 import facades.PanierCaisseFacadeLocal;
+import facades.RayonArticleFacadeLocal;
 import facades.RayonFacadeLocal;
 import facades.StockFacadeLocal;
 import java.util.Collection;
@@ -33,6 +35,9 @@ import javax.persistence.Query;
  */
 @Stateless
 public class EmployeDeCaisseSession implements EmployeDeCaisseSessionLocal {
+
+    @EJB
+    private RayonArticleFacadeLocal rayonArticleFacade;
 
     @EJB
     private ArticleVenteFacadeLocal articleVenteFacade;
@@ -88,6 +93,14 @@ public class EmployeDeCaisseSession implements EmployeDeCaisseSessionLocal {
         
         articleVenteFacade.creerArticleVenteCaisse(pc, quantite, s);
         
-    }     
+    }
+
+    @Override
+    public Collection rechercherRayonArticleParIdMagasin(int idMagasin) {
+        Collection<RayonArticle> rayonArticle = rayonArticleFacade.rechercherRayonArticleParIdMagasin(idMagasin);
+        return rayonArticle;
+    }
+    
+    
     
 }

@@ -6,6 +6,7 @@
 package facades;
 
 import Entites.Autre.Article;
+import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import java.util.Collection;
@@ -54,6 +55,8 @@ public interface RayonArticleFacadeLocal {
     public RayonArticle chercherRayonArticleParId(int id);
 
     public Collection<RayonArticle> listerRayonArticleParRayon(Rayon r);
+
+    Collection rechercherRayonArticleParIdMagasin(int idMagasin);
     
    
 }
