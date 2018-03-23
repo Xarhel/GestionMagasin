@@ -16,7 +16,6 @@
     </head>
 </head>
 <body>
-    <jsp:include page="menu.jsp"/>
     <div class="container"> 
         <div class="alert alert-danger">
             <strong>Danger!</strong> Vous avez fait une erreur!

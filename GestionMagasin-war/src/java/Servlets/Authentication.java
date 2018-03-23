@@ -55,7 +55,6 @@ public class Authentication extends HttpServlet {
         
         String jspClient = null;
         String action = request.getParameter("action");
-        HttpSession sessionTest = request.getSession(false);
         
         // If-else inital permettant de diriger les requètes utilisateurs       
         // Jsp par defaut lorsque l'utilisateur exécute la solution
@@ -102,7 +101,7 @@ public class Authentication extends HttpServlet {
                         message = "Employé de caisse";
                         session.setAttribute("user", c);
                         request.setAttribute("message", message);
-                        jspClient ="/login.jsp";
+                        response.sendRedirect("EmployeCaisse");
                     }
                     if (p instanceof EmployeRayon)
                     {

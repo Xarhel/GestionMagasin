@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-
+    
     <!-- Servlet declaration -->
-
+    
     <servlet>
         <servlet-name>Authentication</servlet-name>
         <servlet-class>Servlets.Authentication</servlet-class>
@@ -24,13 +24,15 @@
         <servlet-class>Servlets.AgentLivraison</servlet-class>
     </servlet>
     <servlet>
-    <servlet-name>Fournisseur</servlet-name>
-    <servlet-class>Servlets.Fournisseur</servlet-class>
+        <servlet-name>Fournisseur</servlet-name>
+        <servlet-class>Servlets.Fournisseur</servlet-class>
+    </servlet>
+    <servlet>
+    <servlet-name>EmployeCaisse</servlet-name>
+    <servlet-class>Servlets.EmployeCaisse</servlet-class>
     </servlet>
     
     <!-- Servlet mapping -->
-    
-=======
 
     <servlet-mapping>
         <servlet-name>Authentication</servlet-name>
@@ -55,6 +57,10 @@
     <servlet-mapping>
         <servlet-name>Fournisseur</servlet-name>
         <url-pattern>/Fournisseur</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>EmployeCaisse</servlet-name>
+    <url-pattern>/EmployeCaisse</url-pattern>
     </servlet-mapping>
     
     <!-- Error handling -->

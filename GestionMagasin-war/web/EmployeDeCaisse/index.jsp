@@ -23,7 +23,7 @@
     </head>
     <body>
         <div class="container">
-            <jsp:include page="menuEmployeRayon.jsp"/>            
+            <jsp:include page="menu.jsp"/>            
             <!-- Main component for a primary marketing message or call to action -->
             <div class="jumbotron">                
                 <h1 >Bienvenue dans votre magasin</h1>
