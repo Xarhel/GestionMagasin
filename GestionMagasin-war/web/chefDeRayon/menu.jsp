@@ -28,8 +28,8 @@
                     
                     
                         <li><a href="ChefDeRayon?action=versAjouterArticle" class="">Ajouter article</a></li>
-                        <li><a href="ajouterFournisseur.jsp">Ajouter fournisseur</a></li>
-                        <li><a href="ajouterPrixArticle.jsp" class="">Ajouter le prix</a></li>
+                        <li><a href="ChefDeRayon?action=listerLesRayonArticle">Liste des Articles du rayon</a></li>
+                        <li><a href="ajouterPrixArticle.jsp" class="">Ajouter</a></li>
                         <li><a href="creerCommande.jsp" class="">Créer commande</a></li>
                         <li><a href="ChefDeRayon?action=afficherTousLesArticles" class="">Liste des articles</a></li>
                         <li><a href="modifierPrix.jsp" class="">Modifier le prix</a></li>

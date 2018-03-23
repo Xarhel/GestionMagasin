@@ -131,21 +131,41 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
      ra.setPrixRayon(prixRayon);
      ra.setLesArticles(a);
      ra.setLesRayons(r);
+     if (a.isPromotion()) {ra.setPrixVente(a.getPrixPromotion());}
+     if (!a.isPromotion()) ra.setPrixVente(prixRayon);
+     
+     
      em.persist(ra);}
      
     @Override
-     public void modifierPrixRayonArticle (Article article, Rayon rayon, float prixRayon)
-     {RayonArticle ra;
-     Query req = getEntityManager().createQuery("select ra from RayonArticle ra WHERE ra.lesArticles=:article AND ra.lesRayons=:rayon");
-     req.setParameter("article", article);
-     req.setParameter("rayon", rayon);
-     
-     ra = (RayonArticle) req.getSingleResult();
+     public void modifierPrixRayonArticle (RayonArticle ra, float prixRayon)
+     {
      ra.setPrixRayon(prixRayon);
-     boolean a=article.isPromotion();
-     if (a==false) {
+     Article a = ra.getLesArticles();
+     boolean test=a.isPromotion();
+     if (test==false) {
      ra.setPrixVente(prixRayon);}
      em.merge(ra);
+     }
+     
+    @Override
+     public RayonArticle chercherRayonArticleParId (int id){
+         RayonArticle ra;
+     Query req = getEntityManager().createQuery("select ra from RayonArticle ra WHERE ra.id=:id");
+     req.setParameter("id", id);
+     
+     ra = (RayonArticle) req.getSingleResult();
+     return ra;
+     }
+     
+    @Override
+     public Collection <RayonArticle> listerRayonArticleParRayon(Rayon r){
+     Collection<RayonArticle> ra;
+     Query req = getEntityManager().createQuery("select ra from RayonArticle ra WHERE ra.lesRayons=:r");
+     req.setParameter("r", r);
+     
+     ra =  req.getResultList();
+     return ra;
      }
 
      

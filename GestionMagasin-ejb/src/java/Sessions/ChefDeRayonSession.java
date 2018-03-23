@@ -20,6 +20,7 @@ import facades.CommandeLotFacadeLocal;
 import facades.FournisseurFacadeLocal;
 import facades.LotFacadeLocal;
 import facades.RayonArticleFacadeLocal;
+import facades.RayonFacadeLocal;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -54,12 +55,22 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
     @EJB
     private FournisseurFacadeLocal fournisseurFacade;
     
+        @EJB
+    private RayonFacadeLocal rayonFacade;
+    
     
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
     @Override
+        public void ajouterArticleAuRayon (Article a, Rayon r, float prix){
+
+             rayonArticleFacade.ajouterArticleARayon(r, a, prix);}
+   
+        
+        
+        @Override
    public void ajouterFournisseur(String raisonSocial, String login, String password)
    {
        
@@ -70,15 +81,9 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
    public void ajouterArticle(int referenceArticle, String libelle, CategorieArticle categorie)
            
    {
-      List <Article> articles = articleFacade.rechercheArticlesParReference(referenceArticle); 
-      if(articles.isEmpty()==false)
-      {
-          System.out.println("Erreur, article déjà existant");
-      }
-      else
-      {
+
           articleFacade.creerArticle(referenceArticle, libelle, categorie);
-      }
+   
    }
    
     @Override
@@ -91,15 +96,14 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
    // Faire un 
    
     @Override
-   public void modifierPrixArticle(Rayon r, Article a, float prix)
+   public void modifierPrixArticle(RayonArticle ra, float prix)
    {
-       if(a.isPromotion()==true)
+       if(ra.getLesArticles().isPromotion()==true)
        {
            System.out.println("Erreur, article en promotion");
        }
        else
        {
-           RayonArticle ra= rayonArticleFacade.rechercherRayonArticle(r, a);
       
       rayonArticleFacade.modifierPrix(ra, prix);
        }
@@ -129,7 +133,40 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
         
         
     }
-           
+    @Override
+        public Article rechercherArticleParId(int id)
+    {
+       Article result= articleFacade.rechercherArticleParId(id);
+    
+    
+        return result;
+        
+        
+        
+        
+    }
+    @Override
+              public Rayon rechercherRayonParId(int id)
+    {
+       Rayon result= rayonFacade.rechercherRayonParId(id) ;
+    
+    
+        return result;
+        
+        
+        
+        
+    }
+              
+    @Override
+              public RayonArticle chercherRayonArticleParId(int id){
+              RayonArticle ra = rayonArticleFacade.chercherRayonArticleParId(id);
+              return ra;}
+   
+    @Override
+    public Collection <RayonArticle> listerRayonArticleParRayon(Rayon r){
+    Collection <RayonArticle> ra = rayonArticleFacade.listerRayonArticleParRayon(r);
+    return ra;}
            
            
 }

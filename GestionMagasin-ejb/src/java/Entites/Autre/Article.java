@@ -72,7 +72,7 @@ public class Article implements Serializable {
         return "Entites.Autres.Article[ id=" + id + " ]";
     }
     
-    @Column (nullable=false, unique=true)
+    
     private int referenceArticle;
 
     /**
@@ -93,7 +93,7 @@ public class Article implements Serializable {
         this.referenceArticle = referenceArticle;
     }
 
-    @Column (nullable=false)
+    
     private String libelle;
 
     /**
@@ -114,7 +114,7 @@ public class Article implements Serializable {
         this.libelle = libelle;
     }
 
-    @Column (nullable=false, unique=true)
+    
     private int codeBarre;
 
     /**
@@ -135,7 +135,7 @@ public class Article implements Serializable {
         this.codeBarre = codeBarre;
     }
 
-    @Column (nullable=false)
+
     private boolean promotion;
 
     /**
