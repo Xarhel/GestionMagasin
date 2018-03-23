@@ -12,18 +12,18 @@
     <head>        
         <title>Modifier prix</title>
         <jsp:useBean id="article" scope="request" type="Entites.Autre.Article"></jsp:useBean>
-        <jsp:useBean id="rayon" scope="request" type="Entites.Autre.RayonArticle"></jsp:useBean>
-        <jsp:include page="include/header.jsp"/>
+        <jsp:useBean id="rayonArticle" scope="request" type="Entites.Autre.RayonArticle"></jsp:useBean>
+        <jsp:include page="header.jsp"/>
 
     </head>
     <body>
         <div class="container">
-            <jsp:include page=".jsp"/>
+            <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
             <h1>Modifier un prix </h1>              
-            <form method="POST" action="">
+            <form method="POST" action="ChefDeRayon">
                 <input hidden type="text" name="action" value="modifierPrix"/>
-                <input hidden type="text" name="id" value="<%=article.getId()%>"/>
+                <input hidden type="text" name="idRayonArticle" value="<%=rayonArticle.getId()%>"/>
                 <div class="form-group row">
                     <label class="col-md-2">Libelle ariticle<span class="requis">*</span></label>
                     <div class="col-md-4">
@@ -39,14 +39,14 @@
                 <div class="form-group row">
                     <label class="col-md-2">Rayon<span class="requis">*</span></label>
                     <div class="col-md-4">
-                        <input class="form-control" type="text" name="nom" value="<%=rayon.getLesRayons()%>" disabled/>
+                        <input class="form-control" type="text" name="nom" value="<%=rayonArticle.getLesRayons().getRayonNom() %>" disabled/>
                     </div>                        
                 </div>
                     
                 <div class="form-group row">
                     <label class="col-md-2">Prix article<span class="requis">*</span></label>
                     <div class="col-md-4">
-                        <input class="form-control" type="text" name="nom" value="<%=rayon.getPrixRayon()%>" required/>
+                        <input class="form-control" type="text" name="prix" value="<%=rayonArticle.getPrixRayon()%>" required/>
                     </div>                        
                 </div>
 

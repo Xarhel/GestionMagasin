@@ -28,7 +28,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chef de Rayon<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="ChefDeRayon?action=versAjouterArticle" class="">Ajouter article</a></li>
-                        <li><a href="ajouterFournisseur.jsp">Ajouter fournisseur</a></li>
+                        <li><a href="ChefDeRayon?action=listerLesRayonArticle">Liste des Articles du rayon</a></li>
                         <li><a href="ajouterPrixArticle.jsp" class="">Ajouter</a></li>
                         <li><a href="creerCommande.jsp" class="">Créer commande</a></li>
                         <li><a href="ChefDeRayon?action=afficherTousLesArticles" class="">Liste des articles</a></li>

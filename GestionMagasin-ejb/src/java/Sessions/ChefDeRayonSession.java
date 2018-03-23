@@ -65,7 +65,7 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
     
     @Override
         public void ajouterArticleAuRayon (Article a, Rayon r, float prix){
-            boolean promo = a.isPromotion();
+
              rayonArticleFacade.ajouterArticleARayon(r, a, prix);}
    
         
@@ -81,15 +81,9 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
    public void ajouterArticle(int referenceArticle, String libelle, CategorieArticle categorie)
            
    {
-      List <Article> articles = articleFacade.rechercheArticlesParReference(referenceArticle); 
-      if(articles.isEmpty()==false)
-      {
-          System.out.println("Erreur, article déjà existant");
-      }
-      else
-      {
+
           articleFacade.creerArticle(referenceArticle, libelle, categorie);
-      }
+   
    }
    
     @Override
@@ -102,15 +96,14 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
    // Faire un 
    
     @Override
-   public void modifierPrixArticle(Rayon r, Article a, float prix)
+   public void modifierPrixArticle(RayonArticle ra, float prix)
    {
-       if(a.isPromotion()==true)
+       if(ra.getLesArticles().isPromotion()==true)
        {
            System.out.println("Erreur, article en promotion");
        }
        else
        {
-           RayonArticle ra= rayonArticleFacade.rechercherRayonArticle(r, a);
       
       rayonArticleFacade.modifierPrix(ra, prix);
        }
@@ -164,7 +157,16 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
         
         
     }
-           
+              
+    @Override
+              public RayonArticle chercherRayonArticleParId(int id){
+              RayonArticle ra = rayonArticleFacade.chercherRayonArticleParId(id);
+              return ra;}
+   
+    @Override
+    public Collection <RayonArticle> listerRayonArticleParRayon(Rayon r){
+    Collection <RayonArticle> ra = rayonArticleFacade.listerRayonArticleParRayon(r);
+    return ra;}
            
            
 }

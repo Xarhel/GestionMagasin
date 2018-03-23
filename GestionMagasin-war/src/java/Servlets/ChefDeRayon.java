@@ -7,6 +7,7 @@ package Servlets;
 
 import Entites.Autre.Article;
 import Entites.Autre.Rayon;
+import Entites.Autre.RayonArticle;
 import Entites.Enum.CategorieArticle;
 import Entites.Personne.Employe;
 import Sessions.ChefDeRayonSession;
@@ -61,8 +62,9 @@ public class ChefDeRayon extends HttpServlet {
         
         else if (action.equals("ajouterArticle"))
         {
-            jspClient="/chefDeRayon/ajouterArticle.jsp";
             ajouterArticle(request,response);
+            jspClient="/chefDeRayon/listeArticle.jsp";
+            
 
         }
                 else if (action.equals("versAjouterArticle"))
@@ -84,9 +86,25 @@ public class ChefDeRayon extends HttpServlet {
         }
                 else if (action.equals("ajouterAuRayon"))
         {
-            jspClient="/chefDeRayon/listeArticle.jsp";
+            jspClient="/chefDeRayon/listeRayonArticle.jsp";
             ajouterAuRayon(request,response);
         }
+                else if (action.equals("versModifierRayonArticle"))
+        {
+        versModifierRayonArticle(request,response);
+        jspClient="/chefDeRayon/modifierPrix.jsp";}
+        
+            else if (action.equals("listerLesRayonArticle"))
+        {jspClient="/chefDeRayon/listeRayonArticle.jsp";
+        afficherTousLesRayonArticles(request,response);}
+        
+        else if (action.equals("modifierPrix"))
+        {
+            modifierPrix(request,response);
+            jspClient="/chefDeRayon/listeRayonArticle.jsp";
+            
+
+        }        
                
         
         
@@ -157,7 +175,6 @@ public class ChefDeRayon extends HttpServlet {
         String jspClient;
         if(!(libelle.isEmpty()) && !(reference.trim().isEmpty()) && !(categorie.trim().isEmpty()))
         {
-            String libelleArticle = libelle;
             CategorieArticle ca = null;
             if ("0".equals(categorie)){ca = CategorieArticle.Général;}
             if ("1".equals(categorie)){ca = CategorieArticle.Alimentaire;}
@@ -168,8 +185,9 @@ public class ChefDeRayon extends HttpServlet {
             
             chefDeRayon.ajouterArticle(referenceArticle, libelle, ca);
             message = "Article crée Avec succes";
-            // Nom du menu à changer
-            jspClient ="/ajouterArticle";
+        Collection <Article> article = chefDeRayon.afficherTousLesArticles();
+        request.setAttribute("message", message);
+        request.setAttribute("article", article);
         }
         else
         {
@@ -204,8 +222,8 @@ public class ChefDeRayon extends HttpServlet {
         if(!(prix.isEmpty())) {
         float prixVente = Float.valueOf(prix);
         chefDeRayon.ajouterArticleAuRayon(articleAjouter, rayon, prixVente);
-        Collection <Article> article = chefDeRayon.afficherTousLesArticles();
-        request.setAttribute("article", article);
+        Collection <RayonArticle> rayonArticle = chefDeRayon.listerRayonArticleParRayon(rayon);
+        request.setAttribute("rayonArticle", rayonArticle);
         
 }
         
@@ -230,6 +248,45 @@ public class ChefDeRayon extends HttpServlet {
         
         
     
+    }
+        
+        private void versModifierRayonArticle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    { 
+
+        int idRayonArticle = Integer.parseInt(request.getParameter("idRayonArticle"));
+        RayonArticle ra= chefDeRayon.chercherRayonArticleParId(idRayonArticle);
+        Article a = ra.getLesArticles();
+        request.setAttribute("rayonArticle", ra);
+        request.setAttribute("article", a);
+        request.setAttribute("idRayonArticle", idRayonArticle);
+
+    }
+                
+        private void afficherTousLesRayonArticles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        String message = "Voici la liste des articles dans le rayon";
+        HttpSession session = request.getSession();
+        Employe e = (Employe) session.getAttribute("user");
+        int r = e.getIdRayon();
+        Rayon rayon = chefDeRayon.rechercherRayonParId(r);
+        Collection <RayonArticle> rayonArticle = chefDeRayon.listerRayonArticleParRayon(rayon);
+        request.setAttribute("message", message);
+        request.setAttribute("rayonArticle", rayonArticle);
+    }
+
+    private void modifierPrix(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+        int idRayonArticle = Integer.parseInt(request.getParameter("idRayonArticle"));
+        RayonArticle rayonArticleAmodifier = chefDeRayon.chercherRayonArticleParId(idRayonArticle);
+        Article a = rayonArticleAmodifier.getLesArticles();
+        Rayon r= rayonArticleAmodifier.getLesRayons();
+        String prix = request.getParameter("prix");
+        if(!(prix.isEmpty())) {
+        float prixVente = Float.valueOf(prix);
+        chefDeRayon.modifierPrixArticle(rayonArticleAmodifier, prixVente);
+        Collection <RayonArticle> rayonArticle = chefDeRayon.listerRayonArticleParRayon(r);
+        request.setAttribute("rayonArticle", rayonArticle);}
+
+        
     }
 
 }

@@ -8,6 +8,7 @@ package Sessions;
 import Entites.Autre.Article;
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.Rayon;
+import Entites.Autre.RayonArticle;
 import Entites.Enum.CategorieArticle;
 import Entites.Lot.Lot;
 import java.util.Collection;
@@ -25,7 +26,7 @@ public interface ChefDeRayonSessionLocal {
 
     public void ajouterArticle(int referenceArticle, String libelle, CategorieArticle categorie);
 
-    public void modifierPrixArticle(Rayon r, Article a, float prix);
+    public void modifierPrixArticle(RayonArticle ra, float prix);
 
     public void creerBonDeCommande(Date dateCommande, int idFournisseur, int idArticle);
 
@@ -38,6 +39,10 @@ public interface ChefDeRayonSessionLocal {
     public Rayon rechercherRayonParId(int id);
 
     public void ajouterArticleAuRayon(Article a, Rayon r, float prix);
+
+    public RayonArticle chercherRayonArticleParId(int id);
+
+    public Collection<RayonArticle> listerRayonArticleParRayon(Rayon r);
 
     
 }

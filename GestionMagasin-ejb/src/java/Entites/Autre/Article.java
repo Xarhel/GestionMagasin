@@ -135,7 +135,7 @@ public class Article implements Serializable {
         this.codeBarre = codeBarre;
     }
 
-    @Column (nullable=false)
+
     private boolean promotion;
 
     /**
