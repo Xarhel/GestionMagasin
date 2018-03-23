@@ -27,7 +27,7 @@
                         <tr>
                             <th>Agent de livraison</th>
                             <th>Date de création livraison</th>
-                            <th>Date de livraison</th>
+                          
                             <th>Actions</th>
                             
                         </tr>
@@ -36,7 +36,7 @@
                         <tr>
                             <th>Agent de livraison</th>
                             <th>Date de création livraison</th>
-                            <th>Date de livraison</th>
+                          
                             <th>Actions</th>
                         </tr>
                     </tfoot>
@@ -46,7 +46,10 @@
                         <tr>
                             <td><%=l.getlAgentDeLivraison()%></td>
                             <td><%=l.getDateCreationLivraison()%></td>
-                            <td><%=l.getDateReceptionLivraison()%></td>
+                          
+                       <td>     <a href="AgentLivraison?action=versEnregistrerLivraison&id=<%=l.getId()%>" class="btn btn-info btn-md">
+                               <span class="glyphicon glyphicon-edit" title="enregistrerLivraison"></span> EnregistrerLivraison </td>
+                                </a>
                          <td><a href="Menu?action=pagReclamation&id=<%=l.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Reclamer"></span>Reclamation
                                 </a>

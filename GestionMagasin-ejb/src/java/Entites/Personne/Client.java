@@ -21,7 +21,7 @@ import javax.persistence.OneToMany;
  * @author 6137220
  */
 @Entity
-public class Client extends Employe implements Serializable {
+public class Client extends Personne implements Serializable {
 
     @OneToMany(mappedBy = "leClient")
     private List<Adresse> adresses;
