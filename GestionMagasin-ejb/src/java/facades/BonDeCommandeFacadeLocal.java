@@ -7,6 +7,7 @@ package facades;
 
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.Magasin;
+import Entites.Autre.Rayon;
 import Entites.Personne.ChefDeRayon;
 import Entites.Personne.Fournisseur;
 import java.util.Collection;
@@ -53,6 +54,8 @@ public interface BonDeCommandeFacadeLocal {
     public Collection<BonDeCommande> rechercherBonDeCommandeParFournisseur(Fournisseur fournisseur);
 
     public BonDeCommande rechercherBonDeCommandeParFournisseurDateEtChef(Fournisseur fournisseur, Date dateCreation, ChefDeRayon cdr);
+
+    public Collection<BonDeCommande> listerCommandesParRayon(Rayon r);
     
     
     

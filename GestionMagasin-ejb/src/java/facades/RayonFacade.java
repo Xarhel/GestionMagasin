@@ -54,7 +54,7 @@ public class RayonFacade extends AbstractFacade<Rayon> implements RayonFacadeLoc
     }
     
     @Override
-    public Rayon rechercherRayonParId(int idRayon) {
+    public Rayon rechercherRayonParId(long idRayon) {
         
     Rayon result;
     

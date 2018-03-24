@@ -37,7 +37,7 @@ public interface RayonFacadeLocal {
 
     void modifierRayon(Rayon rayonAModifier, String rayonNom);
     
-    public Rayon rechercherRayonParId(int idRayon);
+    public Rayon rechercherRayonParId(long idRayon);
     
     public Rayon rechercherRayonParNomMagasin(String rayonNom, Magasin magasin);
 

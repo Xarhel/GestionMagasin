@@ -11,6 +11,7 @@ import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import Entites.Enum.CategorieArticle;
 import Entites.Lot.Lot;
+import Entites.Personne.Fournisseur;
 import java.util.Collection;
 import java.util.Date;
 import javax.ejb.Local;
@@ -22,7 +23,7 @@ import javax.ejb.Local;
 @Local
 public interface ChefDeRayonSessionLocal {
 
-    public void ajouterFournisseur(String raisonSocial, String login, String password);
+    public void ajouterFournisseur(String raisonSocial, String login, String password, String nom, String prenom);
 
     public void ajouterArticle(int referenceArticle, String libelle, CategorieArticle categorie);
 
@@ -36,13 +37,16 @@ public interface ChefDeRayonSessionLocal {
 
     public Article rechercherArticleParId(int id);
 
-    public Rayon rechercherRayonParId(int id);
+    public Rayon rechercherRayonParId(long id);
 
     public void ajouterArticleAuRayon(Article a, Rayon r, float prix);
 
     public RayonArticle chercherRayonArticleParId(int id);
 
     public Collection<RayonArticle> listerRayonArticleParRayon(Rayon r);
+    public Collection<Fournisseur> listerFournisseur ();
+
+    public Collection<BonDeCommande> listerCommandesParRayon(Rayon r);
 
     
 }

@@ -7,6 +7,7 @@ package facades;
 
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.Magasin;
+import Entites.Autre.Rayon;
 import Entites.Personne.ChefDeRayon;
 import Entites.Personne.Fournisseur;
 import java.util.Collection;
@@ -154,6 +155,16 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
         
         return result;
     }
+    
+    @Override
+    public Collection <BonDeCommande> listerCommandesParRayon (Rayon r){
+    Collection<BonDeCommande> commande;
+    Query req = getEntityManager().createQuery("SELECT bdc FROM BonDeCommande AS b join b.leChefDeRayon c   WHERE c.leRayon=:r ");
+        req.setParameter("r", r);
+
+        commande = req.getResultList();
+    
+    return commande;}
     
 }
 

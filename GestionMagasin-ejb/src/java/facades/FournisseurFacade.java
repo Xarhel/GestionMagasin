@@ -5,7 +5,10 @@
  */
 package facades;
 
+import Entites.Enum.TypeCompte;
 import Entites.Personne.Fournisseur;
+import java.util.Collection;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -31,11 +34,17 @@ public class FournisseurFacade extends AbstractFacade<Fournisseur> implements Fo
     }
 
     @Override
-    public void creerFournisseur(String raisonSocial, String login, String password) {
+    public void creerFournisseur(String raisonSocial, String login, String password, String nom, String prenom) {
         Fournisseur fournisseur = new Fournisseur();
         fournisseur.setRaisonSociale(raisonSocial);
         fournisseur.setLogin(login);
         fournisseur.setPassword(password);
+        fournisseur.setNomPersonne(nom);
+        fournisseur.setPrenomPersonne(prenom);
+        Date date= new Date();
+        TypeCompte tc = TypeCompte.fournisseur;
+        fournisseur.setTypeCompte(tc);
+        fournisseur.setDateCreationCompte(date);
         em.persist(fournisseur);
     }
   
@@ -52,6 +61,35 @@ public class FournisseurFacade extends AbstractFacade<Fournisseur> implements Fo
         return result;
         
     }
+        
+      
+        @Override
+    public Fournisseur rechercherFournisseurParId(int id)
+    {
+         Fournisseur result;
+    
+        Query req = getEntityManager().createQuery("SELECT f FROM Fournisseur AS f WHERE f.id=:id");
+        req.setParameter("id", id);
+        
+        result = (Fournisseur) req.getSingleResult();
+        
+        return result;
+                
     }
+    
+    @Override
+        public Collection<Fournisseur> listerLesFournisseurs()
+    {
+         Collection<Fournisseur> result;
+    
+        Query req = getEntityManager().createQuery("SELECT f FROM Fournisseur AS f ");
+
+        
+        result = req.getResultList();
+        
+        return result;
+        
+    }
+}
     
 

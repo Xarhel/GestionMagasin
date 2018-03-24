@@ -71,10 +71,10 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
         
         
         @Override
-   public void ajouterFournisseur(String raisonSocial, String login, String password)
+   public void ajouterFournisseur(String raisonSocial, String login, String password, String nom, String prenom)
    {
        
-       fournisseurFacade.creerFournisseur(raisonSocial, login, password);
+       fournisseurFacade.creerFournisseur(raisonSocial, login, password, nom, prenom);
    }
    
     @Override
@@ -105,7 +105,7 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
        else
        {
       
-      rayonArticleFacade.modifierPrix(ra, prix);
+      rayonArticleFacade.modifierPrixRayonArticle(ra, prix);
        }
       
        
@@ -146,7 +146,7 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
         
     }
     @Override
-              public Rayon rechercherRayonParId(int id)
+              public Rayon rechercherRayonParId(long id)
     {
        Rayon result= rayonFacade.rechercherRayonParId(id) ;
     
@@ -167,6 +167,19 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
     public Collection <RayonArticle> listerRayonArticleParRayon(Rayon r){
     Collection <RayonArticle> ra = rayonArticleFacade.listerRayonArticleParRayon(r);
     return ra;}
+    
+    @Override
+    public Collection<Fournisseur> listerFournisseur (){
+    
+    Collection<Fournisseur> result;
+    result = fournisseurFacade.listerLesFournisseurs();
+    return result;}
+    
+    @Override
+    public Collection <BonDeCommande> listerCommandesParRayon (Rayon r){
+    Collection<BonDeCommande> commande;
+    commande = bonDeCommandeFacade.listerCommandesParRayon(r);
+    return commande;}
            
            
 }

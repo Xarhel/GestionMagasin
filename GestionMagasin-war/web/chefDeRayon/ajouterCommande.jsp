@@ -52,7 +52,6 @@
                     <button type="submit" class="btn btn-success">Ajouter</button>                    
                 </form> 
             </div>
-            </div>
             <!-- BODY END-->
         </div>
     </body>
