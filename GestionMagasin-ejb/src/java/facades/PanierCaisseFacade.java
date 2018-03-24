@@ -8,6 +8,7 @@ package facades;
 import Entites.Enum.MoyenPaiement;
 import Entites.Personne.EmployeDeCaisse;
 import Entites.Vente.PanierCaisse;
+import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,9 +35,11 @@ public class PanierCaisseFacade extends AbstractFacade<PanierCaisse> implements 
 
     @Override
     public PanierCaisse creerPanierCaisse(EmployeDeCaisse edc) {
-        PanierCaisse pc= new PanierCaisse();
+        PanierCaisse pc = new PanierCaisse();
         pc.setlEmployeDeCaisse(edc);
         pc.setPaiement(Boolean.FALSE);
+        pc.setDateJour(new Date());
+        pc.setMoyenPaiement(MoyenPaiement.autre);
         em.persist(pc);
         return pc;
     }

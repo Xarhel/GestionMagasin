@@ -10,13 +10,14 @@
 <%@page import="Entites.Vente.ArticleVente"%>
 <%@page import="Entites.Vente.PanierCaisse"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     
     <head>        
         <title>Enregistrer une vente</title>
         
-        <jsp:useBean id="idPanier" scope="request" type="Entites.Vente.PanierCaisse"></jsp:useBean>
+        <jsp:useBean id="idPanier" scope="request" type="long"></jsp:useBean>
         <jsp:useBean id="rayonArticles" scope="request" type="java.util.Collection"></jsp:useBean>
         <jsp:useBean id="articlesVente" scope="request" type="java.util.Collection"></jsp:useBean>
         
@@ -58,7 +59,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+              <%--          <tbody>
                             <% Collection<RayonArticle> articleDisponible = rayonArticles;
                                     for (RayonArticle ra : articleDisponible) {%>                           
                             <tr><td><%=ra.getLesArticles().getLibelle()%></td></tr>
@@ -74,7 +75,7 @@
                             <tr><td><a href="EmployeRayon?action=ajouterArticle&id=<%=ra.getId()%>" class="btn btn-danger">
                                        <span class=" glyphicon glyphicon-remove" onclick="alert('Veuillez renseigner une quantité à ajouter au panier')"></span>Ajouter au panier</a>
                             </td></tr>
-                        </tbody>
+                        </tbody> --%>
                     </table>
 
                     <button type= "submit" class="btn btn-success">Ajouter </button>                     

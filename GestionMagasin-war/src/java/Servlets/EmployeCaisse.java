@@ -58,7 +58,7 @@ public class EmployeCaisse extends HttpServlet {
         
         else if(action.equals("versEnregistrerVente"))
         {
-            //versEnregistrerVente(request, response);
+            versEnregistrerVente(request, response);
             jspClient="/EmployeDeCaisse/enregistrerVente.jsp";
         }
         

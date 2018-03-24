@@ -4,10 +4,12 @@
     Author     : jules
 --%>
 
+<jsp:useBean id="user" scope="session" class="Entites.Personne.Personne"></jsp:useBean>
 
-<% String id = (String) session.getAttribute("id");%>
-<% String nom = (String) session.getAttribute("nom");%>
+<% String id = (String) session.getAttribute(user.getId().toString());%>
+<% String nom = (String) session.getAttribute(user.getNomPersonne());%>
 <% String display = (String) session.getAttribute("display");%>
+
 <!-- Static navbar -->
 
 <nav class="navbar navbar-default">
@@ -38,7 +40,7 @@
                 
                 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="ChefDeRayon?action=logout">Bonjour! <%=nom%>, Déconexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
+                <li><a href="ChefDeRayon?action=logout">Bonjour! <%=user.getNomPersonne()%>, Déconexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
