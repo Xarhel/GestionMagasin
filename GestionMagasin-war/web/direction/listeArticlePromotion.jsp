@@ -52,7 +52,6 @@
                                     <span class="glyphicon glyphicon-edit" title="Faire une promotion"></span>Edit promotion
                                 </a>   
                             </td>
-                            </td>
                         </tr><%}%>
                     </tbody>
                 </table>

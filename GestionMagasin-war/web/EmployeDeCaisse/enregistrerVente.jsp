@@ -17,7 +17,7 @@
     <head>        
         <title>Enregistrer une vente</title>
         
-        <jsp:useBean id="idPanier" scope="request" type="long"></jsp:useBean>
+        <jsp:useBean id="idPanier" scope="request" type="java.lang.Long"></jsp:useBean>
         <jsp:useBean id="rayonArticles" scope="request" type="java.util.Collection"></jsp:useBean>
         <jsp:useBean id="articlesVente" scope="request" type="java.util.Collection"></jsp:useBean>
         
@@ -34,7 +34,7 @@
             }
             else
             {
-                alert("Vous allez ajouter " + quantite + " articl(s) à votre panier");
+                alert("Vous allez ajouter " + quantite.toString() + " article(s) à votre panier");
             }
         }
         </script>
@@ -48,42 +48,30 @@
                  
                  <h1>Enregistrer une vente</h1>              
                 <form method="POST" action="EmployeCaisse">
-                    <input hidden type="text" name="action" value="enregistrerVente"/>
-
-                    <table class="table table-hover" >
-                        <thead>
-                            <tr>
-                                <th>Libelle de l'article</th>
-                                <th>Référence</th>
-                                <th>Prix unitaire</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-              <%--          <tbody>
-                            <% Collection<RayonArticle> articleDisponible = rayonArticles;
-                                    for (RayonArticle ra : articleDisponible) {%>                           
-                            <tr><td><%=ra.getLesArticles().getLibelle()%></td></tr>
-                            <tr><td><%=ra.getLesArticles().getReferenceArticle()%></td></tr>
-                            <tr><td><%=ra.getPrixVente()%></td></tr>
-                            
-                            <div class="form-group row">
-                            <label class="col-md-2">Quantite<span class=""></span></label>
-                            <div class="col-md-4">
-                                <input class="form-control" id="quantite" type="text" name="quantiteArticle" readonly />
-                            </div>                        
-                            </div>
-                            <tr><td><a href="EmployeRayon?action=ajouterArticle&id=<%=ra.getId()%>" class="btn btn-danger">
-                                       <span class=" glyphicon glyphicon-remove" onclick="alert('Veuillez renseigner une quantité à ajouter au panier')"></span>Ajouter au panier</a>
-                            </td></tr>
-                        </tbody> --%>
-                    </table>
-
-                    <button type= "submit" class="btn btn-success">Ajouter </button>                     
-                </form> 
-            </div>
-        <br/>
-        <br/>
- 
+                    <input hidden="" type="text" name="action" value="enregistrerVente"/>
+                    <input hidden="" type="text" name="idPanierActuel" value="idPanier"/>
+                    
+                    <div id="article" class="form-group row">
+                        <label class="col-md-2">Article à ajouter<span class="requis">*</span></label>
+                        <select name="article" class="col-md-3 form-control" required>
+                            <% Collection<RayonArticle> articlesDisponibles = rayonArticles;
+                            for(RayonArticle ra : articlesDisponibles )
+                            {%>
+                            <option value="<%=ra.getId()%>"><%=ra.getLesArticles().getLibelle()%>, <%=ra.getPrixVente()%>€</option>
+                            <%}%>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-md-2">Quantite<span class="requis"></span></label>
+                        <div class="col-md-4">
+                            <input class="form-control" id="quantite" type="text" name="quantiteArticle" />
+                        </div>
+                    </div>
+                        
+                    <button type="submit" class="btn btn-success" value="ajouterArticle">Valider</button>
+                </form>
+                         
         
             <%-- RÉCAPITULATIF DE PAIEMENT --%>
             

@@ -173,12 +173,12 @@ public class RayonArticleFacade extends AbstractFacade<RayonArticle> implements 
     public Collection rechercherRayonArticleParIdMagasin(int idMagasin) {
         Collection<RayonArticle> rayonArticle;
         
-        Query req = em.createQuery("SELECT ra FROM RayonArticle ra inner join ra.lesRayons lr inner join lr.lesRayonArticles lra WHERE ra.id =:id");
+        Query req = em.createQuery("SELECT lra FROM RayonArticle AS lra INNER JOIN lra.lesRayons lr INNER JOIN lr.leMagasin lm WHERE lm.id=:id");
         
         req.setParameter("id", idMagasin);
         
         rayonArticle = req.getResultList();
-        return null;       
+        return rayonArticle;       
         
     }
         
