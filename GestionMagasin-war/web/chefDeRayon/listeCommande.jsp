@@ -46,7 +46,16 @@
                             for (BonDeCommande a : _commande) {%>
                         <tr><td><%=a.getId()%></td>
                             <td><%=a.getLeFournisseur().getRaisonSociale()%></td>
-                            <td><%=a.getDateCommande()%></td>                          
+                            <td><%=a.getDateCommande()%></td>
+                            <td>                               
+                                <a href="ChefDeRayon?action=versCreerCommandeLot&bon=<%=a.getId()%>" class="btn btn-success btn-md">
+                                    <span class="glyphicon-plus" title="consulterCommande"></span> Consulter
+                                </a>
+                                <a href="ChefDeRayon?action=supprimerCommande&bon=<%=a.getId()%>" class="btn btn-success btn-md">
+                                    <span class="glyphicon-remove" title="supprimerCommande"></span> Supprimer
+                                </a>
+                                
+                            </td>
 
                         </tr><%}%>
                     </tbody>

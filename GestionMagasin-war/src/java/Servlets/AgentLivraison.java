@@ -73,9 +73,9 @@ public class AgentLivraison extends HttpServlet {
               jspClient="/agentLivraison/creerLivraison.jsp";
               
           }
-          else if (((action.equals("AgentLivraison?action=versEnregistrerLivraison"))))
+          else if (((action.equals("versEnregistrerLivraison"))))
           {
-              EnregistrerLivraison(request, response);
+              versEnregistrerLivraison(request, response);
               jspClient="/agentLivraison/index.jsp";
               
           }
@@ -172,7 +172,7 @@ public class AgentLivraison extends HttpServlet {
     }
     
     
-       protected void EnregistrerLivraison(HttpServletRequest request,
+       protected void versEnregistrerLivraison(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException
        {
            String id = request.getParameter("id");

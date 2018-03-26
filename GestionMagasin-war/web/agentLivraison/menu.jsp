@@ -27,14 +27,13 @@
                 <li><a href="index.jsp">Accueil</a></li>                 
                 <li class="dropdown <%=display%>">
                     
-                    <ul class="dropdown-menu">
                         <li><a href="AgentLivraison?action=versCreerLivraison">Créer livraison</a></li>
                         <li><a href="AgentLivraison?action=versListeLivraison">Liste livraison</a></li>
                         <li><a href=".jsp" class=""></a></li>
 
-                    </ul>
+                    
                 </li> 
-                
+                </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="AgentLivraison?action=logout">Bonjour! <%=user.getNomPersonne()%>, Déconnexion <span class="glyphicon glyphicon-log-out"></span></a></li>                    
             </ul>

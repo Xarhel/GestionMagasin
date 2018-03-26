@@ -24,15 +24,16 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Accueil</a></li>                 
-                <li class="dropdown <%=display%>"></li> 
+                <li class="dropdown <%=display%>"> 
                     
                     
-                        <li><a href="ChefDeRayon?action=versAjouterArticle" class="">Ajouter article</a></li>
-                        <li><a href="ChefDeRayon?action=listerLesRayonArticle">Liste des Articles du rayon</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle ="dropdown" href="#">Gestion des Article
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        <li><a href="ChefDeRayon?action=afficherTousLesArticles" class="">Liste des articles</a></li>                        
+                        <li><a href="ChefDeRayon?action=listerLesRayonArticle">Liste des Articles du rayon</a></li> </ul></li>
                         <li><a href="ChefDeRayon?action=listerFournisseur" class="">Gestion des fournisseurs</a></li>
                         <li><a href="ChefDeRayon?action=listerCommande" class="">Gestion des Commandes</a></li>
-                        <li><a href="ChefDeRayon?action=afficherTousLesArticles" class="">Liste des articles</a></li>
-                        <li><a href="modifierPrix.jsp" class="">Modifier le prix</a></li>
                         
                     </ul>
                 
