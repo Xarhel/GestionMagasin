@@ -88,13 +88,15 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
     
     
     @Override
-    public void creerBonDeCommande(ChefDeRayon cdr, Date dateCreation, Fournisseur fournisseur)
+    public BonDeCommande creerBonDeCommande(ChefDeRayon cdr, Date dateCreation, Fournisseur fournisseur)
     {
         BonDeCommande bdc= new BonDeCommande();
         bdc.setDateCommande(dateCreation);
-        bdc.getLeChefDeRayon();
+        bdc.setLeChefDeRayon(cdr);
         bdc.setLeFournisseur(fournisseur);
         em.persist(bdc);
+        
+        return bdc;
         
     }
     
@@ -107,7 +109,6 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
         req.setParameter("id", id);
         List<BonDeCommande> commandes = req.getResultList();
         result= commandes.get(0);
-        
         return result;
         
         
@@ -159,7 +160,7 @@ public class BonDeCommandeFacade extends AbstractFacade<BonDeCommande> implement
     @Override
     public Collection <BonDeCommande> listerCommandesParRayon (Rayon r){
     Collection<BonDeCommande> commande;
-    Query req = getEntityManager().createQuery("SELECT bdc FROM BonDeCommande AS b join b.leChefDeRayon c   WHERE c.leRayon=:r ");
+    Query req = getEntityManager().createQuery("SELECT b FROM BonDeCommande AS b join b.leChefDeRayon c   WHERE c.leRayon=:r ");
         req.setParameter("r", r);
 
         commande = req.getResultList();
