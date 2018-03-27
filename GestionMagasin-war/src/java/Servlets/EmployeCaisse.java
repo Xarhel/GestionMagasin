@@ -174,21 +174,32 @@ public class EmployeCaisse extends HttpServlet {
         HttpSession session = request.getSession();
         Employe e = (Employe) session.getAttribute("user");
         String stringIdPanier = request.getParameter("idPanierActuel");
-        String stringIdArticle = request.getParameter("article");
+        String stringIdRayonArticle = request.getParameter("article");
         String stringQuantite = request.getParameter("quantite");
         
         // Casting des attributs
         
         long idPanier = Long.valueOf(stringIdPanier);
-        Integer idArticle = Integer.valueOf(stringIdArticle);
+        int idRayonArticle = Integer.parseInt(stringIdRayonArticle);
+        long idArticle = employeDeCaisseSession.rechercherRayonArticleParId(idRayonArticle).getLesArticles().getId();
+        int idArticleFinal = Integer.parseInt(Long.toString(idArticle));
         Integer quantite = Integer.valueOf(stringQuantite);
         
         // Ajout de l'article au panier
                 
-        employeDeCaisseSession.ajouterArticleVente(idPanier, idArticle, quantite, e.getIdMagasin());
+        employeDeCaisseSession.ajouterArticleVente(idPanier, idArticleFinal, quantite, employeDeCaisseSession.rechercherRayonArticleParId(idRayonArticle).getPrixVente() ,e.getIdMagasin());    
         
-        // Génération des attributs à passer à la jsp
-        //
+        // Recherche des articles présents dans ce magasin et des articles du panier
+        
+        
+        Collection<RayonArticle> rayonArticles = employeDeCaisseSession.rechercherRayonArticleParIdMagasin(Integer.parseInt(e.getLeMagasin().getId().toString()));             
+        Collection<ArticleVente> articlesVente = employeDeCaisseSession.rechercherArticleVenteParPanier(idPanier);
+        
+        // Passage des paramètres à la jsp
+        
+        request.setAttribute("idPanier", idPanier);
+        request.setAttribute("rayonArticles", rayonArticles);
+        request.setAttribute("articlesVente", articlesVente);
         
     }
     

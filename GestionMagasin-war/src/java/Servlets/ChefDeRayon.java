@@ -153,9 +153,16 @@ public class ChefDeRayon extends HttpServlet {
             jspClient="/chefDeRayon/listeCommande.jsp";
             
 
-        }   
+        } 
                
         
+        
+        
+        else if(action.equals("logout"))
+        {
+            request.getSession(false).invalidate();
+            jspClient="/login.jsp";
+        }
         
         RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);

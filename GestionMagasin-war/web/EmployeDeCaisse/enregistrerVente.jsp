@@ -69,13 +69,11 @@
                         </div>
                     </div>
                         
-                    <button type="submit" class="btn btn-success" value="ajouterArticle">Valider</button>
+                    <button type="submit" class="btn btn-success" value="ajouterArticle">Ajouter au panier</button>
                 </form>
                          
         
-            <%-- RÉCAPITULATIF DE PAIEMENT --%>
-            
-            <%--
+            <%-- RÉCAPITULATIF DE PAIEMENT --%>           
             
             <h1>Liste des articles et la somme de prix du client</h1>
            
@@ -84,26 +82,37 @@
                     <tr>
                         <th>Libelle de l'article</th>
                         <th>Quantité</th>
-                        <th>Prix de vente</th>
+                        <th>Prix de vente unitaire</th>
                         <th>Prix total</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% Collection<Article> _article = article;
-                            for (Article a : _article) {%>
-                    <tr><td><%=a.getLibelle()%></td></tr>
-                    <% Collection<ArticleVente> _articleVente = articleVentes;
-                            for (ArticleVente av : _articleVente) {%>
-                    <tr><td><%=av.getQuantite()%></td></tr>
-                    <% Collection<RayonArticle> _rayonArticle = rayonArticles;
-                            for (RayonArticle ra : _rayonArticle) {%>
-                    <tr><td><%=ra.getPrixVente()%></td></tr>
-                    <tr><td><%=ra.getPrixVente()%>*<%=av.getQuantite()%></td></tr>
-                <td><a href="EmployeDeCaise?action=&id=<%=a.getId()%>"  class="btn btn-warning">
-                        <span class=" glyphicon glyphicon-remove" title="retirer dans le panier"></span>Supprimer
-                    </a>
-                </td>
+                    <% Collection<ArticleVente> _articlesVente = articlesVente;
+                            for (ArticleVente a : _articlesVente) {%>
+                    <tr>
+                        <td><% if(a.getId() != null) {%>
+                            <%=a.getStock().getlArticle().getLibelle()%>
+                            <%} else {%> Aucun <%}%>
+                        </td>
+                        <td><% if(a.getId() != null) {%>
+                            <%=a.getQuantite()%>
+                            <%} else {%> Aucun <%}%>
+                        </td>
+                        <td><% if(a.getId() != null) {%>
+                            <%=a.getPrixUnitaire()%>
+                            <%} else {%> Aucun <%}%>
+                        </td>
+                        <td><% if(a.getId() != null) {%>
+                            <%=a.getPrixUnitaire()*a.getQuantite()%>
+                            <%} else {%> Aucun <%}%>
+                        </td>
+                        <td>
+                  <%--      <a href="EmployeDeCaise?action=&id=<%=a.getId()%>"  class="btn btn-warning">
+                            <span class=" glyphicon glyphicon-remove" title="retirer du panier"></span>Retirer du panier
+                        </a> --%>
+                        </td>
+                    </tr>
             
                 <!-- Un champ qui affiche la somme de prix des produits vendus -->
             
@@ -121,7 +130,7 @@
             </table>
                 
                     <!-- BODY END-->
-            --%>
+                    
         </div>
     </body>
 </html>
