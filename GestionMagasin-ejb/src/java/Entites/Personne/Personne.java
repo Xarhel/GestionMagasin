@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Temporal;
 
 
 /**
@@ -148,6 +149,7 @@ public abstract class Personne implements Serializable {
     }
 
     @Column (nullable=false)
+    @Temporal(javax.persistence.TemporalType.DATE)
         private Date dateCreationCompte;
 
     /**

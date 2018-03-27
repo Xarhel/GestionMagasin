@@ -61,20 +61,48 @@ public class ArticleVenteFacade extends AbstractFacade<ArticleVente> implements 
     }
     
     
+    
+    
     @Override
-    public void creerArticleVenteCaisse(PanierCaisse pc, int quantite, Stock s)
+    public void creerArticleVenteCaisse(PanierCaisse pc, int quantite, float prixVente, Stock s)
     {
     ArticleVente av= new ArticleVente();
-    
-    
-    
+ 
     av.setLePanierCaisse(pc);
     av.setQuantite(quantite);
+    av.setPrixUnitaire(prixVente);
     av.setStock(s);
     
     em.persist(av);
     
     
     }
+
+    @Override
+    public Collection<ArticleVente> rechercherArticleVenteParPanier(long idPanier) {
+        Collection<ArticleVente> av;
+        Query req = em.createQuery("SELECT av FROM ArticleVente AS av INNER JOIN av.lePanierCaisse lpc WHERE lpc.id=:idPanier");
+        req.setParameter("idPanier", idPanier);
+        
+        av = req.getResultList();
+        
+        return av;
+    }
+
+    @Override
+    public ArticleVente rechercherArticleVenteParId(int id) {
+        ArticleVente av;
+        Query req = getEntityManager().createQuery("SELECT av FROM ArticleVente AS av WHERE av.id=:id");
+        req.setParameter("id", id);
+        av = (ArticleVente) req.getSingleResult();
+        return av;
+    }
+
+    @Override
+    public void retirerArticleVente(ArticleVente articleVente) {
+        em.remove(articleVente);
+    }
+    
+    
     
 }

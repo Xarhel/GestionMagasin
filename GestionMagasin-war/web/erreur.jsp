@@ -10,8 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <head>        
-        <title>Erreur</title>
-        <jsp:include page="header.jsp"/>        
+        <title>Erreur</title>     
         <script src="js/script.js" type="text/javascript"></script>
     </head>
 </head>

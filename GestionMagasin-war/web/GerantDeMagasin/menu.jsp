@@ -20,11 +20,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href=<img src="images/Mg.jpg" alt="MG"/></a>
+            <a class="navbar-brand" href="http://localhost:8080/GestionMagasin-war/GerantMagasin"/>Gérant de magasin</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="index.jsp">Accueil</a></li>                 
+                <li><a href="http://localhost:8080/GestionMagasin-war/GerantMagasin">Accueil</a></li>                 
                 <li class="dropdown <%=display%>"></li>
                     
                     

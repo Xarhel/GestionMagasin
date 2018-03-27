@@ -12,7 +12,6 @@
         </head>
         <body>
             <div class="container">
-                
             <jsp:include page="menu.jsp"/>
             <div class="jumbotron">
             <!-- BODY START -->

@@ -133,5 +133,27 @@ public class ArticleVente implements Serializable {
     public void setStock(Stock stock) {
         this.stock = stock;
     }
+    
+    @Column(nullable=false)
+        private float prixUnitaire;
+
+    /**
+     * Get the value of prixUnitaire
+     *
+     * @return the value of prixUnitaire
+     */
+    public float getPrixUnitaire() {
+        return prixUnitaire;
+    }
+
+    /**
+     * Set the value of prixUnitaire
+     *
+     * @param prixUnitaire new value of prixUnitaire
+     */
+    public void setPrixUnitaire(float prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
+    }
+
 
 }

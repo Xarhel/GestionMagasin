@@ -12,11 +12,11 @@
         <title>Créer un rayon</title>
         <jsp:include page="header.jsp"/>
         <jsp:useBean id="magasin" scope="request" type="Entites.Autre.Magasin"></jsp:useBean>
-
         </head>
         <body>
             <div class="container">
             <jsp:include page="menu.jsp"/>
+            <div class="jumbotron">
             <!-- BODY START -->
             <div>
                 <h1>Créer un rayon</h1>
@@ -28,7 +28,7 @@
                         <label class="col-md-2">Nom du magasin<span class="">*</span></label>
                         <div class="col-md-4">
                             <input class="form-control" type="text" name="" value="<%=magasin.getNom()%>" disabled="" />
-                            </div>                        
+                        </div>                        
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2">Nom du rayon<span class="requis">*</span></label>
@@ -40,6 +40,7 @@
                 </form> 
             </div>
             <!-- BODY END-->
-        </div>
-    </body>
+            </div>
+            </div>
+        </body>
 </html>

@@ -64,12 +64,12 @@
     </servlet-mapping>
     
     <!-- Error handling -->
-    
+    <!--
     <error-page>
         <exception-type>java.lang.InstantiationException</exception-type>
         <location>/erreur.jsp</location>
     </error-page>
-    
+    -->
     <!-- Session configuration -->
 
     <session-config>

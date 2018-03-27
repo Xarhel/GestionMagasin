@@ -35,6 +35,12 @@ public interface ArticleVenteFacadeLocal {
 
     public float calculerTotalVente(Collection<ArticleVente> av);
 
-    public void creerArticleVenteCaisse(PanierCaisse pc, int quantite, Stock s);
+    public void creerArticleVenteCaisse(PanierCaisse pc, int quantite, float prixVente, Stock s);
+
+    Collection rechercherArticleVenteParPanier(long idPanier);
+
+    ArticleVente rechercherArticleVenteParId(int id);
+
+    void retirerArticleVente(ArticleVente articleVente);
     
 }

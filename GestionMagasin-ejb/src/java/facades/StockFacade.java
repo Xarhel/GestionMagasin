@@ -235,7 +235,23 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
      List <Stock> cs = req.getResultList();
      Stock s= cs.get(0);
     return s;}
-            
+
+    @Override
+    public Collection<Stock> chercherMagasinStockParIdArticle(int idArticle, Magasin magasin) {
+    Collection<Stock> result;
+    
+        Query req = getEntityManager().createQuery("SELECT s FROM Stock AS s join s.lArticle ar join s.leRayon r WHERE ar.id=:id AND r.leMagasin=:magasin");
+        req.setParameter("id", idArticle);
+        req.setParameter("magasin", magasin);
+        
+        result = req.getResultList();
+        
+        return result;
+    }   
+   
+    
+    
+    
 }
 
 

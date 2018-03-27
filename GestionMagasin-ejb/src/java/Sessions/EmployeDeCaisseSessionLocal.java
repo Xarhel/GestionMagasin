@@ -5,6 +5,8 @@
  */
 package Sessions;
 
+import Entites.Autre.RayonArticle;
+import Entites.Vente.PanierCaisse;
 import java.util.Collection;
 import javax.ejb.Local;
 
@@ -17,8 +19,18 @@ public interface EmployeDeCaisseSessionLocal {
 
     public long creerPanierCaisse(int idEmployeDeCaisse);
 
-    public void ajouterArticleVente(long idPanier, int referenceArticle, int quantite, int idMagasin);
+    public void ajouterArticleVente(long idPanier, int idArticle, int quantite, float prixUnitaire, int idMagasin);
 
     Collection rechercherRayonArticleParIdMagasin(int idMagasin);
+
+    RayonArticle rechercherRayonArticleParId(int idRayonArticle);
+
+    Collection rechercherArticleVenteParPanier(long idPanier);
+
+    float calculerMontantPanier(Collection ArticlesVente, long idPanierCaisse);
+
+    void retirerArticleVente(int idArticleVente);
+
+    boolean validerPanier(int idPanierCaisse);
     
 }
