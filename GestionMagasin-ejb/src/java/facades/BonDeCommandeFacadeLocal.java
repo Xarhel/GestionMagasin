@@ -49,7 +49,7 @@ public interface BonDeCommandeFacadeLocal {
 
     public Collection<BonDeCommande> rechercherBonDeCommandeParMagasin(Magasin mag);
 
-    public void creerBonDeCommande(ChefDeRayon cdr, Date dateCreation, Fournisseur fournisseur);
+    public BonDeCommande creerBonDeCommande(ChefDeRayon cdr, Date dateCreation, Fournisseur fournisseur);
 
     public Collection<BonDeCommande> rechercherBonDeCommandeParFournisseur(Fournisseur fournisseur);
 

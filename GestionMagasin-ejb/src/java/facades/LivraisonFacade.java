@@ -57,10 +57,11 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
     public Collection <Livraison> afficherLivraisonsEnCours (Magasin magasin) {
     
         Collection<Livraison> result;
+        StatutLivraison st = StatutLivraison.enCours;
         
         Query req = getEntityManager().createQuery("select l from Livraison l join l.leBonDeCommande bdc join bdc.leChefDeRayon cdr join cdr.leMagasin mag Where l.statutLivraison =:encours And cdr.leMagasin=:magasin");
         req.setParameter("magasin", magasin);
-        req.setParameter("encours", StatutLivraison.enCours);
+        req.setParameter("encours", st);
         result = req.getResultList();
         
         
@@ -90,7 +91,7 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
     {
         
         livraison.setDateReceptionLivraison(dateReception);
-        livraison.setStatutLivraison(StatutLivraison.livree);
+ //       livraison.setStatutLivraison(StatutLivraison.livree);
         
         em.merge(livraison);
     }

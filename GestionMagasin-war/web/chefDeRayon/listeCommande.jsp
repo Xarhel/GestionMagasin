@@ -19,9 +19,10 @@
             <div class="container">
             <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
-            <div>
+                <div class="jumbotron">
                 <h1>Liste des Commandes</h1>
-                <a style="float: right; " class="btn btn-success" href="ChefDeRayon?action=versCommande">Passer une Commande</a>
+                <a style="float: right; " class="btn btn-success" href="ChefDeRayon?action=versCreerCommande">Passer une Commande</a>
+                
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     
                     <thead>
@@ -45,7 +46,16 @@
                             for (BonDeCommande a : _commande) {%>
                         <tr><td><%=a.getId()%></td>
                             <td><%=a.getLeFournisseur().getRaisonSociale()%></td>
-                            <td><%=a.getDateCommande()%></td>                          
+                            <td><%=a.getDateCommande()%></td>
+                            <td>                               
+                                <a href="ChefDeRayon?action=versCreerCommandeLot&bon=<%=a.getId()%>" class="btn btn-success btn-md">
+                                    <span class="glyphicon-plus" title="consulterCommande"></span> Consulter
+                                </a>
+                                <a href="ChefDeRayon?action=supprimerCommande&bon=<%=a.getId()%>" class="btn btn-success btn-md">
+                                    <span class="glyphicon-remove" title="supprimerCommande"></span> Supprimer
+                                </a>
+                                
+                            </td>
 
                         </tr><%}%>
                     </tbody>

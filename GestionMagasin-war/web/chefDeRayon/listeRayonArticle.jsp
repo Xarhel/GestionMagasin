@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>        
-        <title>Liste des articles</title>
+        <title>Liste des articles du rayon</title>
         <jsp:include page="header.jsp"/>        
         <script src="js/script.js" type="text/javascript"></script>
         <jsp:useBean id="rayonArticle" scope="request" class="java.util.Collection"></jsp:useBean>
@@ -21,7 +21,7 @@
             <!-- BODY START -->
             <div>
                 <div class="jumbotron">
-                <h1>Liste des articles</h1>
+                <h1>Liste des articles du rayon</h1>
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>

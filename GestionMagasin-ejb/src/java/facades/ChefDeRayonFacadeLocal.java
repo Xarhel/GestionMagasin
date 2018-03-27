@@ -40,7 +40,7 @@ public interface ChefDeRayonFacadeLocal {
     public void supprimerChefDeRayon(ChefDeRayon CDR);
 
    
-    public ChefDeRayon rechercherChefDeRayonParId(int id);
+    public ChefDeRayon rechercherChefDeRayonParId(long id);
 
     public void creerChefDeRayon(String nom, String prenom, String login, String mdp, Date dateCreationCompte, TypeCompte typeCompte);
 

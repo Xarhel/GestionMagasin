@@ -7,6 +7,7 @@ package Servlets;
 
 import Entites.Autre.Article;
 import Entites.Autre.BonDeCommande;
+import Entites.Autre.CommandeLot;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import Entites.Enum.CategorieArticle;
@@ -153,17 +154,35 @@ public class ChefDeRayon extends HttpServlet {
             jspClient="/chefDeRayon/listeCommande.jsp";
             
 
-        } 
-               
+        }
         
-        // Logout
+        else if (action.equals("creerCommande")){
+        creerCommande(request, response);
+        jspClient="/chefDeRayon/ajouterCommande.jsp";
+        }
         
-        else if(action.equals("logout"))
+        
+                else if (action.equals("versCreerCommande")){
+                    
+        versCreerCommande(request, response);
+        jspClient="/chefDeRayon/ajouterCommande.jsp";
+        }
+                
+                else if (action.equals("versCreerCommandeLot")){
+        versCreerCommandeLot(request, response);
+        jspClient="/chefDeRayon/creerCommandeLot.jsp";
+        }
+                else if (action.equals("creerCommandeLot")){
+        creerCommandeLot(request, response);
+        jspClient="/chefDeRayon/creerCommandeLot.jsp";
+        }             
+        
+                else if(action.equals("logout"))
         {
             request.getSession(false).invalidate();
             jspClient="/login.jsp";
         }
-        
+
         RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
         rd.forward(request, response);
@@ -391,6 +410,83 @@ public class ChefDeRayon extends HttpServlet {
         request.setAttribute("commande",commande);
         
     
+    }
+
+    private void creerCommande(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+        Employe e = (Employe) session.getAttribute("user");
+        long r = e.getId();
+        
+        String fournisseurA = request.getParameter("four");
+        
+        if(!(fournisseurA.isEmpty()) )
+        {
+        int idf =Integer.valueOf(fournisseurA) ;
+        
+        BonDeCommande bdc = chefDeRayon.creerBonDeCommande(idf, r);
+        
+        request.setAttribute("bonDeCommande", bdc);
+        Collection <Fournisseur> fournisseur = chefDeRayon.listerFournisseur();
+        request.setAttribute("ListeFournisseur", fournisseur);
+        }
+        
+        
+        
+    
+    }
+
+    private void versCreerCommande(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    Collection <Fournisseur> fournisseur = chefDeRayon.listerFournisseur();
+    request.setAttribute("ListeFournisseur", fournisseur);
+    BonDeCommande bdc = new BonDeCommande();
+    request.setAttribute("bonDeCommande", bdc);
+    }
+
+    private void versCreerCommandeLot(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String bon= request.getParameter("bon");
+        int bonid= Integer.valueOf(bon);
+        BonDeCommande bdc= chefDeRayon.chercherBonDeCommandeParId(bonid);
+        HttpSession session = request.getSession();
+        Employe e = (Employe) session.getAttribute("user");
+        Rayon r = e.getLeRayon();
+        Collection <RayonArticle> article = chefDeRayon.listerRayonArticleParRayon(r);
+        Collection<CommandeLot> cl = chefDeRayon.rechercherCommandeLotParIdBonDeCommande(bonid);
+        request.setAttribute("article", article);
+        request.setAttribute("bonDeCommande", bdc);
+        request.setAttribute("lots", cl);
+        request.setAttribute("bon", bon);
+        
+    }
+
+    private void creerCommandeLot(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+        String bon= request.getParameter("bon");
+        request.setAttribute("bon", bon);
+        int bonid= Integer.valueOf(bon);
+        BonDeCommande bdc= chefDeRayon.chercherBonDeCommandeParId(bonid);
+        HttpSession session = request.getSession();
+        Employe e = (Employe) session.getAttribute("user");
+        Rayon r = e.getLeRayon();
+        Collection <RayonArticle> article = chefDeRayon.listerRayonArticleParRayon(r);
+        Collection<CommandeLot> cl = chefDeRayon.rechercherCommandeLotParIdBonDeCommande(bonid);
+        request.setAttribute("article", article);
+        request.setAttribute("bonDeCommande", bdc);
+        request.setAttribute("lots", cl);
+        String prix = request.getParameter("prix");
+        String quantite= request.getParameter("quantite");
+        int ar = Integer.valueOf(request.getParameter("libelle"));
+        Article a = chefDeRayon.rechercherArticleParId(ar);
+        
+        if(!(quantite.isEmpty()) && !(prix.trim().isEmpty())){
+        float prixi = Float.valueOf(prix);
+        int quantitei = Integer.valueOf(quantite);
+        chefDeRayon.creerCommandeLot(bdc, prixi, a, quantitei);
+        
+        }
+        
+
     }
 
 }

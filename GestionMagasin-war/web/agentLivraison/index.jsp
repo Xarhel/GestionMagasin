@@ -25,6 +25,6 @@
                 <img src="images/Magasin_Aarhus.jpg"  alt="Magasin" class="img-responsive">
             </div>
         </div> <!-- /container -->
-    </div>
+    
 </body>
 </html>

@@ -7,6 +7,7 @@ package Sessions;
 
 import Entites.Autre.Article;
 import Entites.Autre.BonDeCommande;
+import Entites.Autre.CommandeLot;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import Entites.Enum.CategorieArticle;
@@ -29,7 +30,7 @@ public interface ChefDeRayonSessionLocal {
 
     public void modifierPrixArticle(RayonArticle ra, float prix);
 
-    public void creerBonDeCommande(Date dateCommande, int idFournisseur, int idArticle);
+    public BonDeCommande creerBonDeCommande(int idFournisseur, long idChefDeRayon);
 
    public void creerCommandeLot(BonDeCommande commande, float prixAchat, Article lArticle, int quantite);
 
@@ -48,5 +49,9 @@ public interface ChefDeRayonSessionLocal {
 
     public Collection<BonDeCommande> listerCommandesParRayon(Rayon r);
 
-    
+    public Fournisseur rechercherFournisseurParId(int id);
+
+    public BonDeCommande chercherBonDeCommandeParId(int id);   
+
+    public Collection<CommandeLot> rechercherCommandeLotParIdBonDeCommande(int id);
 }

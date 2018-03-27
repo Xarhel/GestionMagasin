@@ -18,12 +18,14 @@ import javax.ejb.Local;
 @Local
 public interface AgentDeLivraisonSessionLocal {
 
-    public void enregistrerLivraison(Date dateReception, int idLivraison);
+    public void enregistrerLivraison(int idLivraison);
 
     public Collection<CommandeLot> AfficherCommandeLots(int idLivraison);
 
     public void enregistrerLivraisonLots(int idLivraison, int idCommandeLot, int quantiteAcceptee, int quantiteExpediee, int quantiteLivree, Date date, String taille, int duree);
 
     public Collection<Livraison> listerLivraisonEnCours(long idMagasin);
+
+    public Collection<CommandeLot> AfficherCommandeLotsParIdCommande(int idCommande);
     
 }

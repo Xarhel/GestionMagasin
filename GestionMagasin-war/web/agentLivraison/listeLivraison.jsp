@@ -21,12 +21,12 @@
             <!-- BODY START -->
             <div>
                 <h1>Liste des livraisons</h1>
-                <form method="POST" action=".....">
+                <form method="POST" action="AgentLivraison">
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Agent de livraison</th>
-                            <th>Date de création livraison</th>
+                            <th>Numéro de Livraison</th>
+                            <th>Rayon</th>
                           
                             <th>Actions</th>
                             
@@ -34,8 +34,8 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Agent de livraison</th>
-                            <th>Date de création livraison</th>
+                            <th>Numéro de Commande</th>
+                            <th>Rayon</th>
                           
                             <th>Actions</th>
                         </tr>
@@ -44,12 +44,12 @@
                         <% Collection<Livraison> _livraison = livraison;
                             for (Livraison l : _livraison) {%>
                         <tr>
-                            <td><%=l.getlAgentDeLivraison()%></td>
-                            <td><%=l.getDateCreationLivraison()%></td>
+                            <td><%=l.getLeBonDeCommande().getId()%></td>
+                            <td><%=l.getLeBonDeCommande().getLeChefDeRayon().getLeRayon().getRayonNom()%></td>
                           
                        <td>     <a href="AgentLivraison?action=versEnregistrerLivraison&id=<%=l.getId()%>" class="btn btn-info btn-md">
-                               <span class="glyphicon glyphicon-edit" title="enregistrerLivraison"></span> EnregistrerLivraison </td>
-                                </a>
+                               <span class="glyphicon glyphicon-edit" title="enregistrerLivraison"></span> EnregistrerLivraison 
+                                </a></td>
                          <td><a href="Menu?action=pagReclamation&id=<%=l.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Reclamer"></span>Reclamation
                                 </a>

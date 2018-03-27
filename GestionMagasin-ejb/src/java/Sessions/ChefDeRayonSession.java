@@ -7,6 +7,7 @@ package Sessions;
 
 import Entites.Autre.Article;
 import Entites.Autre.BonDeCommande;
+import Entites.Autre.CommandeLot;
 import Entites.Autre.Rayon;
 import Entites.Autre.RayonArticle;
 import Entites.Enum.CategorieArticle;
@@ -116,8 +117,8 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
     @Override
    public void creerCommandeLot(BonDeCommande commande, float prixAchat, Article lArticle, int quantite)
    {
-       Lot lot = new Lot();
-       lot= lotFacade.creerLotGeneral(lArticle, quantite);
+       
+       Lot lot= lotFacade.creerLotGeneral(lArticle, quantite);
     
        commandeLotFacade.creerCommandeLot(lot, commande, prixAchat);
        
@@ -126,13 +127,20 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
    }
    
     @Override
-    public void creerBonDeCommande(Date dateCommande, int idFournisseur, int idChefDeRayon) {
-       Fournisseur fournisseur= fournisseurFacade.rechercherFournisseurParId(idChefDeRayon);
+    public BonDeCommande creerBonDeCommande(int idFournisseur, long idChefDeRayon) {
+        Date d = new Date();
+       Fournisseur fournisseur= fournisseurFacade.rechercherFournisseurParId(idFournisseur);
        ChefDeRayon cdr= chefDeRayonFacade.rechercherChefDeRayonParId(idChefDeRayon);
-       bonDeCommandeFacade.creerBonDeCommande(cdr, dateCommande, fournisseur);
-        
+       BonDeCommande bdc = bonDeCommandeFacade.creerBonDeCommande(cdr, d, fournisseur);
+         return bdc;
         
     }
+    
+    @Override
+    public BonDeCommande chercherBonDeCommandeParId(int id){
+    BonDeCommande bdc = bonDeCommandeFacade.rechercherBonDeCommandeParId(id);
+    return bdc;}
+    
     @Override
         public Article rechercherArticleParId(int id)
     {
@@ -180,6 +188,21 @@ public class ChefDeRayonSession implements ChefDeRayonSessionLocal {
     Collection<BonDeCommande> commande;
     commande = bonDeCommandeFacade.listerCommandesParRayon(r);
     return commande;}
+    
+    @Override
+    public Fournisseur rechercherFournisseurParId(int id){
+    Fournisseur f =fournisseurFacade.rechercherFournisseurParId(id);
+    return f;}
+    
+    
+    @Override
+        public Collection <CommandeLot> rechercherCommandeLotParIdBonDeCommande (int id){
+        
+        BonDeCommande bdc = bonDeCommandeFacade.rechercherBonDeCommandeParId(id);
+        Collection <CommandeLot> cl=commandeLotFacade.rechercherCommandeLotParIdBonDeCommande(bdc);
+        return cl;
+        }
+        
            
            
 }

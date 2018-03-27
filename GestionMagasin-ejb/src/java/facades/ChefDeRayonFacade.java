@@ -84,7 +84,7 @@ public class ChefDeRayonFacade extends AbstractFacade<ChefDeRayon> implements Ch
      
     
     @Override
-    public ChefDeRayon rechercherChefDeRayonParId(int id)
+    public ChefDeRayon rechercherChefDeRayonParId(long id)
     {
     ChefDeRayon result;
     
