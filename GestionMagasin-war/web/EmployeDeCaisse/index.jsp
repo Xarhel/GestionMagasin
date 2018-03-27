@@ -28,6 +28,16 @@
             <div class="image">
                 <img src="images/Magasin_Aarhus.jpg"  alt="Magasin" class="img-responsive">
             </div>
+            <script>
+            function get(name){
+                if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+                    return decodeURIComponent(name[1]);
+            }
+            if(get('action') == 'validerPanier')
+            {
+                    window.onload = alert("La commande a bien été enregistrée");
+            }
+            </script>
         </div> <!-- /container -->
     </div>
 </body>

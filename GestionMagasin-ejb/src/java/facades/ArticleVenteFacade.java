@@ -88,5 +88,21 @@ public class ArticleVenteFacade extends AbstractFacade<ArticleVente> implements 
         
         return av;
     }
+
+    @Override
+    public ArticleVente rechercherArticleVenteParId(int id) {
+        ArticleVente av;
+        Query req = getEntityManager().createQuery("SELECT av FROM ArticleVente AS av WHERE av.id=:id");
+        req.setParameter("id", id);
+        av = (ArticleVente) req.getSingleResult();
+        return av;
+    }
+
+    @Override
+    public void retirerArticleVente(ArticleVente articleVente) {
+        em.remove(articleVente);
+    }
+    
+    
     
 }

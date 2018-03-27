@@ -6,6 +6,7 @@
 package Sessions;
 
 import Entites.Autre.RayonArticle;
+import Entites.Vente.PanierCaisse;
 import java.util.Collection;
 import javax.ejb.Local;
 
@@ -25,5 +26,11 @@ public interface EmployeDeCaisseSessionLocal {
     RayonArticle rechercherRayonArticleParId(int idRayonArticle);
 
     Collection rechercherArticleVenteParPanier(long idPanier);
+
+    float calculerMontantPanier(Collection ArticlesVente, long idPanierCaisse);
+
+    void retirerArticleVente(int idArticleVente);
+
+    boolean validerPanier(int idPanierCaisse);
     
 }

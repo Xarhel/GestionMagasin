@@ -69,6 +69,18 @@ public class EmployeCaisse extends HttpServlet {
             jspClient="/EmployeDeCaisse/enregistrerVente.jsp";
         }
         
+        else if(action.equals("retirerArticle"))
+        {
+            retirerArticle(request, response);
+            jspClient="/EmployeDeCaisse/enregistrerVente.jsp";
+        }
+        
+        else if(action.equals("validerPanier"))
+        {
+            validerPanier(request, response);
+            jspClient="/EmployeDeCaisse/index.jsp";
+        }
+        
         
         // Logout
         
@@ -163,6 +175,7 @@ public class EmployeCaisse extends HttpServlet {
         request.setAttribute("idPanier", idPanier);
         request.setAttribute("rayonArticles", rayonArticles);
         request.setAttribute("articlesVente", articlesVente);
+        request.setAttribute("montantPanier", 0.0F);
         
     }
     
@@ -197,18 +210,57 @@ public class EmployeCaisse extends HttpServlet {
         Collection<ArticleVente> articlesVente = employeDeCaisseSession.rechercherArticleVenteParPanier(idPanier);
         
         // Calcul de montant total du panier
-        
-        // employeDeCaisseSession.
+
+        Float montantPanier = employeDeCaisseSession.calculerMontantPanier(articlesVente, idPanier);      
         
         // Passage des paramètres à la jsp
         
         request.setAttribute("idPanier", idPanier);
         request.setAttribute("rayonArticles", rayonArticles);
         request.setAttribute("articlesVente", articlesVente);
+        request.setAttribute("montantPanier", montantPanier);
         
     }
     
+    protected void retirerArticle(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        HttpSession session = request.getSession();
+        Employe e = (Employe) session.getAttribute("user");
+        
+        String stringIdPanier = request.getParameter("idPanier");
+        String stringIdArticleVente = request.getParameter("id");
+        
+        int articleVente = Integer.parseInt(stringIdArticleVente);
+        int idPanier = Integer.parseInt(stringIdPanier);
+        long longIdPanier = Long.parseLong(stringIdPanier);
+        employeDeCaisseSession.retirerArticleVente(articleVente);
+        
+        // Recherche des articles présents dans ce magasin et des articles du panier
+        
+        Collection<RayonArticle> rayonArticles = employeDeCaisseSession.rechercherRayonArticleParIdMagasin(Integer.parseInt(e.getLeMagasin().getId().toString()));             
+        Collection<ArticleVente> articlesVente = employeDeCaisseSession.rechercherArticleVenteParPanier(idPanier);
+        
+        // Calcul de montant total du panier
+
+        Float montantPanier = employeDeCaisseSession.calculerMontantPanier(articlesVente, idPanier);
+        
+        request.setAttribute("idPanier", longIdPanier);
+        request.setAttribute("rayonArticles", rayonArticles);
+        request.setAttribute("articlesVente", articlesVente);
+        request.setAttribute("montantPanier", montantPanier);
+        
+    }
     
+    protected void validerPanier(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException
+    {
+        String stringIdPanier = request.getParameter("idPanier");        
+        int idPanier = Integer.parseInt(stringIdPanier);       
+        boolean resultatPaiement = employeDeCaisseSession.validerPanier(idPanier);
+        
+        request.setAttribute("resultatPaiement", resultatPaiement);
+    }
     
     
 }

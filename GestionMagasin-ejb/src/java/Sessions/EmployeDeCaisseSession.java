@@ -108,10 +108,26 @@ public class EmployeDeCaisseSession implements EmployeDeCaisseSessionLocal {
         Collection<ArticleVente> av = articleVenteFacade.rechercherArticleVenteParPanier(idPanier);       
         return av;
     }
-    
-    
-    
-    
-    
+
+    @Override
+    public float calculerMontantPanier(Collection ArticlesVente, long idPanierCaisse) {
+        Float montantPanier = articleVenteFacade.calculerTotalVente(ArticlesVente);
+        PanierCaisse pc = panierCaisseFacade.chercherPanierCaisseParId(idPanierCaisse);
+        panierCaisseFacade.ajouterTotal(montantPanier, pc);
+        return montantPanier;
+    }
+
+    @Override
+    public void retirerArticleVente(int idArticleVente) {
+        ArticleVente av = articleVenteFacade.rechercherArticleVenteParId(idArticleVente);
+        articleVenteFacade.retirerArticleVente(av);
+    }
+
+    @Override
+    public boolean validerPanier(int idPanierCaisse) {
+        PanierCaisse panierCaisse = panierCaisseFacade.chercherPanierCaisseParId(idPanierCaisse);
+        boolean result = panierCaisseFacade.validerLePaiement(panierCaisse);
+        return result;
+    }      
     
 }

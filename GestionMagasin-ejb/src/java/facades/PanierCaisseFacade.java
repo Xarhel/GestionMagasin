@@ -79,13 +79,8 @@ public class PanierCaisseFacade extends AbstractFacade<PanierCaisse> implements 
         boolean result = pc.getPaiement();
         
         return result;
-        
-        
-        
-        
+            
     }
-    
-    
-    
+     
     
 }

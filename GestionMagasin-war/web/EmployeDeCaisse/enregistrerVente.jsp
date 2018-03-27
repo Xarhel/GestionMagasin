@@ -20,6 +20,7 @@
         <jsp:useBean id="idPanier" scope="request" type="java.lang.Long"></jsp:useBean>
         <jsp:useBean id="rayonArticles" scope="request" type="java.util.Collection"></jsp:useBean>
         <jsp:useBean id="articlesVente" scope="request" type="java.util.Collection"></jsp:useBean>
+        <jsp:useBean id="montantPanier" scope="request" type="java.lang.Float"></jsp:useBean>
         
         <jsp:include page="header.jsp"/>
         <jsp:include page="menu.jsp"/>
@@ -68,7 +69,6 @@
                             <input class="form-control" id="quantite" type="text" name="quantite" />
                         </div>
                     </div>
-                        
                     <button type="submit" class="btn btn-success">Ajouter au panier</button>
                 </form>
                         </br>
@@ -111,7 +111,7 @@
                             <%} else {%> Aucun <%}%>
                         </td>
                         <td>
-                        <a href="EmployeDeCaise?action=&id=<%=a.getId()%>"  class="btn btn-warning">
+                        <a href="EmployeCaisse?action=retirerArticle&id=<%=a.getId()%>&idPanier=<%=idPanier%>"  class="btn btn-warning">
                             <span class=" glyphicon glyphicon-remove" title="retirer du panier"></span>Retirer du panier
                         </a>
                         </td>
@@ -119,20 +119,17 @@
                     <%}%>
                 </tbody>
             </table>
-                    
-                <!-- Un champ qui affiche la somme de prix des produits vendus -->
-            
+           
                 <div class="form-group row">
                         <label class="col-md-2">Total<span class=""></span></label>
                         <div class="col-md-4">
-                            <input class="form-control" type="text" name="" value=" " readonly />
+                            <input class="form-control" type="text" value="<%=montantPanier%>" readonly="" />
                         </div>                        
                 </div>
-                <div class="buton">
-                <button type="submit" class="btn btn-success">Valider</button>
-                <button type="submit" class="btn btn-success">Imprimer la facture</button>
-                </div>
-              
+                <a href="EmployeCaisse?action=validerPanier&idPanier=<%=idPanier%>" class="btn btn-success">
+                <span title="Valider le panier"></span>Valider le panier
+                </a>
+
                     <!-- BODY END-->
                     
         </div>
