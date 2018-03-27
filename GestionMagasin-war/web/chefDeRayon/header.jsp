@@ -22,7 +22,7 @@
         background-color: #656060!important;
     } 
     body {
-        background-color:#ccccff ;   
+        background-color:#737373;   
     }
 </style>
 
