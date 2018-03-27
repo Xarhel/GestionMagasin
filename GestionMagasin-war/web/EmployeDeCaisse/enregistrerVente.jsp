@@ -48,8 +48,8 @@
                  
                  <h1>Enregistrer une vente</h1>              
                 <form method="POST" action="EmployeCaisse">
-                    <input hidden="" type="text" name="action" value="enregistrerVente"/>
-                    <input hidden="" type="text" name="idPanierActuel" value="idPanier"/>
+                    <input hidden="" type="text" name="action" value="ajouterArticle"/>
+                    <input hidden="" type="text" name="idPanier" value="<%=idPanier%>"/>
                     
                     <div id="article" class="form-group row">
                         <label class="col-md-2">Article à ajouter<span class="requis">*</span></label>
@@ -65,17 +65,19 @@
                     <div class="form-group row">
                         <label class="col-md-2">Quantite<span class="requis"></span></label>
                         <div class="col-md-4">
-                            <input class="form-control" id="quantite" type="text" name="quantiteArticle" />
+                            <input class="form-control" id="quantite" type="text" name="quantite" />
                         </div>
                     </div>
                         
-                    <button type="submit" class="btn btn-success" value="ajouterArticle">Ajouter au panier</button>
+                    <button type="submit" class="btn btn-success">Ajouter au panier</button>
                 </form>
+                        </br>
+                        </br>
                          
         
             <%-- RÉCAPITULATIF DE PAIEMENT --%>           
             
-            <h1>Liste des articles et la somme de prix du client</h1>
+            <h2>Liste des articles du panier</h2>
            
             <table class="table table-hover" >
                 <thead>
@@ -88,6 +90,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     <% Collection<ArticleVente> _articlesVente = articlesVente;
                             for (ArticleVente a : _articlesVente) {%>
                     <tr>
@@ -108,12 +111,15 @@
                             <%} else {%> Aucun <%}%>
                         </td>
                         <td>
-                  <%--      <a href="EmployeDeCaise?action=&id=<%=a.getId()%>"  class="btn btn-warning">
+                        <a href="EmployeDeCaise?action=&id=<%=a.getId()%>"  class="btn btn-warning">
                             <span class=" glyphicon glyphicon-remove" title="retirer du panier"></span>Retirer du panier
-                        </a> --%>
+                        </a>
                         </td>
                     </tr>
-            
+                    <%}%>
+                </tbody>
+            </table>
+                    
                 <!-- Un champ qui affiche la somme de prix des produits vendus -->
             
                 <div class="form-group row">
@@ -126,9 +132,7 @@
                 <button type="submit" class="btn btn-success">Valider</button>
                 <button type="submit" class="btn btn-success">Imprimer la facture</button>
                 </div>
-                </tbody>
-            </table>
-                
+              
                     <!-- BODY END-->
                     
         </div>

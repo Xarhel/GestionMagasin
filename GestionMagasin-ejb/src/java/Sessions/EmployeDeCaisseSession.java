@@ -76,13 +76,13 @@ public class EmployeDeCaisseSession implements EmployeDeCaisseSessionLocal {
     }
     
     @Override
-    public void ajouterArticleVente (long idPanier, int referenceArticle, int quantite, float prixUnitaire, int idMagasin)
+    public void ajouterArticleVente (long idPanier, int idArticle, int quantite, float prixUnitaire, int idMagasin)
     {
         PanierCaisse pc= panierCaisseFacade.chercherPanierCaisseParId(idPanier);
-        Article a= articleFacade.rechercheArticleParReference(referenceArticle);
+        Article a= articleFacade.rechercherArticleParId(idArticle);
         Magasin m = magasinFacade.rechercherMagasinParId(idMagasin);
 
-        List<Stock> stocks=    (List<Stock>) stockFacade.chercherMagasinStockParReferenceArticle(referenceArticle, m);
+        List<Stock> stocks = (List<Stock>) stockFacade.chercherMagasinStockParIdArticle(idArticle, m);
 
        
         Stock s= stocks.get(0) ;

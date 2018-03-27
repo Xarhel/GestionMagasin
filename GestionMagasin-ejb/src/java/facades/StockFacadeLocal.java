@@ -62,5 +62,7 @@ public interface StockFacadeLocal {
     public Collection<Stock> retirerStockVente(Collection<ArticleVente> av);
 
     public Stock chercherStockParArticleEtRayon(Article article, Rayon rayon);
+
+    Collection chercherMagasinStockParIdArticle(int idArticle, Magasin magasin);
     
 }

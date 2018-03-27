@@ -156,7 +156,7 @@ public class ChefDeRayon extends HttpServlet {
         } 
                
         
-        
+        // Logout
         
         else if(action.equals("logout"))
         {

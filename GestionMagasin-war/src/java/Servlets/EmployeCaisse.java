@@ -146,6 +146,7 @@ public class EmployeCaisse extends HttpServlet {
         
         HttpSession session = request.getSession();
         Employe e = (Employe) session.getAttribute("user");
+        
         long idPanier = employeDeCaisseSession.creerPanierCaisse(Integer.parseInt(e.getId().toString()));
         
         // Recherche des articles présents dans ce magasin
@@ -173,7 +174,8 @@ public class EmployeCaisse extends HttpServlet {
         
         HttpSession session = request.getSession();
         Employe e = (Employe) session.getAttribute("user");
-        String stringIdPanier = request.getParameter("idPanierActuel");
+        
+        String stringIdPanier = request.getParameter("idPanier");
         String stringIdRayonArticle = request.getParameter("article");
         String stringQuantite = request.getParameter("quantite");
         
@@ -183,17 +185,20 @@ public class EmployeCaisse extends HttpServlet {
         int idRayonArticle = Integer.parseInt(stringIdRayonArticle);
         long idArticle = employeDeCaisseSession.rechercherRayonArticleParId(idRayonArticle).getLesArticles().getId();
         int idArticleFinal = Integer.parseInt(Long.toString(idArticle));
-        Integer quantite = Integer.valueOf(stringQuantite);
+        int quantite = Integer.valueOf(stringQuantite);
         
         // Ajout de l'article au panier
                 
-        employeDeCaisseSession.ajouterArticleVente(idPanier, idArticleFinal, quantite, employeDeCaisseSession.rechercherRayonArticleParId(idRayonArticle).getPrixVente() ,e.getIdMagasin());    
+        employeDeCaisseSession.ajouterArticleVente(idPanier, idArticleFinal, quantite, employeDeCaisseSession.rechercherRayonArticleParId(idRayonArticle).getPrixVente(), Integer.parseInt(e.getLeMagasin().getId().toString()));    
         
         // Recherche des articles présents dans ce magasin et des articles du panier
         
-        
         Collection<RayonArticle> rayonArticles = employeDeCaisseSession.rechercherRayonArticleParIdMagasin(Integer.parseInt(e.getLeMagasin().getId().toString()));             
         Collection<ArticleVente> articlesVente = employeDeCaisseSession.rechercherArticleVenteParPanier(idPanier);
+        
+        // Calcul de montant total du panier
+        
+        // employeDeCaisseSession.
         
         // Passage des paramètres à la jsp
         
@@ -202,6 +207,8 @@ public class EmployeCaisse extends HttpServlet {
         request.setAttribute("articlesVente", articlesVente);
         
     }
+    
+    
     
     
 }

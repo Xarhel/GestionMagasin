@@ -18,7 +18,7 @@ public interface EmployeDeCaisseSessionLocal {
 
     public long creerPanierCaisse(int idEmployeDeCaisse);
 
-    public void ajouterArticleVente(long idPanier, int referenceArticle, int quantite, float prixUnitaire, int idMagasin);
+    public void ajouterArticleVente(long idPanier, int idArticle, int quantite, float prixUnitaire, int idMagasin);
 
     Collection rechercherRayonArticleParIdMagasin(int idMagasin);
 
