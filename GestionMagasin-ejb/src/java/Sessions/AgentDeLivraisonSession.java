@@ -15,6 +15,7 @@ import Entites.Autre.Rayon;
 import Entites.Enum.CategorieArticle;
 import Entites.Lot.Lot;
 import Entites.Personne.ChefDeRayon;
+import facades.BonDeCommandeFacadeLocal;
 import facades.CommandeLotFacadeLocal;
 import facades.LivraisonFacadeLocal;
 import facades.LivraisonLotFacadeLocal;
@@ -52,7 +53,8 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
     private LivraisonLotFacadeLocal livraisonLotFacade;
     
     
-    
+    @EJB
+    private BonDeCommandeFacadeLocal bonDeCommandeFacade;    
     
     
     
@@ -61,10 +63,10 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
     
 
     @Override
-    public void enregistrerLivraison(Date dateReception, int idLivraison)
+    public void enregistrerLivraison(int idLivraison)
         
 {
-    
+    Date dateReception = new Date();
     Livraison livraison = livraisonFacade.rechercherLivraisonParId(idLivraison);
     
     livraisonFacade.recevoirLivraison(livraison, dateReception);
@@ -72,6 +74,18 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
     // Methode pour les livraisons lots
     
 }
+    
+    /**
+     *
+     * @param idCommande
+     * @return
+     */
+    @Override
+    public Collection <CommandeLot> AfficherCommandeLotsParIdCommande(int idCommande){
+         
+            BonDeCommande bc = bonDeCommandeFacade.rechercherBonDeCommandeParId(idCommande);
+        Collection <CommandeLot> cl= commandeLotFacade.rechercherCommandeLotParIdBonDeCommande(bc);
+        return cl; }
     
     @Override
     public Collection <CommandeLot> AfficherCommandeLots(int idLivraison)

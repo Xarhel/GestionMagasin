@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import Entites.Autre.CommandeLot;
 import Entites.Autre.Livraison;
 import Entites.Autre.Magasin;
 import Entites.Personne.Employe;
@@ -13,7 +14,7 @@ import facades.MagasinFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
-import java.util.Date;
+import java.sql.Date;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -62,9 +63,9 @@ public class AgentLivraison extends HttpServlet {
           else if ((action.equals("versListeLivraison")))
               
           {
-              
-              jspClient="/agentLivraison/listeLivraison.jsp";
               afficherListeLivraison(request, response);
+              jspClient="/agentLivraison/listeLivraison.jsp";
+
           }
            
           else if ((action.equals("versCreerLivraison")))
@@ -76,12 +77,23 @@ public class AgentLivraison extends HttpServlet {
           else if (((action.equals("versEnregistrerLivraison"))))
           {
               versEnregistrerLivraison(request, response);
-              jspClient="/agentLivraison/index.jsp";
+              jspClient="/agentLivraison/enregistrerCommandeLot.jsp";
               
+          }
+          
+          else if (((action.equals("enregistrerCommandeLot"))))
+          {enregistrerCommandeLot(request, response);
+            jspClient="/agentLivraison/index.jsp";
           }
               
               
-              
+          
+          else if(action.equals("logout"))
+        {
+            request.getSession(false).invalidate();
+            jspClient="/login.jsp";
+        }
+          
               
           RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
@@ -164,8 +176,9 @@ public class AgentLivraison extends HttpServlet {
         Employe e=(Employe) session.getAttribute("user");    
         
         Magasin m= e.getLeMagasin();
+        long mid= m.getId();
         
-        Collection <Livraison> result =agentDeLivraisonSession.listerLivraisonEnCours(m.getId());
+        Collection <Livraison> result =agentDeLivraisonSession.listerLivraisonEnCours(mid);
         
         request.setAttribute("livraison", result);
         
@@ -176,12 +189,49 @@ public class AgentLivraison extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException
        {
            String id = request.getParameter("id");
-           int idLivraison = Integer.parseInt(id);
-           Date d=new Date();
-           agentDeLivraisonSession.enregistrerLivraison(d, idLivraison);
+           int idLivraison = Integer.valueOf(id);
+           agentDeLivraisonSession.enregistrerLivraison(idLivraison);
+           Collection <CommandeLot> cl = agentDeLivraisonSession.AfficherCommandeLots(idLivraison);
+           
+           request.setAttribute("cl", cl);
+           request.setAttribute("id", id);
            
            
        }
+
+    private void enregistrerCommandeLot(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String idLivraison = request.getParameter("id");
+        int idLiv = Integer.valueOf(idLivraison);
+        Collection <CommandeLot> cl = agentDeLivraisonSession.AfficherCommandeLots(idLiv);
+        request.setAttribute("cl", cl);
+        int longeur = cl.size();
+        
+        for (int i=1; i<longeur+2; i++ ){
+            String st = String.valueOf(i);
+           String idLot = request.getParameter("idCommandeLot"+st);
+           int idCommandeLot = Integer.valueOf(idLot);
+           String qlivree =request.getParameter("qlivree"+st);
+           String qrecue =request.getParameter("qrecue"+st);
+           String qacceptee =request.getParameter("qacceptee"+st);
+           String taille =request.getParameter("taille");
+           String dateperemption =request.getParameter("dateperemption"+st);
+           String garantie =request.getParameter("garantie"+st);
+           
+           if(!(qlivree.isEmpty()) && !(qrecue.trim().isEmpty()) && !(qacceptee.trim().isEmpty())&& !(taille.trim().isEmpty())&& !(dateperemption.trim().isEmpty())&& !(garantie.trim().isEmpty()))
+           {
+               int iqlivree = Integer.valueOf(qlivree);
+               int iqrecue = Integer.valueOf(qrecue);
+               int iqacceptee = Integer.valueOf(qacceptee);
+               Date idateperemption= Date.valueOf(dateperemption);
+               int igarantie = Integer.valueOf(garantie);
+               
+           
+           agentDeLivraisonSession.enregistrerLivraisonLots( idLiv,idCommandeLot, iqacceptee, iqlivree, iqrecue,  idateperemption, taille, igarantie);
+           }}
+           
+        
+    }
     
     
 }

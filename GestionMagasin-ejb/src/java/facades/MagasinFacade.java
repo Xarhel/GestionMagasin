@@ -71,7 +71,7 @@ public class MagasinFacade extends AbstractFacade<Magasin> implements MagasinFac
         
     Magasin result;
     
-        Query req = getEntityManager().createQuery("SELECT m FROM Magasin AS m WHERE m.id = :idMagasin");
+        Query req = getEntityManager().createQuery("SELECT m FROM Magasin AS m WHERE m.id =:idMagasin");
         req.setParameter("idMagasin", idMagasin);
         
         result = (Magasin) req.getSingleResult();
