@@ -20,6 +20,10 @@
     }
     .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
         background-color: #656060!important;
-    }    
+    }  
+    body{
+        background-color: #737373;
+        
+    }
 </style>
 
