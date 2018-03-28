@@ -21,8 +21,8 @@
             <div class="jumbotron">
             <!-- BODY START -->
             <div>
-                <h1>Liste des magasin</h1>
-                <form method="POST" action=".....">
+                <h1>Liste des magasins</h1>
+                <form method="POST" action="Administrateur">
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>

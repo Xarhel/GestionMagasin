@@ -14,25 +14,26 @@
         <jsp:useBean id="article" scope="request" type="Entites.Autre.Article"></jsp:useBean>
         <jsp:useBean id="rayon" scope="request" type="Entites.Autre.Rayon"></jsp:useBean>
         <jsp:include page="header.jsp"/>
+        <jsp:include page="menu.jsp"/>
 
     </head>
     <body>
         <div class="container">
-            <jsp:include page="menu.jsp"/>
+
              <div class="jumbotron">
             <!-- BODY START -->
-            <h1>Ajouter L'article Au Rayon </h1>              
+            <h1>Ajouter l'article au rayon</h1>              
             <form method="POST" action="ChefDeRayon">
                 <input hidden type="text" name="action" value="ajouterAuRayon"/>
                 <input hidden type="text" name="idArticle" value="<%=article.getId()%>"/>
                 <div class="form-group row">
-                    <label class="col-md-2">Libelle ariticle<span class="requis">*</span></label>
+                    <label class="col-md-2">Libellé de l'article<span class="requis">*</span></label>
                     <div class="col-md-4">
                         <input class="form-control" type="text" name="libelle" value="<%=article.getLibelle()%>" disabled />
                     </div>                        
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-2">Reference article<span class="requis">*</span></label>
+                    <label class="col-md-2">Référence article<span class="requis">*</span></label>
                     <div class="col-md-4">
                         <input class="form-control" type="text" name="nom" value="<%=article.getReferenceArticle()%>" disabled/>
                     </div>                        
@@ -45,7 +46,7 @@
                 </div>
                     
                 <div class="form-group row">
-                    <label class="col-md-2">Prix article<span class="requis">*</span></label>
+                    <label class="col-md-2">Prix de l'article<span class="requis">*</span></label>
                     <div class="col-md-4">
                         <input class="form-control" type="text" name="prix" required/>
                     </div>                        

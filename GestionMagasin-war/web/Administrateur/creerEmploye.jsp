@@ -25,7 +25,7 @@
           <%--  <jsp:useBean id="rayon" scope="request" class="java.util.Collection"></jsp:useBean> --%>
                 <!-- BODY START -->
                 <div>
-                    <h1>Créer employe</h1>
+                    <h1>Créer un employé</h1>
                     <form method="POST" action="Administrateur">
                         <input hidden type="text" name="action" value="creerEmploye"/>
                         <div class="form-group row">
@@ -49,7 +49,7 @@
                         <div class="form-group row">
                             <label class="col-md-2">Mot de Passe<span class="requis">*</span></label>
                             <div class="col-md-4">
-                                <input class="form-control" type="text" name="mdp" required/>
+                                <input class="form-control" type="password" name="mdp" required/>
                             </div>
                         </div>
                             <div class="form-group row">
