@@ -16,8 +16,9 @@
         <jsp:useBean id="fournisseur" scope="request" class="java.util.Collection"></jsp:useBean>
         </head>
         <body>
-            <div class="container">
+            <div class="container">  
             <jsp:include page="menu.jsp"/>
+            <div class="jumbotron"
             <!-- BODY START -->
             <div>
                 <h1>Liste des fournisseurs</h1>
@@ -47,6 +48,7 @@
                     </tbody>
                 </table>
                      
+            </div>
             </div>
             <!-- BODY END-->
         </div>

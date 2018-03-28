@@ -10,10 +10,12 @@
     <head>        
         <title>Créer un fournisseur</title>
         <jsp:include page="header.jsp"/>
+        
     </head>
     <body>
         <div class="container">
             <jsp:include page="menu.jsp"/>
+            <div class="jumbotron">
             <!-- BODY START -->
             <div>
                 <h1>Créer fournisseur</h1>
@@ -53,6 +55,7 @@
                 </form> 
             </div>
             </div>
+        
             <!-- BODY END-->
         </div>
     </body>
