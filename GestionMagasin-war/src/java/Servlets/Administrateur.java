@@ -25,7 +25,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -365,6 +364,11 @@ public class Administrateur extends HttpServlet {
         int idEmploye = Integer.parseInt(id);
         Personne personne = administrateur.rechercherPersonneParId(idEmploye);
         administrateur.supprimerPersonne(personne);
+        
+        // Affichage des employés
+        
+        Collection<Employe> e = administrateur.afficherTousEmployes();
+        request.setAttribute("employe", e);
     }
     
     protected void afficherTousMagasins(HttpServletRequest request,
