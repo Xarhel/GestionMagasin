@@ -180,7 +180,7 @@ public class StockFacade extends AbstractFacade<Stock> implements StockFacadeLoc
         stock.setlArticle(article);
         stock.setQuantiteStock(quantite);
         
-        em.persist(quantite);
+        em.persist(stock);
        
         
         }

@@ -104,7 +104,7 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
     {
                 
         Livraison livraison=livraisonFacade.rechercherLivraisonParId(idLivraison);
-        CommandeLot commandeLot= commandeLotFacade.rechercherCommandeLotParId(idLivraison);
+        CommandeLot commandeLot= commandeLotFacade.rechercherCommandeLotParId(idCommandeLot);
         Lot lotLivre = commandeLot.getLeLot();
         Article article= lotLivre.getlArticle();
         BonDeCommande bdc = commandeLot.getLeBonDeCommande();
