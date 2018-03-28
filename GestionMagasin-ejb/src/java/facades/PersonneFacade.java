@@ -43,7 +43,8 @@ public class PersonneFacade extends AbstractFacade<Personne> implements Personne
 
     @Override
     public void supprimerPersonne(Personne personne) {
-        em.remove(personne);
+        Object toBeRemoved = em.merge(personne);
+        em.remove(toBeRemoved);
     }   
 
     @Override

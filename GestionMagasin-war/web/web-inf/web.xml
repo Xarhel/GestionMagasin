@@ -24,8 +24,8 @@
         <servlet-class>Servlets.AgentLivraison</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Fournisseur</servlet-name>
-        <servlet-class>Servlets.Fournisseur</servlet-class>
+        <servlet-name>FournisseurServlet</servlet-name>
+        <servlet-class>Servlets.FournisseurServlet</servlet-class>
     </servlet>
     <servlet>
     <servlet-name>EmployeCaisse</servlet-name>
@@ -55,8 +55,8 @@
         <url-pattern>/AgentLivraison</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Fournisseur</servlet-name>
-        <url-pattern>/Fournisseur</url-pattern>
+        <servlet-name>FournisseurServlet</servlet-name>
+        <url-pattern>/FournisseurServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
     <servlet-name>EmployeCaisse</servlet-name>

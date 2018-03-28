@@ -22,7 +22,7 @@
             <div class="jumbotron">
             <!-- BODY START -->
             <div>
-                <h1>Liste des employées</h1>
+                <h1>Liste des employés</h1>
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>

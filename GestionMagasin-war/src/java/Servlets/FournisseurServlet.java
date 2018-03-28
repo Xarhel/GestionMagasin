@@ -46,17 +46,20 @@ public class FournisseurServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-         String jspClient = null;
+        String jspClient = null;
         String action = request.getParameter("action");
         
         
         // Jsp par défaut lorsque l'utilisateur exécute la solution
         
-          if((action==null) || (action.equals("null")))
+        if(request.getSession(false).getAttribute("name") == null)
         {
-            jspClient="/fournisseur/index.jsp";
-            
-          
+            jspClient="/login.jsp";
+        }
+        
+        else if((action==null) || (action.equals("null")))
+        {
+            jspClient="/fournisseur/index.jsp";              
         }
           
           else if(action.equals("versListeLivraison"))
@@ -66,21 +69,27 @@ public class FournisseurServlet extends HttpServlet {
           
         }
           
-          else if(action.equals("versSaisirLivraison"))
-          {
-              
-              jspClient="/fournisseur/saisirLivraison.jsp";
-              saisirLivraison(request, response);
-          }
+        else if(action.equals("versSaisirLivraison"))
+        {
+
+            jspClient="/fournisseur/saisirLivraison.jsp";
+            saisirLivraison(request, response);
+        } 
+
+        else if(action.equals("creerLivraison"))
+        {
+            jspClient="/fournisseur/gestionLivraisonLots.jsp";
+            creerLivraison(request, response);
+        }
         
-          
-          
-          else if(action.equals("creerLivraison"))
-          {
-              jspClient="/fournisseur/gestionLivraisonLots.jsp";
-              creerLivraison(request, response);
-          }
-             RequestDispatcher rd;
+        else if(action.equals("logout"))
+        {
+            request.getSession(false).invalidate();
+            jspClient="/login.jsp";
+        }
+        
+        
+        RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
         rd.forward(request, response); 
           

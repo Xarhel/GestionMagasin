@@ -72,53 +72,35 @@ public class EmployeRayon extends HttpServlet {
           else if(action.equals("versConsulterCommande"))
         {
             versConsulterCommande(request, response);
-            jspClient="/employeRayon/consulterCommande.jsp";
-            
-            
+            jspClient="/employeRayon/consulterCommande.jsp"; 
         }
          
-          else if(action.equals("versConsulterLivraison"))
-                  {
-                      jspClient="/employeRayon/consulterLivraison.jsp";
-                      versConsulterLivraison(request, response);
-                  }
+        else if(action.equals("versConsulterLivraison"))
+        {
+            jspClient="/employeRayon/consulterLivraison.jsp";
+            versConsulterLivraison(request, response);
+        }
          
           else if(action.equals("versRetraitArticlePerime"))
-          {
-              jspClient="/employeRayon/retraitArticlePerime.jsp";
-              versArticlePerime(request, response);
+        {
+            jspClient="/employeRayon/retraitArticlePerime.jsp";
+            versArticlePerime(request, response);   
+        }
+         
+        else if(action.equals("supprimerProduitPerime"))
               
-          }
+        {
+            supprimerProduitPerime(request, response);
+            jspClient="/employeRayon/retraitArticlePerime.jsp";
+        }
          
-          else if(action.equals("supprimerProduitPerime"))
-              
-          {supprimerProduitPerime(request, response);
-         
-         jspClient="/employeRayon/retraitArticlePerime.jsp";}
-         
-              
-
-         
-          ////////////////////////DIRECTION//////////////////////
+        else if(action.equals("logout"))
+        {
+            request.getSession(false).invalidate();
+            jspClient="/login.jsp";
+        }
           
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          RequestDispatcher rd;
+        RequestDispatcher rd;
         rd = getServletContext().getRequestDispatcher(jspClient);
         rd.forward(request, response);
           
