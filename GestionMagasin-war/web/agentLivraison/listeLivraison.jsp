@@ -18,6 +18,7 @@
         <body>
             <div class="container">
             <jsp:include page="menu.jsp"/>
+            <div class="jumbotron">
             <!-- BODY START -->
             <div>
                 <h1>Liste des livraisons</h1>
@@ -62,6 +63,7 @@
                     </tbody>
                 </table>
                 </form>
+            </div>
             </div>
             <!-- BODY END-->
         </div>
