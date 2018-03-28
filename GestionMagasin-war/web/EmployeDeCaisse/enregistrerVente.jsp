@@ -23,7 +23,7 @@
         <jsp:useBean id="montantPanier" scope="request" type="java.lang.Float"></jsp:useBean>
         
         <jsp:include page="header.jsp"/>
-        <jsp:include page="menu.jsp"/>
+
         
         <script>
         function selectionQuantite()
@@ -43,6 +43,7 @@
     </head>
     <body>
         <div class="container">
+            <jsp:include page="menu.jsp"/>
             <div class="jumbotron">
                 
                  <!-- BODY START -->
