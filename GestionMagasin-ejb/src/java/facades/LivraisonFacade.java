@@ -91,7 +91,7 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
     {
         
         livraison.setDateReceptionLivraison(dateReception);
- //       livraison.setStatutLivraison(StatutLivraison.livree);
+       livraison.setStatutLivraison(StatutLivraison.livree);
         
         em.merge(livraison);
     }

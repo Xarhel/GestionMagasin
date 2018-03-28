@@ -83,7 +83,7 @@ public class AgentLivraison extends HttpServlet {
           
           else if (((action.equals("enregistrerCommandeLot"))))
           {enregistrerCommandeLot(request, response);
-            jspClient="/agentLivraison/index.jsp";
+            jspClient="/agentLivraison/listeLivraison.jsp";
           }
               
               
@@ -234,7 +234,15 @@ public class AgentLivraison extends HttpServlet {
            
            agentDeLivraisonSession.enregistrerLivraisonLots( idLiv,idCommandeLot, iqacceptee, iqlivree, iqrecue,  idateperemption, taille, igarantie);
            }}
-           
+            HttpSession session= request.getSession();
+        Employe e=(Employe) session.getAttribute("user");    
+        
+        Magasin m= e.getLeMagasin();
+        long mid= m.getId();
+        
+        Collection <Livraison> result =agentDeLivraisonSession.listerLivraisonEnCours(mid);
+        
+        request.setAttribute("livraison", result);       
         
     }
     

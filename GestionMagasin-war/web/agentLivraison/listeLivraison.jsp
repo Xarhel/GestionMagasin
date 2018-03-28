@@ -48,16 +48,11 @@
                             <td><%=l.getLeBonDeCommande().getLeChefDeRayon().getLeRayon().getRayonNom()%></td>
                           
                        <td>     <a href="AgentLivraison?action=versEnregistrerLivraison&id=<%=l.getId()%>" class="btn btn-info btn-md">
-                               <span class="glyphicon glyphicon-edit" title="enregistrerLivraison"></span> EnregistrerLivraison 
-                                </a></td>
-                         <td><a href="Menu?action=pagReclamation&id=<%=l.getId()%>" class="btn btn-info btn-md">
+                               <span class="glyphicon glyphicon-edit" title="enregistrerLivraison"></span> Enregistrer la Livraison 
+                                </a>
+                       <a href="Menu?action=pagReclamation&id=<%=l.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Reclamer"></span>Reclamation
-                                </a>
-                                <a href="AgentLivraison?action=RetourProduit&id=<%=l.getId()%>" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-edit" title="Retour"></span>Retourner
-                                </a>
-
-                         </td>   
+                                </a></td>
                         </tr><%}%>
                     </tbody>
                 </table>
