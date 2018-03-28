@@ -48,7 +48,7 @@
                     <div class="form-group row">
                         <label class="col-md-2">Mot de Passe<span class="requis">*</span></label>
                         <div class="col-md-4">
-                            <input class="form-control" type="text" name="mdp" required/>
+                            <input class="form-control" type="password" name="mdp" required/>
                         </div>                        
                     </div>                    
                     <button type="submit" class="btn btn-success">Ajouter</button>                    
