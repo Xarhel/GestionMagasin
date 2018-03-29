@@ -18,12 +18,14 @@
     </head>
     <body>
         <div class="container">
+            
             <jsp:include page="menu.jsp"/>
             <jsp:useBean id="article" scope="request" class="java.util.Collection"></jsp:useBean>
             <jsp:useBean id="lots" scope="request" class="java.util.Collection"></jsp:useBean>
             <jsp:useBean id="bon" scope="request" class="String"></jsp:useBean>
                 <!-- BODY START -->
                 <div>
+                    <div class="jumbotron">
                     <h2>Ajouter un lot à la commande</h2>
                     <form method="POST" action="ChefDeRayon">
                         <input hidden type="text" name="action" value="creerCommandeLot"/>
@@ -57,7 +59,8 @@
                         </div>
 
                     <button type="submit" class="btn btn-success">Ajouter</button>                    
-                </form> 
+                </form>
+                    </div>
                                         <div class="jumbotron">
                 <h1>Liste des articles</h1>
 

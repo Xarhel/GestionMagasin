@@ -15,11 +15,12 @@
         <jsp:include page="header.jsp"/>
         <jsp:useBean id="employe" scope="request" type="Entites.Personne.Employe"></jsp:useBean>
         <jsp:useBean id="magasin" scope="request" type="java.util.Collection"></jsp:useBean>
-        <jsp
+        
         </head>
-        <body>
+    <body>
             <div class="container">
             <jsp:include page="menu.jsp"/>
+            <div class="jumbotron">
             <!-- BODY START -->
             <div>
                 <h1>Assigner un magasin</h1>
@@ -49,7 +50,7 @@
                             <button type="submit" class="col-md-3 btn btn-lg btn-success">Valider et retourner à la liste</button>
                 </form>
             </div>
-                   
+            </div>      
         </div>
         <!-- BODY END-->
     </body>

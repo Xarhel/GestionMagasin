@@ -38,9 +38,9 @@
                         </div>                        
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2">Complément<span class="requis">*</span></label>
+                        <label class="col-md-2">Complément</label>
                         <div class="col-md-4">
-                            <input class="form-control" type="text" name="rueComplement" required/>
+                            <input class="form-control" type="text" name="rueComplement"/>
                         </div>                        
                     </div>
                     <div class="form-group row">
