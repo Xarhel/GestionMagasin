@@ -8,7 +8,6 @@ package facades;
 import Entites.Autre.BonDeCommande;
 import Entites.Autre.Livraison;
 import Entites.Autre.Magasin;
-import Entites.Personne.AgentDeLivraison;
 import Entites.Personne.Fournisseur;
 import java.util.Collection;
 import java.util.Date;

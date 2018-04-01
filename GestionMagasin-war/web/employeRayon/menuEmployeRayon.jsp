@@ -24,9 +24,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Accueil</a></li>                 
-                <li class="dropdown <%=display%>"> </li> 
-                    
-                    
+                <li class="dropdown <%=display%>"> </li>      
                         <li><a href="EmployeRayon?action=versConsulterCommande" class="">Consulter commande</a></li>
                         <li><a href="EmployeRayon?action=versConsulterLivraison">Consulter livraison</a></li>
                         <li><a href="EmployeRayon?action=versRetraitArticlePerime" class="">Retrait article</a></li>

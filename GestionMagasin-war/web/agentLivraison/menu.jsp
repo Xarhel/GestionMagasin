@@ -26,8 +26,6 @@
             <ul class="nav navbar-nav">
                 <li><a href="http://localhost:8080/GestionMagasin-war/AgentLivraison">Accueil</a></li>                 
                 <li class="dropdown <%=display%>">
-                    
-                        <li><a href="AgentLivraison?action=versCreerLivraison">Créer livraison</a></li>
                         <li><a href="AgentLivraison?action=versListeLivraison">Liste livraison</a></li>
                         <li><a href=".jsp" class=""></a></li>
 

@@ -20,27 +20,21 @@
             <jsp:include page="menuEmployeRayon.jsp"/>
             <!-- BODY START -->
             <div>
-                <h1>Liste des Livraison</h1>
                 <div class="jumbotron">
+                <h1>Liste des Livraisons</h1>
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
-                            
                             <th>Date de créeation</th>
                             <th>Agent de livraison</th>
-                            <th>Date de reception</th>
-                            <th>Statut de livraison</th>
-                           
+                            <th>Date de livraison</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            
                             <th>Date de créeation</th>
                             <th>Agent de livraison</th>
-                            <th>Date de reception</th>
-                            <th>Statut de livraison</th>
-                           
+                            <th>Date de livraison</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -48,15 +42,14 @@
                             for (Livraison l : _livraison) {%>
                         <tr>
                             <td><%=l.getDateCreationLivraison()%></td>
-                            <td><%=l.getlAgentDeLivraison().getNomPersonne() %></td>
-                            <td><%=l.getDateReceptionLivraison()%></td>
                             <td><%=l.getStatutLivraison()%></td>
+                            <td><%=l.getDateReceptionLivraison()%></td>
                         </tr><%}%>
                     </tbody>
                 </table>
             </div>
             <!-- BODY END-->
         </div>
-            </div>
+        </div>
     </body>
 </html>

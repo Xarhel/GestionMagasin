@@ -24,6 +24,7 @@
             <div class="container">
             <jsp:include page="menu.jsp"/>
             <!-- BODY START -->
+            <div class ="jumbotron">
             <div>
                 
                 <h1>Enregistrer la Livraison</h1>
@@ -91,6 +92,7 @@
                 <button type="submit" class="btn btn-success">Valider</button>    
                 </form>
                     
+            </div>
             </div>
             <!-- BODY END-->
         </div>

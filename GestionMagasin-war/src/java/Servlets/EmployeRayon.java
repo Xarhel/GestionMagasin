@@ -77,8 +77,8 @@ public class EmployeRayon extends HttpServlet {
          
         else if(action.equals("versConsulterLivraison"))
         {
-            jspClient="/employeRayon/consulterLivraison.jsp";
             versConsulterLivraison(request, response);
+            jspClient="/employeRayon/consulterLivraison.jsp";
         }
          
           else if(action.equals("versRetraitArticlePerime"))
@@ -133,7 +133,7 @@ public class EmployeRayon extends HttpServlet {
     protected void versConsulterCommande(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
             
     {
-        HttpSession session= request.getSession();
+        HttpSession session= request.getSession(false);
         Employe e=(Employe) session.getAttribute("user");
         
         Collection<BonDeCommande> c = employeDeRayonSession.rechercherParMagasin(Integer.parseInt(e.getLeMagasin().getId().toString()));
@@ -149,7 +149,7 @@ public class EmployeRayon extends HttpServlet {
     protected void versConsulterLivraison(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
             
     {
-        HttpSession session= request.getSession();
+        HttpSession session= request.getSession(false);
         Employe e=(Employe) session.getAttribute("user");
         
         
@@ -163,7 +163,7 @@ public class EmployeRayon extends HttpServlet {
      protected void versArticlePerime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
             
     {
-        HttpSession session= request.getSession();
+        HttpSession session= request.getSession(false);
         Employe e=(Employe) session.getAttribute("user");
         
         Rayon r= e.getLeRayon();
