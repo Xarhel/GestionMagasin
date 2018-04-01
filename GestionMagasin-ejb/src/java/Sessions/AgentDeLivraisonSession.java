@@ -12,6 +12,7 @@ import Entites.Autre.Livraison;
 import Entites.Autre.LivraisonLot;
 import Entites.Autre.Magasin;
 import Entites.Autre.Rayon;
+import Entites.Autre.Reclamation;
 import Entites.Enum.CategorieArticle;
 import Entites.Lot.Lot;
 import Entites.Personne.ChefDeRayon;
@@ -21,6 +22,7 @@ import facades.LivraisonFacadeLocal;
 import facades.LivraisonLotFacadeLocal;
 import facades.LotFacadeLocal;
 import facades.MagasinFacadeLocal;
+import facades.ReclamationFacadeLocal;
 import facades.StockFacadeLocal;
 import java.util.Collection;
 import java.util.Date;
@@ -33,6 +35,9 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
+
+    @EJB
+    private ReclamationFacadeLocal reclamationFacade;
 
     @EJB
     private LotFacadeLocal lotFacade;
@@ -51,8 +56,7 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
     
     @EJB
     private LivraisonLotFacadeLocal livraisonLotFacade;
-    
-    
+      
     @EJB
     private BonDeCommandeFacadeLocal bonDeCommandeFacade;    
     
@@ -136,6 +140,19 @@ public class AgentDeLivraisonSession implements AgentDeLivraisonSessionLocal {
         Collection<Livraison> result=livraisonFacade.afficherLivraisonsEnCours(m);
         return result;
     }
+
+    @Override
+    public void creerReclamation(Livraison livraison, String motif) {
+        reclamationFacade.creerReclamation(livraison, motif);
+    }
+
+    @Override
+    public Livraison rechercherLivraisonParId(int id) {
+        Livraison l = livraisonFacade.rechercherLivraisonParId(id);
+        return l;
+    }
+    
+    
 
 }
     

@@ -27,5 +27,9 @@ public interface AgentDeLivraisonSessionLocal {
     public Collection<Livraison> listerLivraisonEnCours(long idMagasin);
 
     public Collection<CommandeLot> AfficherCommandeLotsParIdCommande(int idCommande);
+
+    void creerReclamation(Livraison livraison, String motif);
+
+    Livraison rechercherLivraisonParId(int id);
     
 }

@@ -8,6 +8,7 @@ package Servlets;
 import Entites.Autre.CommandeLot;
 import Entites.Autre.Livraison;
 import Entites.Autre.Magasin;
+import Entites.Autre.Reclamation;
 import Entites.Personne.Employe;
 import Sessions.AgentDeLivraisonSessionLocal;
 import facades.MagasinFacadeLocal;
@@ -84,6 +85,18 @@ public class AgentLivraison extends HttpServlet {
           else if (((action.equals("enregistrerCommandeLot"))))
           {enregistrerCommandeLot(request, response);
             jspClient="/agentLivraison/index.jsp";
+          }
+          
+          else if(action.equals("versCreerReclamation"))
+          {
+              versCreerReclamation(request, response);
+              jspClient="/agentLivraison/reclamation.jsp";
+          }
+          
+          else if(action.equals("creerReclamation"))
+          {
+              creerReclamation(request, response);
+              jspClient="/agentLivraison/index.jsp";
           }
               
               
@@ -238,5 +251,24 @@ public class AgentLivraison extends HttpServlet {
         
     }
     
+    protected void versCreerReclamation(HttpServletRequest request,
+        HttpServletResponse response) throws ServletException, IOException
+    {
+        String id = request.getParameter("id");
+        int idLivraison = Integer.parseInt(id);
+        Livraison l = agentDeLivraisonSession.rechercherLivraisonParId(idLivraison);
+        request.setAttribute("livraison", l);
+    }
+    
+    protected void creerReclamation(HttpServletRequest request,
+        HttpServletResponse response) throws ServletException, IOException
+    {
+        String idLivraison = request.getParameter("livraison");
+        String motifReclamation = request.getParameter("motifReclamation");
+        
+        int intLivraison = Integer.parseInt(idLivraison);
+        Livraison l = agentDeLivraisonSession.rechercherLivraisonParId(intLivraison);
+        agentDeLivraisonSession.creerReclamation(l, motifReclamation);
+    }
     
 }

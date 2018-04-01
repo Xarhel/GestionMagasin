@@ -51,7 +51,7 @@
                        <td>     <a href="AgentLivraison?action=versEnregistrerLivraison&id=<%=l.getId()%>" class="btn btn-info btn-md">
                                <span class="glyphicon glyphicon-edit" title="enregistrerLivraison"></span> EnregistrerLivraison 
                                 </a></td>
-                         <td><a href="Menu?action=pagReclamation&id=<%=l.getId()%>" class="btn btn-info btn-md">
+                         <td><a href="AgentLivraison?action=versCreerReclamation&id=<%=l.getId()%>" class="btn btn-info btn-md">
                                     <span class="glyphicon glyphicon-edit" title="Reclamer"></span>Reclamation
                                 </a>
                                 <a href="AgentLivraison?action=RetourProduit&id=<%=l.getId()%>" class="btn btn-info btn-md">

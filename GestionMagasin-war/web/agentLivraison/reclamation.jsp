@@ -9,38 +9,28 @@
 <html>
     <head>        
         <title>Faire une reclamation</title>
-        <jsp:include page="include/header.jsp"/>
-        <%@page import="java.util.Collection"%>
+        <jsp:include page="header.jsp"/>
     </head>
     <body>
         <div class="container">
             <jsp:include page="menu.jsp"/>
+            <div class="jumbotron">
             <!-- BODY START -->
             <div>
-                <h1>Faire une reclamation</h1>
-                <jsp:useBean id="article" scope="request" type="Entites.Autre.Article"></jsp:useBean>
-                <jsp:useBean id="ReclamationLot" scope="request" type="Entites.Autre.ReclamationLot"></jsp:useBean>
-                    <form method="POST" action="">
-                        <input hidden type="text" name="action" value="aricle"/>
+                <h1>Nouvelle réclamation</h1>
+                <jsp:useBean id="livraison" scope="request" type="Entites.Autre.Livraison"></jsp:useBean>
+                    <form method="POST" action="AgentLivraison">
+                        <input hidden type="text" name="action" value="creerReclamation"/>  
+                        <input hidden type="text" name="livraison" value="<%=livraison.getId()%>"/>
                         <div class="form-group row">
-                            <label class="col-md-2">Libelle ariticle<span class="requis">*</span></label>
+                            <label class="col-md-2">Description de la réclamation<span class="requis">*</span></label>
                             <div class="col-md-4">
-                                <input class="form-control" type="text" name="libelle" value="<%=article.getLibelle()%>" readonly />
-                        </div>                        
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2">Quantité<span class="requis">*</span></label>
-                        <div class="col-md-4">
-                            <input class="form-control" type="text" name="quantite" required/>
-                        </div>                        
-                    </div> 
-                    <div class="form-group">
-                        <label class="col-md-2">Motifs de reclamation</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" required></textarea>
-                    </div>
-
+                                <input class="form-control" type="text" name="motifReclamation" required/>
+                            </div>                        
+                        </div>
                     <button type="submit" class="btn btn-success">Envoyer</button>                    
                 </form> 
+            </div>
             </div>
             <!-- BODY END-->
         </div>
