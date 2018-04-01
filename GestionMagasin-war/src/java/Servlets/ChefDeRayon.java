@@ -383,7 +383,7 @@ public class ChefDeRayon extends HttpServlet {
         
         if(!(raisonSociale.isEmpty()) && !(nom.trim().isEmpty()) && !(prenom.trim().isEmpty()) && !(login.trim().isEmpty()) && !(mdp.trim().isEmpty()))
         {
-            chefDeRayon.ajouterFournisseur(raisonSociale, login, prenom, nom, prenom);
+            chefDeRayon.ajouterFournisseur(raisonSociale, login, mdp, nom, prenom);
         
         
                 String message = "Voici la liste des fournisseurs";

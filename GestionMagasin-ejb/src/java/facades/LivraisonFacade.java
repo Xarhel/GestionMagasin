@@ -43,8 +43,7 @@ public class LivraisonFacade extends AbstractFacade<Livraison> implements Livrai
     {
         Livraison l=new Livraison();
         l.setLeBonDeCommande(bdc);
-        l.setDateCreationLivraison(dateCreationCommande);
-       
+        l.setDateCreationLivraison(dateCreationCommande);     
         l.setStatutLivraison(StatutLivraison.enCours);
         em.persist(l);
         return l;
