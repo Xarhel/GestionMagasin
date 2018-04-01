@@ -33,7 +33,7 @@ public interface StockRetraitFacadeLocal {
 
     int count();
 
-    public void retirerStockPerime(Collection<Stock> stockARetirer, java.util.Date dateRetrait);
+    public void retirerStockPerime(Collection<Stock> stockARetirer);
 
     public void ajouterStockRetrait(StockRetrait sr, int quantite);
 

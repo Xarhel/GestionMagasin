@@ -79,7 +79,7 @@ public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
      public Collection<Stock> retirerStockPerime(Date date, Rayon r)
      {
          Collection<Stock> s = stockFacade.rechercherLotRayonPerimeParDate(date, r);
-         stockRetraitFacade.retirerStockPerime(s, date);
+         stockRetraitFacade.retirerStockPerime(s);
          stockFacade.retirerStockPerimeRayon(s);
          
          
@@ -88,11 +88,10 @@ public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
      
      
     @Override
-     public Collection <BonDeCommande> rechercherParMagasin(int idMagasin)
+     public Collection <BonDeCommande> rechercherParMagasin(Magasin m)
      {
-         Magasin mag= magasinFacade.rechercherMagasinParId(idMagasin);
          
-         Collection <BonDeCommande> bdc= bonDeCommandeFacade.rechercherBonDeCommandeParMagasin(mag);
+         Collection <BonDeCommande> bdc= bonDeCommandeFacade.rechercherBonDeCommandeParMagasin(m);
          
          return bdc;
          
@@ -100,11 +99,10 @@ public class EmployeDeRayonSession implements EmployeDeRayonSessionLocal {
      }
      
     @Override
-     public Collection<Livraison> rechercheLivraisonEnCours(int idMag)
+     public Collection<Livraison> rechercheLivraisonEnCours(Magasin m)
      {
          
-         Magasin mag= magasinFacade.rechercherMagasinParId(idMag);
-         Collection<Livraison> result= livraisonFacade.afficherLivraisonsEnCours(mag);
+         Collection<Livraison> result= livraisonFacade.afficherLivraisonsEnCours(m);
          return result;
          
          

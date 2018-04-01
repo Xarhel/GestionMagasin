@@ -36,12 +36,13 @@ public class StockRetraitFacade extends AbstractFacade<StockRetrait> implements 
     
     // Besoin d'explication sur cette méthode, pas compris comment elle marche (Maxime)
     @Override
-    public void retirerStockPerime(Collection<Stock> stockARetirer, Date dateRetrait) {
+    public void retirerStockPerime(Collection<Stock> stockARetirer) {
         
         for (Stock s: stockARetirer) {
         StockRetrait sr = new StockRetrait();
         sr.setStock(s);
-        sr.setDateRetrait((java.sql.Date) dateRetrait);
+//        Date dateRetrait = new Date();
+//        sr.setDateRetrait((java.sql.Date) dateRetrait);
         int quantiteRetiree = s.getQuantiteStock();
         sr.setQuantiteRetrait(quantiteRetiree);
         em.persist(sr);

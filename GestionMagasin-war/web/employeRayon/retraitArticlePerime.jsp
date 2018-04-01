@@ -23,7 +23,7 @@
                 <div class="jumbotron">
                 <h1>Liste de stock perimé</h1>
                 <form method="post" action="EmployeRayon">
-                    <input hidden type="text" name="action" value="retraitArticlePerime"/>
+                    <input hidden type="text" name="action" value="supprimerProduitPerime"/>
                 <button type="submit" class="btn-success"> retirer </button>
                 </form>
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">

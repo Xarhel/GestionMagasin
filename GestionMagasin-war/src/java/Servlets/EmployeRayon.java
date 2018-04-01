@@ -95,6 +95,16 @@ public class EmployeRayon extends HttpServlet {
           {supprimerProduitPerime(request, response);
          
          jspClient="/employeRayon/retraitArticlePerime.jsp";}
+        
+        
+        
+        
+        
+          else if(action.equals("logout"))
+        {
+            request.getSession(false).invalidate();
+            jspClient="/login.jsp";
+        }
          
               
 
@@ -154,7 +164,7 @@ public class EmployeRayon extends HttpServlet {
         HttpSession session= request.getSession();
         Employe e=(Employe) session.getAttribute("user");
         
-        Collection<BonDeCommande> c = employeDeRayonSession.rechercherParMagasin(e.getIdMagasin());
+        Collection<BonDeCommande> c = employeDeRayonSession.rechercherParMagasin(e.getLeMagasin());;
         
         
   
@@ -171,7 +181,7 @@ public class EmployeRayon extends HttpServlet {
         Employe e=(Employe) session.getAttribute("user");
         
         
-        Collection<Livraison> l = employeDeRayonSession.rechercheLivraisonEnCours(e.getIdMagasin());
+        Collection<Livraison> l = employeDeRayonSession.rechercheLivraisonEnCours(e.getLeMagasin());
        
         String message = "Voici la liste des livraisons recensées";
         request.setAttribute("livraison", l);

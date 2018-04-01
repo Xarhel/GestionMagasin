@@ -28,9 +28,9 @@ public interface EmployeDeRayonSessionLocal {
 
     public Collection<Stock> retirerStockPerime(Date date, Rayon r);
 
-    public Collection<BonDeCommande> rechercherParMagasin(int idMagasin);
+    public Collection<BonDeCommande> rechercherParMagasin(Magasin m);
 
-    public Collection<Livraison> rechercheLivraisonEnCours(int idMag);
+    public Collection<Livraison> rechercheLivraisonEnCours(Magasin m);
 
     public Collection<Stock> rechercherStockAvecProduitPerime(Date d, Rayon r);
 
