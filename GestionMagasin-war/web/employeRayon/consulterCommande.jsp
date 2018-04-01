@@ -47,7 +47,7 @@
                             for (BonDeCommande c : _commande) {%>
                         <tr><td><%=c.getId()%></td>
                             <td><%=c.getLeChefDeRayon().getNomPersonne() %></td>
-                            <td><%=c.getLeFournisseur()%></td>
+                            <td><%=c.getLeFournisseur().getRaisonSociale()%></td>
                             <td><%=c.getDateCommande()%></td>
                         </tr><%}%>
                     </tbody>

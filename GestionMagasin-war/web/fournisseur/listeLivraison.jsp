@@ -26,7 +26,7 @@
                 <table id="example" class="table table-striped table-bordered" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Agent de livraison</th>
+                            <th>Magasin</th>
                             <th>Date de création livraison</th>
                             <th>Date de livraison</th>
                             
@@ -34,7 +34,8 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Agent de livraison</th>
+                            <th>Magasin</th>
+                            <th>Date de livraison</th>
                             <th>Date de livraison</th>
                         </tr>
                     </tfoot>
@@ -42,7 +43,7 @@
                         <% Collection<Livraison> _livraison = livraison;
                             for (Livraison l : _livraison) {%>
                         <tr>
-                            <td><%=l.getlAgentDeLivraison()%></td>
+                            <td><%=l.getLeBonDeCommande().getLeChefDeRayon().getLeMagasin().getNom()%></td>
                             <td><%=l.getDateCreationLivraison()%></td>
                             <td><%=l.getDateReceptionLivraison()%></td>
                             

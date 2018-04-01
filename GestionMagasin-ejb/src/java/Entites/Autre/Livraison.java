@@ -92,7 +92,6 @@ public class Livraison implements Serializable {
         this.dateCreationLivraison = dateCreationLivraison;
     }
 
-    @Column (nullable=false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateReceptionLivraison;
 

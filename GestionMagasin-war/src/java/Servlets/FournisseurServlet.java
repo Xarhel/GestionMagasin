@@ -12,6 +12,7 @@ import Sessions.FournisseurSessionLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -78,7 +79,7 @@ public class FournisseurServlet extends HttpServlet {
 
         else if(action.equals("creerLivraison"))
         {
-            jspClient="/fournisseur/gestionLivraisonLots.jsp";
+            jspClient="/fournisseur/listeLivraison.jsp";
             creerLivraison(request, response);
         }
         
@@ -157,9 +158,11 @@ public class FournisseurServlet extends HttpServlet {
         
         
         Livraison l=fournisseurSession.creerLivraison(idCommande, d);
+        ArrayList<Livraison> listeLivraisons = new ArrayList();
+        listeLivraisons.add(l);
         
         
-        request.setAttribute("livraison", l);
+        request.setAttribute("livraison", listeLivraisons);
         
         
         

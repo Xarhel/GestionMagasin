@@ -136,7 +136,7 @@ public class EmployeRayon extends HttpServlet {
         HttpSession session= request.getSession();
         Employe e=(Employe) session.getAttribute("user");
         
-        Collection<BonDeCommande> c = employeDeRayonSession.rechercherParMagasin(e.getIdMagasin());
+        Collection<BonDeCommande> c = employeDeRayonSession.rechercherParMagasin(Integer.parseInt(e.getLeMagasin().getId().toString()));
         
         
   
@@ -153,7 +153,7 @@ public class EmployeRayon extends HttpServlet {
         Employe e=(Employe) session.getAttribute("user");
         
         
-        Collection<Livraison> l = employeDeRayonSession.rechercheLivraisonEnCours(e.getIdMagasin());
+        Collection<Livraison> l = employeDeRayonSession.rechercheLivraisonEnCours(Integer.parseInt(e.getLeMagasin().getId().toString()));
        
         String message = "Voici la liste des livraisons recensées";
         request.setAttribute("livraison", l);
