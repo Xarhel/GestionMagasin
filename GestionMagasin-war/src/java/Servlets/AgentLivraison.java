@@ -189,6 +189,7 @@ public class AgentLivraison extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException
        {
            String id = request.getParameter("id");
+           request.setAttribute("id", id);
            int idLivraison = Integer.valueOf(id);
            agentDeLivraisonSession.enregistrerLivraison(idLivraison);
            Collection <CommandeLot> cl = agentDeLivraisonSession.AfficherCommandeLots(idLivraison);
@@ -207,24 +208,28 @@ public class AgentLivraison extends HttpServlet {
         request.setAttribute("cl", cl);
         int longeur = cl.size();
         
-        for (int i=1; i<longeur+2; i++ ){
-            String st = String.valueOf(i);
-           String idLot = request.getParameter("idCommandeLot"+st);
+        for (int i=1; i<longeur+1; i++ ){
+            String st = Integer.toString(i);
+            String qlivree =request.getParameter("qlivree"+st);
+            String idLot = request.getParameter("idCommandeLot"+st);
            int idCommandeLot = Integer.valueOf(idLot);
-           String qlivree =request.getParameter("qlivree"+st);
+
            String qrecue =request.getParameter("qrecue"+st);
            String qacceptee =request.getParameter("qacceptee"+st);
            String taille =request.getParameter("taille");
            String dateperemption =request.getParameter("dateperemption"+st);
            String garantie =request.getParameter("garantie"+st);
            
-           if(!(qlivree.isEmpty()) && !(qrecue.trim().isEmpty()) && !(qacceptee.trim().isEmpty())&& !(taille.trim().isEmpty())&& !(dateperemption.trim().isEmpty())&& !(garantie.trim().isEmpty()))
+           if(!(qlivree.isEmpty()) && !(qrecue.trim().isEmpty()) && !(qacceptee.trim().isEmpty()))
            {
                int iqlivree = Integer.valueOf(qlivree);
                int iqrecue = Integer.valueOf(qrecue);
                int iqacceptee = Integer.valueOf(qacceptee);
-               Date idateperemption= Date.valueOf(dateperemption);
-               int igarantie = Integer.valueOf(garantie);
+               Date idateperemption = null;
+               if (dateperemption!=null){idateperemption = Date.valueOf(dateperemption);}
+               int igarantie = 0;
+               if (garantie!=null){
+               igarantie = Integer.valueOf(garantie);}
                
            
            agentDeLivraisonSession.enregistrerLivraisonLots( idLiv,idCommandeLot, iqacceptee, iqlivree, iqrecue,  idateperemption, taille, igarantie);
